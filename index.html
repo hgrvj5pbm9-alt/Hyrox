@@ -2,10 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0d0d0d">
 
 <title>HYROX Studio 5 | Zonas Comprometidas #4 TS</title>
@@ -19,20 +16,18 @@ content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   --card2:#0b0f14;
   --border:#343b45;
   --yellow:#FFD700;
-  --yellowSoft:rgba(255,215,0,.14);
-  --green:#39d353;
-  --red:#ff4d45;
+  --yellowSoft:rgba(255,215,0,.13);
+  --green:#32d46d;
+  --greenSoft:rgba(50,212,109,.12);
+  --red:#ff4d55;
+  --redSoft:rgba(255,77,85,.12);
   --gray:#9ca3af;
   --white:#f5f5f5;
 }
 
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
-html{
-  scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
   margin:0;
@@ -44,7 +39,7 @@ body{
 .container{
   width:min(1180px,100%);
   margin:auto;
-  padding:18px;
+  padding:16px;
 }
 
 .card{
@@ -55,30 +50,26 @@ body{
 
 .inner{
   background:var(--card2);
-  border:1px solid #242a32;
+  border:1px solid #282f38;
   border-radius:15px;
 }
 
-.yellow{
-  color:var(--yellow);
-}
-
-.green{
-  color:var(--green);
-}
-
-.red{
-  color:var(--red);
-}
-
-.muted{
-  color:var(--gray);
-}
+.yellow{color:var(--yellow)}
+.green{color:var(--green)}
+.red{color:var(--red)}
+.muted{color:var(--gray)}
 
 .sectionTitle{
   color:var(--yellow);
   font-weight:900;
   letter-spacing:.02em;
+}
+
+.sectionNumber{
+  color:var(--yellow);
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.18em;
 }
 
 .badge{
@@ -88,7 +79,7 @@ body{
   border-radius:999px;
   border:1px solid #4b5563;
   font-size:12px;
-  font-weight:700;
+  font-weight:800;
 }
 
 .badgeYellow{
@@ -97,109 +88,171 @@ body{
   border-color:var(--yellow);
 }
 
-.timer{
-  font-size:clamp(55px,10vw,95px);
-  font-weight:900;
-  line-height:1;
-  color:var(--yellow);
-  font-variant-numeric:tabular-nums;
-}
-
-.timerSmall{
-  font-size:clamp(46px,8vw,72px);
-  font-weight:900;
-  line-height:1;
-  color:var(--yellow);
-  font-variant-numeric:tabular-nums;
-}
-
 .btn{
   border:0;
   border-radius:13px;
   padding:13px 18px;
   background:#222a37;
   color:white;
-  font-weight:800;
+  font-weight:900;
   cursor:pointer;
   font-size:14px;
+  -webkit-tap-highlight-color:transparent;
 }
 
-.btnYellow{
+.btnPrimary{
   background:var(--yellow);
   color:#000;
 }
 
-.btn:active{
-  transform:scale(.98);
+.btn:active{transform:scale(.98)}
+
+.timerBox{
+  background:#080b0f;
+  border:2px solid var(--green);
+  border-radius:18px;
+  padding:20px;
+  transition:.25s;
+}
+
+.timerBox.work{
+  border-color:var(--green);
+  background:var(--greenSoft);
+  box-shadow:0 0 28px rgba(50,212,109,.08);
+}
+
+.timerBox.rest{
+  border-color:var(--red);
+  background:var(--redSoft);
+  box-shadow:0 0 28px rgba(255,77,85,.08);
+}
+
+.timer{
+  font-size:clamp(58px,10vw,100px);
+  line-height:1;
+  font-weight:900;
+  color:var(--green);
+  font-variant-numeric:tabular-nums;
+  transition:.2s;
+}
+
+.timer.rest{color:var(--red)}
+.timer.work{color:var(--green)}
+
+.timerSmall{
+  font-size:clamp(48px,8vw,76px);
+  line-height:1;
+  font-weight:900;
+  color:var(--green);
+  font-variant-numeric:tabular-nums;
+}
+
+.timerSmall.rest{color:var(--red)}
+.timerSmall.work{color:var(--green)}
+
+.phase{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:7px 12px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:900;
+}
+
+.phase.work{
+  background:rgba(50,212,109,.15);
+  color:var(--green);
+  border:1px solid rgba(50,212,109,.4);
+}
+
+.phase.rest{
+  background:rgba(255,77,85,.15);
+  color:var(--red);
+  border:1px solid rgba(255,77,85,.4);
 }
 
 .exercise{
+  position:relative;
+  background:#0a0e13;
   border:1px solid #303741;
-  border-radius:14px;
-  padding:14px;
-  background:#0b0f14;
+  border-radius:16px;
+  padding:17px;
   transition:.2s;
+  min-height:120px;
 }
 
 .exercise.active{
   background:var(--yellowSoft);
   border:2px solid var(--yellow);
-  box-shadow:
-    0 0 0 1px rgba(255,215,0,.15),
-    0 0 24px rgba(255,215,0,.16);
+  box-shadow:0 0 25px rgba(255,215,0,.13);
 }
 
 .exercise.restActive{
-  border:2px solid var(--yellow);
-  background:rgba(255,215,0,.08);
+  border:2px solid var(--red);
+  background:var(--redSoft);
+}
+
+.exerciseName{
+  font-size:19px;
+  line-height:1.15;
+  font-weight:900;
+  color:#fff;
+  margin-top:8px;
+}
+
+.exerciseMeta{
+  color:var(--gray);
+  font-size:13px;
+  margin-top:7px;
 }
 
 .zoneCard{
+  background:#0d1218;
   border:1px solid #343b45;
-  background:#10151c;
-  border-radius:17px;
-  padding:17px;
+  border-radius:18px;
+  padding:18px;
   transition:.2s;
 }
 
 .zoneCard.active{
   border:2px solid var(--yellow);
-  box-shadow:0 0 25px rgba(255,215,0,.15);
-  background:rgba(255,215,0,.06);
+  background:var(--yellowSoft);
+  box-shadow:0 0 26px rgba(255,215,0,.13);
+}
+
+.zoneNumber{
+  color:var(--yellow);
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.14em;
+}
+
+.zoneExercise{
+  font-size:22px;
+  font-weight:900;
+  line-height:1.12;
+  color:white;
+  margin-top:10px;
+}
+
+.secondaryExercise{
+  font-size:17px;
+  font-weight:900;
+  margin-top:14px;
 }
 
 .level{
-  background:#090d12;
+  background:#080c10;
   padding:9px 11px;
   border-radius:10px;
   margin-top:7px;
-  font-size:14px;
-}
-
-.rotationRow{
-  display:grid;
-  grid-template-columns:70px 1fr 1fr;
-  gap:8px;
-  padding:10px 0;
-  border-bottom:1px solid #252b33;
-  align-items:center;
-}
-
-.rotationRow:last-child{
-  border-bottom:0;
-}
-
-.statusDot{
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  background:var(--yellow);
-  display:inline-block;
+  font-size:13px;
 }
 
 .progress{
   width:100%;
-  height:6px;
+  height:7px;
   background:#252b33;
   border-radius:999px;
   overflow:hidden;
@@ -207,62 +260,75 @@ body{
 
 .progressFill{
   height:100%;
-  background:var(--yellow);
+  background:var(--green);
   width:0%;
   transition:width .3s linear;
 }
 
-.phaseChip{
-  display:inline-flex;
-  padding:6px 11px;
+.progressFill.rest{
+  background:var(--red);
+}
+
+.rotationRow{
+  display:grid;
+  grid-template-columns:85px 1fr 1fr;
+  gap:10px;
+  align-items:center;
+  padding:11px 0;
+  border-bottom:1px solid #252b33;
+}
+
+.rotationRow:last-child{border-bottom:0}
+
+.coachNote{
+  border-left:3px solid var(--yellow);
+}
+
+.quickNav{
+  display:flex;
+  gap:7px;
+  overflow-x:auto;
+  padding-bottom:4px;
+  scrollbar-width:none;
+}
+
+.quickNav::-webkit-scrollbar{display:none}
+
+.quickNav a{
+  flex:0 0 auto;
+  text-decoration:none;
+  color:#d1d5db;
+  background:#171d25;
+  border:1px solid #343b45;
   border-radius:999px;
-  background:#222a37;
-  font-size:12px;
+  padding:8px 12px;
+  font-size:11px;
   font-weight:800;
 }
 
-.stickyCoach{
-  position:sticky;
-  top:8px;
-  z-index:20;
-}
-
 @media(max-width:640px){
-  .container{
-    padding:12px;
-  }
-
-  .card{
-    border-radius:17px;
-  }
-
-  .rotationRow{
-    grid-template-columns:55px 1fr;
-  }
-
-  .rotationNext{
-    display:none;
-  }
-
-  .btn{
-    padding:12px 14px;
-  }
+  .container{padding:11px}
+  .card{border-radius:17px}
+  .rotationRow{grid-template-columns:65px 1fr}
+  .rotationNext{display:none}
+  .btn{padding:12px 14px}
+  .exerciseName{font-size:18px}
+  .zoneExercise{font-size:21px}
 }
 </style>
 </head>
-
 
 <body>
 
 <div class="container">
 
-<!-- ========================================================= -->
-<!-- HEADER -->
-<!-- ========================================================= -->
+<!-- ====================================================== -->
+<!-- CAPA -->
+<!-- ====================================================== -->
 
 <header class="card p-5 md:p-7 mb-4">
 
-  <div class="yellow text-xs md:text-sm font-black tracking-[0.24em]">
+  <div class="yellow text-xs md:text-sm font-black tracking-[0.23em]">
     HYROX CLUB | CIA ATHLETICA STUDIO 5
   </div>
 
@@ -275,58 +341,87 @@ body{
   </p>
 
   <div class="flex flex-wrap gap-2 mt-5">
+    <span class="badge badgeYellow">COACH HUB V4</span>
+    <span class="badge">RPE 8</span>
+    <span class="badge">51 MIN</span>
+    <span class="badge">ATÉ 32 ATLETAS</span>
+  </div>
 
-    <span class="badge badgeYellow">
-      COACH HUB V3
-    </span>
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-2 mt-5">
+    <div class="inner p-3">
+      <div class="yellow font-black">05:00</div>
+      <div class="muted text-xs mt-1">AQUECIMENTO</div>
+    </div>
 
-    <span class="badge">
-      RPE 8
-    </span>
+    <div class="inner p-3">
+      <div class="yellow font-black">36:00</div>
+      <div class="muted text-xs mt-1">TREINO PRINCIPAL</div>
+    </div>
 
-    <span class="badge">
-      51 MIN
-    </span>
+    <div class="inner p-3">
+      <div class="yellow font-black">05:00</div>
+      <div class="muted text-xs mt-1">TOTM FINISHER</div>
+    </div>
 
-    <span class="badge">
-      ATÉ 32 ATLETAS
-    </span>
+    <div class="inner p-3">
+      <div class="yellow font-black">05:00</div>
+      <div class="muted text-xs mt-1">VOLTA À CALMA</div>
+    </div>
+  </div>
 
+  <div class="quickNav mt-5">
+    <a href="#coach">ORIENTAÇÕES</a>
+    <a href="#turma">TURMA</a>
+    <a href="#aquecimento">AQUECIMENTO</a>
+    <a href="#principal">PRINCIPAL</a>
+    <a href="#finisher">FINISHER</a>
+    <a href="#cooldown">VOLTA À CALMA</a>
   </div>
 
 </header>
 
 
-<!-- ========================================================= -->
-<!-- VISÃO GERAL -->
-<!-- ========================================================= -->
+<!-- ====================================================== -->
+<!-- 01 ORIENTAÇÕES -->
+<!-- ====================================================== -->
 
-<section class="card p-5 mb-4">
+<section id="coach" class="card p-5 md:p-6 mb-4">
 
-  <div class="sectionTitle text-lg">
-    VISÃO GERAL DO TREINO
-  </div>
+  <div class="sectionNumber">01</div>
+  <h2 class="sectionTitle text-2xl mt-1">
+    ORIENTAÇÕES DO COACH
+  </h2>
 
-  <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-4">
+  <div class="grid md:grid-cols-3 gap-3 mt-5">
 
-    <div class="inner p-4">
-      <div class="yellow font-black text-xl">05:00</div>
-      <div class="muted text-sm mt-1">AQUECIMENTO</div>
+    <div class="inner coachNote p-4">
+      <div class="font-black text-lg">
+        RITMO / PACING
+      </div>
+      <p class="muted text-sm mt-2">
+        RPE 8 sustentável. Evitar pico precoce.
+        Procurar consistência entre os 12 rounds.
+      </p>
     </div>
 
-    <div class="inner p-4">
-      <div class="yellow font-black text-xl">36:00</div>
-      <div class="muted text-sm mt-1">ZONAS COMPROMETIDAS</div>
+    <div class="inner coachNote p-4">
+      <div class="font-black text-lg">
+        COMPROMISED RUNNING
+      </div>
+      <p class="muted text-sm mt-2">
+        Após trabalho de força, reorganizar postura,
+        respiração e passada antes de acelerar.
+      </p>
     </div>
 
-    <div class="inner p-4">
-      <div class="yellow font-black text-xl">05:00</div>
-      <div class="muted text-sm mt-1">TOTM FINISHER</div>
-    </div>
-
-    <div class="inner p-4">
-      <div class="yellow font-black text-xl">05:00</div>
-      <div class="muted text-sm mt-1">VOLTA À CALMA</div>
+    <div class="inner coachNote p-4">
+      <div class="font-black text-lg">
+        SEGURANÇA / FLUXO
+      </div>
+      <p class="muted text-sm mt-2">
+        Transições pelas laterais. Nunca atravessar
+        pistas de Sled em movimento.
+      </p>
     </div>
 
   </div>
@@ -334,63 +429,252 @@ body{
 </section>
 
 
-<!-- ========================================================= -->
-<!-- 01 AQUECIMENTO -->
-<!-- ========================================================= -->
+<!-- ====================================================== -->
+<!-- 02 CONTROLE DA TURMA -->
+<!-- ====================================================== -->
 
-<section class="card p-5 md:p-6 mb-4">
+<section id="turma" class="card p-5 md:p-6 mb-4">
 
   <div class="flex flex-wrap justify-between gap-3">
 
     <div>
-      <h2 class="sectionTitle text-2xl">
-        01 — AQUECIMENTO
+      <div class="sectionNumber">02</div>
+      <h2 class="sectionTitle text-2xl mt-1">
+        CONTROLE DA TURMA
       </h2>
-
       <p class="muted mt-1">
-        INTERVALOS • 5 ROUNDS
+        Selecione a quantidade de atletas para calcular o rodízio.
       </p>
     </div>
 
-    <div class="text-right">
-      <div class="muted text-xs">TRABALHO / DESCANSO</div>
-      <div class="font-black">00:45 / 00:15</div>
+    <span class="badge">MÁX. 32</span>
+
+  </div>
+
+
+  <div class="grid lg:grid-cols-2 gap-4 mt-5">
+
+    <div class="inner p-5">
+
+      <div class="muted text-xs font-bold">
+        NÚMERO DE ATLETAS
+      </div>
+
+      <div class="flex items-center gap-4 mt-4">
+
+        <button onclick="changeAthletes(-1)"
+                class="btn text-2xl">
+          −
+        </button>
+
+        <div>
+          <div id="athletes"
+               class="text-5xl font-black yellow">
+            24
+          </div>
+          <div class="muted text-xs">ATLETAS</div>
+        </div>
+
+        <button onclick="changeAthletes(1)"
+                class="btn text-2xl">
+          +
+        </button>
+
+      </div>
+
+      <div class="flex flex-wrap gap-2 mt-5">
+        <button onclick="setAthletes(12)" class="btn">12</button>
+        <button onclick="setAthletes(16)" class="btn">16</button>
+        <button onclick="setAthletes(20)" class="btn">20</button>
+        <button onclick="setAthletes(24)" class="btn">24</button>
+        <button onclick="setAthletes(28)" class="btn">28</button>
+        <button onclick="setAthletes(32)" class="btn">32</button>
+      </div>
+
+      <div id="capacityWarning"
+           class="inner p-4 mt-4">
+      </div>
+
+    </div>
+
+
+    <div class="inner p-5">
+
+      <div class="flex justify-between items-center gap-3">
+
+        <div>
+          <div class="font-black text-lg">
+            RODÍZIO INICIAL
+          </div>
+          <div class="muted text-xs mt-1">
+            Distribuição automática
+          </div>
+        </div>
+
+        <div id="rotationMode"
+             class="yellow text-xs font-black">
+        </div>
+
+      </div>
+
+      <div class="rotationRow mt-4 muted text-xs font-black">
+        <div>GRUPO</div>
+        <div>INÍCIO</div>
+        <div class="rotationNext">PRÓXIMA</div>
+      </div>
+
+      <div id="rotationList"></div>
+
     </div>
 
   </div>
 
 
-  <!-- TIMER AQUECIMENTO -->
+  <div class="grid md:grid-cols-3 gap-3 mt-4">
 
-  <div class="inner p-5 mt-5">
+    <div class="inner p-4">
+      <div class="yellow font-black">ERGÔMETROS</div>
+      <div class="muted text-sm mt-2">
+        Máximo 4 atletas simultaneamente por tipo.
+      </div>
+    </div>
+
+    <div class="inner p-4">
+      <div class="yellow font-black">SLED</div>
+      <div class="muted text-sm mt-2">
+        4 pistas disponíveis na faixa central.
+      </div>
+    </div>
+
+    <div class="inner p-4">
+      <div class="yellow font-black">TRANSIÇÕES</div>
+      <div class="muted text-sm mt-2">
+        Fluxo exclusivamente pelas laterais.
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ====================================================== -->
+<!-- 03 AQUECIMENTO -->
+<!-- ====================================================== -->
+
+<section id="aquecimento" class="card p-5 md:p-6 mb-4">
+
+  <div class="flex flex-wrap justify-between gap-3">
+
+    <div>
+      <div class="sectionNumber">03</div>
+
+      <h2 class="sectionTitle text-2xl mt-1">
+        AQUECIMENTO
+      </h2>
+
+      <p class="muted mt-1">
+        INTERVALOS • 5 ROUNDS • 05:00
+      </p>
+    </div>
+
+    <div class="text-right">
+      <div class="green font-black">
+        00:45 TRABALHO
+      </div>
+      <div class="red font-black">
+        00:15 DESCANSO
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- exercícios -->
+
+  <div class="grid md:grid-cols-5 gap-3 mt-5">
+
+    <div id="warmExercise0" class="exercise">
+      <div class="yellow text-xs font-black">ROUND 1</div>
+      <div class="exerciseName">Bootstrapper</div>
+      <div class="exerciseMeta">45 segundos</div>
+    </div>
+
+    <div id="warmExercise1" class="exercise">
+      <div class="yellow text-xs font-black">ROUND 2</div>
+      <div class="exerciseName">Cossack Squats</div>
+      <div class="exerciseMeta">45 segundos</div>
+    </div>
+
+    <div id="warmExercise2" class="exercise">
+      <div class="yellow text-xs font-black">ROUND 3</div>
+      <div class="exerciseName">90-90 Transitions</div>
+      <div class="exerciseMeta">45 segundos</div>
+    </div>
+
+    <div id="warmExercise3" class="exercise">
+      <div class="yellow text-xs font-black">ROUND 4</div>
+      <div class="exerciseName">
+        Inside-outside Plank Jumps
+      </div>
+      <div class="exerciseMeta">45 segundos</div>
+    </div>
+
+    <div id="warmExercise4" class="exercise">
+      <div class="yellow text-xs font-black">ROUND 5</div>
+      <div class="exerciseName">
+        Rotational Push-ups
+      </div>
+      <div class="exerciseMeta">45 segundos</div>
+    </div>
+
+  </div>
+
+
+  <!-- timer -->
+
+  <div id="warmTimerBox"
+       class="timerBox work mt-5">
 
     <div class="flex flex-wrap justify-between gap-3">
 
       <div>
-        <div class="muted text-sm">
+
+        <div id="warmPhase"
+             class="phase work">
+          ● TRABALHO
+        </div>
+
+        <div class="muted text-sm mt-3">
           ROUND
-          <span id="warmRound" class="text-white font-bold">1</span>
+          <span id="warmRound"
+                class="text-white font-black">
+            1
+          </span>
           / 5
         </div>
 
-        <div id="warmPhase"
-             class="phaseChip mt-2">
-          PRONTO
+        <div id="warmCurrentExercise"
+             class="font-black text-xl mt-1">
+          Bootstrapper
         </div>
+
       </div>
 
       <div class="text-right">
-        <div class="muted text-xs">TEMPO TOTAL</div>
-        <div id="warmTotal" class="font-black yellow">
+        <div class="muted text-xs">
+          AQUECIMENTO RESTANTE
+        </div>
+        <div id="warmTotal"
+             class="font-black">
           05:00
         </div>
       </div>
 
     </div>
 
-
     <div id="warmTimer"
-         class="timerSmall my-5">
+         class="timerSmall work my-5">
       00:45
     </div>
 
@@ -400,12 +684,11 @@ body{
       </div>
     </div>
 
-
     <div class="flex flex-wrap gap-2">
 
       <button id="warmStart"
               onclick="toggleWarmup()"
-              class="btn btnYellow">
+              class="btn btnPrimary">
         INICIAR
       </button>
 
@@ -418,329 +701,50 @@ body{
 
   </div>
 
-
-  <!-- EXERCÍCIOS -->
-
-  <div class="grid md:grid-cols-5 gap-3 mt-5">
-
-    <div id="warmExercise0" class="exercise">
-      <div class="yellow font-black">ROUND 1</div>
-      <div class="font-bold mt-2">Bootstrapper</div>
-      <div class="muted text-sm mt-1">00:45</div>
-    </div>
-
-    <div id="warmExercise1" class="exercise">
-      <div class="yellow font-black">ROUND 2</div>
-      <div class="font-bold mt-2">Cossack Squats</div>
-      <div class="muted text-sm mt-1">00:45</div>
-    </div>
-
-    <div id="warmExercise2" class="exercise">
-      <div class="yellow font-black">ROUND 3</div>
-      <div class="font-bold mt-2">90-90 Transitions</div>
-      <div class="muted text-sm mt-1">00:45</div>
-    </div>
-
-    <div id="warmExercise3" class="exercise">
-      <div class="yellow font-black">ROUND 4</div>
-      <div class="font-bold mt-2">
-        Inside-outside Plank Jumps
-      </div>
-      <div class="muted text-sm mt-1">00:45</div>
-    </div>
-
-    <div id="warmExercise4" class="exercise">
-      <div class="yellow font-black">ROUND 5</div>
-      <div class="font-bold mt-2">
-        Rotational Push-ups
-      </div>
-      <div class="muted text-sm mt-1">00:45</div>
-    </div>
-
-  </div>
-
-  <div class="mt-4 muted text-sm">
-    O exercício ativo recebe destaque amarelo automaticamente.
-    Os 15 segundos finais de cada round são utilizados como
-    descanso/transição.
-  </div>
-
 </section>
 
 
-<!-- ========================================================= -->
-<!-- 02 TREINO PRINCIPAL -->
-<!-- ========================================================= -->
+<!-- ====================================================== -->
+<!-- 04 TREINO PRINCIPAL -->
+<!-- ====================================================== -->
 
-<section class="card p-5 md:p-6 mb-4">
+<section id="principal" class="card p-5 md:p-6 mb-4">
 
   <div class="flex flex-wrap justify-between gap-3">
 
     <div>
-      <h2 class="sectionTitle text-2xl">
-        02 — ZONAS COMPROMETIDAS
+      <div class="sectionNumber">04</div>
+
+      <h2 class="sectionTitle text-2xl mt-1">
+        ZONAS COMPROMETIDAS
       </h2>
 
       <p class="muted mt-1">
-        INTERVALOS • 12 ROUNDS × 03:00
+        INTERVALOS • 12 ROUNDS × 03:00 • 36:00
       </p>
     </div>
 
-    <div class="text-right">
-      <div class="muted text-xs">INTENSIDADE</div>
-      <div class="font-black yellow">RPE 8</div>
-    </div>
+    <span class="badge badgeYellow">
+      RPE 8
+    </span>
 
   </div>
 
 
-  <!-- TIMER MAIN -->
-
-  <div class="inner p-5 mt-5">
-
-    <div class="flex flex-wrap justify-between gap-3">
-
-      <div>
-        <div class="muted">
-          ROUND
-          <span id="mainRound"
-                class="text-white font-black">
-            1
-          </span>
-          / 12
-        </div>
-
-        <div class="mt-2">
-          <span class="phaseChip">
-            ZONA
-            <span id="activeZone"
-                  class="ml-1">
-              1
-            </span>
-          </span>
-        </div>
-      </div>
-
-      <div class="text-right">
-        <div class="muted text-xs">
-          TEMPO TOTAL RESTANTE
-        </div>
-
-        <div id="mainTotal"
-             class="yellow font-black">
-          36:00
-        </div>
-      </div>
-
-    </div>
-
-
-    <div id="mainTimer"
-         class="timer my-5">
-      03:00
-    </div>
-
-    <div class="progress mb-5">
-      <div id="mainProgress"
-           class="progressFill">
-      </div>
-    </div>
-
-
-    <div class="flex flex-wrap gap-2">
-
-      <button id="mainStart"
-              onclick="toggleMain()"
-              class="btn btnYellow">
-        INICIAR
-      </button>
-
-      <button onclick="resetMain()"
-              class="btn">
-        RESET
-      </button>
-
-      <button onclick="nextMainRound()"
-              class="btn">
-        PRÓXIMO ROUND
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <!-- ZONAS -->
+  <!-- zonas -->
 
   <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5">
 
 
-    <!-- Z1 -->
-
     <div id="zone1" class="zoneCard">
 
-      <div class="yellow font-black text-lg">
-        ZONA 1
-      </div>
+      <div class="zoneNumber">ZONA 1</div>
 
-      <div class="font-black text-xl mt-3">
+      <div class="zoneExercise">
         RowErg
       </div>
 
-      <div class="muted mt-1">
-        03:00 @ RPE 8
-      </div>
-
-      <div class="level green">
-        🟢 RPE 6–7 • técnica sustentável
-      </div>
-
-      <div class="level yellow">
-        🟡 RPE 8 • alvo do treino
-      </div>
-
-      <div class="level red">
-        🔴 RPE 8–9 • alta produção
-      </div>
-
-      <div class="muted text-xs mt-3">
-        Máximo 4 atletas simultaneamente.
-      </div>
-
-    </div>
-
-
-    <!-- Z2 -->
-
-    <div id="zone2" class="zoneCard">
-
-      <div class="yellow font-black text-lg">
-        ZONA 2
-      </div>
-
-      <div class="font-black mt-3">
-        Overhand Sled Push
-      </div>
-
-      <div class="muted">
-        20 m
-      </div>
-
-      <div class="font-black mt-3">
-        Wide Arm Pushup
-      </div>
-
-      <div class="muted">
-        8–16 reps
-      </div>
-
-      <div class="level green">
-        🟢 20 m • carga técnica / 8 reps
-      </div>
-
-      <div class="level yellow">
-        🟡 20 m • carga Open / 12 reps
-      </div>
-
-      <div class="level red">
-        🔴 20 m • carga Pro / 16 reps
-      </div>
-
-      <div class="muted text-xs mt-3">
-        Pistas 1–4 • acesso somente pelas laterais.
-      </div>
-
-    </div>
-
-
-    <!-- Z3 -->
-
-    <div id="zone3" class="zoneCard">
-
-      <div class="yellow font-black text-lg">
-        ZONA 3
-      </div>
-
-      <div class="font-black text-xl mt-3">
-        Run
-      </div>
-
-      <div class="muted mt-1">
-        03:00 @ RPE 8
-      </div>
-
-      <div class="level green">
-        🟢 RPE 6–7
-      </div>
-
-      <div class="level yellow">
-        🟡 RPE 8
-      </div>
-
-      <div class="level red">
-        🔴 RPE 8–9
-      </div>
-
-      <div class="muted text-xs mt-3">
-        Compromised Running: reorganizar postura e passada
-        antes de aumentar o ritmo.
-      </div>
-
-    </div>
-
-
-    <!-- Z4 -->
-
-    <div id="zone4" class="zoneCard">
-
-      <div class="yellow font-black text-lg">
-        ZONA 4
-      </div>
-
-      <div class="font-black mt-3">
-        DB Thrusters
-      </div>
-
-      <div class="muted">
-        25–30 reps
-      </div>
-
-      <div class="font-black mt-3">
-        Low Plank
-      </div>
-
-      <div class="muted">
-        00:30
-      </div>
-
-      <div class="level green">
-        🟢 20 reps • DB 5 kg + 00:20
-      </div>
-
-      <div class="level yellow">
-        🟡 25 reps • DB 10 kg + 00:30
-      </div>
-
-      <div class="level red">
-        🔴 30 reps • DB 15 kg + 00:30
-      </div>
-
-    </div>
-
-
-    <!-- Z5 -->
-
-    <div id="zone5" class="zoneCard">
-
-      <div class="yellow font-black text-lg">
-        ZONA 5
-      </div>
-
-      <div class="font-black text-xl mt-3">
-        SkiErg
-      </div>
-
-      <div class="muted mt-1">
+      <div class="exerciseMeta">
         03:00 @ RPE 8
       </div>
 
@@ -763,27 +767,159 @@ body{
     </div>
 
 
-    <!-- Z6 -->
+    <div id="zone2" class="zoneCard">
+
+      <div class="zoneNumber">ZONA 2</div>
+
+      <div class="zoneExercise">
+        Overhand Sled Push
+      </div>
+
+      <div class="exerciseMeta">
+        20 m
+      </div>
+
+      <div class="secondaryExercise">
+        Wide Arm Pushup
+      </div>
+
+      <div class="exerciseMeta">
+        8–16 reps
+      </div>
+
+      <div class="level green">
+        🟢 20 m • carga técnica + 8 reps
+      </div>
+
+      <div class="level yellow">
+        🟡 20 m • carga Open + 12 reps
+      </div>
+
+      <div class="level red">
+        🔴 20 m • carga Pro + 16 reps
+      </div>
+
+      <div class="muted text-xs mt-3">
+        Pistas 1–4 • entrada e saída pelas laterais.
+      </div>
+
+    </div>
+
+
+    <div id="zone3" class="zoneCard">
+
+      <div class="zoneNumber">ZONA 3</div>
+
+      <div class="zoneExercise">
+        Run
+      </div>
+
+      <div class="exerciseMeta">
+        03:00 @ RPE 8
+      </div>
+
+      <div class="level green">
+        🟢 RPE 6–7
+      </div>
+
+      <div class="level yellow">
+        🟡 RPE 8
+      </div>
+
+      <div class="level red">
+        🔴 RPE 8–9
+      </div>
+
+      <div class="muted text-xs mt-3">
+        Reorganizar passada antes de aumentar o ritmo.
+      </div>
+
+    </div>
+
+
+    <div id="zone4" class="zoneCard">
+
+      <div class="zoneNumber">ZONA 4</div>
+
+      <div class="zoneExercise">
+        DB Thrusters
+      </div>
+
+      <div class="exerciseMeta">
+        25–30 reps
+      </div>
+
+      <div class="secondaryExercise">
+        Low Plank
+      </div>
+
+      <div class="exerciseMeta">
+        00:30
+      </div>
+
+      <div class="level green">
+        🟢 20 reps • DB 5 kg + 00:20
+      </div>
+
+      <div class="level yellow">
+        🟡 25 reps • DB 10 kg + 00:30
+      </div>
+
+      <div class="level red">
+        🔴 30 reps • DB 15 kg + 00:30
+      </div>
+
+    </div>
+
+
+    <div id="zone5" class="zoneCard">
+
+      <div class="zoneNumber">ZONA 5</div>
+
+      <div class="zoneExercise">
+        SkiErg
+      </div>
+
+      <div class="exerciseMeta">
+        03:00 @ RPE 8
+      </div>
+
+      <div class="level green">
+        🟢 RPE 6–7 • sustentável
+      </div>
+
+      <div class="level yellow">
+        🟡 RPE 8 • alvo
+      </div>
+
+      <div class="level red">
+        🔴 RPE 8–9 • alta produção
+      </div>
+
+      <div class="muted text-xs mt-3">
+        Máximo 4 atletas simultaneamente.
+      </div>
+
+    </div>
+
 
     <div id="zone6" class="zoneCard">
 
-      <div class="yellow font-black text-lg">
-        ZONA 6
-      </div>
+      <div class="zoneNumber">ZONA 6</div>
 
-      <div class="font-black mt-3">
+      <div class="zoneExercise">
         Dual DB OH Walking Lunges
       </div>
 
-      <div class="muted">
+      <div class="exerciseMeta">
         30–40 m
       </div>
 
-      <div class="font-black mt-3">
+      <div class="secondaryExercise">
         Burpees Chest to Floor
       </div>
 
-      <div class="muted">
+      <div class="exerciseMeta">
         12–18 reps
       </div>
 
@@ -803,21 +939,107 @@ body{
 
   </div>
 
+
+  <!-- main timer -->
+
+  <div id="mainTimerBox"
+       class="timerBox work mt-5">
+
+    <div class="flex flex-wrap justify-between gap-3">
+
+      <div>
+
+        <div class="phase work">
+          ● TRABALHO
+        </div>
+
+        <div class="muted mt-3">
+          ROUND
+          <span id="mainRound"
+                class="text-white font-black">
+            1
+          </span>
+          / 12
+        </div>
+
+        <div class="font-black text-xl mt-1">
+          ZONA
+          <span id="activeZone"
+                class="yellow">
+            1
+          </span>
+        </div>
+
+      </div>
+
+      <div class="text-right">
+
+        <div class="muted text-xs">
+          TREINO RESTANTE
+        </div>
+
+        <div id="mainTotal"
+             class="font-black">
+          36:00
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div id="mainTimer"
+         class="timer work my-5">
+      03:00
+    </div>
+
+
+    <div class="progress mb-5">
+      <div id="mainProgress"
+           class="progressFill">
+      </div>
+    </div>
+
+
+    <div class="flex flex-wrap gap-2">
+
+      <button id="mainStart"
+              onclick="toggleMain()"
+              class="btn btnPrimary">
+        INICIAR
+      </button>
+
+      <button onclick="resetMain()"
+              class="btn">
+        RESET
+      </button>
+
+      <button onclick="nextMainRound()"
+              class="btn">
+        PRÓXIMO ROUND
+      </button>
+
+    </div>
+
+  </div>
+
 </section>
 
 
-<!-- ========================================================= -->
-<!-- 03 FINISHER -->
-<!-- ========================================================= -->
+<!-- ====================================================== -->
+<!-- 05 FINISHER -->
+<!-- ====================================================== -->
 
-<section class="card p-5 md:p-6 mb-4">
+<section id="finisher" class="card p-5 md:p-6 mb-4">
 
-  <h2 class="sectionTitle text-2xl">
-    03 — TOTM FINISHER
+  <div class="sectionNumber">05</div>
+
+  <h2 class="sectionTitle text-2xl mt-1">
+    TOTM FINISHER
   </h2>
 
   <p class="muted mt-1">
-    05:00 • INTERVALOS
+    05:00
   </p>
 
 
@@ -825,32 +1047,42 @@ body{
 
     <div class="inner p-5">
 
-      <div class="yellow font-black">
+      <div class="yellow text-xs font-black">
         FINISHER
       </div>
 
-      <div class="mt-4 text-lg">
-        <b>11x</b> Military Press Pushup
+      <div class="exerciseName text-2xl">
+        Military Press Pushup
       </div>
 
-      <div class="mt-3 text-lg">
-        <span class="muted">
-          Tempo restante →
-        </span>
-        <b>Air Squats</b>
+      <div class="exerciseMeta">
+        11 reps
+      </div>
+
+      <div class="mt-5 muted text-sm">
+        TEMPO RESTANTE
+      </div>
+
+      <div class="exerciseName">
+        Air Squats
       </div>
 
     </div>
 
 
-    <div class="inner p-5">
+    <div id="finishTimerBox"
+         class="timerBox work">
 
-      <div class="muted text-sm">
+      <div class="phase work">
+        ● TRABALHO
+      </div>
+
+      <div class="muted text-xs mt-4">
         TEMPO RESTANTE
       </div>
 
       <div id="finishTimer"
-           class="timerSmall my-4">
+           class="timerSmall work my-4">
         05:00
       </div>
 
@@ -864,7 +1096,7 @@ body{
 
         <button id="finishStart"
                 onclick="toggleFinish()"
-                class="btn btnYellow">
+                class="btn btnPrimary">
           INICIAR
         </button>
 
@@ -882,14 +1114,16 @@ body{
 </section>
 
 
-<!-- ========================================================= -->
-<!-- 04 VOLTA À CALMA -->
-<!-- ========================================================= -->
+<!-- ====================================================== -->
+<!-- 06 VOLTA À CALMA -->
+<!-- ====================================================== -->
 
-<section class="card p-5 md:p-6 mb-4">
+<section id="cooldown" class="card p-5 md:p-6 mb-8">
 
-  <h2 class="sectionTitle text-2xl">
-    04 — VOLTA À CALMA / RECUPERAÇÃO
+  <div class="sectionNumber">06</div>
+
+  <h2 class="sectionTitle text-2xl mt-1">
+    VOLTA À CALMA / RECUPERAÇÃO
   </h2>
 
   <p class="muted mt-1">
@@ -902,30 +1136,34 @@ body{
     <div id="coolExercise"
          class="exercise">
 
-      <div class="yellow font-black">
-        STATION 1
+      <div class="yellow text-xs font-black">
+        RECUPERAÇÃO
       </div>
 
-      <div class="text-xl font-black mt-3">
+      <div class="exerciseName text-2xl">
         Child's Pose
       </div>
 
-      <div class="muted text-sm mt-2">
-        Executar de forma controlada durante o período
-        de recuperação.
+      <div class="exerciseMeta">
+        Respiração controlada e recuperação.
       </div>
 
     </div>
 
 
-    <div class="inner p-5">
+    <div id="coolTimerBox"
+         class="timerBox work">
 
-      <div class="muted text-sm">
+      <div class="phase work">
+        ● TRABALHO
+      </div>
+
+      <div class="muted text-xs mt-4">
         TEMPO RESTANTE
       </div>
 
       <div id="coolTimer"
-           class="timerSmall my-4">
+           class="timerSmall work my-4">
         05:00
       </div>
 
@@ -939,7 +1177,7 @@ body{
 
         <button id="coolStart"
                 onclick="toggleCool()"
-                class="btn btnYellow">
+                class="btn btnPrimary">
           INICIAR
         </button>
 
@@ -957,195 +1195,8 @@ body{
 </section>
 
 
-<!-- ========================================================= -->
-<!-- 05 COACH CONTROL -->
-<!-- ========================================================= -->
-
-<section class="card p-5 md:p-6 mb-4">
-
-  <div class="flex flex-wrap justify-between gap-3">
-
-    <div>
-      <h2 class="sectionTitle text-2xl">
-        05 — CONTROLE DO COACH
-      </h2>
-
-      <p class="muted mt-1">
-        Rodízio dinâmico conforme a quantidade de atletas
-      </p>
-    </div>
-
-    <span class="badge">
-      MÁX. 32
-    </span>
-
-  </div>
-
-
-  <!-- CONTADOR -->
-
-  <div class="inner p-5 mt-5">
-
-    <div class="muted">
-      NÚMERO DE ATLETAS
-    </div>
-
-    <div class="flex items-center gap-4 mt-4">
-
-      <button onclick="changeAthletes(-1)"
-              class="btn text-2xl">
-        −
-      </button>
-
-      <div id="athletes"
-           class="text-5xl font-black yellow">
-        24
-      </div>
-
-      <button onclick="changeAthletes(1)"
-              class="btn text-2xl">
-        +
-      </button>
-
-    </div>
-
-
-    <div class="flex flex-wrap gap-2 mt-5">
-
-      <button onclick="setAthletes(12)" class="btn">12</button>
-      <button onclick="setAthletes(16)" class="btn">16</button>
-      <button onclick="setAthletes(20)" class="btn">20</button>
-      <button onclick="setAthletes(24)" class="btn">24</button>
-      <button onclick="setAthletes(28)" class="btn">28</button>
-      <button onclick="setAthletes(32)" class="btn">32</button>
-
-    </div>
-
-  </div>
-
-
-  <!-- RODÍZIO -->
-
-  <div class="inner p-5 mt-4">
-
-    <div class="flex justify-between gap-3">
-      <div class="font-black text-lg">
-        RODÍZIO INICIAL
-      </div>
-
-      <div id="rotationMode"
-           class="yellow text-sm font-bold">
-      </div>
-    </div>
-
-    <div class="rotationRow mt-4 font-bold muted text-xs">
-      <div>GRUPO</div>
-      <div>INÍCIO</div>
-      <div class="rotationNext">PRÓXIMA</div>
-    </div>
-
-    <div id="rotationList">
-    </div>
-
-  </div>
-
-
-  <!-- ALERTA -->
-
-  <div id="capacityWarning"
-       class="inner p-4 mt-4">
-  </div>
-
-
-  <!-- FLUXO -->
-
-  <div class="grid md:grid-cols-3 gap-3 mt-4">
-
-    <div class="inner p-4">
-      <div class="yellow font-black">
-        ERGÔMETROS
-      </div>
-
-      <div class="muted text-sm mt-2">
-        Máximo 4 atletas por tipo de ergômetro
-        simultaneamente.
-      </div>
-    </div>
-
-    <div class="inner p-4">
-      <div class="yellow font-black">
-        SLED
-      </div>
-
-      <div class="muted text-sm mt-2">
-        4 pistas disponíveis. Não atravessar a faixa
-        central durante o trabalho.
-      </div>
-    </div>
-
-    <div class="inner p-4">
-      <div class="yellow font-black">
-        TRANSIÇÕES
-      </div>
-
-      <div class="muted text-sm mt-2">
-        Circulação exclusivamente pelas laterais do Studio 5.
-      </div>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- ORIENTAÇÕES -->
-<!-- ========================================================= -->
-
-<section class="card p-5 md:p-6 mb-8">
-
-  <h2 class="sectionTitle text-2xl">
-    ORIENTAÇÕES DO COACH
-  </h2>
-
-  <div class="grid md:grid-cols-3 gap-4 mt-5">
-
-    <div class="inner p-4">
-      <b>RITMO / PACING</b>
-
-      <p class="muted text-sm mt-2">
-        RPE 8 sustentável. Evitar pico precoce nos primeiros
-        rounds.
-      </p>
-    </div>
-
-    <div class="inner p-4">
-      <b>COMPROMISED RUNNING</b>
-
-      <p class="muted text-sm mt-2">
-        Reorganizar postura, respiração e passada antes de
-        acelerar após as zonas de força.
-      </p>
-    </div>
-
-    <div class="inner p-4">
-      <b>SEGURANÇA</b>
-
-      <p class="muted text-sm mt-2">
-        Fluxo lateral. Nunca atravessar as pistas de Sled
-        durante o trabalho.
-      </p>
-    </div>
-
-  </div>
-
-</section>
-
-
 <footer class="text-center muted text-xs pb-10">
-
   HYROX TRAINING CLUB • CIA ATHLETICA MANAUS • STUDIO 5
-
 </footer>
 
 </div>
@@ -1153,86 +1204,126 @@ body{
 
 <script>
 
-/* ============================================================
-   UTILIDADES
-============================================================ */
+/* ======================================================
+UTILIDADE
+====================================================== */
 
 function formatTime(sec){
-  if(sec < 0) sec = 0;
 
-  const m = Math.floor(sec / 60);
-  const s = sec % 60;
+  sec=Math.max(0,sec);
 
-  return String(m).padStart(2,"0") +
-         ":" +
-         String(s).padStart(2,"0");
+  const m=Math.floor(sec/60);
+  const s=sec%60;
+
+  return String(m).padStart(2,"0")
+       +":"
+       +String(s).padStart(2,"0");
 }
 
 
-/* ============================================================
-   AQUECIMENTO
-   45s WORK + 15s REST x 5
-============================================================ */
+/* ======================================================
+AQUECIMENTO
+45 WORK / 15 REST × 5
+====================================================== */
 
-let warmRound = 1;
-let warmSeconds = 45;
-let warmIsRest = false;
-let warmRunning = false;
-let warmInterval = null;
-let warmElapsed = 0;
+const warmNames=[
+  "Bootstrapper",
+  "Cossack Squats",
+  "90-90 Transitions",
+  "Inside-outside Plank Jumps",
+  "Rotational Push-ups"
+];
 
-function highlightWarmup(){
+let warmRound=1;
+let warmSeconds=45;
+let warmIsRest=false;
+let warmRunning=false;
+let warmInterval=null;
+let warmElapsed=0;
+
+
+function updateWarmVisual(){
+
+  const box=document.getElementById("warmTimerBox");
+  const timer=document.getElementById("warmTimer");
+  const phase=document.getElementById("warmPhase");
+  const progress=document.getElementById("warmProgress");
+
+  box.classList.remove("work","rest");
+  timer.classList.remove("work","rest");
+  phase.classList.remove("work","rest");
+  progress.classList.remove("rest");
+
+  if(warmIsRest){
+
+    box.classList.add("rest");
+    timer.classList.add("rest");
+    phase.classList.add("rest");
+    progress.classList.add("rest");
+
+    phase.innerHTML="● DESCANSO / TRANSIÇÃO";
+
+  }else{
+
+    box.classList.add("work");
+    timer.classList.add("work");
+    phase.classList.add("work");
+
+    phase.innerHTML="● TRABALHO";
+  }
+}
+
+
+function highlightWarm(){
 
   for(let i=0;i<5;i++){
-    document
-      .getElementById("warmExercise"+i)
-      .classList.remove("active","restActive");
+
+    const el=document.getElementById("warmExercise"+i);
+
+    el.classList.remove("active","restActive");
   }
 
-  const current =
+  const current=
     document.getElementById(
       "warmExercise"+(warmRound-1)
     );
 
-  if(current){
+  if(!current)return;
 
-    if(warmIsRest){
-      current.classList.add("restActive");
-    }else{
-      current.classList.add("active");
-    }
-
+  if(warmIsRest){
+    current.classList.add("restActive");
+  }else{
+    current.classList.add("active");
   }
 }
 
 
-function renderWarmup(){
+function renderWarm(){
 
   document.getElementById("warmRound")
-    .innerText = warmRound;
+    .innerText=warmRound;
 
   document.getElementById("warmTimer")
-    .innerText = formatTime(warmSeconds);
-
-  document.getElementById("warmPhase")
-    .innerText =
-      warmIsRest
-      ? "DESCANSO / TRANSIÇÃO"
-      : "TRABALHO";
-
-  const totalRemaining =
-    Math.max(0,300-warmElapsed);
+    .innerText=formatTime(warmSeconds);
 
   document.getElementById("warmTotal")
-    .innerText = formatTime(totalRemaining);
+    .innerText=formatTime(300-warmElapsed);
 
-  const progress =
-    Math.min(100,(warmElapsed/300)*100);
+  document.getElementById("warmCurrentExercise")
+    .innerText=warmIsRest
+      ? "Próximo: "+(
+          warmRound<5
+          ? warmNames[warmRound]
+          : "Finalização"
+        )
+      : warmNames[warmRound-1];
 
   document.getElementById("warmProgress")
-    .style.width = progress+"%";
+    .style.width=
+      Math.min(100,(warmElapsed/300)*100)+"%";
 
-  highlightWarmup();
+  updateWarmVisual();
+  highlightWarm();
 }
 
 
@@ -1242,60 +1333,59 @@ function toggleWarmup(){
 
     clearInterval(warmInterval);
 
-    warmRunning = false;
+    warmRunning=false;
 
     document.getElementById("warmStart")
-      .innerText = "CONTINUAR";
+      .innerText="CONTINUAR";
 
     return;
   }
 
-  warmRunning = true;
+  if(warmElapsed>=300)return;
+
+  warmRunning=true;
 
   document.getElementById("warmStart")
-    .innerText = "PAUSAR";
+    .innerText="PAUSAR";
 
-  renderWarmup();
+  renderWarm();
 
-  warmInterval = setInterval(()=>{
+  warmInterval=setInterval(()=>{
 
     warmSeconds--;
     warmElapsed++;
 
-    if(warmSeconds <= 0){
+    if(warmSeconds<=0){
 
       if(!warmIsRest){
 
-        warmIsRest = true;
-        warmSeconds = 15;
+        warmIsRest=true;
+        warmSeconds=15;
 
       }else{
 
-        warmIsRest = false;
+        warmIsRest=false;
 
-        if(warmRound < 5){
+        if(warmRound<5){
 
           warmRound++;
-          warmSeconds = 45;
+          warmSeconds=45;
 
         }else{
 
           clearInterval(warmInterval);
 
-          warmRunning = false;
-          warmSeconds = 0;
-          warmElapsed = 300;
-
-          document.getElementById("warmPhase")
-            .innerText = "FINALIZADO";
+          warmRunning=false;
+          warmElapsed=300;
+          warmSeconds=0;
 
           document.getElementById("warmStart")
-            .innerText = "FINALIZADO";
+            .innerText="FINALIZADO";
         }
       }
     }
 
-    renderWarmup();
+    renderWarm();
 
   },1000);
 }
@@ -1305,33 +1395,29 @@ function resetWarmup(){
 
   clearInterval(warmInterval);
 
-  warmRound = 1;
-  warmSeconds = 45;
-  warmIsRest = false;
-  warmRunning = false;
-  warmElapsed = 0;
+  warmRound=1;
+  warmSeconds=45;
+  warmIsRest=false;
+  warmRunning=false;
+  warmElapsed=0;
 
   document.getElementById("warmStart")
-    .innerText = "INICIAR";
+    .innerText="INICIAR";
 
-  document.getElementById("warmPhase")
-    .innerText = "PRONTO";
-
-  renderWarmup();
+  renderWarm();
 }
 
 
-/* ============================================================
-   MAIN
-   12 ROUNDS x 3 MIN
-   6 ZONAS
-   Cada zona aparece 2 vezes
-============================================================ */
+/* ======================================================
+TREINO PRINCIPAL
+12 × 3 MIN
+====================================================== */
 
-let mainRound = 1;
-let mainSeconds = 180;
-let mainRunning = false;
-let mainInterval = null;
+let mainRound=1;
+let mainSeconds=180;
+let mainRunning=false;
+let mainInterval=null;
+
 
 function currentZone(){
   return ((mainRound-1)%6)+1;
@@ -1356,28 +1442,25 @@ function highlightZone(){
 function renderMain(){
 
   document.getElementById("mainRound")
-    .innerText = mainRound;
+    .innerText=mainRound;
 
   document.getElementById("activeZone")
-    .innerText = currentZone();
+    .innerText=currentZone();
 
   document.getElementById("mainTimer")
-    .innerText = formatTime(mainSeconds);
+    .innerText=formatTime(mainSeconds);
 
-  const completed =
-    ((mainRound-1)*180)+(180-mainSeconds);
-
-  const totalRemaining =
-    Math.max(0,2160-completed);
+  const completed=
+    ((mainRound-1)*180)
+    +(180-mainSeconds);
 
   document.getElementById("mainTotal")
-    .innerText = formatTime(totalRemaining);
-
-  const progress =
-    Math.min(100,(completed/2160)*100);
+    .innerText=
+      formatTime(2160-completed);
 
   document.getElementById("mainProgress")
-    .style.width = progress+"%";
+    .style.width=
+      Math.min(100,(completed/2160)*100)+"%";
 
   highlightZone();
 }
@@ -1389,39 +1472,39 @@ function toggleMain(){
 
     clearInterval(mainInterval);
 
-    mainRunning = false;
+    mainRunning=false;
 
     document.getElementById("mainStart")
-      .innerText = "CONTINUAR";
+      .innerText="CONTINUAR";
 
     return;
   }
 
-  mainRunning = true;
+  mainRunning=true;
 
   document.getElementById("mainStart")
-    .innerText = "PAUSAR";
+    .innerText="PAUSAR";
 
-  mainInterval = setInterval(()=>{
+  mainInterval=setInterval(()=>{
 
     mainSeconds--;
 
-    if(mainSeconds <= 0){
+    if(mainSeconds<=0){
 
-      if(mainRound < 12){
+      if(mainRound<12){
 
         mainRound++;
-        mainSeconds = 180;
+        mainSeconds=180;
 
       }else{
 
         clearInterval(mainInterval);
 
-        mainRunning = false;
-        mainSeconds = 0;
+        mainRunning=false;
+        mainSeconds=0;
 
         document.getElementById("mainStart")
-          .innerText = "FINALIZADO";
+          .innerText="FINALIZADO";
       }
     }
 
@@ -1435,16 +1518,16 @@ function nextMainRound(){
 
   clearInterval(mainInterval);
 
-  mainRunning = false;
+  mainRunning=false;
 
-  if(mainRound < 12){
+  if(mainRound<12){
     mainRound++;
   }
 
-  mainSeconds = 180;
+  mainSeconds=180;
 
   document.getElementById("mainStart")
-    .innerText = "INICIAR";
+    .innerText="INICIAR";
 
   renderMain();
 }
@@ -1454,35 +1537,34 @@ function resetMain(){
 
   clearInterval(mainInterval);
 
-  mainRound = 1;
-  mainSeconds = 180;
-  mainRunning = false;
+  mainRound=1;
+  mainSeconds=180;
+  mainRunning=false;
 
   document.getElementById("mainStart")
-    .innerText = "INICIAR";
+    .innerText="INICIAR";
 
   renderMain();
 }
 
 
-/* ============================================================
-   FINISHER
-============================================================ */
+/* ======================================================
+FINISHER
+====================================================== */
 
-let finishSeconds = 300;
-let finishRunning = false;
-let finishInterval = null;
+let finishSeconds=300;
+let finishRunning=false;
+let finishInterval=null;
+
 
 function renderFinish(){
 
   document.getElementById("finishTimer")
-    .innerText = formatTime(finishSeconds);
-
-  const progress =
-    ((300-finishSeconds)/300)*100;
+    .innerText=formatTime(finishSeconds);
 
   document.getElementById("finishProgress")
-    .style.width = progress+"%";
+    .style.width=
+      ((300-finishSeconds)/300)*100+"%";
 }
 
 
@@ -1492,33 +1574,35 @@ function toggleFinish(){
 
     clearInterval(finishInterval);
 
-    finishRunning = false;
+    finishRunning=false;
 
     document.getElementById("finishStart")
-      .innerText = "CONTINUAR";
+      .innerText="CONTINUAR";
 
     return;
   }
 
-  finishRunning = true;
+  if(finishSeconds<=0)return;
+
+  finishRunning=true;
 
   document.getElementById("finishStart")
-    .innerText = "PAUSAR";
+    .innerText="PAUSAR";
 
-  finishInterval = setInterval(()=>{
+  finishInterval=setInterval(()=>{
 
     finishSeconds--;
 
-    if(finishSeconds <= 0){
+    if(finishSeconds<=0){
 
-      finishSeconds = 0;
+      finishSeconds=0;
 
       clearInterval(finishInterval);
 
-      finishRunning = false;
+      finishRunning=false;
 
       document.getElementById("finishStart")
-        .innerText = "FINALIZADO";
+        .innerText="FINALIZADO";
     }
 
     renderFinish();
@@ -1531,42 +1615,40 @@ function resetFinish(){
 
   clearInterval(finishInterval);
 
-  finishSeconds = 300;
-  finishRunning = false;
+  finishSeconds=300;
+  finishRunning=false;
 
   document.getElementById("finishStart")
-    .innerText = "INICIAR";
+    .innerText="INICIAR";
 
   renderFinish();
 }
 
 
-/* ============================================================
-   VOLTA À CALMA
-============================================================ */
+/* ======================================================
+VOLTA À CALMA
+====================================================== */
 
-let coolSeconds = 300;
-let coolRunning = false;
-let coolInterval = null;
+let coolSeconds=300;
+let coolRunning=false;
+let coolInterval=null;
+
 
 function renderCool(){
 
   document.getElementById("coolTimer")
-    .innerText = formatTime(coolSeconds);
-
-  const progress =
-    ((300-coolSeconds)/300)*100;
+    .innerText=formatTime(coolSeconds);
 
   document.getElementById("coolProgress")
-    .style.width = progress+"%";
+    .style.width=
+      ((300-coolSeconds)/300)*100+"%";
 
-  const exercise =
-    document.getElementById("coolExercise");
+  const ex=document.getElementById("coolExercise");
 
   if(coolRunning){
-    exercise.classList.add("active");
+    ex.classList.add("active");
   }else{
-    exercise.classList.remove("active");
+    ex.classList.remove("active");
   }
 }
 
@@ -1577,37 +1659,39 @@ function toggleCool(){
 
     clearInterval(coolInterval);
 
-    coolRunning = false;
+    coolRunning=false;
 
     document.getElementById("coolStart")
-      .innerText = "CONTINUAR";
+      .innerText="CONTINUAR";
 
     renderCool();
 
     return;
   }
 
-  coolRunning = true;
+  if(coolSeconds<=0)return;
+
+  coolRunning=true;
 
   document.getElementById("coolStart")
-    .innerText = "PAUSAR";
+    .innerText="PAUSAR";
 
   renderCool();
 
-  coolInterval = setInterval(()=>{
+  coolInterval=setInterval(()=>{
 
     coolSeconds--;
 
-    if(coolSeconds <= 0){
+    if(coolSeconds<=0){
 
-      coolSeconds = 0;
+      coolSeconds=0;
 
       clearInterval(coolInterval);
 
-      coolRunning = false;
+      coolRunning=false;
 
       document.getElementById("coolStart")
-        .innerText = "FINALIZADO";
+        .innerText="FINALIZADO";
     }
 
     renderCool();
@@ -1620,23 +1704,23 @@ function resetCool(){
 
   clearInterval(coolInterval);
 
-  coolSeconds = 300;
-  coolRunning = false;
+  coolSeconds=300;
+  coolRunning=false;
 
   document.getElementById("coolStart")
-    .innerText = "INICIAR";
+    .innerText="INICIAR";
 
   renderCool();
 }
 
 
-/* ============================================================
-   COACH CONTROL / RODÍZIO
-============================================================ */
+/* ======================================================
+RODÍZIO DINÂMICO
+====================================================== */
 
-let athleteCount = 24;
+let athleteCount=24;
 
-const stations = [
+const stations=[
   "Z1 • RowErg",
   "Z2 • Sled + Pushup",
   "Z3 • Run",
@@ -1648,13 +1732,10 @@ const stations = [
 
 function changeAthletes(value){
 
-  athleteCount += value;
+  athleteCount+=value;
 
-  if(athleteCount < 1)
-    athleteCount = 1;
-
-  if(athleteCount > 32)
-    athleteCount = 32;
+  if(athleteCount<1)athleteCount=1;
+  if(athleteCount>32)athleteCount=32;
 
   updateAthletes();
 }
@@ -1662,7 +1743,7 @@ function changeAthletes(value){
 
 function setAthletes(value){
 
-  athleteCount = value;
+  athleteCount=value;
 
   updateAthletes();
 }
@@ -1671,42 +1752,40 @@ function setAthletes(value){
 function updateAthletes(){
 
   document.getElementById("athletes")
-    .innerText = athleteCount;
+    .innerText=athleteCount;
 
-  const groups = 6;
+  const groups=6;
 
-  const base =
-    Math.floor(athleteCount/groups);
+  const base=Math.floor(athleteCount/groups);
+  const remainder=athleteCount%groups;
 
-  const remainder =
-    athleteCount%groups;
+  let html="";
+  let requiresWave=false;
 
-  let html = "";
-
-  let requiresWave = false;
 
   for(let i=0;i<groups;i++){
 
-    const amount =
+    const amount=
       base+(i<remainder?1:0);
 
-    if(amount>4)
-      requiresWave = true;
+    if(amount>4){
+      requiresWave=true;
+    }
 
-    const next =
+    const next=
       stations[(i+1)%stations.length];
 
-    html += `
+    html+=`
       <div class="rotationRow">
 
-        <div class="font-black yellow">
+        <div class="yellow font-black">
           ${String.fromCharCode(65+i)}
           <span class="text-white">
             (${amount})
           </span>
         </div>
 
-        <div>
+        <div class="font-bold">
           ${stations[i]}
         </div>
 
@@ -1718,42 +1797,39 @@ function updateAthletes(){
     `;
   }
 
+
   document.getElementById("rotationList")
-    .innerHTML = html;
+    .innerHTML=html;
 
 
-  const warning =
+  const warning=
     document.getElementById("capacityWarning");
 
-  const mode =
+  const mode=
     document.getElementById("rotationMode");
 
 
   if(requiresWave){
 
-    mode.innerText =
-      "MODO ONDAS";
+    mode.innerText="MODO ONDAS";
 
-    warning.innerHTML = `
+    warning.innerHTML=`
       <div class="yellow font-black">
-        ⚠️ RODÍZIO COM SUBGRUPOS / ONDAS
+        ⚠️ SUBGRUPOS NECESSÁRIOS
       </div>
 
       <div class="muted text-sm mt-2">
-        Com ${athleteCount} atletas, alguns grupos possuem
-        mais de 4 pessoas. Nas estações críticas, dividir o
-        grupo em subgrupos para manter no máximo 4 atletas
-        simultaneamente em RowErg, SkiErg, esteiras e pistas
-        de Sled.
+        Com ${athleteCount} atletas, alguns grupos ultrapassam
+        4 pessoas. Nas estações críticas, dividir o grupo em
+        ondas para manter no máximo 4 atletas simultaneamente.
       </div>
     `;
 
   }else{
 
-    mode.innerText =
-      "FLUXO DIRETO";
+    mode.innerText="FLUXO DIRETO";
 
-    warning.innerHTML = `
+    warning.innerHTML=`
       <div class="green font-black">
         ✓ FLUXO COMPATÍVEL
       </div>
@@ -1767,9 +1843,9 @@ function updateAthletes(){
 }
 
 
-/* ============================================================
-   INICIALIZAÇÃO
-============================================================ */
+/* ======================================================
+INICIALIZAÇÃO
+====================================================== */
 
 resetWarmup();
 resetMain();
