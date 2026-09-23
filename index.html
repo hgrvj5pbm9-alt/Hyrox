@@ -2,93 +2,91 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width,initial-scale=1.0,viewport-fit=cover">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 <meta name="theme-color" content="#080b0f">
 
-<title>HYROX Studio 5 | Coach HUB V5 TV</title>
+<title>HYROX Studio 5 | Coach HUB V6</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
 :root{
- --bg:#080b0f;
- --card:#111820;
- --card2:#0b1016;
- --border:#303943;
- --yellow:#FFD700;
- --green:#31df75;
- --red:#ff4755;
- --white:#f5f7fa;
- --muted:#9aa4b2;
+  --bg:#080b0f;
+  --card:#111820;
+  --card2:#0b1016;
+  --border:#303943;
+  --yellow:#FFD700;
+  --green:#31df75;
+  --red:#ff4755;
+  --white:#f5f7fa;
+  --muted:#9aa4b2;
 }
 
 *{box-sizing:border-box}
 
 html,body{
- margin:0;
- width:100%;
- height:100%;
- overflow:hidden;
- background:var(--bg);
- color:var(--white);
- font-family:Arial,Helvetica,sans-serif;
+  margin:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background:var(--bg);
+  color:var(--white);
+  font-family:Arial,Helvetica,sans-serif;
 }
 
-button{
- font-family:inherit;
-}
+button{font-family:inherit}
 
 #app{
- width:100vw;
- height:100dvh;
- overflow:hidden;
- position:relative;
+  width:100vw;
+  height:100dvh;
+  overflow:hidden;
+  position:relative;
 }
 
-/* ============================
+/* =========================================================
    SLIDES
-============================ */
+========================================================= */
 
 .slider{
- display:flex;
- width:600vw;
- height:100%;
- transform:translateX(0);
- transition:transform .65s cubic-bezier(.77,0,.18,1);
+  display:flex;
+  width:600vw;
+  height:100%;
+  transform:translateX(0);
+  transition:transform .55s cubic-bezier(.77,0,.18,1);
 }
 
 .slide{
- width:100vw;
- height:100%;
- flex:0 0 100vw;
- overflow-y:auto;
- padding:
-   max(18px,env(safe-area-inset-top))
-   max(22px,env(safe-area-inset-right))
-   92px
-   max(22px,env(safe-area-inset-left));
+  width:100vw;
+  height:100%;
+  flex:0 0 100vw;
+  padding:
+    max(12px,env(safe-area-inset-top))
+    max(16px,env(safe-area-inset-right))
+    78px
+    max(16px,env(safe-area-inset-left));
+  overflow:hidden;
 }
 
 .slideInner{
- width:min(1500px,100%);
- min-height:calc(100dvh - 120px);
- margin:auto;
- display:flex;
- flex-direction:column;
+  width:min(1500px,100%);
+  height:100%;
+  margin:auto;
 }
 
 .card{
- background:var(--card);
- border:1px solid var(--border);
- border-radius:22px;
+  width:100%;
+  height:100%;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:clamp(18px,2vw,30px);
+  overflow:hidden;
 }
 
 .inner{
- background:var(--card2);
- border:1px solid #29323c;
- border-radius:16px;
+  background:var(--card2);
+  border:1px solid #29323c;
+  border-radius:15px;
 }
 
 .yellow{color:var(--yellow)}
@@ -96,325 +94,321 @@ button{
 .red{color:var(--red)}
 .muted{color:var(--muted)}
 
-.title{
- font-weight:950;
- letter-spacing:-.025em;
+.sectionLabel{
+  color:var(--yellow);
+  font-weight:950;
+  letter-spacing:.15em;
+  font-size:clamp(11px,.9vw,14px);
 }
 
-.sectionLabel{
- color:var(--yellow);
- font-weight:900;
- letter-spacing:.16em;
- font-size:13px;
+.pageTitle{
+  font-size:clamp(30px,3.5vw,58px);
+  line-height:.95;
+  font-weight:950;
+  letter-spacing:-.035em;
 }
 
 .badge{
- display:inline-flex;
- align-items:center;
- padding:8px 14px;
- border:1px solid #46515e;
- border-radius:999px;
- font-size:12px;
- font-weight:900;
+  display:inline-flex;
+  align-items:center;
+  padding:7px 13px;
+  border:1px solid #46515e;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:900;
 }
 
 .badgeYellow{
- background:var(--yellow);
- border-color:var(--yellow);
- color:#000;
+  background:var(--yellow);
+  color:#000;
+  border-color:var(--yellow);
 }
 
-/* ============================
-   CONTROLS
-============================ */
+/* =========================================================
+   EXECUTION LAYOUT
+========================================================= */
 
-.controls{
- position:fixed;
- z-index:100;
- bottom:12px;
- left:50%;
- transform:translateX(-50%);
- display:flex;
- align-items:center;
- gap:8px;
- background:rgba(8,11,15,.93);
- border:1px solid #39434e;
- border-radius:18px;
- padding:8px;
- backdrop-filter:blur(14px);
- box-shadow:0 10px 35px rgba(0,0,0,.35);
+.execution{
+  display:grid;
+  grid-template-rows:auto auto minmax(0,1fr);
+  gap:12px;
 }
 
-.btn{
- border:0;
- border-radius:12px;
- padding:12px 16px;
- background:#202936;
- color:white;
- font-weight:900;
- cursor:pointer;
- white-space:nowrap;
+.exerciseArea{
+  min-height:0;
 }
 
-.btnYellow{
- background:var(--yellow);
- color:#000;
+.timerArea{
+  min-height:0;
 }
-
-.btnGreen{
- background:var(--green);
- color:#041108;
-}
-
-.modeBtn.active{
- border:1px solid var(--yellow);
- color:var(--yellow);
-}
-
-.pageCounter{
- min-width:55px;
- text-align:center;
- color:var(--muted);
- font-size:12px;
- font-weight:900;
-}
-
-/* ============================
-   TIMER
-============================ */
 
 .timerBox{
- border:3px solid var(--green);
- background:rgba(49,223,117,.08);
- border-radius:24px;
- padding:24px;
- transition:.2s;
+  height:100%;
+  min-height:210px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  border:3px solid var(--green);
+  background:rgba(49,223,117,.08);
+  border-radius:20px;
+  padding:clamp(15px,2vw,24px);
+  transition:.2s;
 }
 
 .timerBox.rest{
- border-color:var(--red);
- background:rgba(255,71,85,.09);
-}
-
-.timer{
- font-size:clamp(80px,13vw,180px);
- line-height:.9;
- font-weight:950;
- color:var(--green);
- font-variant-numeric:tabular-nums;
- letter-spacing:-.06em;
-}
-
-.timer.rest{
- color:var(--red);
+  border-color:var(--red);
+  background:rgba(255,71,85,.09);
 }
 
 .phase{
- display:inline-flex;
- padding:8px 14px;
- border-radius:999px;
- font-weight:950;
- font-size:13px;
- background:rgba(49,223,117,.14);
- color:var(--green);
- border:1px solid rgba(49,223,117,.4);
+  display:inline-flex;
+  width:max-content;
+  align-items:center;
+  padding:7px 13px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:950;
+  background:rgba(49,223,117,.14);
+  color:var(--green);
+  border:1px solid rgba(49,223,117,.4);
 }
 
 .phase.rest{
- background:rgba(255,71,85,.14);
- color:var(--red);
- border-color:rgba(255,71,85,.45);
+  background:rgba(255,71,85,.14);
+  color:var(--red);
+  border-color:rgba(255,71,85,.45);
+}
+
+.timer{
+  font-size:clamp(70px,11vw,155px);
+  line-height:.85;
+  font-weight:950;
+  letter-spacing:-.065em;
+  font-variant-numeric:tabular-nums;
+  color:var(--green);
+  margin-top:12px;
+}
+
+.timer.rest{
+  color:var(--red);
 }
 
 .progress{
- height:9px;
- background:#252e37;
- border-radius:999px;
- overflow:hidden;
+  width:100%;
+  height:10px;
+  border-radius:999px;
+  overflow:hidden;
+  background:#27313a;
+  margin-top:16px;
 }
 
 .progressFill{
- height:100%;
- width:0;
- background:var(--green);
- transition:width .25s linear;
+  width:0%;
+  height:100%;
+  background:var(--green);
+  transition:width .25s linear;
 }
 
 .progressFill.rest{
- background:var(--red);
+  background:var(--red);
 }
 
-/* ============================
-   EXERCISES
-============================ */
+/* =========================================================
+   EXERCISE CARDS
+========================================================= */
 
-.exerciseGrid{
- display:grid;
- grid-template-columns:repeat(5,1fr);
- gap:10px;
+.exerciseGrid5{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:9px;
+}
+
+.exerciseGrid6{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
 }
 
 .exercise{
- background:#0c1218;
- border:1px solid #303a45;
- border-radius:16px;
- padding:16px;
- transition:.2s;
+  min-width:0;
+  background:#0c1218;
+  border:1px solid #303a45;
+  border-radius:15px;
+  padding:clamp(11px,1.3vw,16px);
+  transition:.2s;
 }
 
 .exercise.active{
- border:2px solid var(--yellow);
- background:rgba(255,215,0,.12);
+  border:2px solid var(--yellow);
+  background:rgba(255,215,0,.12);
 }
 
 .exercise.restActive{
- border:2px solid var(--red);
- background:rgba(255,71,85,.10);
+  border:2px solid var(--red);
+  background:rgba(255,71,85,.10);
+}
+
+.exerciseIndex{
+  color:var(--yellow);
+  font-size:11px;
+  font-weight:950;
 }
 
 .exerciseName{
- font-size:clamp(18px,2vw,28px);
- font-weight:950;
- line-height:1.08;
+  font-size:clamp(17px,1.7vw,27px);
+  font-weight:950;
+  line-height:1.05;
+  margin-top:6px;
 }
 
-.zoneGrid{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:12px;
+.exerciseSub{
+  color:var(--muted);
+  font-size:clamp(11px,.9vw,14px);
+  margin-top:5px;
 }
 
-.zone{
- background:#0c1218;
- border:1px solid #303a45;
- border-radius:18px;
- padding:17px;
+.secondary{
+  font-size:clamp(14px,1.25vw,20px);
+  font-weight:900;
+  margin-top:6px;
 }
 
-.zoneName{
- font-size:clamp(20px,2vw,31px);
- line-height:1.05;
- font-weight:950;
-}
+/* =========================================================
+   COACH / ROTATION
+========================================================= */
 
-.zoneSub{
- font-size:clamp(15px,1.3vw,20px);
- font-weight:800;
- margin-top:8px;
+.coachGrid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
 }
-
-.level{
- margin-top:7px;
- padding:7px 9px;
- border-radius:9px;
- background:#070b10;
- font-size:12px;
-}
-
-/* ============================
-   ROTATION
-============================ */
 
 .rotationGrid{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:12px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:14px;
 }
 
 .rotationCard{
- background:#0c1218;
- border:1px solid #303a45;
- border-radius:17px;
- padding:17px;
+  background:#0c1218;
+  border:1px solid #303a45;
+  border-radius:15px;
+  padding:13px;
 }
 
 .groupLetter{
- color:var(--yellow);
- font-size:26px;
- font-weight:950;
+  color:var(--yellow);
+  font-size:20px;
+  font-weight:950;
 }
 
 .stationName{
- font-size:18px;
- font-weight:950;
- margin-top:5px;
+  font-size:clamp(14px,1.25vw,19px);
+  font-weight:900;
+  line-height:1.08;
+  margin-top:4px;
 }
 
-/* ============================
-   TV MAIN ROTATION
-============================ */
+/* =========================================================
+   CONTROLS
+========================================================= */
 
-.liveGrid{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:12px;
+.controls{
+  position:fixed;
+  z-index:100;
+  bottom:9px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding:7px;
+  background:rgba(8,11,15,.95);
+  border:1px solid #39434e;
+  border-radius:16px;
+  backdrop-filter:blur(12px);
 }
 
-.liveGroup{
- border:1px solid #35404c;
- background:#0b1117;
- border-radius:17px;
- padding:16px;
+.btn{
+  border:0;
+  border-radius:10px;
+  padding:10px 14px;
+  background:#202936;
+  color:#fff;
+  font-size:12px;
+  font-weight:950;
+  cursor:pointer;
+  white-space:nowrap;
 }
 
-.liveLetter{
- color:var(--yellow);
- font-weight:950;
- font-size:20px;
+.btnGreen{
+  background:var(--green);
+  color:#031108;
 }
 
-.liveStation{
- font-size:clamp(17px,1.8vw,25px);
- font-weight:950;
- margin-top:6px;
- line-height:1.08;
+.modeBtn.active{
+  border:1px solid var(--yellow);
+  color:var(--yellow);
 }
 
-/* ============================
-   MOBILE / PORTRAIT
-============================ */
+.pageCounter{
+  min-width:50px;
+  text-align:center;
+  color:var(--muted);
+  font-size:11px;
+  font-weight:900;
+}
+
+/* =========================================================
+   PORTRAIT / TABLET
+========================================================= */
 
 @media(max-width:850px){
- .slide{
-   padding:14px 14px 90px;
- }
+  .slide{
+    padding:10px 10px 72px;
+  }
 
- .exerciseGrid{
-   grid-template-columns:1fr 1fr;
- }
+  .card{
+    overflow-y:auto;
+  }
 
- .zoneGrid,
- .rotationGrid,
- .liveGrid{
-   grid-template-columns:1fr 1fr;
- }
+  .exerciseGrid5{
+    grid-template-columns:repeat(2,1fr);
+  }
 
- .controls{
-   width:calc(100% - 16px);
-   justify-content:center;
-   overflow-x:auto;
- }
+  .exerciseGrid6,
+  .rotationGrid,
+  .coachGrid{
+    grid-template-columns:repeat(2,1fr);
+  }
 
- .btn{
-   padding:11px 13px;
-   font-size:12px;
- }
+  .execution{
+    display:block;
+  }
 
- .hideMobile{
-   display:none;
- }
+  .timerBox{
+    margin-top:12px;
+    height:auto;
+  }
+
+  .controls{
+    width:calc(100% - 12px);
+    justify-content:center;
+    overflow-x:auto;
+  }
+
+  .btn{
+    padding:10px 11px;
+  }
 }
 
 @media(max-width:520px){
- .zoneGrid,
- .rotationGrid,
- .liveGrid{
-   grid-template-columns:1fr;
- }
-
- .exerciseGrid{
-   grid-template-columns:1fr;
- }
+  .exerciseGrid6,
+  .rotationGrid,
+  .coachGrid{
+    grid-template-columns:1fr;
+  }
 }
 </style>
 </head>
@@ -426,74 +420,79 @@ button{
 <div id="slider" class="slider">
 
 <!-- =========================================================
-     TELA 1 — ORIENTAÇÕES
+TELA 1 — ORIENTAÇÕES
 ========================================================= -->
 
 <section class="slide">
 <div class="slideInner">
 
-<div class="card p-6 md:p-10 flex-1">
+<div class="card">
 
-<div class="sectionLabel">
- HYROX CLUB | CIA ATHLETICA STUDIO 5
-</div>
+  <div class="sectionLabel">
+    HYROX CLUB | CIA ATHLETICA STUDIO 5
+  </div>
 
-<h1 class="title text-4xl md:text-7xl mt-3">
- ZONAS COMPROMETIDAS #4 TS
-</h1>
+  <h1 class="pageTitle mt-3">
+    ZONAS COMPROMETIDAS #4 TS
+  </h1>
 
-<p class="muted text-lg md:text-2xl mt-3">
- Compromised Running • HYROX Performance
-</p>
+  <div class="flex flex-wrap gap-2 mt-4">
+    <span class="badge badgeYellow">COACH HUB V6</span>
+    <span class="badge">RPE 8</span>
+    <span class="badge">51 MIN</span>
+    <span class="badge">TV / TABLET</span>
+  </div>
 
-<div class="flex flex-wrap gap-2 mt-5">
- <span class="badge badgeYellow">TV MODE V5</span>
- <span class="badge">RPE 8</span>
- <span class="badge">51 MIN</span>
- <span class="badge">12 × 03:00</span>
-</div>
+  <div class="sectionLabel mt-7">
+    01 — ORIENTAÇÕES DO COACH
+  </div>
 
-<div class="mt-8">
- <div class="sectionLabel">01 — ORIENTAÇÕES DO COACH</div>
-</div>
+  <div class="coachGrid mt-4">
 
-<div class="grid md:grid-cols-3 gap-4 mt-4">
+    <div class="inner p-5">
+      <div class="yellow font-black text-xl">
+        RITMO / PACING
+      </div>
+      <p class="muted mt-3">
+        RPE 8 sustentável. Evitar pico precoce.
+        Buscar consistência durante os 12 rounds.
+      </p>
+    </div>
 
- <div class="inner p-5">
-   <div class="yellow font-black text-xl">RITMO / PACING</div>
-   <p class="muted mt-3 text-lg">
-     RPE 8 sustentável. Evitar pico precoce e buscar
-     consistência ao longo dos 12 rounds.
-   </p>
- </div>
+    <div class="inner p-5">
+      <div class="yellow font-black text-xl">
+        COMPROMISED RUNNING
+      </div>
+      <p class="muted mt-3">
+        Reorganizar postura, respiração e passada
+        antes de aumentar a velocidade.
+      </p>
+    </div>
 
- <div class="inner p-5">
-   <div class="yellow font-black text-xl">
-     COMPROMISED RUNNING
-   </div>
-   <p class="muted mt-3 text-lg">
-     Reorganizar postura, respiração e passada antes
-     de aumentar a velocidade.
-   </p>
- </div>
+    <div class="inner p-5">
+      <div class="yellow font-black text-xl">
+        SEGURANÇA / FLUXO
+      </div>
+      <p class="muted mt-3">
+        Transições pelas laterais. Nunca atravessar
+        as pistas de Sled durante o trabalho.
+      </p>
+    </div>
 
- <div class="inner p-5">
-   <div class="yellow font-black text-xl">SEGURANÇA</div>
-   <p class="muted mt-3 text-lg">
-     Transições pelas laterais. Nunca atravessar
-     pistas de Sled em movimento.
-   </p>
- </div>
+  </div>
 
-</div>
+  <div class="inner p-5 mt-4">
 
-<div class="mt-8 inner p-5">
- <div class="yellow font-black">FLUXO DA AULA</div>
- <div class="text-xl md:text-3xl font-black mt-3">
-   ORIENTAÇÕES → TURMA → AQUECIMENTO →
-   PRINCIPAL → FINISHER → RECUPERAÇÃO
- </div>
-</div>
+    <div class="yellow font-black">
+      FLUXO DA SESSÃO
+    </div>
+
+    <div class="text-xl md:text-3xl font-black mt-2">
+      TURMA → AQUECIMENTO → ZONAS COMPROMETIDAS →
+      TOTM FINISHER → RECUPERAÇÃO
+    </div>
+
+  </div>
 
 </div>
 </div>
@@ -501,62 +500,59 @@ button{
 
 
 <!-- =========================================================
-     TELA 2 — TURMA
+TELA 2 — TURMA / RODÍZIO
 ========================================================= -->
 
 <section class="slide">
 <div class="slideInner">
 
-<div class="card p-6 md:p-9 flex-1">
+<div class="card">
 
-<div class="sectionLabel">
- 02 — CONTROLE DA TURMA
-</div>
+  <div class="flex justify-between gap-4">
 
-<div class="flex flex-wrap justify-between items-end gap-4 mt-2">
+    <div>
+      <div class="sectionLabel">
+        02 — CONTROLE DA TURMA
+      </div>
 
- <div>
-   <h2 class="title text-4xl md:text-6xl">
-     RODÍZIO
-   </h2>
-   <p class="muted text-lg mt-2">
-     Configure a turma antes de iniciar a aula.
-   </p>
- </div>
+      <h2 class="pageTitle mt-2">
+        RODÍZIO
+      </h2>
+    </div>
 
- <div class="text-right">
-   <div class="muted text-sm">ATLETAS</div>
-   <div id="athletes"
-        class="yellow text-6xl font-black">
-     24
-   </div>
- </div>
+    <div class="text-right">
+      <div class="muted text-xs">ATLETAS</div>
+      <div id="athletes"
+           class="yellow text-5xl md:text-6xl font-black">
+        24
+      </div>
+    </div>
 
-</div>
+  </div>
 
 
-<div class="flex flex-wrap gap-2 mt-5">
+  <div class="flex flex-wrap gap-2 mt-4">
 
- <button onclick="changeAthletes(-1)" class="btn">−</button>
- <button onclick="setAthletes(12)" class="btn">12</button>
- <button onclick="setAthletes(16)" class="btn">16</button>
- <button onclick="setAthletes(20)" class="btn">20</button>
- <button onclick="setAthletes(24)" class="btn">24</button>
- <button onclick="setAthletes(28)" class="btn">28</button>
- <button onclick="setAthletes(32)" class="btn">32</button>
- <button onclick="changeAthletes(1)" class="btn">+</button>
+    <button onclick="changeAthletes(-1)" class="btn">−</button>
+    <button onclick="setAthletes(12)" class="btn">12</button>
+    <button onclick="setAthletes(16)" class="btn">16</button>
+    <button onclick="setAthletes(20)" class="btn">20</button>
+    <button onclick="setAthletes(24)" class="btn">24</button>
+    <button onclick="setAthletes(28)" class="btn">28</button>
+    <button onclick="setAthletes(32)" class="btn">32</button>
+    <button onclick="changeAthletes(1)" class="btn">+</button>
 
-</div>
-
-
-<div id="capacityMessage"
-     class="inner p-4 mt-4">
-</div>
+  </div>
 
 
-<div id="rotationGrid"
-     class="rotationGrid mt-5">
-</div>
+  <div id="capacityMessage"
+       class="inner p-3 mt-3">
+  </div>
+
+
+  <div id="rotationGrid"
+       class="rotationGrid">
+  </div>
 
 </div>
 </div>
@@ -564,104 +560,121 @@ button{
 
 
 <!-- =========================================================
-     TELA 3 — AQUECIMENTO
+TELA 3 — AQUECIMENTO
 ========================================================= -->
 
 <section class="slide">
 <div class="slideInner">
 
-<div class="card p-5 md:p-8 flex-1">
+<div class="card execution">
 
-<div class="flex justify-between gap-4">
+  <div class="flex justify-between gap-4">
 
- <div>
-   <div class="sectionLabel">03 — AQUECIMENTO</div>
-   <h2 class="title text-3xl md:text-5xl mt-1">
-     45s WORK / 15s REST
-   </h2>
- </div>
+    <div>
+      <div class="sectionLabel">
+        03 — AQUECIMENTO
+      </div>
 
- <div class="text-right">
-   <div class="muted">ROUND</div>
-   <div class="text-3xl font-black">
-     <span id="warmRound">1</span>/5
-   </div>
- </div>
+      <h2 class="pageTitle mt-1">
+        45s WORK / 15s REST
+      </h2>
+    </div>
 
-</div>
+    <div class="text-right">
+      <div class="muted text-xs">ROUND</div>
+      <div class="text-3xl font-black">
+        <span id="warmRound">1</span>/5
+      </div>
+    </div>
 
-
-<div class="exerciseGrid mt-5">
-
- <div id="warmEx0" class="exercise">
-   <div class="yellow font-black">01</div>
-   <div class="exerciseName mt-2">Bootstrapper</div>
- </div>
-
- <div id="warmEx1" class="exercise">
-   <div class="yellow font-black">02</div>
-   <div class="exerciseName mt-2">Cossack Squats</div>
- </div>
-
- <div id="warmEx2" class="exercise">
-   <div class="yellow font-black">03</div>
-   <div class="exerciseName mt-2">90-90 Transitions</div>
- </div>
-
- <div id="warmEx3" class="exercise">
-   <div class="yellow font-black">04</div>
-   <div class="exerciseName mt-2">
-     Inside-outside Plank Jumps
-   </div>
- </div>
-
- <div id="warmEx4" class="exercise">
-   <div class="yellow font-black">05</div>
-   <div class="exerciseName mt-2">
-     Rotational Push-ups
-   </div>
- </div>
-
-</div>
+  </div>
 
 
-<div id="warmBox"
-     class="timerBox mt-5">
+  <div class="exerciseArea">
 
- <div class="flex justify-between gap-4">
+    <div class="exerciseGrid5">
 
-   <div>
-     <div id="warmPhase" class="phase">
-       ● TRABALHO
-     </div>
+      <div id="warmEx0" class="exercise">
+        <div class="exerciseIndex">01</div>
+        <div class="exerciseName">Bootstrapper</div>
+      </div>
 
-     <div id="warmExercise"
-          class="text-2xl md:text-4xl font-black mt-4">
-       Bootstrapper
-     </div>
-   </div>
+      <div id="warmEx1" class="exercise">
+        <div class="exerciseIndex">02</div>
+        <div class="exerciseName">Cossack Squats</div>
+      </div>
 
-   <div class="text-right">
-     <div class="muted text-sm">TOTAL RESTANTE</div>
-     <div id="warmTotal" class="font-black text-xl">
-       05:00
-     </div>
-   </div>
+      <div id="warmEx2" class="exercise">
+        <div class="exerciseIndex">03</div>
+        <div class="exerciseName">90-90 Transitions</div>
+      </div>
 
- </div>
+      <div id="warmEx3" class="exercise">
+        <div class="exerciseIndex">04</div>
+        <div class="exerciseName">
+          Inside-outside Plank Jumps
+        </div>
+      </div>
 
- <div id="warmTimer"
-      class="timer mt-5">
-   00:45
- </div>
+      <div id="warmEx4" class="exercise">
+        <div class="exerciseIndex">05</div>
+        <div class="exerciseName">
+          Rotational Push-ups
+        </div>
+      </div>
 
- <div class="progress mt-5">
-   <div id="warmProgress"
-        class="progressFill">
-   </div>
- </div>
+    </div>
 
-</div>
+  </div>
+
+
+  <div class="timerArea">
+
+    <div id="warmBox"
+         class="timerBox">
+
+      <div class="flex justify-between gap-4">
+
+        <div>
+
+          <div id="warmPhase"
+               class="phase">
+            ● TRABALHO
+          </div>
+
+          <div id="warmExercise"
+               class="text-xl md:text-3xl font-black mt-2">
+            Bootstrapper
+          </div>
+
+        </div>
+
+        <div class="text-right">
+          <div class="muted text-xs">
+            TOTAL RESTANTE
+          </div>
+          <div id="warmTotal"
+               class="font-black text-xl">
+            05:00
+          </div>
+        </div>
+
+      </div>
+
+      <div id="warmTimer"
+           class="timer">
+        00:45
+      </div>
+
+      <div class="progress">
+        <div id="warmProgress"
+             class="progressFill">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
 
 </div>
 </div>
@@ -669,131 +682,212 @@ button{
 
 
 <!-- =========================================================
-     TELA 4 — PRINCIPAL
+TELA 4 — TREINO PRINCIPAL
 ========================================================= -->
 
 <section class="slide">
 <div class="slideInner">
 
-<div class="card p-5 md:p-8 flex-1">
+<div class="card execution">
 
-<div class="flex justify-between items-end gap-4">
+  <div class="flex justify-between gap-4">
 
- <div>
-   <div class="sectionLabel">
-     04 — TREINO PRINCIPAL
-   </div>
+    <div>
+      <div class="sectionLabel">
+        04 — TREINO PRINCIPAL
+      </div>
 
-   <h2 class="title text-3xl md:text-5xl mt-1">
-     ZONAS COMPROMETIDAS
-   </h2>
- </div>
+      <h2 class="pageTitle mt-1">
+        ZONAS COMPROMETIDAS
+      </h2>
+    </div>
 
- <div class="text-right">
-   <div class="muted">ROUND</div>
-   <div class="text-4xl font-black">
-     <span id="mainRound">1</span>/12
-   </div>
- </div>
+    <div class="text-right">
+      <div class="muted text-xs">
+        ROUND
+      </div>
 
-</div>
+      <div class="text-3xl font-black">
+        <span id="mainRound">1</span>/12
+      </div>
+    </div>
 
-
-<div class="grid lg:grid-cols-[.8fr_1.2fr] gap-4 mt-5">
-
- <!-- TIMER -->
-
- <div class="timerBox">
-
-   <div class="phase">
-     ● TRABALHO
-   </div>
-
-   <div id="mainTimer"
-        class="timer mt-7">
-     03:00
-   </div>
-
-   <div class="mt-5">
-     <div class="muted text-sm">
-       TREINO RESTANTE
-     </div>
-
-     <div id="mainTotal"
-          class="text-2xl font-black">
-       36:00
-     </div>
-   </div>
-
-   <div class="progress mt-5">
-     <div id="mainProgress"
-          class="progressFill">
-     </div>
-   </div>
-
- </div>
+  </div>
 
 
- <!-- MAPA AO VIVO -->
+  <div class="exerciseArea">
 
- <div>
+    <div class="exerciseGrid6">
 
-   <div class="yellow font-black text-lg mb-3">
-     POSIÇÃO DOS GRUPOS
-   </div>
+      <div class="exercise">
 
-   <div id="liveRotation"
-        class="liveGrid">
-   </div>
+        <div class="exerciseIndex">
+          Z1
+        </div>
 
- </div>
+        <div class="exerciseName">
+          RowErg
+        </div>
 
-</div>
+        <div class="exerciseSub">
+          03:00 @ RPE 8
+        </div>
+
+      </div>
 
 
-<div class="zoneGrid mt-4">
+      <div class="exercise">
 
- <div class="zone">
-   <div class="yellow font-black">Z1</div>
-   <div class="zoneName mt-2">RowErg</div>
-   <div class="muted mt-1">03:00 @ RPE 8</div>
- </div>
+        <div class="exerciseIndex">
+          Z2
+        </div>
 
- <div class="zone">
-   <div class="yellow font-black">Z2</div>
-   <div class="zoneName mt-2">Overhand Sled Push</div>
-   <div class="zoneSub">+ Wide Arm Pushup</div>
- </div>
+        <div class="exerciseName">
+          Overhand Sled Push
+        </div>
 
- <div class="zone">
-   <div class="yellow font-black">Z3</div>
-   <div class="zoneName mt-2">Run</div>
-   <div class="muted mt-1">03:00 @ RPE 8</div>
- </div>
+        <div class="secondary">
+          + Wide Arm Pushup
+        </div>
 
- <div class="zone">
-   <div class="yellow font-black">Z4</div>
-   <div class="zoneName mt-2">DB Thrusters</div>
-   <div class="zoneSub">+ Low Plank</div>
- </div>
+        <div class="exerciseSub">
+          20 m • 8–16 reps
+        </div>
 
- <div class="zone">
-   <div class="yellow font-black">Z5</div>
-   <div class="zoneName mt-2">SkiErg</div>
-   <div class="muted mt-1">03:00 @ RPE 8</div>
- </div>
+      </div>
 
- <div class="zone">
-   <div class="yellow font-black">Z6</div>
-   <div class="zoneName mt-2">
-     Dual DB OH Walking Lunges
-   </div>
-   <div class="zoneSub">
-     + Burpees Chest to Floor
-   </div>
- </div>
 
-</div>
+      <div class="exercise">
+
+        <div class="exerciseIndex">
+          Z3
+        </div>
+
+        <div class="exerciseName">
+          Run
+        </div>
+
+        <div class="exerciseSub">
+          03:00 @ RPE 8
+        </div>
+
+      </div>
+
+
+      <div class="exercise">
+
+        <div class="exerciseIndex">
+          Z4
+        </div>
+
+        <div class="exerciseName">
+          DB Thrusters
+        </div>
+
+        <div class="secondary">
+          + Low Plank
+        </div>
+
+        <div class="exerciseSub">
+          25–30 reps • 00:30
+        </div>
+
+      </div>
+
+
+      <div class="exercise">
+
+        <div class="exerciseIndex">
+          Z5
+        </div>
+
+        <div class="exerciseName">
+          SkiErg
+        </div>
+
+        <div class="exerciseSub">
+          03:00 @ RPE 8
+        </div>
+
+      </div>
+
+
+      <div class="exercise">
+
+        <div class="exerciseIndex">
+          Z6
+        </div>
+
+        <div class="exerciseName">
+          Dual DB OH Walking Lunges
+        </div>
+
+        <div class="secondary">
+          + Burpees Chest to Floor
+        </div>
+
+        <div class="exerciseSub">
+          30–40 m • 12–18 reps
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="timerArea">
+
+    <div class="timerBox">
+
+      <div class="flex justify-between gap-4">
+
+        <div>
+
+          <div class="phase">
+            ● TRABALHO
+          </div>
+
+          <div class="text-xl md:text-2xl font-black mt-2">
+            ROUND
+            <span id="mainRoundBottom">1</span>
+            / 12
+          </div>
+
+        </div>
+
+        <div class="text-right">
+
+          <div class="muted text-xs">
+            TREINO RESTANTE
+          </div>
+
+          <div id="mainTotal"
+               class="font-black text-xl">
+            36:00
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div id="mainTimer"
+           class="timer">
+        03:00
+      </div>
+
+
+      <div class="progress">
+        <div id="mainProgress"
+             class="progressFill">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
 
 </div>
 </div>
@@ -801,61 +895,100 @@ button{
 
 
 <!-- =========================================================
-     TELA 5 — FINISHER
+TELA 5 — FINISHER
 ========================================================= -->
 
 <section class="slide">
 <div class="slideInner">
 
-<div class="card p-6 md:p-10 flex-1">
+<div class="card execution">
 
-<div class="sectionLabel">
- 05 — TOTM FINISHER
-</div>
+  <div>
 
-<div class="grid lg:grid-cols-2 gap-5 mt-5">
+    <div class="sectionLabel">
+      05 — TOTM FINISHER
+    </div>
 
- <div class="inner p-6 flex flex-col justify-center">
+    <h2 class="pageTitle mt-1">
+      TOP OF THE MINUTE
+    </h2>
 
-   <div class="yellow font-black">
-     A CADA MINUTO
-   </div>
-
-   <div class="title text-4xl md:text-6xl mt-4">
-     11x Military Press Pushup
-   </div>
-
-   <div class="muted text-xl mt-6">
-     TEMPO RESTANTE
-   </div>
-
-   <div class="title text-4xl md:text-6xl mt-2">
-     Air Squats
-   </div>
-
- </div>
+  </div>
 
 
- <div class="timerBox flex flex-col justify-center">
+  <div class="exerciseArea">
 
-   <div class="phase">
-     ● TRABALHO
-   </div>
+    <div class="grid grid-cols-2 gap-3 h-full">
 
-   <div id="finishTimer"
-        class="timer mt-7">
-     05:00
-   </div>
+      <div class="exercise flex flex-col justify-center">
 
-   <div class="progress mt-6">
-     <div id="finishProgress"
-          class="progressFill">
-     </div>
-   </div>
+        <div class="exerciseIndex">
+          A CADA MINUTO
+        </div>
 
- </div>
+        <div class="exerciseName text-3xl md:text-5xl">
+          11x Military Press Pushup
+        </div>
 
-</div>
+      </div>
+
+
+      <div class="exercise flex flex-col justify-center">
+
+        <div class="exerciseIndex">
+          TEMPO RESTANTE
+        </div>
+
+        <div class="exerciseName text-3xl md:text-5xl">
+          Air Squats
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="timerArea">
+
+    <div class="timerBox">
+
+      <div class="flex justify-between gap-4">
+
+        <div>
+          <div class="phase">
+            ● TRABALHO
+          </div>
+        </div>
+
+        <div class="text-right">
+          <div class="muted text-xs">
+            FINISHER
+          </div>
+          <div class="font-black">
+            05:00 TOTAL
+          </div>
+        </div>
+
+      </div>
+
+
+      <div id="finishTimer"
+           class="timer">
+        05:00
+      </div>
+
+
+      <div class="progress">
+        <div id="finishProgress"
+             class="progressFill">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
 
 </div>
 </div>
@@ -863,57 +996,87 @@ button{
 
 
 <!-- =========================================================
-     TELA 6 — COOLDOWN
+TELA 6 — RECUPERAÇÃO
 ========================================================= -->
 
 <section class="slide">
 <div class="slideInner">
 
-<div class="card p-6 md:p-10 flex-1">
+<div class="card execution">
 
-<div class="sectionLabel">
- 06 — VOLTA À CALMA / RECUPERAÇÃO
-</div>
+  <div>
 
-<div class="grid lg:grid-cols-2 gap-5 mt-5 flex-1">
+    <div class="sectionLabel">
+      06 — VOLTA À CALMA / RECUPERAÇÃO
+    </div>
 
- <div class="inner p-7 flex flex-col justify-center">
+    <h2 class="pageTitle mt-1">
+      COOLDOWN
+    </h2>
 
-   <div class="yellow font-black">
-     RECUPERAÇÃO
-   </div>
-
-   <div class="title text-5xl md:text-7xl mt-4">
-     Child's Pose
-   </div>
-
-   <div class="muted text-xl mt-5">
-     Respiração controlada • recuperação
-   </div>
-
- </div>
+  </div>
 
 
- <div class="timerBox flex flex-col justify-center">
+  <div class="exerciseArea">
 
-   <div class="phase">
-     ● RECUPERAÇÃO
-   </div>
+    <div class="exercise h-full flex flex-col justify-center">
 
-   <div id="coolTimer"
-        class="timer mt-7">
-     05:00
-   </div>
+      <div class="exerciseIndex">
+        RECUPERAÇÃO
+      </div>
 
-   <div class="progress mt-6">
-     <div id="coolProgress"
-          class="progressFill">
-     </div>
-   </div>
+      <div class="exerciseName text-4xl md:text-6xl">
+        Child's Pose
+      </div>
 
- </div>
+      <div class="exerciseSub text-lg">
+        Respiração controlada • recuperação
+      </div>
 
-</div>
+    </div>
+
+  </div>
+
+
+  <div class="timerArea">
+
+    <div class="timerBox">
+
+      <div class="flex justify-between gap-4">
+
+        <div>
+          <div class="phase">
+            ● RECUPERAÇÃO
+          </div>
+        </div>
+
+        <div class="text-right">
+          <div class="muted text-xs">
+            TEMPO RESTANTE
+          </div>
+          <div class="font-black">
+            05:00 TOTAL
+          </div>
+        </div>
+
+      </div>
+
+
+      <div id="coolTimer"
+           class="timer">
+        05:00
+      </div>
+
+
+      <div class="progress">
+        <div id="coolProgress"
+             class="progressFill">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
 
 </div>
 </div>
@@ -923,39 +1086,42 @@ button{
 
 
 <!-- =========================================================
-     CONTROLES GLOBAIS
+CONTROLE GLOBAL
 ========================================================= -->
 
 <div class="controls">
 
- <button onclick="prevSlide()" class="btn">
-   ◀
- </button>
+  <button onclick="prevSlide()"
+          class="btn">
+    ◀
+  </button>
 
- <span id="pageCounter" class="pageCounter">
-   1 / 6
- </span>
+  <span id="pageCounter"
+        class="pageCounter">
+    1 / 6
+  </span>
 
- <button onclick="nextSlide()" class="btn">
-   ▶
- </button>
+  <button onclick="nextSlide()"
+          class="btn">
+    ▶
+  </button>
 
- <button id="modeButton"
-         onclick="toggleMode()"
-         class="btn modeBtn active">
-   AUTO
- </button>
+  <button id="modeButton"
+          onclick="toggleMode()"
+          class="btn modeBtn active">
+    AUTO
+  </button>
 
- <button id="masterButton"
-         onclick="masterAction()"
-         class="btn btnGreen">
-   ▶ INICIAR AULA
- </button>
+  <button id="masterButton"
+          onclick="masterAction()"
+          class="btn btnGreen">
+    ▶ INICIAR AULA
+  </button>
 
- <button onclick="resetClass()"
-         class="btn hideMobile">
-   RESET
- </button>
+  <button onclick="resetClass()"
+          class="btn">
+    RESET
+  </button>
 
 </div>
 
@@ -965,68 +1131,68 @@ button{
 <script>
 
 /* =========================================================
-   DADOS ÚNICOS DO TREINO
+FONTE ÚNICA DO TREINO
 ========================================================= */
 
-const workout = {
+const workout={
 
- warmup:[
-   "Bootstrapper",
-   "Cossack Squats",
-   "90-90 Transitions",
-   "Inside-outside Plank Jumps",
-   "Rotational Push-ups"
- ],
+  warmup:[
+    "Bootstrapper",
+    "Cossack Squats",
+    "90-90 Transitions",
+    "Inside-outside Plank Jumps",
+    "Rotational Push-ups"
+  ],
 
- stations:[
-   {
-     id:"Z1",
-     name:"RowErg"
-   },
-   {
-     id:"Z2",
-     name:"Overhand Sled Push + Wide Arm Pushup"
-   },
-   {
-     id:"Z3",
-     name:"Run"
-   },
-   {
-     id:"Z4",
-     name:"DB Thrusters + Low Plank"
-   },
-   {
-     id:"Z5",
-     name:"SkiErg"
-   },
-   {
-     id:"Z6",
-     name:"Dual DB OH Walking Lunges + Burpees Chest to Floor"
-   }
- ]
+  stations:[
+    {
+      id:"Z1",
+      name:"RowErg"
+    },
+    {
+      id:"Z2",
+      name:"Overhand Sled Push + Wide Arm Pushup"
+    },
+    {
+      id:"Z3",
+      name:"Run"
+    },
+    {
+      id:"Z4",
+      name:"DB Thrusters + Low Plank"
+    },
+    {
+      id:"Z5",
+      name:"SkiErg"
+    },
+    {
+      id:"Z6",
+      name:"Dual DB OH Walking Lunges + Burpees Chest to Floor"
+    }
+  ]
 
 };
 
 
 /* =========================================================
-   HELPERS
+HELPERS
 ========================================================= */
 
 function fmt(sec){
 
- sec=Math.max(0,sec);
+  sec=Math.max(0,sec);
 
- const m=Math.floor(sec/60);
- const s=sec%60;
+  const m=Math.floor(sec/60);
+  const s=sec%60;
 
- return String(m).padStart(2,"0")
-      +":"
-      +String(s).padStart(2,"0");
+  return String(m).padStart(2,"0")
+       +":"
+       +String(s).padStart(2,"0");
 }
 
 
 /* =========================================================
-   SLIDES
+SLIDES
 ========================================================= */
 
 let slide=0;
@@ -1034,144 +1200,166 @@ let autoMode=true;
 
 function showSlide(index){
 
- slide=Math.max(0,Math.min(5,index));
+  slide=Math.max(0,Math.min(5,index));
 
- document.getElementById("slider")
-   .style.transform=
-   `translateX(-${slide*100}vw)`;
+  document.getElementById("slider")
+    .style.transform=
+    `translateX(-${slide*100}vw)`;
 
- document.getElementById("pageCounter")
-   .innerText=(slide+1)+" / 6";
+  document.getElementById("pageCounter")
+    .innerText=(slide+1)+" / 6";
 }
 
 function nextSlide(){
- showSlide(slide+1);
+  showSlide(slide+1);
 }
 
 function prevSlide(){
- showSlide(slide-1);
+  showSlide(slide-1);
 }
 
 function toggleMode(){
 
- autoMode=!autoMode;
+  autoMode=!autoMode;
 
- const b=document.getElementById("modeButton");
+  const btn=document.getElementById("modeButton");
 
- if(autoMode){
-   b.innerText="AUTO";
-   b.classList.add("active");
- }else{
-   b.innerText="MANUAL";
-   b.classList.remove("active");
- }
+  if(autoMode){
+
+    btn.innerText="AUTO";
+    btn.classList.add("active");
+
+  }else{
+
+    btn.innerText="MANUAL";
+    btn.classList.remove("active");
+  }
 }
 
 
 /* =========================================================
-   TURMA
+ATLETAS / RODÍZIO
 ========================================================= */
 
 let athletes=24;
 
-function changeAthletes(v){
- athletes=Math.max(1,Math.min(32,athletes+v));
- renderGroups();
+function changeAthletes(value){
+
+  athletes=Math.max(
+    1,
+    Math.min(32,athletes+value)
+  );
+
+  renderGroups();
 }
 
-function setAthletes(v){
- athletes=v;
- renderGroups();
+function setAthletes(value){
+
+  athletes=value;
+
+  renderGroups();
 }
 
 function groupSizes(){
 
- const result=[];
+  const sizes=[];
 
- const base=Math.floor(athletes/6);
- const remainder=athletes%6;
+  const base=Math.floor(athletes/6);
+  const remainder=athletes%6;
 
- for(let i=0;i<6;i++){
-   result.push(base+(i<remainder?1:0));
- }
+  for(let i=0;i<6;i++){
 
- return result;
+    sizes.push(
+      base+(i<remainder?1:0)
+    );
+  }
+
+  return sizes;
 }
-
 
 function renderGroups(){
 
- document.getElementById("athletes")
-   .innerText=athletes;
+  document.getElementById("athletes")
+    .innerText=athletes;
 
- const sizes=groupSizes();
+  const sizes=groupSizes();
 
- let html="";
+  let html="";
 
- for(let i=0;i<6;i++){
+  for(let i=0;i<6;i++){
 
-   html+=`
-   <div class="rotationCard">
+    const station=workout.stations[i];
 
-     <div class="groupLetter">
-       ${String.fromCharCode(65+i)}
-       <span class="text-white">
-         (${sizes[i]})
-       </span>
-     </div>
+    html+=`
+      <div class="rotationCard">
 
-     <div class="muted text-xs mt-2">
-       INÍCIO
-     </div>
+        <div class="groupLetter">
+          GRUPO ${String.fromCharCode(65+i)}
+          <span class="text-white">
+            • ${sizes[i]}
+          </span>
+        </div>
 
-     <div class="stationName">
-       ${workout.stations[i].id} •
-       ${workout.stations[i].name}
-     </div>
+        <div class="stationName">
+          ${station.id} • ${station.name}
+        </div>
 
-   </div>
-   `;
- }
+        <div class="muted text-xs mt-2">
+          PRÓXIMA:
+          ${
+            workout.stations[
+              (i+1)%6
+            ].id
+          }
+          •
+          ${
+            workout.stations[
+              (i+1)%6
+            ].name
+          }
+        </div>
 
- document.getElementById("rotationGrid")
-   .innerHTML=html;
+      </div>
+    `;
+  }
+
+  document.getElementById("rotationGrid")
+    .innerHTML=html;
 
 
- const msg=document.getElementById("capacityMessage");
+  const msg=
+    document.getElementById("capacityMessage");
 
- if(athletes<=24){
+  if(athletes<=24){
 
-   msg.innerHTML=`
-     <div class="green font-black">
-       ✓ PROTOCOLO ORIGINAL COMPATÍVEL
-     </div>
+    msg.innerHTML=`
+      <span class="green font-black">
+        ✓ FLUXO DIRETO
+      </span>
 
-     <div class="muted mt-2">
-       ${athletes} atletas • máximo de 4 por grupo.
-     </div>
-   `;
+      <span class="muted ml-2">
+        ${athletes} atletas • máximo de 4 por grupo.
+      </span>
+    `;
 
- }else{
+  }else{
 
-   msg.innerHTML=`
-     <div class="yellow font-black">
-       ⚠ MODO 25–32 REQUER ADAPTAÇÃO
-     </div>
+    msg.innerHTML=`
+      <span class="yellow font-black">
+        ⚠ MODO 25–32
+      </span>
 
-     <div class="muted mt-2">
-       A ficha original foi desenhada para até 24 atletas.
-       O protocolo de 36 minutos não deve ser tratado como
-       idêntico para ${athletes} atletas sem adaptação de ondas.
-     </div>
-   `;
- }
-
- renderLiveRotation();
+      <span class="muted ml-2">
+        Requer adaptação em ondas.
+        O protocolo original foi estruturado para até 24 atletas.
+      </span>
+    `;
+  }
 }
 
 
 /* =========================================================
-   WARMUP
+AQUECIMENTO
 ========================================================= */
 
 let warmRound=0;
@@ -1181,102 +1369,138 @@ let warmElapsed=0;
 
 function renderWarm(){
 
- document.getElementById("warmRound")
-   .innerText=warmRound+1;
+  document.getElementById("warmRound")
+    .innerText=warmRound+1;
 
- document.getElementById("warmTimer")
-   .innerText=fmt(warmSec);
+  document.getElementById("warmTimer")
+    .innerText=fmt(warmSec);
 
- document.getElementById("warmTotal")
-   .innerText=fmt(300-warmElapsed);
+  document.getElementById("warmTotal")
+    .innerText=fmt(300-warmElapsed);
 
- const name=
-   warmRest
-   ? (
-       warmRound<4
-       ? "PRÓXIMO: "+workout.warmup[warmRound+1]
-       : "PRÓXIMO: TREINO PRINCIPAL"
-     )
-   : workout.warmup[warmRound];
 
- document.getElementById("warmExercise")
-   .innerText=name;
+  for(let i=0;i<5;i++){
 
- for(let i=0;i<5;i++){
+    const el=
+      document.getElementById("warmEx"+i);
 
-   const el=document.getElementById("warmEx"+i);
+    el.classList.remove(
+      "active",
+      "restActive"
+    );
 
-   el.classList.remove("active","restActive");
+    if(i===warmRound){
 
-   if(i===warmRound){
+      el.classList.add(
+        warmRest
+        ? "restActive"
+        : "active"
+      );
+    }
+  }
 
-     el.classList.add(
-       warmRest ? "restActive" : "active"
-     );
-   }
- }
 
- const box=document.getElementById("warmBox");
- const timer=document.getElementById("warmTimer");
- const phase=document.getElementById("warmPhase");
- const bar=document.getElementById("warmProgress");
+  const currentText=
+    warmRest
+    ? (
+        warmRound<4
+        ? "PRÓXIMO: "+
+          workout.warmup[warmRound+1]
+        : "PRÓXIMO: ZONAS COMPROMETIDAS"
+      )
+    : workout.warmup[warmRound];
 
- box.classList.toggle("rest",warmRest);
- timer.classList.toggle("rest",warmRest);
- phase.classList.toggle("rest",warmRest);
- bar.classList.toggle("rest",warmRest);
 
- phase.innerText=
-   warmRest
-   ? "● DESCANSO / TRANSIÇÃO"
-   : "● TRABALHO";
+  document.getElementById("warmExercise")
+    .innerText=currentText;
 
- bar.style.width=
-   ((warmElapsed/300)*100)+"%";
+
+  const box=
+    document.getElementById("warmBox");
+
+  const timer=
+    document.getElementById("warmTimer");
+
+  const phase=
+    document.getElementById("warmPhase");
+
+  const progress=
+    document.getElementById("warmProgress");
+
+
+  box.classList.toggle(
+    "rest",
+    warmRest
+  );
+
+  timer.classList.toggle(
+    "rest",
+    warmRest
+  );
+
+  phase.classList.toggle(
+    "rest",
+    warmRest
+  );
+
+  progress.classList.toggle(
+    "rest",
+    warmRest
+  );
+
+
+  phase.innerText=
+    warmRest
+    ? "● DESCANSO / TRANSIÇÃO"
+    : "● TRABALHO";
+
+
+  progress.style.width=
+    ((warmElapsed/300)*100)+"%";
 }
 
 
 function tickWarm(){
 
- warmSec--;
- warmElapsed++;
+  warmSec--;
+  warmElapsed++;
 
- if(warmSec<=0){
+  if(warmSec<=0){
 
-   if(!warmRest){
+    if(!warmRest){
 
-     warmRest=true;
-     warmSec=15;
+      warmRest=true;
+      warmSec=15;
 
-   }else{
+    }else{
 
-     warmRest=false;
+      warmRest=false;
 
-     if(warmRound<4){
+      if(warmRound<4){
 
-       warmRound++;
-       warmSec=45;
+        warmRound++;
+        warmSec=45;
 
-     }else{
+      }else{
 
-       warmElapsed=300;
-       warmSec=0;
+        warmElapsed=300;
+        warmSec=0;
 
-       renderWarm();
+        renderWarm();
 
-       startMainPhase();
+        startMainPhase();
 
-       return;
-     }
-   }
- }
+        return;
+      }
+    }
+  }
 
- renderWarm();
+  renderWarm();
 }
 
 
 /* =========================================================
-   MAIN
+MAIN
 ========================================================= */
 
 let mainRound=0;
@@ -1284,158 +1508,131 @@ let mainSec=180;
 
 function renderMain(){
 
- document.getElementById("mainRound")
-   .innerText=mainRound+1;
+  document.getElementById("mainRound")
+    .innerText=mainRound+1;
 
- document.getElementById("mainTimer")
-   .innerText=fmt(mainSec);
+  document.getElementById("mainRoundBottom")
+    .innerText=mainRound+1;
 
- const elapsed=
-   mainRound*180+(180-mainSec);
-
- document.getElementById("mainTotal")
-   .innerText=fmt(2160-elapsed);
-
- document.getElementById("mainProgress")
-   .style.width=
-   ((elapsed/2160)*100)+"%";
-
- renderLiveRotation();
-}
+  document.getElementById("mainTimer")
+    .innerText=fmt(mainSec);
 
 
-function renderLiveRotation(){
+  const elapsed=
+    mainRound*180+
+    (180-mainSec);
 
- const sizes=groupSizes();
 
- let html="";
+  document.getElementById("mainTotal")
+    .innerText=
+    fmt(2160-elapsed);
 
- for(let g=0;g<6;g++){
 
-   const stationIndex=
-     (g+mainRound)%6;
-
-   const station=
-     workout.stations[stationIndex];
-
-   html+=`
-   <div class="liveGroup">
-
-     <div class="liveLetter">
-       GRUPO ${String.fromCharCode(65+g)}
-       • ${sizes[g]}
-     </div>
-
-     <div class="liveStation">
-       ${station.id} • ${station.name}
-     </div>
-
-   </div>
-   `;
- }
-
- document.getElementById("liveRotation")
-   .innerHTML=html;
+  document.getElementById("mainProgress")
+    .style.width=
+    ((elapsed/2160)*100)+"%";
 }
 
 
 function tickMain(){
 
- mainSec--;
+  mainSec--;
 
- if(mainSec<=0){
+  if(mainSec<=0){
 
-   if(mainRound<11){
+    if(mainRound<11){
 
-     mainRound++;
-     mainSec=180;
+      mainRound++;
+      mainSec=180;
 
-   }else{
+    }else{
 
-     mainSec=0;
+      mainSec=0;
 
-     renderMain();
+      renderMain();
 
-     startFinishPhase();
+      startFinishPhase();
 
-     return;
-   }
- }
+      return;
+    }
+  }
 
- renderMain();
+  renderMain();
 }
 
 
 /* =========================================================
-   FINISHER
+FINISHER
 ========================================================= */
 
 let finishSec=300;
 
 function renderFinish(){
 
- document.getElementById("finishTimer")
-   .innerText=fmt(finishSec);
+  document.getElementById("finishTimer")
+    .innerText=fmt(finishSec);
 
- document.getElementById("finishProgress")
-   .style.width=
-   (((300-finishSec)/300)*100)+"%";
+  document.getElementById("finishProgress")
+    .style.width=
+    (((300-finishSec)/300)*100)+"%";
 }
 
 function tickFinish(){
 
- finishSec--;
+  finishSec--;
 
- if(finishSec<=0){
+  if(finishSec<=0){
 
-   finishSec=0;
-   renderFinish();
+    finishSec=0;
 
-   startCoolPhase();
+    renderFinish();
 
-   return;
- }
+    startCoolPhase();
 
- renderFinish();
+    return;
+  }
+
+  renderFinish();
 }
 
 
 /* =========================================================
-   COOLDOWN
+COOLDOWN
 ========================================================= */
 
 let coolSec=300;
 
 function renderCool(){
 
- document.getElementById("coolTimer")
-   .innerText=fmt(coolSec);
+  document.getElementById("coolTimer")
+    .innerText=fmt(coolSec);
 
- document.getElementById("coolProgress")
-   .style.width=
-   (((300-coolSec)/300)*100)+"%";
+  document.getElementById("coolProgress")
+    .style.width=
+    (((300-coolSec)/300)*100)+"%";
 }
 
 function tickCool(){
 
- coolSec--;
+  coolSec--;
 
- if(coolSec<=0){
+  if(coolSec<=0){
 
-   coolSec=0;
-   renderCool();
+    coolSec=0;
 
-   finishClass();
+    renderCool();
 
-   return;
- }
+    finishClass();
 
- renderCool();
+    return;
+  }
+
+  renderCool();
 }
 
 
 /* =========================================================
-   MASTER ENGINE
+MASTER ENGINE
 ========================================================= */
 
 let classRunning=false;
@@ -1445,185 +1642,189 @@ let engine=null;
 
 
 function clearEngine(){
- if(engine){
-   clearInterval(engine);
-   engine=null;
- }
+
+  if(engine){
+
+    clearInterval(engine);
+
+    engine=null;
+  }
 }
 
 
-function startEngine(fn){
+function startEngine(callback){
 
- clearEngine();
+  clearEngine();
 
- engine=setInterval(()=>{
+  engine=setInterval(()=>{
 
-   if(!classPaused){
-     fn();
-   }
+    if(!classPaused){
+      callback();
+    }
 
- },1000);
+  },1000);
 }
 
 
 function masterAction(){
 
- if(!classRunning){
+  if(!classRunning){
 
-   startClass();
-   return;
- }
+    startClass();
 
- classPaused=!classPaused;
+    return;
+  }
 
- const b=document.getElementById("masterButton");
 
- if(classPaused){
+  classPaused=!classPaused;
 
-   b.innerText="▶ CONTINUAR";
-   b.classList.remove("btnGreen");
+  const btn=
+    document.getElementById("masterButton");
 
- }else{
 
-   b.innerText="⏸ PAUSAR";
-   b.classList.add("btnGreen");
- }
+  if(classPaused){
+
+    btn.innerText="▶ CONTINUAR";
+    btn.classList.remove("btnGreen");
+
+  }else{
+
+    btn.innerText="⏸ PAUSAR";
+    btn.classList.add("btnGreen");
+  }
 }
 
 
 function startClass(){
 
- classRunning=true;
- classPaused=false;
+  classRunning=true;
+  classPaused=false;
 
- document.getElementById("masterButton")
-   .innerText="⏸ PAUSAR";
+  document.getElementById("masterButton")
+    .innerText="⏸ PAUSAR";
 
- /*
-   A tela 1 é orientação e a 2 é configuração.
-   Ao iniciar a aula, vamos direto ao aquecimento.
- */
-
- startWarmPhase();
+  startWarmPhase();
 }
 
 
 function startWarmPhase(){
 
- phase="warm";
+  phase="warm";
 
- if(autoMode){
-   showSlide(2);
- }
+  if(autoMode){
+    showSlide(2);
+  }
 
- startEngine(tickWarm);
+  startEngine(tickWarm);
 }
 
 
 function startMainPhase(){
 
- clearEngine();
+  clearEngine();
 
- phase="main";
+  phase="main";
 
- if(autoMode){
-   showSlide(3);
- }
+  mainRound=0;
+  mainSec=180;
 
- mainRound=0;
- mainSec=180;
+  renderMain();
 
- renderMain();
+  if(autoMode){
+    showSlide(3);
+  }
 
- startEngine(tickMain);
+  startEngine(tickMain);
 }
 
 
 function startFinishPhase(){
 
- clearEngine();
+  clearEngine();
 
- phase="finish";
+  phase="finish";
 
- if(autoMode){
-   showSlide(4);
- }
+  finishSec=300;
 
- finishSec=300;
+  renderFinish();
 
- renderFinish();
+  if(autoMode){
+    showSlide(4);
+  }
 
- startEngine(tickFinish);
+  startEngine(tickFinish);
 }
 
 
 function startCoolPhase(){
 
- clearEngine();
+  clearEngine();
 
- phase="cool";
+  phase="cool";
 
- if(autoMode){
-   showSlide(5);
- }
+  coolSec=300;
 
- coolSec=300;
+  renderCool();
 
- renderCool();
+  if(autoMode){
+    showSlide(5);
+  }
 
- startEngine(tickCool);
+  startEngine(tickCool);
 }
 
 
 function finishClass(){
 
- clearEngine();
+  clearEngine();
 
- classRunning=false;
- classPaused=false;
- phase="finished";
+  classRunning=false;
+  classPaused=false;
+  phase="finished";
 
- document.getElementById("masterButton")
-   .innerText="✓ AULA FINALIZADA";
+  document.getElementById("masterButton")
+    .innerText="✓ AULA FINALIZADA";
 }
 
 
 function resetClass(){
 
- clearEngine();
+  clearEngine();
 
- classRunning=false;
- classPaused=false;
- phase="idle";
+  classRunning=false;
+  classPaused=false;
+  phase="idle";
 
- warmRound=0;
- warmSec=45;
- warmRest=false;
- warmElapsed=0;
+  warmRound=0;
+  warmSec=45;
+  warmRest=false;
+  warmElapsed=0;
 
- mainRound=0;
- mainSec=180;
+  mainRound=0;
+  mainSec=180;
 
- finishSec=300;
- coolSec=300;
+  finishSec=300;
+  coolSec=300;
 
- document.getElementById("masterButton")
-   .innerText="▶ INICIAR AULA";
 
- document.getElementById("masterButton")
-   .classList.add("btnGreen");
+  document.getElementById("masterButton")
+    .innerText="▶ INICIAR AULA";
 
- renderWarm();
- renderMain();
- renderFinish();
- renderCool();
+  document.getElementById("masterButton")
+    .classList.add("btnGreen");
 
- showSlide(0);
+
+  renderWarm();
+  renderMain();
+  renderFinish();
+  renderCool();
+
+  showSlide(0);
 }
 
 
 /* =========================================================
-   INIT
+INIT
 ========================================================= */
 
 renderGroups();
