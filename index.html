@@ -2,1856 +2,1636 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#0d0d0d">
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 
-<title>HYROX Studio 5 | Zonas Comprometidas #4 TS</title>
+<meta name="theme-color" content="#080b0f">
+
+<title>HYROX Studio 5 | Coach HUB V5 TV</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
 :root{
-  --bg:#0d0d0d;
-  --card:#131820;
-  --card2:#0b0f14;
-  --border:#343b45;
-  --yellow:#FFD700;
-  --yellowSoft:rgba(255,215,0,.13);
-  --green:#32d46d;
-  --greenSoft:rgba(50,212,109,.12);
-  --red:#ff4d55;
-  --redSoft:rgba(255,77,85,.12);
-  --gray:#9ca3af;
-  --white:#f5f5f5;
+ --bg:#080b0f;
+ --card:#111820;
+ --card2:#0b1016;
+ --border:#303943;
+ --yellow:#FFD700;
+ --green:#31df75;
+ --red:#ff4755;
+ --white:#f5f7fa;
+ --muted:#9aa4b2;
 }
 
 *{box-sizing:border-box}
 
-html{scroll-behavior:smooth}
-
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--white);
-  font-family:Arial,Helvetica,sans-serif;
+html,body{
+ margin:0;
+ width:100%;
+ height:100%;
+ overflow:hidden;
+ background:var(--bg);
+ color:var(--white);
+ font-family:Arial,Helvetica,sans-serif;
 }
 
-.container{
-  width:min(1180px,100%);
-  margin:auto;
-  padding:16px;
+button{
+ font-family:inherit;
+}
+
+#app{
+ width:100vw;
+ height:100dvh;
+ overflow:hidden;
+ position:relative;
+}
+
+/* ============================
+   SLIDES
+============================ */
+
+.slider{
+ display:flex;
+ width:600vw;
+ height:100%;
+ transform:translateX(0);
+ transition:transform .65s cubic-bezier(.77,0,.18,1);
+}
+
+.slide{
+ width:100vw;
+ height:100%;
+ flex:0 0 100vw;
+ overflow-y:auto;
+ padding:
+   max(18px,env(safe-area-inset-top))
+   max(22px,env(safe-area-inset-right))
+   92px
+   max(22px,env(safe-area-inset-left));
+}
+
+.slideInner{
+ width:min(1500px,100%);
+ min-height:calc(100dvh - 120px);
+ margin:auto;
+ display:flex;
+ flex-direction:column;
 }
 
 .card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:20px;
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:22px;
 }
 
 .inner{
-  background:var(--card2);
-  border:1px solid #282f38;
-  border-radius:15px;
+ background:var(--card2);
+ border:1px solid #29323c;
+ border-radius:16px;
 }
 
 .yellow{color:var(--yellow)}
 .green{color:var(--green)}
 .red{color:var(--red)}
-.muted{color:var(--gray)}
+.muted{color:var(--muted)}
 
-.sectionTitle{
-  color:var(--yellow);
-  font-weight:900;
-  letter-spacing:.02em;
+.title{
+ font-weight:950;
+ letter-spacing:-.025em;
 }
 
-.sectionNumber{
-  color:var(--yellow);
-  font-size:12px;
-  font-weight:900;
-  letter-spacing:.18em;
+.sectionLabel{
+ color:var(--yellow);
+ font-weight:900;
+ letter-spacing:.16em;
+ font-size:13px;
 }
 
 .badge{
-  display:inline-flex;
-  align-items:center;
-  padding:7px 13px;
-  border-radius:999px;
-  border:1px solid #4b5563;
-  font-size:12px;
-  font-weight:800;
+ display:inline-flex;
+ align-items:center;
+ padding:8px 14px;
+ border:1px solid #46515e;
+ border-radius:999px;
+ font-size:12px;
+ font-weight:900;
 }
 
 .badgeYellow{
-  background:var(--yellow);
-  color:#000;
-  border-color:var(--yellow);
+ background:var(--yellow);
+ border-color:var(--yellow);
+ color:#000;
+}
+
+/* ============================
+   CONTROLS
+============================ */
+
+.controls{
+ position:fixed;
+ z-index:100;
+ bottom:12px;
+ left:50%;
+ transform:translateX(-50%);
+ display:flex;
+ align-items:center;
+ gap:8px;
+ background:rgba(8,11,15,.93);
+ border:1px solid #39434e;
+ border-radius:18px;
+ padding:8px;
+ backdrop-filter:blur(14px);
+ box-shadow:0 10px 35px rgba(0,0,0,.35);
 }
 
 .btn{
-  border:0;
-  border-radius:13px;
-  padding:13px 18px;
-  background:#222a37;
-  color:white;
-  font-weight:900;
-  cursor:pointer;
-  font-size:14px;
-  -webkit-tap-highlight-color:transparent;
+ border:0;
+ border-radius:12px;
+ padding:12px 16px;
+ background:#202936;
+ color:white;
+ font-weight:900;
+ cursor:pointer;
+ white-space:nowrap;
 }
 
-.btnPrimary{
-  background:var(--yellow);
-  color:#000;
+.btnYellow{
+ background:var(--yellow);
+ color:#000;
 }
 
-.btn:active{transform:scale(.98)}
+.btnGreen{
+ background:var(--green);
+ color:#041108;
+}
+
+.modeBtn.active{
+ border:1px solid var(--yellow);
+ color:var(--yellow);
+}
+
+.pageCounter{
+ min-width:55px;
+ text-align:center;
+ color:var(--muted);
+ font-size:12px;
+ font-weight:900;
+}
+
+/* ============================
+   TIMER
+============================ */
 
 .timerBox{
-  background:#080b0f;
-  border:2px solid var(--green);
-  border-radius:18px;
-  padding:20px;
-  transition:.25s;
-}
-
-.timerBox.work{
-  border-color:var(--green);
-  background:var(--greenSoft);
-  box-shadow:0 0 28px rgba(50,212,109,.08);
+ border:3px solid var(--green);
+ background:rgba(49,223,117,.08);
+ border-radius:24px;
+ padding:24px;
+ transition:.2s;
 }
 
 .timerBox.rest{
-  border-color:var(--red);
-  background:var(--redSoft);
-  box-shadow:0 0 28px rgba(255,77,85,.08);
+ border-color:var(--red);
+ background:rgba(255,71,85,.09);
 }
 
 .timer{
-  font-size:clamp(58px,10vw,100px);
-  line-height:1;
-  font-weight:900;
-  color:var(--green);
-  font-variant-numeric:tabular-nums;
-  transition:.2s;
+ font-size:clamp(80px,13vw,180px);
+ line-height:.9;
+ font-weight:950;
+ color:var(--green);
+ font-variant-numeric:tabular-nums;
+ letter-spacing:-.06em;
 }
 
-.timer.rest{color:var(--red)}
-.timer.work{color:var(--green)}
-
-.timerSmall{
-  font-size:clamp(48px,8vw,76px);
-  line-height:1;
-  font-weight:900;
-  color:var(--green);
-  font-variant-numeric:tabular-nums;
+.timer.rest{
+ color:var(--red);
 }
-
-.timerSmall.rest{color:var(--red)}
-.timerSmall.work{color:var(--green)}
 
 .phase{
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-  padding:7px 12px;
-  border-radius:999px;
-  font-size:12px;
-  font-weight:900;
-}
-
-.phase.work{
-  background:rgba(50,212,109,.15);
-  color:var(--green);
-  border:1px solid rgba(50,212,109,.4);
+ display:inline-flex;
+ padding:8px 14px;
+ border-radius:999px;
+ font-weight:950;
+ font-size:13px;
+ background:rgba(49,223,117,.14);
+ color:var(--green);
+ border:1px solid rgba(49,223,117,.4);
 }
 
 .phase.rest{
-  background:rgba(255,77,85,.15);
-  color:var(--red);
-  border:1px solid rgba(255,77,85,.4);
-}
-
-.exercise{
-  position:relative;
-  background:#0a0e13;
-  border:1px solid #303741;
-  border-radius:16px;
-  padding:17px;
-  transition:.2s;
-  min-height:120px;
-}
-
-.exercise.active{
-  background:var(--yellowSoft);
-  border:2px solid var(--yellow);
-  box-shadow:0 0 25px rgba(255,215,0,.13);
-}
-
-.exercise.restActive{
-  border:2px solid var(--red);
-  background:var(--redSoft);
-}
-
-.exerciseName{
-  font-size:19px;
-  line-height:1.15;
-  font-weight:900;
-  color:#fff;
-  margin-top:8px;
-}
-
-.exerciseMeta{
-  color:var(--gray);
-  font-size:13px;
-  margin-top:7px;
-}
-
-.zoneCard{
-  background:#0d1218;
-  border:1px solid #343b45;
-  border-radius:18px;
-  padding:18px;
-  transition:.2s;
-}
-
-.zoneCard.active{
-  border:2px solid var(--yellow);
-  background:var(--yellowSoft);
-  box-shadow:0 0 26px rgba(255,215,0,.13);
-}
-
-.zoneNumber{
-  color:var(--yellow);
-  font-size:12px;
-  font-weight:900;
-  letter-spacing:.14em;
-}
-
-.zoneExercise{
-  font-size:22px;
-  font-weight:900;
-  line-height:1.12;
-  color:white;
-  margin-top:10px;
-}
-
-.secondaryExercise{
-  font-size:17px;
-  font-weight:900;
-  margin-top:14px;
-}
-
-.level{
-  background:#080c10;
-  padding:9px 11px;
-  border-radius:10px;
-  margin-top:7px;
-  font-size:13px;
+ background:rgba(255,71,85,.14);
+ color:var(--red);
+ border-color:rgba(255,71,85,.45);
 }
 
 .progress{
-  width:100%;
-  height:7px;
-  background:#252b33;
-  border-radius:999px;
-  overflow:hidden;
+ height:9px;
+ background:#252e37;
+ border-radius:999px;
+ overflow:hidden;
 }
 
 .progressFill{
-  height:100%;
-  background:var(--green);
-  width:0%;
-  transition:width .3s linear;
+ height:100%;
+ width:0;
+ background:var(--green);
+ transition:width .25s linear;
 }
 
 .progressFill.rest{
-  background:var(--red);
+ background:var(--red);
 }
 
-.rotationRow{
-  display:grid;
-  grid-template-columns:85px 1fr 1fr;
-  gap:10px;
-  align-items:center;
-  padding:11px 0;
-  border-bottom:1px solid #252b33;
+/* ============================
+   EXERCISES
+============================ */
+
+.exerciseGrid{
+ display:grid;
+ grid-template-columns:repeat(5,1fr);
+ gap:10px;
 }
 
-.rotationRow:last-child{border-bottom:0}
-
-.coachNote{
-  border-left:3px solid var(--yellow);
+.exercise{
+ background:#0c1218;
+ border:1px solid #303a45;
+ border-radius:16px;
+ padding:16px;
+ transition:.2s;
 }
 
-.quickNav{
-  display:flex;
-  gap:7px;
-  overflow-x:auto;
-  padding-bottom:4px;
-  scrollbar-width:none;
+.exercise.active{
+ border:2px solid var(--yellow);
+ background:rgba(255,215,0,.12);
 }
 
-.quickNav::-webkit-scrollbar{display:none}
-
-.quickNav a{
-  flex:0 0 auto;
-  text-decoration:none;
-  color:#d1d5db;
-  background:#171d25;
-  border:1px solid #343b45;
-  border-radius:999px;
-  padding:8px 12px;
-  font-size:11px;
-  font-weight:800;
+.exercise.restActive{
+ border:2px solid var(--red);
+ background:rgba(255,71,85,.10);
 }
 
-@media(max-width:640px){
-  .container{padding:11px}
-  .card{border-radius:17px}
-  .rotationRow{grid-template-columns:65px 1fr}
-  .rotationNext{display:none}
-  .btn{padding:12px 14px}
-  .exerciseName{font-size:18px}
-  .zoneExercise{font-size:21px}
+.exerciseName{
+ font-size:clamp(18px,2vw,28px);
+ font-weight:950;
+ line-height:1.08;
+}
+
+.zoneGrid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:12px;
+}
+
+.zone{
+ background:#0c1218;
+ border:1px solid #303a45;
+ border-radius:18px;
+ padding:17px;
+}
+
+.zoneName{
+ font-size:clamp(20px,2vw,31px);
+ line-height:1.05;
+ font-weight:950;
+}
+
+.zoneSub{
+ font-size:clamp(15px,1.3vw,20px);
+ font-weight:800;
+ margin-top:8px;
+}
+
+.level{
+ margin-top:7px;
+ padding:7px 9px;
+ border-radius:9px;
+ background:#070b10;
+ font-size:12px;
+}
+
+/* ============================
+   ROTATION
+============================ */
+
+.rotationGrid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:12px;
+}
+
+.rotationCard{
+ background:#0c1218;
+ border:1px solid #303a45;
+ border-radius:17px;
+ padding:17px;
+}
+
+.groupLetter{
+ color:var(--yellow);
+ font-size:26px;
+ font-weight:950;
+}
+
+.stationName{
+ font-size:18px;
+ font-weight:950;
+ margin-top:5px;
+}
+
+/* ============================
+   TV MAIN ROTATION
+============================ */
+
+.liveGrid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:12px;
+}
+
+.liveGroup{
+ border:1px solid #35404c;
+ background:#0b1117;
+ border-radius:17px;
+ padding:16px;
+}
+
+.liveLetter{
+ color:var(--yellow);
+ font-weight:950;
+ font-size:20px;
+}
+
+.liveStation{
+ font-size:clamp(17px,1.8vw,25px);
+ font-weight:950;
+ margin-top:6px;
+ line-height:1.08;
+}
+
+/* ============================
+   MOBILE / PORTRAIT
+============================ */
+
+@media(max-width:850px){
+ .slide{
+   padding:14px 14px 90px;
+ }
+
+ .exerciseGrid{
+   grid-template-columns:1fr 1fr;
+ }
+
+ .zoneGrid,
+ .rotationGrid,
+ .liveGrid{
+   grid-template-columns:1fr 1fr;
+ }
+
+ .controls{
+   width:calc(100% - 16px);
+   justify-content:center;
+   overflow-x:auto;
+ }
+
+ .btn{
+   padding:11px 13px;
+   font-size:12px;
+ }
+
+ .hideMobile{
+   display:none;
+ }
+}
+
+@media(max-width:520px){
+ .zoneGrid,
+ .rotationGrid,
+ .liveGrid{
+   grid-template-columns:1fr;
+ }
+
+ .exerciseGrid{
+   grid-template-columns:1fr;
+ }
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div id="app">
 
-<!-- ====================================================== -->
-<!-- CAPA -->
-<!-- ====================================================== -->
+<div id="slider" class="slider">
 
-<header class="card p-5 md:p-7 mb-4">
+<!-- =========================================================
+     TELA 1 — ORIENTAÇÕES
+========================================================= -->
 
-  <div class="yellow text-xs md:text-sm font-black tracking-[0.23em]">
-    HYROX CLUB | CIA ATHLETICA STUDIO 5
-  </div>
+<section class="slide">
+<div class="slideInner">
 
-  <h1 class="text-3xl md:text-5xl font-black mt-3 leading-tight">
-    ZONAS COMPROMETIDAS #4 TS
-  </h1>
+<div class="card p-6 md:p-10 flex-1">
 
-  <p class="muted mt-2">
-    Compromised Running • HYROX Performance
-  </p>
+<div class="sectionLabel">
+ HYROX CLUB | CIA ATHLETICA STUDIO 5
+</div>
 
-  <div class="flex flex-wrap gap-2 mt-5">
-    <span class="badge badgeYellow">COACH HUB V4</span>
-    <span class="badge">RPE 8</span>
-    <span class="badge">51 MIN</span>
-    <span class="badge">ATÉ 32 ATLETAS</span>
-  </div>
+<h1 class="title text-4xl md:text-7xl mt-3">
+ ZONAS COMPROMETIDAS #4 TS
+</h1>
 
-  <div class="grid grid-cols-2 lg:grid-cols-4 gap-2 mt-5">
-    <div class="inner p-3">
-      <div class="yellow font-black">05:00</div>
-      <div class="muted text-xs mt-1">AQUECIMENTO</div>
-    </div>
+<p class="muted text-lg md:text-2xl mt-3">
+ Compromised Running • HYROX Performance
+</p>
 
-    <div class="inner p-3">
-      <div class="yellow font-black">36:00</div>
-      <div class="muted text-xs mt-1">TREINO PRINCIPAL</div>
-    </div>
+<div class="flex flex-wrap gap-2 mt-5">
+ <span class="badge badgeYellow">TV MODE V5</span>
+ <span class="badge">RPE 8</span>
+ <span class="badge">51 MIN</span>
+ <span class="badge">12 × 03:00</span>
+</div>
 
-    <div class="inner p-3">
-      <div class="yellow font-black">05:00</div>
-      <div class="muted text-xs mt-1">TOTM FINISHER</div>
-    </div>
+<div class="mt-8">
+ <div class="sectionLabel">01 — ORIENTAÇÕES DO COACH</div>
+</div>
 
-    <div class="inner p-3">
-      <div class="yellow font-black">05:00</div>
-      <div class="muted text-xs mt-1">VOLTA À CALMA</div>
-    </div>
-  </div>
+<div class="grid md:grid-cols-3 gap-4 mt-4">
 
-  <div class="quickNav mt-5">
-    <a href="#coach">ORIENTAÇÕES</a>
-    <a href="#turma">TURMA</a>
-    <a href="#aquecimento">AQUECIMENTO</a>
-    <a href="#principal">PRINCIPAL</a>
-    <a href="#finisher">FINISHER</a>
-    <a href="#cooldown">VOLTA À CALMA</a>
-  </div>
+ <div class="inner p-5">
+   <div class="yellow font-black text-xl">RITMO / PACING</div>
+   <p class="muted mt-3 text-lg">
+     RPE 8 sustentável. Evitar pico precoce e buscar
+     consistência ao longo dos 12 rounds.
+   </p>
+ </div>
 
-</header>
+ <div class="inner p-5">
+   <div class="yellow font-black text-xl">
+     COMPROMISED RUNNING
+   </div>
+   <p class="muted mt-3 text-lg">
+     Reorganizar postura, respiração e passada antes
+     de aumentar a velocidade.
+   </p>
+ </div>
 
+ <div class="inner p-5">
+   <div class="yellow font-black text-xl">SEGURANÇA</div>
+   <p class="muted mt-3 text-lg">
+     Transições pelas laterais. Nunca atravessar
+     pistas de Sled em movimento.
+   </p>
+ </div>
 
-<!-- ====================================================== -->
-<!-- 01 ORIENTAÇÕES -->
-<!-- ====================================================== -->
+</div>
 
-<section id="coach" class="card p-5 md:p-6 mb-4">
+<div class="mt-8 inner p-5">
+ <div class="yellow font-black">FLUXO DA AULA</div>
+ <div class="text-xl md:text-3xl font-black mt-3">
+   ORIENTAÇÕES → TURMA → AQUECIMENTO →
+   PRINCIPAL → FINISHER → RECUPERAÇÃO
+ </div>
+</div>
 
-  <div class="sectionNumber">01</div>
-  <h2 class="sectionTitle text-2xl mt-1">
-    ORIENTAÇÕES DO COACH
-  </h2>
-
-  <div class="grid md:grid-cols-3 gap-3 mt-5">
-
-    <div class="inner coachNote p-4">
-      <div class="font-black text-lg">
-        RITMO / PACING
-      </div>
-      <p class="muted text-sm mt-2">
-        RPE 8 sustentável. Evitar pico precoce.
-        Procurar consistência entre os 12 rounds.
-      </p>
-    </div>
-
-    <div class="inner coachNote p-4">
-      <div class="font-black text-lg">
-        COMPROMISED RUNNING
-      </div>
-      <p class="muted text-sm mt-2">
-        Após trabalho de força, reorganizar postura,
-        respiração e passada antes de acelerar.
-      </p>
-    </div>
-
-    <div class="inner coachNote p-4">
-      <div class="font-black text-lg">
-        SEGURANÇA / FLUXO
-      </div>
-      <p class="muted text-sm mt-2">
-        Transições pelas laterais. Nunca atravessar
-        pistas de Sled em movimento.
-      </p>
-    </div>
-
-  </div>
-
+</div>
+</div>
 </section>
 
 
-<!-- ====================================================== -->
-<!-- 02 CONTROLE DA TURMA -->
-<!-- ====================================================== -->
+<!-- =========================================================
+     TELA 2 — TURMA
+========================================================= -->
 
-<section id="turma" class="card p-5 md:p-6 mb-4">
+<section class="slide">
+<div class="slideInner">
 
-  <div class="flex flex-wrap justify-between gap-3">
+<div class="card p-6 md:p-9 flex-1">
 
-    <div>
-      <div class="sectionNumber">02</div>
-      <h2 class="sectionTitle text-2xl mt-1">
-        CONTROLE DA TURMA
-      </h2>
-      <p class="muted mt-1">
-        Selecione a quantidade de atletas para calcular o rodízio.
-      </p>
-    </div>
+<div class="sectionLabel">
+ 02 — CONTROLE DA TURMA
+</div>
 
-    <span class="badge">MÁX. 32</span>
+<div class="flex flex-wrap justify-between items-end gap-4 mt-2">
 
-  </div>
+ <div>
+   <h2 class="title text-4xl md:text-6xl">
+     RODÍZIO
+   </h2>
+   <p class="muted text-lg mt-2">
+     Configure a turma antes de iniciar a aula.
+   </p>
+ </div>
 
+ <div class="text-right">
+   <div class="muted text-sm">ATLETAS</div>
+   <div id="athletes"
+        class="yellow text-6xl font-black">
+     24
+   </div>
+ </div>
 
-  <div class="grid lg:grid-cols-2 gap-4 mt-5">
-
-    <div class="inner p-5">
-
-      <div class="muted text-xs font-bold">
-        NÚMERO DE ATLETAS
-      </div>
-
-      <div class="flex items-center gap-4 mt-4">
-
-        <button onclick="changeAthletes(-1)"
-                class="btn text-2xl">
-          −
-        </button>
-
-        <div>
-          <div id="athletes"
-               class="text-5xl font-black yellow">
-            24
-          </div>
-          <div class="muted text-xs">ATLETAS</div>
-        </div>
-
-        <button onclick="changeAthletes(1)"
-                class="btn text-2xl">
-          +
-        </button>
-
-      </div>
-
-      <div class="flex flex-wrap gap-2 mt-5">
-        <button onclick="setAthletes(12)" class="btn">12</button>
-        <button onclick="setAthletes(16)" class="btn">16</button>
-        <button onclick="setAthletes(20)" class="btn">20</button>
-        <button onclick="setAthletes(24)" class="btn">24</button>
-        <button onclick="setAthletes(28)" class="btn">28</button>
-        <button onclick="setAthletes(32)" class="btn">32</button>
-      </div>
-
-      <div id="capacityWarning"
-           class="inner p-4 mt-4">
-      </div>
-
-    </div>
+</div>
 
 
-    <div class="inner p-5">
+<div class="flex flex-wrap gap-2 mt-5">
 
-      <div class="flex justify-between items-center gap-3">
+ <button onclick="changeAthletes(-1)" class="btn">−</button>
+ <button onclick="setAthletes(12)" class="btn">12</button>
+ <button onclick="setAthletes(16)" class="btn">16</button>
+ <button onclick="setAthletes(20)" class="btn">20</button>
+ <button onclick="setAthletes(24)" class="btn">24</button>
+ <button onclick="setAthletes(28)" class="btn">28</button>
+ <button onclick="setAthletes(32)" class="btn">32</button>
+ <button onclick="changeAthletes(1)" class="btn">+</button>
 
-        <div>
-          <div class="font-black text-lg">
-            RODÍZIO INICIAL
-          </div>
-          <div class="muted text-xs mt-1">
-            Distribuição automática
-          </div>
-        </div>
-
-        <div id="rotationMode"
-             class="yellow text-xs font-black">
-        </div>
-
-      </div>
-
-      <div class="rotationRow mt-4 muted text-xs font-black">
-        <div>GRUPO</div>
-        <div>INÍCIO</div>
-        <div class="rotationNext">PRÓXIMA</div>
-      </div>
-
-      <div id="rotationList"></div>
-
-    </div>
-
-  </div>
+</div>
 
 
-  <div class="grid md:grid-cols-3 gap-3 mt-4">
+<div id="capacityMessage"
+     class="inner p-4 mt-4">
+</div>
 
-    <div class="inner p-4">
-      <div class="yellow font-black">ERGÔMETROS</div>
-      <div class="muted text-sm mt-2">
-        Máximo 4 atletas simultaneamente por tipo.
-      </div>
-    </div>
 
-    <div class="inner p-4">
-      <div class="yellow font-black">SLED</div>
-      <div class="muted text-sm mt-2">
-        4 pistas disponíveis na faixa central.
-      </div>
-    </div>
+<div id="rotationGrid"
+     class="rotationGrid mt-5">
+</div>
 
-    <div class="inner p-4">
-      <div class="yellow font-black">TRANSIÇÕES</div>
-      <div class="muted text-sm mt-2">
-        Fluxo exclusivamente pelas laterais.
-      </div>
-    </div>
-
-  </div>
-
+</div>
+</div>
 </section>
 
 
-<!-- ====================================================== -->
-<!-- 03 AQUECIMENTO -->
-<!-- ====================================================== -->
+<!-- =========================================================
+     TELA 3 — AQUECIMENTO
+========================================================= -->
 
-<section id="aquecimento" class="card p-5 md:p-6 mb-4">
+<section class="slide">
+<div class="slideInner">
 
-  <div class="flex flex-wrap justify-between gap-3">
+<div class="card p-5 md:p-8 flex-1">
 
-    <div>
-      <div class="sectionNumber">03</div>
+<div class="flex justify-between gap-4">
 
-      <h2 class="sectionTitle text-2xl mt-1">
-        AQUECIMENTO
-      </h2>
+ <div>
+   <div class="sectionLabel">03 — AQUECIMENTO</div>
+   <h2 class="title text-3xl md:text-5xl mt-1">
+     45s WORK / 15s REST
+   </h2>
+ </div>
 
-      <p class="muted mt-1">
-        INTERVALOS • 5 ROUNDS • 05:00
-      </p>
-    </div>
+ <div class="text-right">
+   <div class="muted">ROUND</div>
+   <div class="text-3xl font-black">
+     <span id="warmRound">1</span>/5
+   </div>
+ </div>
 
-    <div class="text-right">
-      <div class="green font-black">
-        00:45 TRABALHO
-      </div>
-      <div class="red font-black">
-        00:15 DESCANSO
-      </div>
-    </div>
-
-  </div>
+</div>
 
 
-  <!-- exercícios -->
+<div class="exerciseGrid mt-5">
 
-  <div class="grid md:grid-cols-5 gap-3 mt-5">
+ <div id="warmEx0" class="exercise">
+   <div class="yellow font-black">01</div>
+   <div class="exerciseName mt-2">Bootstrapper</div>
+ </div>
 
-    <div id="warmExercise0" class="exercise">
-      <div class="yellow text-xs font-black">ROUND 1</div>
-      <div class="exerciseName">Bootstrapper</div>
-      <div class="exerciseMeta">45 segundos</div>
-    </div>
+ <div id="warmEx1" class="exercise">
+   <div class="yellow font-black">02</div>
+   <div class="exerciseName mt-2">Cossack Squats</div>
+ </div>
 
-    <div id="warmExercise1" class="exercise">
-      <div class="yellow text-xs font-black">ROUND 2</div>
-      <div class="exerciseName">Cossack Squats</div>
-      <div class="exerciseMeta">45 segundos</div>
-    </div>
+ <div id="warmEx2" class="exercise">
+   <div class="yellow font-black">03</div>
+   <div class="exerciseName mt-2">90-90 Transitions</div>
+ </div>
 
-    <div id="warmExercise2" class="exercise">
-      <div class="yellow text-xs font-black">ROUND 3</div>
-      <div class="exerciseName">90-90 Transitions</div>
-      <div class="exerciseMeta">45 segundos</div>
-    </div>
+ <div id="warmEx3" class="exercise">
+   <div class="yellow font-black">04</div>
+   <div class="exerciseName mt-2">
+     Inside-outside Plank Jumps
+   </div>
+ </div>
 
-    <div id="warmExercise3" class="exercise">
-      <div class="yellow text-xs font-black">ROUND 4</div>
-      <div class="exerciseName">
-        Inside-outside Plank Jumps
-      </div>
-      <div class="exerciseMeta">45 segundos</div>
-    </div>
+ <div id="warmEx4" class="exercise">
+   <div class="yellow font-black">05</div>
+   <div class="exerciseName mt-2">
+     Rotational Push-ups
+   </div>
+ </div>
 
-    <div id="warmExercise4" class="exercise">
-      <div class="yellow text-xs font-black">ROUND 5</div>
-      <div class="exerciseName">
-        Rotational Push-ups
-      </div>
-      <div class="exerciseMeta">45 segundos</div>
-    </div>
-
-  </div>
+</div>
 
 
-  <!-- timer -->
+<div id="warmBox"
+     class="timerBox mt-5">
 
-  <div id="warmTimerBox"
-       class="timerBox work mt-5">
+ <div class="flex justify-between gap-4">
 
-    <div class="flex flex-wrap justify-between gap-3">
+   <div>
+     <div id="warmPhase" class="phase">
+       ● TRABALHO
+     </div>
 
-      <div>
+     <div id="warmExercise"
+          class="text-2xl md:text-4xl font-black mt-4">
+       Bootstrapper
+     </div>
+   </div>
 
-        <div id="warmPhase"
-             class="phase work">
-          ● TRABALHO
-        </div>
+   <div class="text-right">
+     <div class="muted text-sm">TOTAL RESTANTE</div>
+     <div id="warmTotal" class="font-black text-xl">
+       05:00
+     </div>
+   </div>
 
-        <div class="muted text-sm mt-3">
-          ROUND
-          <span id="warmRound"
-                class="text-white font-black">
-            1
-          </span>
-          / 5
-        </div>
+ </div>
 
-        <div id="warmCurrentExercise"
-             class="font-black text-xl mt-1">
-          Bootstrapper
-        </div>
+ <div id="warmTimer"
+      class="timer mt-5">
+   00:45
+ </div>
 
-      </div>
+ <div class="progress mt-5">
+   <div id="warmProgress"
+        class="progressFill">
+   </div>
+ </div>
 
-      <div class="text-right">
-        <div class="muted text-xs">
-          AQUECIMENTO RESTANTE
-        </div>
-        <div id="warmTotal"
-             class="font-black">
-          05:00
-        </div>
-      </div>
+</div>
 
-    </div>
-
-    <div id="warmTimer"
-         class="timerSmall work my-5">
-      00:45
-    </div>
-
-    <div class="progress mb-5">
-      <div id="warmProgress"
-           class="progressFill">
-      </div>
-    </div>
-
-    <div class="flex flex-wrap gap-2">
-
-      <button id="warmStart"
-              onclick="toggleWarmup()"
-              class="btn btnPrimary">
-        INICIAR
-      </button>
-
-      <button onclick="resetWarmup()"
-              class="btn">
-        RESET
-      </button>
-
-    </div>
-
-  </div>
-
+</div>
+</div>
 </section>
 
 
-<!-- ====================================================== -->
-<!-- 04 TREINO PRINCIPAL -->
-<!-- ====================================================== -->
+<!-- =========================================================
+     TELA 4 — PRINCIPAL
+========================================================= -->
 
-<section id="principal" class="card p-5 md:p-6 mb-4">
+<section class="slide">
+<div class="slideInner">
 
-  <div class="flex flex-wrap justify-between gap-3">
+<div class="card p-5 md:p-8 flex-1">
 
-    <div>
-      <div class="sectionNumber">04</div>
+<div class="flex justify-between items-end gap-4">
 
-      <h2 class="sectionTitle text-2xl mt-1">
-        ZONAS COMPROMETIDAS
-      </h2>
+ <div>
+   <div class="sectionLabel">
+     04 — TREINO PRINCIPAL
+   </div>
 
-      <p class="muted mt-1">
-        INTERVALOS • 12 ROUNDS × 03:00 • 36:00
-      </p>
-    </div>
+   <h2 class="title text-3xl md:text-5xl mt-1">
+     ZONAS COMPROMETIDAS
+   </h2>
+ </div>
 
-    <span class="badge badgeYellow">
-      RPE 8
-    </span>
+ <div class="text-right">
+   <div class="muted">ROUND</div>
+   <div class="text-4xl font-black">
+     <span id="mainRound">1</span>/12
+   </div>
+ </div>
 
-  </div>
+</div>
 
 
-  <!-- zonas -->
+<div class="grid lg:grid-cols-[.8fr_1.2fr] gap-4 mt-5">
 
-  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5">
+ <!-- TIMER -->
 
+ <div class="timerBox">
 
-    <div id="zone1" class="zoneCard">
+   <div class="phase">
+     ● TRABALHO
+   </div>
 
-      <div class="zoneNumber">ZONA 1</div>
+   <div id="mainTimer"
+        class="timer mt-7">
+     03:00
+   </div>
 
-      <div class="zoneExercise">
-        RowErg
-      </div>
+   <div class="mt-5">
+     <div class="muted text-sm">
+       TREINO RESTANTE
+     </div>
 
-      <div class="exerciseMeta">
-        03:00 @ RPE 8
-      </div>
+     <div id="mainTotal"
+          class="text-2xl font-black">
+       36:00
+     </div>
+   </div>
 
-      <div class="level green">
-        🟢 RPE 6–7 • sustentável
-      </div>
+   <div class="progress mt-5">
+     <div id="mainProgress"
+          class="progressFill">
+     </div>
+   </div>
 
-      <div class="level yellow">
-        🟡 RPE 8 • alvo
-      </div>
+ </div>
 
-      <div class="level red">
-        🔴 RPE 8–9 • alta produção
-      </div>
 
-      <div class="muted text-xs mt-3">
-        Máximo 4 atletas simultaneamente.
-      </div>
+ <!-- MAPA AO VIVO -->
 
-    </div>
+ <div>
 
+   <div class="yellow font-black text-lg mb-3">
+     POSIÇÃO DOS GRUPOS
+   </div>
 
-    <div id="zone2" class="zoneCard">
+   <div id="liveRotation"
+        class="liveGrid">
+   </div>
 
-      <div class="zoneNumber">ZONA 2</div>
+ </div>
 
-      <div class="zoneExercise">
-        Overhand Sled Push
-      </div>
+</div>
 
-      <div class="exerciseMeta">
-        20 m
-      </div>
 
-      <div class="secondaryExercise">
-        Wide Arm Pushup
-      </div>
+<div class="zoneGrid mt-4">
 
-      <div class="exerciseMeta">
-        8–16 reps
-      </div>
+ <div class="zone">
+   <div class="yellow font-black">Z1</div>
+   <div class="zoneName mt-2">RowErg</div>
+   <div class="muted mt-1">03:00 @ RPE 8</div>
+ </div>
 
-      <div class="level green">
-        🟢 20 m • carga técnica + 8 reps
-      </div>
+ <div class="zone">
+   <div class="yellow font-black">Z2</div>
+   <div class="zoneName mt-2">Overhand Sled Push</div>
+   <div class="zoneSub">+ Wide Arm Pushup</div>
+ </div>
 
-      <div class="level yellow">
-        🟡 20 m • carga Open + 12 reps
-      </div>
-
-      <div class="level red">
-        🔴 20 m • carga Pro + 16 reps
-      </div>
-
-      <div class="muted text-xs mt-3">
-        Pistas 1–4 • entrada e saída pelas laterais.
-      </div>
-
-    </div>
-
-
-    <div id="zone3" class="zoneCard">
-
-      <div class="zoneNumber">ZONA 3</div>
-
-      <div class="zoneExercise">
-        Run
-      </div>
-
-      <div class="exerciseMeta">
-        03:00 @ RPE 8
-      </div>
-
-      <div class="level green">
-        🟢 RPE 6–7
-      </div>
-
-      <div class="level yellow">
-        🟡 RPE 8
-      </div>
-
-      <div class="level red">
-        🔴 RPE 8–9
-      </div>
-
-      <div class="muted text-xs mt-3">
-        Reorganizar passada antes de aumentar o ritmo.
-      </div>
-
-    </div>
-
-
-    <div id="zone4" class="zoneCard">
-
-      <div class="zoneNumber">ZONA 4</div>
-
-      <div class="zoneExercise">
-        DB Thrusters
-      </div>
-
-      <div class="exerciseMeta">
-        25–30 reps
-      </div>
-
-      <div class="secondaryExercise">
-        Low Plank
-      </div>
-
-      <div class="exerciseMeta">
-        00:30
-      </div>
-
-      <div class="level green">
-        🟢 20 reps • DB 5 kg + 00:20
-      </div>
-
-      <div class="level yellow">
-        🟡 25 reps • DB 10 kg + 00:30
-      </div>
-
-      <div class="level red">
-        🔴 30 reps • DB 15 kg + 00:30
-      </div>
-
-    </div>
-
-
-    <div id="zone5" class="zoneCard">
-
-      <div class="zoneNumber">ZONA 5</div>
-
-      <div class="zoneExercise">
-        SkiErg
-      </div>
-
-      <div class="exerciseMeta">
-        03:00 @ RPE 8
-      </div>
-
-      <div class="level green">
-        🟢 RPE 6–7 • sustentável
-      </div>
-
-      <div class="level yellow">
-        🟡 RPE 8 • alvo
-      </div>
-
-      <div class="level red">
-        🔴 RPE 8–9 • alta produção
-      </div>
-
-      <div class="muted text-xs mt-3">
-        Máximo 4 atletas simultaneamente.
-      </div>
-
-    </div>
-
-
-    <div id="zone6" class="zoneCard">
-
-      <div class="zoneNumber">ZONA 6</div>
-
-      <div class="zoneExercise">
-        Dual DB OH Walking Lunges
-      </div>
-
-      <div class="exerciseMeta">
-        30–40 m
-      </div>
-
-      <div class="secondaryExercise">
-        Burpees Chest to Floor
-      </div>
-
-      <div class="exerciseMeta">
-        12–18 reps
-      </div>
-
-      <div class="level green">
-        🟢 30 m • DB 5 kg + 12 reps
-      </div>
-
-      <div class="level yellow">
-        🟡 30 m • DB 10 kg + 15 reps
-      </div>
-
-      <div class="level red">
-        🔴 40 m • DB 15 kg + 18 reps
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- main timer -->
-
-  <div id="mainTimerBox"
-       class="timerBox work mt-5">
-
-    <div class="flex flex-wrap justify-between gap-3">
-
-      <div>
-
-        <div class="phase work">
-          ● TRABALHO
-        </div>
-
-        <div class="muted mt-3">
-          ROUND
-          <span id="mainRound"
-                class="text-white font-black">
-            1
-          </span>
-          / 12
-        </div>
-
-        <div class="font-black text-xl mt-1">
-          ZONA
-          <span id="activeZone"
-                class="yellow">
-            1
-          </span>
-        </div>
-
-      </div>
-
-      <div class="text-right">
-
-        <div class="muted text-xs">
-          TREINO RESTANTE
-        </div>
-
-        <div id="mainTotal"
-             class="font-black">
-          36:00
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <div id="mainTimer"
-         class="timer work my-5">
-      03:00
-    </div>
-
-
-    <div class="progress mb-5">
-      <div id="mainProgress"
-           class="progressFill">
-      </div>
-    </div>
-
-
-    <div class="flex flex-wrap gap-2">
-
-      <button id="mainStart"
-              onclick="toggleMain()"
-              class="btn btnPrimary">
-        INICIAR
-      </button>
-
-      <button onclick="resetMain()"
-              class="btn">
-        RESET
-      </button>
-
-      <button onclick="nextMainRound()"
-              class="btn">
-        PRÓXIMO ROUND
-      </button>
-
-    </div>
-
-  </div>
-
+ <div class="zone">
+   <div class="yellow font-black">Z3</div>
+   <div class="zoneName mt-2">Run</div>
+   <div class="muted mt-1">03:00 @ RPE 8</div>
+ </div>
+
+ <div class="zone">
+   <div class="yellow font-black">Z4</div>
+   <div class="zoneName mt-2">DB Thrusters</div>
+   <div class="zoneSub">+ Low Plank</div>
+ </div>
+
+ <div class="zone">
+   <div class="yellow font-black">Z5</div>
+   <div class="zoneName mt-2">SkiErg</div>
+   <div class="muted mt-1">03:00 @ RPE 8</div>
+ </div>
+
+ <div class="zone">
+   <div class="yellow font-black">Z6</div>
+   <div class="zoneName mt-2">
+     Dual DB OH Walking Lunges
+   </div>
+   <div class="zoneSub">
+     + Burpees Chest to Floor
+   </div>
+ </div>
+
+</div>
+
+</div>
+</div>
 </section>
 
 
-<!-- ====================================================== -->
-<!-- 05 FINISHER -->
-<!-- ====================================================== -->
+<!-- =========================================================
+     TELA 5 — FINISHER
+========================================================= -->
 
-<section id="finisher" class="card p-5 md:p-6 mb-4">
+<section class="slide">
+<div class="slideInner">
 
-  <div class="sectionNumber">05</div>
+<div class="card p-6 md:p-10 flex-1">
 
-  <h2 class="sectionTitle text-2xl mt-1">
-    TOTM FINISHER
-  </h2>
+<div class="sectionLabel">
+ 05 — TOTM FINISHER
+</div>
 
-  <p class="muted mt-1">
-    05:00
-  </p>
+<div class="grid lg:grid-cols-2 gap-5 mt-5">
 
+ <div class="inner p-6 flex flex-col justify-center">
 
-  <div class="grid lg:grid-cols-2 gap-4 mt-5">
+   <div class="yellow font-black">
+     A CADA MINUTO
+   </div>
 
-    <div class="inner p-5">
+   <div class="title text-4xl md:text-6xl mt-4">
+     11x Military Press Pushup
+   </div>
 
-      <div class="yellow text-xs font-black">
-        FINISHER
-      </div>
+   <div class="muted text-xl mt-6">
+     TEMPO RESTANTE
+   </div>
 
-      <div class="exerciseName text-2xl">
-        Military Press Pushup
-      </div>
+   <div class="title text-4xl md:text-6xl mt-2">
+     Air Squats
+   </div>
 
-      <div class="exerciseMeta">
-        11 reps
-      </div>
-
-      <div class="mt-5 muted text-sm">
-        TEMPO RESTANTE
-      </div>
-
-      <div class="exerciseName">
-        Air Squats
-      </div>
-
-    </div>
+ </div>
 
 
-    <div id="finishTimerBox"
-         class="timerBox work">
+ <div class="timerBox flex flex-col justify-center">
 
-      <div class="phase work">
-        ● TRABALHO
-      </div>
+   <div class="phase">
+     ● TRABALHO
+   </div>
 
-      <div class="muted text-xs mt-4">
-        TEMPO RESTANTE
-      </div>
+   <div id="finishTimer"
+        class="timer mt-7">
+     05:00
+   </div>
 
-      <div id="finishTimer"
-           class="timerSmall work my-4">
-        05:00
-      </div>
+   <div class="progress mt-6">
+     <div id="finishProgress"
+          class="progressFill">
+     </div>
+   </div>
 
-      <div class="progress mb-5">
-        <div id="finishProgress"
-             class="progressFill">
-        </div>
-      </div>
+ </div>
 
-      <div class="flex flex-wrap gap-2">
+</div>
 
-        <button id="finishStart"
-                onclick="toggleFinish()"
-                class="btn btnPrimary">
-          INICIAR
-        </button>
-
-        <button onclick="resetFinish()"
-                class="btn">
-          RESET
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
+</div>
+</div>
 </section>
 
 
-<!-- ====================================================== -->
-<!-- 06 VOLTA À CALMA -->
-<!-- ====================================================== -->
+<!-- =========================================================
+     TELA 6 — COOLDOWN
+========================================================= -->
 
-<section id="cooldown" class="card p-5 md:p-6 mb-8">
+<section class="slide">
+<div class="slideInner">
 
-  <div class="sectionNumber">06</div>
+<div class="card p-6 md:p-10 flex-1">
 
-  <h2 class="sectionTitle text-2xl mt-1">
-    VOLTA À CALMA / RECUPERAÇÃO
-  </h2>
+<div class="sectionLabel">
+ 06 — VOLTA À CALMA / RECUPERAÇÃO
+</div>
 
-  <p class="muted mt-1">
-    05:00
-  </p>
+<div class="grid lg:grid-cols-2 gap-5 mt-5 flex-1">
 
+ <div class="inner p-7 flex flex-col justify-center">
 
-  <div class="grid lg:grid-cols-2 gap-4 mt-5">
+   <div class="yellow font-black">
+     RECUPERAÇÃO
+   </div>
 
-    <div id="coolExercise"
-         class="exercise">
+   <div class="title text-5xl md:text-7xl mt-4">
+     Child's Pose
+   </div>
 
-      <div class="yellow text-xs font-black">
-        RECUPERAÇÃO
-      </div>
+   <div class="muted text-xl mt-5">
+     Respiração controlada • recuperação
+   </div>
 
-      <div class="exerciseName text-2xl">
-        Child's Pose
-      </div>
-
-      <div class="exerciseMeta">
-        Respiração controlada e recuperação.
-      </div>
-
-    </div>
+ </div>
 
 
-    <div id="coolTimerBox"
-         class="timerBox work">
+ <div class="timerBox flex flex-col justify-center">
 
-      <div class="phase work">
-        ● TRABALHO
-      </div>
+   <div class="phase">
+     ● RECUPERAÇÃO
+   </div>
 
-      <div class="muted text-xs mt-4">
-        TEMPO RESTANTE
-      </div>
+   <div id="coolTimer"
+        class="timer mt-7">
+     05:00
+   </div>
 
-      <div id="coolTimer"
-           class="timerSmall work my-4">
-        05:00
-      </div>
+   <div class="progress mt-6">
+     <div id="coolProgress"
+          class="progressFill">
+     </div>
+   </div>
 
-      <div class="progress mb-5">
-        <div id="coolProgress"
-             class="progressFill">
-        </div>
-      </div>
+ </div>
 
-      <div class="flex flex-wrap gap-2">
+</div>
 
-        <button id="coolStart"
-                onclick="toggleCool()"
-                class="btn btnPrimary">
-          INICIAR
-        </button>
-
-        <button onclick="resetCool()"
-                class="btn">
-          RESET
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
+</div>
+</div>
 </section>
 
+</div>
 
-<footer class="text-center muted text-xs pb-10">
-  HYROX TRAINING CLUB • CIA ATHLETICA MANAUS • STUDIO 5
-</footer>
+
+<!-- =========================================================
+     CONTROLES GLOBAIS
+========================================================= -->
+
+<div class="controls">
+
+ <button onclick="prevSlide()" class="btn">
+   ◀
+ </button>
+
+ <span id="pageCounter" class="pageCounter">
+   1 / 6
+ </span>
+
+ <button onclick="nextSlide()" class="btn">
+   ▶
+ </button>
+
+ <button id="modeButton"
+         onclick="toggleMode()"
+         class="btn modeBtn active">
+   AUTO
+ </button>
+
+ <button id="masterButton"
+         onclick="masterAction()"
+         class="btn btnGreen">
+   ▶ INICIAR AULA
+ </button>
+
+ <button onclick="resetClass()"
+         class="btn hideMobile">
+   RESET
+ </button>
+
+</div>
 
 </div>
 
 
 <script>
 
-/* ======================================================
-UTILIDADE
-====================================================== */
+/* =========================================================
+   DADOS ÚNICOS DO TREINO
+========================================================= */
 
-function formatTime(sec){
+const workout = {
 
-  sec=Math.max(0,sec);
+ warmup:[
+   "Bootstrapper",
+   "Cossack Squats",
+   "90-90 Transitions",
+   "Inside-outside Plank Jumps",
+   "Rotational Push-ups"
+ ],
 
-  const m=Math.floor(sec/60);
-  const s=sec%60;
+ stations:[
+   {
+     id:"Z1",
+     name:"RowErg"
+   },
+   {
+     id:"Z2",
+     name:"Overhand Sled Push + Wide Arm Pushup"
+   },
+   {
+     id:"Z3",
+     name:"Run"
+   },
+   {
+     id:"Z4",
+     name:"DB Thrusters + Low Plank"
+   },
+   {
+     id:"Z5",
+     name:"SkiErg"
+   },
+   {
+     id:"Z6",
+     name:"Dual DB OH Walking Lunges + Burpees Chest to Floor"
+   }
+ ]
 
-  return String(m).padStart(2,"0")
-       +":"
-       +String(s).padStart(2,"0");
+};
+
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function fmt(sec){
+
+ sec=Math.max(0,sec);
+
+ const m=Math.floor(sec/60);
+ const s=sec%60;
+
+ return String(m).padStart(2,"0")
+      +":"
+      +String(s).padStart(2,"0");
 }
 
 
-/* ======================================================
-AQUECIMENTO
-45 WORK / 15 REST × 5
-====================================================== */
+/* =========================================================
+   SLIDES
+========================================================= */
 
-const warmNames=[
-  "Bootstrapper",
-  "Cossack Squats",
-  "90-90 Transitions",
-  "Inside-outside Plank Jumps",
-  "Rotational Push-ups"
-];
+let slide=0;
+let autoMode=true;
 
-let warmRound=1;
-let warmSeconds=45;
-let warmIsRest=false;
-let warmRunning=false;
-let warmInterval=null;
+function showSlide(index){
+
+ slide=Math.max(0,Math.min(5,index));
+
+ document.getElementById("slider")
+   .style.transform=
+   `translateX(-${slide*100}vw)`;
+
+ document.getElementById("pageCounter")
+   .innerText=(slide+1)+" / 6";
+}
+
+function nextSlide(){
+ showSlide(slide+1);
+}
+
+function prevSlide(){
+ showSlide(slide-1);
+}
+
+function toggleMode(){
+
+ autoMode=!autoMode;
+
+ const b=document.getElementById("modeButton");
+
+ if(autoMode){
+   b.innerText="AUTO";
+   b.classList.add("active");
+ }else{
+   b.innerText="MANUAL";
+   b.classList.remove("active");
+ }
+}
+
+
+/* =========================================================
+   TURMA
+========================================================= */
+
+let athletes=24;
+
+function changeAthletes(v){
+ athletes=Math.max(1,Math.min(32,athletes+v));
+ renderGroups();
+}
+
+function setAthletes(v){
+ athletes=v;
+ renderGroups();
+}
+
+function groupSizes(){
+
+ const result=[];
+
+ const base=Math.floor(athletes/6);
+ const remainder=athletes%6;
+
+ for(let i=0;i<6;i++){
+   result.push(base+(i<remainder?1:0));
+ }
+
+ return result;
+}
+
+
+function renderGroups(){
+
+ document.getElementById("athletes")
+   .innerText=athletes;
+
+ const sizes=groupSizes();
+
+ let html="";
+
+ for(let i=0;i<6;i++){
+
+   html+=`
+   <div class="rotationCard">
+
+     <div class="groupLetter">
+       ${String.fromCharCode(65+i)}
+       <span class="text-white">
+         (${sizes[i]})
+       </span>
+     </div>
+
+     <div class="muted text-xs mt-2">
+       INÍCIO
+     </div>
+
+     <div class="stationName">
+       ${workout.stations[i].id} •
+       ${workout.stations[i].name}
+     </div>
+
+   </div>
+   `;
+ }
+
+ document.getElementById("rotationGrid")
+   .innerHTML=html;
+
+
+ const msg=document.getElementById("capacityMessage");
+
+ if(athletes<=24){
+
+   msg.innerHTML=`
+     <div class="green font-black">
+       ✓ PROTOCOLO ORIGINAL COMPATÍVEL
+     </div>
+
+     <div class="muted mt-2">
+       ${athletes} atletas • máximo de 4 por grupo.
+     </div>
+   `;
+
+ }else{
+
+   msg.innerHTML=`
+     <div class="yellow font-black">
+       ⚠ MODO 25–32 REQUER ADAPTAÇÃO
+     </div>
+
+     <div class="muted mt-2">
+       A ficha original foi desenhada para até 24 atletas.
+       O protocolo de 36 minutos não deve ser tratado como
+       idêntico para ${athletes} atletas sem adaptação de ondas.
+     </div>
+   `;
+ }
+
+ renderLiveRotation();
+}
+
+
+/* =========================================================
+   WARMUP
+========================================================= */
+
+let warmRound=0;
+let warmSec=45;
+let warmRest=false;
 let warmElapsed=0;
-
-
-function updateWarmVisual(){
-
-  const box=document.getElementById("warmTimerBox");
-  const timer=document.getElementById("warmTimer");
-  const phase=document.getElementById("warmPhase");
-  const progress=document.getElementById("warmProgress");
-
-  box.classList.remove("work","rest");
-  timer.classList.remove("work","rest");
-  phase.classList.remove("work","rest");
-  progress.classList.remove("rest");
-
-  if(warmIsRest){
-
-    box.classList.add("rest");
-    timer.classList.add("rest");
-    phase.classList.add("rest");
-    progress.classList.add("rest");
-
-    phase.innerHTML="● DESCANSO / TRANSIÇÃO";
-
-  }else{
-
-    box.classList.add("work");
-    timer.classList.add("work");
-    phase.classList.add("work");
-
-    phase.innerHTML="● TRABALHO";
-  }
-}
-
-
-function highlightWarm(){
-
-  for(let i=0;i<5;i++){
-
-    const el=document.getElementById("warmExercise"+i);
-
-    el.classList.remove("active","restActive");
-  }
-
-  const current=
-    document.getElementById(
-      "warmExercise"+(warmRound-1)
-    );
-
-  if(!current)return;
-
-  if(warmIsRest){
-    current.classList.add("restActive");
-  }else{
-    current.classList.add("active");
-  }
-}
-
 
 function renderWarm(){
 
-  document.getElementById("warmRound")
-    .innerText=warmRound;
+ document.getElementById("warmRound")
+   .innerText=warmRound+1;
 
-  document.getElementById("warmTimer")
-    .innerText=formatTime(warmSeconds);
+ document.getElementById("warmTimer")
+   .innerText=fmt(warmSec);
 
-  document.getElementById("warmTotal")
-    .innerText=formatTime(300-warmElapsed);
+ document.getElementById("warmTotal")
+   .innerText=fmt(300-warmElapsed);
 
-  document.getElementById("warmCurrentExercise")
-    .innerText=warmIsRest
-      ? "Próximo: "+(
-          warmRound<5
-          ? warmNames[warmRound]
-          : "Finalização"
-        )
-      : warmNames[warmRound-1];
+ const name=
+   warmRest
+   ? (
+       warmRound<4
+       ? "PRÓXIMO: "+workout.warmup[warmRound+1]
+       : "PRÓXIMO: TREINO PRINCIPAL"
+     )
+   : workout.warmup[warmRound];
 
-  document.getElementById("warmProgress")
-    .style.width=
-      Math.min(100,(warmElapsed/300)*100)+"%";
+ document.getElementById("warmExercise")
+   .innerText=name;
 
-  updateWarmVisual();
-  highlightWarm();
+ for(let i=0;i<5;i++){
+
+   const el=document.getElementById("warmEx"+i);
+
+   el.classList.remove("active","restActive");
+
+   if(i===warmRound){
+
+     el.classList.add(
+       warmRest ? "restActive" : "active"
+     );
+   }
+ }
+
+ const box=document.getElementById("warmBox");
+ const timer=document.getElementById("warmTimer");
+ const phase=document.getElementById("warmPhase");
+ const bar=document.getElementById("warmProgress");
+
+ box.classList.toggle("rest",warmRest);
+ timer.classList.toggle("rest",warmRest);
+ phase.classList.toggle("rest",warmRest);
+ bar.classList.toggle("rest",warmRest);
+
+ phase.innerText=
+   warmRest
+   ? "● DESCANSO / TRANSIÇÃO"
+   : "● TRABALHO";
+
+ bar.style.width=
+   ((warmElapsed/300)*100)+"%";
 }
 
 
-function toggleWarmup(){
+function tickWarm(){
 
-  if(warmRunning){
+ warmSec--;
+ warmElapsed++;
 
-    clearInterval(warmInterval);
+ if(warmSec<=0){
 
-    warmRunning=false;
+   if(!warmRest){
 
-    document.getElementById("warmStart")
-      .innerText="CONTINUAR";
+     warmRest=true;
+     warmSec=15;
 
-    return;
-  }
+   }else{
 
-  if(warmElapsed>=300)return;
+     warmRest=false;
 
-  warmRunning=true;
+     if(warmRound<4){
 
-  document.getElementById("warmStart")
-    .innerText="PAUSAR";
+       warmRound++;
+       warmSec=45;
 
-  renderWarm();
+     }else{
 
-  warmInterval=setInterval(()=>{
+       warmElapsed=300;
+       warmSec=0;
 
-    warmSeconds--;
-    warmElapsed++;
+       renderWarm();
 
-    if(warmSeconds<=0){
+       startMainPhase();
 
-      if(!warmIsRest){
+       return;
+     }
+   }
+ }
 
-        warmIsRest=true;
-        warmSeconds=15;
-
-      }else{
-
-        warmIsRest=false;
-
-        if(warmRound<5){
-
-          warmRound++;
-          warmSeconds=45;
-
-        }else{
-
-          clearInterval(warmInterval);
-
-          warmRunning=false;
-          warmElapsed=300;
-          warmSeconds=0;
-
-          document.getElementById("warmStart")
-            .innerText="FINALIZADO";
-        }
-      }
-    }
-
-    renderWarm();
-
-  },1000);
+ renderWarm();
 }
 
 
-function resetWarmup(){
+/* =========================================================
+   MAIN
+========================================================= */
 
-  clearInterval(warmInterval);
-
-  warmRound=1;
-  warmSeconds=45;
-  warmIsRest=false;
-  warmRunning=false;
-  warmElapsed=0;
-
-  document.getElementById("warmStart")
-    .innerText="INICIAR";
-
-  renderWarm();
-}
-
-
-/* ======================================================
-TREINO PRINCIPAL
-12 × 3 MIN
-====================================================== */
-
-let mainRound=1;
-let mainSeconds=180;
-let mainRunning=false;
-let mainInterval=null;
-
-
-function currentZone(){
-  return ((mainRound-1)%6)+1;
-}
-
-
-function highlightZone(){
-
-  for(let i=1;i<=6;i++){
-
-    document
-      .getElementById("zone"+i)
-      .classList.remove("active");
-  }
-
-  document
-    .getElementById("zone"+currentZone())
-    .classList.add("active");
-}
-
+let mainRound=0;
+let mainSec=180;
 
 function renderMain(){
 
-  document.getElementById("mainRound")
-    .innerText=mainRound;
+ document.getElementById("mainRound")
+   .innerText=mainRound+1;
 
-  document.getElementById("activeZone")
-    .innerText=currentZone();
+ document.getElementById("mainTimer")
+   .innerText=fmt(mainSec);
 
-  document.getElementById("mainTimer")
-    .innerText=formatTime(mainSeconds);
+ const elapsed=
+   mainRound*180+(180-mainSec);
 
-  const completed=
-    ((mainRound-1)*180)
-    +(180-mainSeconds);
+ document.getElementById("mainTotal")
+   .innerText=fmt(2160-elapsed);
 
-  document.getElementById("mainTotal")
-    .innerText=
-      formatTime(2160-completed);
+ document.getElementById("mainProgress")
+   .style.width=
+   ((elapsed/2160)*100)+"%";
 
-  document.getElementById("mainProgress")
-    .style.width=
-      Math.min(100,(completed/2160)*100)+"%";
-
-  highlightZone();
+ renderLiveRotation();
 }
 
 
-function toggleMain(){
+function renderLiveRotation(){
 
-  if(mainRunning){
+ const sizes=groupSizes();
 
-    clearInterval(mainInterval);
+ let html="";
 
-    mainRunning=false;
+ for(let g=0;g<6;g++){
 
-    document.getElementById("mainStart")
-      .innerText="CONTINUAR";
+   const stationIndex=
+     (g+mainRound)%6;
 
-    return;
-  }
+   const station=
+     workout.stations[stationIndex];
 
-  mainRunning=true;
+   html+=`
+   <div class="liveGroup">
 
-  document.getElementById("mainStart")
-    .innerText="PAUSAR";
+     <div class="liveLetter">
+       GRUPO ${String.fromCharCode(65+g)}
+       • ${sizes[g]}
+     </div>
 
-  mainInterval=setInterval(()=>{
+     <div class="liveStation">
+       ${station.id} • ${station.name}
+     </div>
 
-    mainSeconds--;
+   </div>
+   `;
+ }
 
-    if(mainSeconds<=0){
-
-      if(mainRound<12){
-
-        mainRound++;
-        mainSeconds=180;
-
-      }else{
-
-        clearInterval(mainInterval);
-
-        mainRunning=false;
-        mainSeconds=0;
-
-        document.getElementById("mainStart")
-          .innerText="FINALIZADO";
-      }
-    }
-
-    renderMain();
-
-  },1000);
+ document.getElementById("liveRotation")
+   .innerHTML=html;
 }
 
 
-function nextMainRound(){
+function tickMain(){
 
-  clearInterval(mainInterval);
+ mainSec--;
 
-  mainRunning=false;
+ if(mainSec<=0){
 
-  if(mainRound<12){
-    mainRound++;
-  }
+   if(mainRound<11){
 
-  mainSeconds=180;
+     mainRound++;
+     mainSec=180;
 
-  document.getElementById("mainStart")
-    .innerText="INICIAR";
+   }else{
 
-  renderMain();
+     mainSec=0;
+
+     renderMain();
+
+     startFinishPhase();
+
+     return;
+   }
+ }
+
+ renderMain();
 }
 
 
-function resetMain(){
+/* =========================================================
+   FINISHER
+========================================================= */
 
-  clearInterval(mainInterval);
-
-  mainRound=1;
-  mainSeconds=180;
-  mainRunning=false;
-
-  document.getElementById("mainStart")
-    .innerText="INICIAR";
-
-  renderMain();
-}
-
-
-/* ======================================================
-FINISHER
-====================================================== */
-
-let finishSeconds=300;
-let finishRunning=false;
-let finishInterval=null;
-
+let finishSec=300;
 
 function renderFinish(){
 
-  document.getElementById("finishTimer")
-    .innerText=formatTime(finishSeconds);
+ document.getElementById("finishTimer")
+   .innerText=fmt(finishSec);
 
-  document.getElementById("finishProgress")
-    .style.width=
-      ((300-finishSeconds)/300)*100+"%";
+ document.getElementById("finishProgress")
+   .style.width=
+   (((300-finishSec)/300)*100)+"%";
+}
+
+function tickFinish(){
+
+ finishSec--;
+
+ if(finishSec<=0){
+
+   finishSec=0;
+   renderFinish();
+
+   startCoolPhase();
+
+   return;
+ }
+
+ renderFinish();
 }
 
 
-function toggleFinish(){
+/* =========================================================
+   COOLDOWN
+========================================================= */
 
-  if(finishRunning){
-
-    clearInterval(finishInterval);
-
-    finishRunning=false;
-
-    document.getElementById("finishStart")
-      .innerText="CONTINUAR";
-
-    return;
-  }
-
-  if(finishSeconds<=0)return;
-
-  finishRunning=true;
-
-  document.getElementById("finishStart")
-    .innerText="PAUSAR";
-
-  finishInterval=setInterval(()=>{
-
-    finishSeconds--;
-
-    if(finishSeconds<=0){
-
-      finishSeconds=0;
-
-      clearInterval(finishInterval);
-
-      finishRunning=false;
-
-      document.getElementById("finishStart")
-        .innerText="FINALIZADO";
-    }
-
-    renderFinish();
-
-  },1000);
-}
-
-
-function resetFinish(){
-
-  clearInterval(finishInterval);
-
-  finishSeconds=300;
-  finishRunning=false;
-
-  document.getElementById("finishStart")
-    .innerText="INICIAR";
-
-  renderFinish();
-}
-
-
-/* ======================================================
-VOLTA À CALMA
-====================================================== */
-
-let coolSeconds=300;
-let coolRunning=false;
-let coolInterval=null;
-
+let coolSec=300;
 
 function renderCool(){
 
-  document.getElementById("coolTimer")
-    .innerText=formatTime(coolSeconds);
+ document.getElementById("coolTimer")
+   .innerText=fmt(coolSec);
 
-  document.getElementById("coolProgress")
-    .style.width=
-      ((300-coolSeconds)/300)*100+"%";
+ document.getElementById("coolProgress")
+   .style.width=
+   (((300-coolSec)/300)*100)+"%";
+}
 
-  const ex=document.getElementById("coolExercise");
+function tickCool(){
 
-  if(coolRunning){
-    ex.classList.add("active");
-  }else{
-    ex.classList.remove("active");
-  }
+ coolSec--;
+
+ if(coolSec<=0){
+
+   coolSec=0;
+   renderCool();
+
+   finishClass();
+
+   return;
+ }
+
+ renderCool();
 }
 
 
-function toggleCool(){
+/* =========================================================
+   MASTER ENGINE
+========================================================= */
 
-  if(coolRunning){
+let classRunning=false;
+let classPaused=false;
+let phase="idle";
+let engine=null;
 
-    clearInterval(coolInterval);
 
-    coolRunning=false;
-
-    document.getElementById("coolStart")
-      .innerText="CONTINUAR";
-
-    renderCool();
-
-    return;
-  }
-
-  if(coolSeconds<=0)return;
-
-  coolRunning=true;
-
-  document.getElementById("coolStart")
-    .innerText="PAUSAR";
-
-  renderCool();
-
-  coolInterval=setInterval(()=>{
-
-    coolSeconds--;
-
-    if(coolSeconds<=0){
-
-      coolSeconds=0;
-
-      clearInterval(coolInterval);
-
-      coolRunning=false;
-
-      document.getElementById("coolStart")
-        .innerText="FINALIZADO";
-    }
-
-    renderCool();
-
-  },1000);
+function clearEngine(){
+ if(engine){
+   clearInterval(engine);
+   engine=null;
+ }
 }
 
 
-function resetCool(){
+function startEngine(fn){
 
-  clearInterval(coolInterval);
+ clearEngine();
 
-  coolSeconds=300;
-  coolRunning=false;
+ engine=setInterval(()=>{
 
-  document.getElementById("coolStart")
-    .innerText="INICIAR";
+   if(!classPaused){
+     fn();
+   }
 
-  renderCool();
+ },1000);
 }
 
 
-/* ======================================================
-RODÍZIO DINÂMICO
-====================================================== */
+function masterAction(){
 
-let athleteCount=24;
+ if(!classRunning){
 
-const stations=[
-  "Z1 • RowErg",
-  "Z2 • Sled + Pushup",
-  "Z3 • Run",
-  "Z4 • DB Thrusters",
-  "Z5 • SkiErg",
-  "Z6 • DB Lunges + Burpees"
-];
+   startClass();
+   return;
+ }
 
+ classPaused=!classPaused;
 
-function changeAthletes(value){
+ const b=document.getElementById("masterButton");
 
-  athleteCount+=value;
+ if(classPaused){
 
-  if(athleteCount<1)athleteCount=1;
-  if(athleteCount>32)athleteCount=32;
+   b.innerText="▶ CONTINUAR";
+   b.classList.remove("btnGreen");
 
-  updateAthletes();
+ }else{
+
+   b.innerText="⏸ PAUSAR";
+   b.classList.add("btnGreen");
+ }
 }
 
 
-function setAthletes(value){
+function startClass(){
 
-  athleteCount=value;
+ classRunning=true;
+ classPaused=false;
 
-  updateAthletes();
+ document.getElementById("masterButton")
+   .innerText="⏸ PAUSAR";
+
+ /*
+   A tela 1 é orientação e a 2 é configuração.
+   Ao iniciar a aula, vamos direto ao aquecimento.
+ */
+
+ startWarmPhase();
 }
 
 
-function updateAthletes(){
+function startWarmPhase(){
 
-  document.getElementById("athletes")
-    .innerText=athleteCount;
+ phase="warm";
 
-  const groups=6;
+ if(autoMode){
+   showSlide(2);
+ }
 
-  const base=Math.floor(athleteCount/groups);
-  const remainder=athleteCount%groups;
-
-  let html="";
-  let requiresWave=false;
-
-
-  for(let i=0;i<groups;i++){
-
-    const amount=
-      base+(i<remainder?1:0);
-
-    if(amount>4){
-      requiresWave=true;
-    }
-
-    const next=
-      stations[(i+1)%stations.length];
-
-    html+=`
-      <div class="rotationRow">
-
-        <div class="yellow font-black">
-          ${String.fromCharCode(65+i)}
-          <span class="text-white">
-            (${amount})
-          </span>
-        </div>
-
-        <div class="font-bold">
-          ${stations[i]}
-        </div>
-
-        <div class="rotationNext muted">
-          ${next}
-        </div>
-
-      </div>
-    `;
-  }
-
-
-  document.getElementById("rotationList")
-    .innerHTML=html;
-
-
-  const warning=
-    document.getElementById("capacityWarning");
-
-  const mode=
-    document.getElementById("rotationMode");
-
-
-  if(requiresWave){
-
-    mode.innerText="MODO ONDAS";
-
-    warning.innerHTML=`
-      <div class="yellow font-black">
-        ⚠️ SUBGRUPOS NECESSÁRIOS
-      </div>
-
-      <div class="muted text-sm mt-2">
-        Com ${athleteCount} atletas, alguns grupos ultrapassam
-        4 pessoas. Nas estações críticas, dividir o grupo em
-        ondas para manter no máximo 4 atletas simultaneamente.
-      </div>
-    `;
-
-  }else{
-
-    mode.innerText="FLUXO DIRETO";
-
-    warning.innerHTML=`
-      <div class="green font-black">
-        ✓ FLUXO COMPATÍVEL
-      </div>
-
-      <div class="muted text-sm mt-2">
-        ${athleteCount} atletas distribuídos sem ultrapassar
-        4 atletas por grupo.
-      </div>
-    `;
-  }
+ startEngine(tickWarm);
 }
 
 
-/* ======================================================
-INICIALIZAÇÃO
-====================================================== */
+function startMainPhase(){
 
-resetWarmup();
-resetMain();
-resetFinish();
-resetCool();
-updateAthletes();
+ clearEngine();
+
+ phase="main";
+
+ if(autoMode){
+   showSlide(3);
+ }
+
+ mainRound=0;
+ mainSec=180;
+
+ renderMain();
+
+ startEngine(tickMain);
+}
+
+
+function startFinishPhase(){
+
+ clearEngine();
+
+ phase="finish";
+
+ if(autoMode){
+   showSlide(4);
+ }
+
+ finishSec=300;
+
+ renderFinish();
+
+ startEngine(tickFinish);
+}
+
+
+function startCoolPhase(){
+
+ clearEngine();
+
+ phase="cool";
+
+ if(autoMode){
+   showSlide(5);
+ }
+
+ coolSec=300;
+
+ renderCool();
+
+ startEngine(tickCool);
+}
+
+
+function finishClass(){
+
+ clearEngine();
+
+ classRunning=false;
+ classPaused=false;
+ phase="finished";
+
+ document.getElementById("masterButton")
+   .innerText="✓ AULA FINALIZADA";
+}
+
+
+function resetClass(){
+
+ clearEngine();
+
+ classRunning=false;
+ classPaused=false;
+ phase="idle";
+
+ warmRound=0;
+ warmSec=45;
+ warmRest=false;
+ warmElapsed=0;
+
+ mainRound=0;
+ mainSec=180;
+
+ finishSec=300;
+ coolSec=300;
+
+ document.getElementById("masterButton")
+   .innerText="▶ INICIAR AULA";
+
+ document.getElementById("masterButton")
+   .classList.add("btnGreen");
+
+ renderWarm();
+ renderMain();
+ renderFinish();
+ renderCool();
+
+ showSlide(0);
+}
+
+
+/* =========================================================
+   INIT
+========================================================= */
+
+renderGroups();
+renderWarm();
+renderMain();
+renderFinish();
+renderCool();
+showSlide(0);
 
 </script>
 
