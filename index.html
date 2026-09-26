@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0d0d0d">
 <title>HYROX Studio 5 | HUB Sábado</title>
-
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
@@ -39,13 +38,8 @@ button{font:inherit}
   height:100dvh;
   display:flex;
   flex-direction:column;
-  background:
-    radial-gradient(circle at 50% -20%,#26323f 0,#111820 35%,#0d0d0d 72%);
+  background:radial-gradient(circle at 50% -20%,#26323f 0,#111820 35%,#0d0d0d 72%);
 }
-
-/* =========================================================
-   CABEÇALHO
-========================================================= */
 
 header{
   height:94px;
@@ -132,10 +126,6 @@ header{
   color:var(--yellow);
 }
 
-/* =========================================================
-   ÁREA PRINCIPAL
-========================================================= */
-
 #content{
   height:calc(100dvh - 94px - var(--ctrl));
   position:relative;
@@ -147,13 +137,9 @@ header{
   width:100%;
 }
 
-.hidden{
-  display:none!important;
-}
+.hidden{display:none!important}
 
-/* =========================================================
-   HUB
-========================================================= */
+/* HUB */
 
 #hub{
   padding:24px;
@@ -162,9 +148,7 @@ header{
   gap:20px;
 }
 
-.hubHead{
-  text-align:center;
-}
+.hubHead{text-align:center}
 
 .hubHead h1{
   font-size:clamp(30px,4vw,58px);
@@ -233,9 +217,7 @@ header{
   font-weight:1000;
 }
 
-/* =========================================================
-   SLIDES
-========================================================= */
+/* SLIDES */
 
 #workoutView{
   height:100%;
@@ -291,9 +273,7 @@ header{
   border-radius:16px;
 }
 
-/* =========================================================
-   ORIENTAÇÕES
-========================================================= */
+/* ORIENTAÇÕES */
 
 .infoGrid{
   display:grid;
@@ -330,9 +310,7 @@ header{
   font-weight:1000;
 }
 
-/* =========================================================
-   RODÍZIO
-========================================================= */
+/* RODÍZIO */
 
 .rosterTop{
   display:flex;
@@ -410,9 +388,7 @@ header{
   line-height:1.25;
 }
 
-/* =========================================================
-   EXERCÍCIOS
-========================================================= */
+/* EXERCÍCIOS */
 
 .exerciseGrid{
   display:grid;
@@ -491,9 +467,7 @@ header{
   line-height:1.1;
 }
 
-/* =========================================================
-   TIMER
-========================================================= */
+/* TIMER */
 
 .timerPanel{
   height:154px;
@@ -511,9 +485,7 @@ header{
   background:#32151a;
 }
 
-.timerSide{
-  text-align:center;
-}
+.timerSide{text-align:center}
 
 .timerLabel{
   font-size:12px;
@@ -549,9 +521,7 @@ header{
   transition:width .25s linear;
 }
 
-/* =========================================================
-   COOLDOWN
-========================================================= */
+/* COOLDOWN */
 
 .coolGrid{
   display:grid;
@@ -579,9 +549,7 @@ header{
   margin-top:8px;
 }
 
-/* =========================================================
-   CONTROLES
-========================================================= */
+/* CONTROLES */
 
 .controls{
   height:var(--ctrl);
@@ -629,9 +597,7 @@ header{
   text-align:center;
 }
 
-/* =========================================================
-   CONTAGEM 5 SEGUNDOS
-========================================================= */
+/* PREPARAÇÃO */
 
 #prep{
   position:fixed;
@@ -657,11 +623,15 @@ header{
   margin-top:25px;
 }
 
-/* =========================================================
-   FULL SCREEN / TV
-   REGRA DEFINITIVA:
-   textos maiores + conteúdo centralizado
-========================================================= */
+@media(max-width:1000px){
+  .logoBox{width:210px;height:66px}
+  .badges .hideSm{display:none}
+  .slide{padding:14px}
+  .timerPanel{height:138px;flex-basis:138px}
+  .pair span{font-size:14px}
+}
+
+/* FULL SCREEN / TV */
 
 :fullscreen header{
   height:112px;
@@ -684,9 +654,7 @@ header{
   gap:18px;
 }
 
-:fullscreen .infoGrid{
-  gap:22px;
-}
+:fullscreen .infoGrid{gap:22px}
 
 :fullscreen .infoCard{
   justify-content:center;
@@ -707,9 +675,7 @@ header{
   font-size:clamp(19px,1.6vw,29px);
 }
 
-:fullscreen .rotationGrid{
-  gap:18px;
-}
+:fullscreen .rotationGrid{gap:18px}
 
 :fullscreen .rotationCard{
   justify-content:center;
@@ -770,22 +736,6 @@ header{
 :fullscreen .coolCard{
   font-size:clamp(26px,2.3vw,44px);
 }
-
-@media(max-width:1000px){
-  .logoBox{
-    width:210px;
-    height:66px;
-  }
-
-  .timerPanel{
-    height:138px;
-    flex-basis:138px;
-  }
-
-  .pair span{
-    font-size:14px;
-  }
-}
 </style>
 </head>
 
@@ -820,16 +770,12 @@ MANAUS • SELECIONE A TURMA
 <div class="badges">
 <div class="badge y" id="timeBadge">SÁBADO</div>
 <div class="badge" id="capBadge">2 AULAS</div>
-<div class="badge">HUB V1</div>
+<div class="badge">HUB V2 • TIMER FIX</div>
 </div>
 
 </header>
 
 <div id="content">
-
-<!-- ======================================================
-     HUB
-====================================================== -->
 
 <section id="hub" class="view">
 
@@ -883,12 +829,7 @@ ABRIR TREINO →
 </div>
 
 </div>
-
 </section>
-
-<!-- ======================================================
-     TREINO
-====================================================== -->
 
 <section id="workoutView" class="view hidden">
 <div id="track"></div>
@@ -896,17 +837,13 @@ ABRIR TREINO →
 
 </div>
 
-<!-- ======================================================
-     CONTROLES
-====================================================== -->
-
 <div class="controls">
 
-<button class="ctl yellow" onclick="goHub()">
+<button class="ctl yellow" id="hubBtn" onclick="goHub()">
 ⌂ HUB
 </button>
 
-<button class="ctl" onclick="prevSlide()">
+<button class="ctl" id="prevBtn" onclick="prevSlide()">
 ◀
 </button>
 
@@ -914,7 +851,7 @@ ABRIR TREINO →
 HUB
 </div>
 
-<button class="ctl" onclick="nextSlide()">
+<button class="ctl" id="nextBtn" onclick="nextSlide()">
 ▶
 </button>
 
@@ -934,7 +871,7 @@ AUTO
 SELECIONE O TREINO
 </button>
 
-<button class="ctl danger" onclick="resetCurrent()">
+<button class="ctl danger" id="resetBtn" onclick="resetCurrent()">
 RESET
 </button>
 
@@ -943,44 +880,27 @@ RESET
 </div>
 
 <div id="prep">
-
-<div class="prepNum" id="prepNum">
-5
-</div>
-
-<div class="prepTxt">
-PREPARAR
-</div>
-
+<div class="prepNum" id="prepNum">5</div>
+<div class="prepTxt">PREPARAR</div>
 </div>
 
 <script>
 
-/* =========================================================
-   BANCO DOS DOIS TREINOS
-========================================================= */
+const workouts={
 
-const workouts = {
+nine:{
 
-nine: {
+name:"HYROX Foundation – Power Endurance #2",
 
-name:
-"HYROX Foundation – Power Endurance #2",
+time:"TURMA DAS 9H",
 
-time:
-"TURMA DAS 9H",
+cap:"32–40 ATLETAS",
 
-cap:
-"32–40 ATLETAS",
-
-duration:
-"50 MIN",
+duration:"50 MIN",
 
 defaultAthletes:40,
 
-counts:[
-32,33,34,35,36,37,38,39,40
-],
+counts:[32,33,34,35,36,37,38,39,40],
 
 warm:[
 "Cossack Squats @ RPE 6",
@@ -991,6 +911,7 @@ warm:[
 ],
 
 warmWork:45,
+
 warmRest:15,
 
 type:"paired",
@@ -1032,19 +953,15 @@ b:"Low Squat Hold"
 
 },
 
-ten: {
+ten:{
 
-name:
-"Treino de Zonas Comprometidas #5 TS",
+name:"Treino de Zonas Comprometidas #5 TS",
 
-time:
-"TURMA DAS 10H30",
+time:"TURMA DAS 10H30",
 
-cap:
-"32 ATLETAS",
+cap:"32 ATLETAS",
 
-duration:
-"58 MIN",
+duration:"58 MIN",
 
 defaultAthletes:32,
 
@@ -1110,25 +1027,22 @@ single:"20x Bicycle Crunch + 20x DB Goblet Squats"
 
 };
 
+
 /* =========================================================
-   ESTADO DO SISTEMA
-========================================================= */
+   ESTADO GERAL
+   ========================================================= */
 
 let key=null;
 let w=null;
-
 let slide=0;
-
 let athletes=32;
 
 let autoMode=true;
 let soundOn=true;
 
 let timer=null;
-
 let running=false;
 let paused=false;
-
 let phase=null;
 
 let warmRound=0;
@@ -1143,29 +1057,43 @@ let coolSec=300;
 
 let ac=null;
 
-const $ = id =>
-document.getElementById(id);
 
-const fmt = s =>
+const $=id=>document.getElementById(id);
+
+const fmt=s=>
 String(Math.floor(Math.max(0,s)/60)).padStart(2,'0')
-+ ':' +
++':'+
 String(Math.max(0,s)%60).padStart(2,'0');
+
 
 /* =========================================================
    ABRIR TREINO
-========================================================= */
+   CORREÇÃO V2:
+   CADA TREINO SEMPRE ABRE COM ESTADO NOVO E ZERADO
+   ========================================================= */
 
 function openWorkout(k){
 
 stopEngine();
 
 key=k;
-
 w=workouts[k];
 
 athletes=w.defaultAthletes;
 
 slide=0;
+
+/* ZERA COMPLETAMENTE O TREINO */
+
+warmRound=0;
+warmWork=true;
+warmSec=w.warmWork;
+
+mainRound=0;
+mainWork=true;
+mainSec=w.work;
+
+coolSec=300;
 
 $('hub').classList.add('hidden');
 
@@ -1186,16 +1114,29 @@ showSlide(0);
 
 }
 
+
 /* =========================================================
-   VOLTAR PARA HUB
-========================================================= */
+   VOLTAR AO HUB
+   ========================================================= */
 
 function goHub(){
 
 stopEngine();
 
+/* LIMPA TODO O ESTADO ANTES DE ABRIR OUTRA AULA */
+
 key=null;
 w=null;
+
+warmRound=0;
+warmWork=true;
+warmSec=45;
+
+mainRound=0;
+mainWork=true;
+mainSec=60;
+
+coolSec=300;
 
 $('workoutView').classList.add('hidden');
 
@@ -1221,21 +1162,18 @@ $('startBtn').textContent=
 
 }
 
+
 /* =========================================================
-   CONSTRUIR TREINO
-========================================================= */
+   CONSTRUÇÃO DO DASHBOARD
+   ========================================================= */
 
 function buildWorkout(){
 
-$('track').innerHTML =
-coachSlide()
-+
-rotationSlide()
-+
-warmSlide()
-+
-mainSlide()
-+
+$('track').innerHTML=
+coachSlide()+
+rotationSlide()+
+warmSlide()+
+mainSlide()+
 coolSlide();
 
 buildCounts();
@@ -1250,14 +1188,14 @@ updateCoolUI();
 
 }
 
+
 /* =========================================================
-   ORIENTAÇÕES
-========================================================= */
+   PÁGINA 1 — ORIENTAÇÕES
+   ========================================================= */
 
 function coachSlide(){
 
-let paired =
-w.type==='paired';
+let paired=w.type==='paired';
 
 return `
 
@@ -1283,6 +1221,7 @@ ${w.cap} • ${w.duration} • RPE 8
 
 </div>
 
+
 <div class="infoGrid">
 
 <div class="card infoCard">
@@ -1290,32 +1229,42 @@ ${w.cap} • ${w.duration} • RPE 8
 <h3>FORMATO</h3>
 
 <p>
-${
-paired
-?
+
+${paired?
+
 '5 zonas com lados A/B simultâneos. 1:00 trabalho + 0:20 descanso/troca. 6 rounds por zona = 8:00.'
+
 :
+
 '8 zonas. 16 rounds contínuos de 03:00, sem REST no Main. Cada equipe completa duas voltas.'
+
 }
+
 </p>
 
 </div>
+
 
 <div class="card infoCard">
 
 <h3>RODÍZIO</h3>
 
 <p>
-${
-paired
-?
+
+${paired?
+
 '5 equipes principais. Cada equipe é dividida em A/B; após 6 rounds, avança uma zona.'
+
 :
+
 '8 equipes de 4. A→Z1, B→Z2 ... H→Z8. A cada 03:00, todas avançam uma zona.'
+
 }
+
 </p>
 
 </div>
+
 
 <div class="card infoCard">
 
@@ -1329,21 +1278,27 @@ Manter técnica sob fadiga.
 
 </div>
 
+
 <div class="card infoCard">
 
 <h3>CAPACIDADE</h3>
 
 <p>
-${
-paired
-?
+
+${paired?
+
 '32–40 atletas. A divisão A/B mantém até 4 atletas em cada subestação crítica.'
+
 :
+
 '32 atletas. 8 equipes de 4, respeitando o limite de 4 nas estações críticas.'
+
 }
+
 </p>
 
 </div>
+
 
 <div class="card infoCard">
 
@@ -1356,6 +1311,7 @@ nem a área ativa de Wallballs.
 </p>
 
 </div>
+
 
 <div class="card infoCard">
 
@@ -1371,16 +1327,19 @@ Sinal distinto marca a troca.
 
 </div>
 
+
 <div class="card flow">
 
 AQUECIMENTO →
 
-${
-paired
-?
+${paired?
+
 'POWER ENDURANCE • 5 ZONAS A/B'
+
 :
+
 'ZONAS COMPROMETIDAS • 8 ZONAS'
+
 }
 
 → VOLTA À CALMA
@@ -1393,9 +1352,10 @@ paired
 
 }
 
+
 /* =========================================================
-   RODÍZIO
-========================================================= */
+   PÁGINA 2 — RODÍZIO
+   ========================================================= */
 
 function rotationSlide(){
 
@@ -1423,6 +1383,7 @@ Selecione o número real de atletas
 
 </div>
 
+
 <div class="rosterTop">
 
 <div
@@ -1437,6 +1398,7 @@ id="capNotice">
 
 </div>
 
+
 <div
 class="rotationGrid"
 id="rotationGrid">
@@ -1448,9 +1410,10 @@ id="rotationGrid">
 
 }
 
+
 /* =========================================================
-   AQUECIMENTO
-========================================================= */
+   PÁGINA 3 — AQUECIMENTO
+   ========================================================= */
 
 function warmSlide(){
 
@@ -1491,14 +1454,14 @@ ${timerHTML('warm','00:45')}
 
 }
 
+
 /* =========================================================
-   MAIN
-========================================================= */
+   PÁGINA 4 — MAIN
+   ========================================================= */
 
 function mainSlide(){
 
-let paired =
-w.type==='paired';
+let paired=w.type==='paired';
 
 return `
 
@@ -1515,12 +1478,14 @@ ${paired?'40':'48'} MIN
 
 <div class="sectionTitle">
 
-${
-paired
-?
+${paired?
+
 'POWER ENDURANCE • 5 ZONAS'
+
 :
+
 'ZONAS COMPROMETIDAS • SEM REST'
+
 }
 
 </div>
@@ -1529,22 +1494,26 @@ paired
 
 <div class="sectionMeta">
 
-${
-paired
-?
+${paired?
+
 '30 rounds • 1:00 / 0:20'
+
 :
+
 '16 rounds • 03:00 contínuos'
+
 }
 
 </div>
 
 </div>
 
+
 <div
 class="exerciseGrid"
 id="mainGrid">
 </div>
+
 
 ${timerHTML(
 'main',
@@ -1557,9 +1526,10 @@ paired?'01:00':'03:00'
 
 }
 
+
 /* =========================================================
-   COOLDOWN
-========================================================= */
+   PÁGINA 5 — COOLDOWN
+   ========================================================= */
 
 function coolSlide(){
 
@@ -1587,6 +1557,7 @@ Reduzir gradualmente a intensidade
 
 </div>
 
+
 <div class="coolGrid">
 
 <div class="card coolCard">
@@ -1603,6 +1574,7 @@ Saia do esforço de forma progressiva.
 
 </div>
 
+
 <div class="card coolCard">
 
 <div>
@@ -1617,6 +1589,7 @@ Inspiração controlada e expiração longa.
 
 </div>
 
+
 <div class="card coolCard">
 
 <div>
@@ -1630,6 +1603,7 @@ Caminhada leve e recuperação ativa.
 </div>
 
 </div>
+
 
 <div class="card coolCard">
 
@@ -1648,6 +1622,7 @@ sem forçar amplitude.
 
 </div>
 
+
 ${timerHTML('cool','05:00')}
 
 </section>
@@ -1656,9 +1631,10 @@ ${timerHTML('cool','05:00')}
 
 }
 
+
 /* =========================================================
-   COMPONENTE TIMER
-========================================================= */
+   TIMER VISUAL
+   ========================================================= */
 
 function timerHTML(p,t){
 
@@ -1685,6 +1661,7 @@ id="${p}Round">
 
 </div>
 
+
 <div>
 
 <div
@@ -1697,19 +1674,26 @@ ${t}
 
 <div class="progress">
 
-<div
-id="${p}Progress">
-</div>
+<div id="${p}Progress"></div>
 
 </div>
 
 </div>
+
 
 <div class="timerSide">
 
 <div class="timerLabel">
 
-${p==='main'?'TOTAL RESTANTE':'PRÓXIMO'}
+${p==='main'?
+
+'TOTAL RESTANTE'
+
+:
+
+'PRÓXIMO'
+
+}
 
 </div>
 
@@ -1726,29 +1710,30 @@ id="${p}Next">
 
 }
 
+
 /* =========================================================
    NAVEGAÇÃO
-========================================================= */
+   ========================================================= */
 
 function showSlide(n){
 
 if(!w)return;
 
-slide =
-Math.max(
+slide=Math.max(
 0,
 Math.min(4,n)
 );
 
-$('track').style.transform =
+$('track').style.transform=
 `translateX(-${slide*100}%)`;
 
-$('dots').textContent =
+$('dots').textContent=
 `${slide+1} / 5`;
 
 updateStartLabel();
 
 }
+
 
 function prevSlide(){
 
@@ -1757,6 +1742,7 @@ showSlide(slide-1);
 
 }
 
+
 function nextSlide(){
 
 if(w)
@@ -1764,25 +1750,23 @@ showSlide(slide+1);
 
 }
 
+
 /* =========================================================
-   SELETOR DE ALUNOS
-========================================================= */
+   CONTAGEM DE ALUNOS
+   ========================================================= */
 
 function buildCounts(){
 
-let b =
-$('countBtns');
+let b=$('countBtns');
 
 b.innerHTML='';
 
 w.counts.forEach(n=>{
 
-let x =
-document.createElement('button');
+let x=document.createElement('button');
 
-x.className =
-'countBtn'
-+
+x.className=
+'countBtn'+
 (n===athletes?' active':'');
 
 x.textContent=n;
@@ -1805,57 +1789,51 @@ b.appendChild(x);
 
 }
 
-/* =========================================================
-   DISTRIBUIÇÃO
-========================================================= */
 
 function distribute(total,n){
 
-let base =
-Math.floor(total/n);
+let base=Math.floor(total/n);
 
-let r =
-total%n;
+let r=total%n;
 
 return Array.from(
 {length:n},
-(_,i)=>
-base+(i<r?1:0)
+(_,i)=>base+(i<r?1:0)
 );
 
 }
 
+
 /* =========================================================
-   RENDER RODÍZIO
-========================================================= */
+   RODÍZIO
+   ========================================================= */
 
 function renderRotation(){
 
-let g =
-$('rotationGrid');
+let g=$('rotationGrid');
 
-let n =
-w.zones.length;
+let n=w.zones.length;
 
-let s =
-distribute(athletes,n);
+let s=distribute(
+athletes,
+n
+);
 
-g.style.gridTemplateColumns =
+g.style.gridTemplateColumns=
 `repeat(${n<=5?n:4},1fr)`;
 
 g.innerHTML='';
+
 
 if(w.type==='paired'){
 
 s.forEach((q,i)=>{
 
-let a =
-Math.ceil(q/2);
+let a=Math.ceil(q/2);
 
-let b =
-Math.floor(q/2);
+let b=Math.floor(q/2);
 
-g.innerHTML += `
+g.innerHTML+=`
 
 <div class="card rotationCard">
 
@@ -1889,7 +1867,7 @@ ${w.zones[i].b}
 
 });
 
-$('capNotice').textContent =
+$('capNotice').textContent=
 `${athletes} atletas • 5 equipes • A/B com no máximo 4 atletas por lado.`;
 
 }
@@ -1898,7 +1876,7 @@ else{
 
 s.forEach((q,i)=>{
 
-g.innerHTML += `
+g.innerHTML+=`
 
 <div class="card rotationCard">
 
@@ -1924,30 +1902,30 @@ ${w.zones[i].single}
 
 });
 
-$('capNotice').textContent =
+$('capNotice').textContent=
 `${athletes} atletas • 8 equipes de 4 • uma zona por equipe.`;
 
 }
 
 }
 
+
 /* =========================================================
-   RENDER AQUECIMENTO
-========================================================= */
+   AQUECIMENTO
+   ========================================================= */
 
 function renderWarm(){
 
-let g =
-$('warmGrid');
+let g=$('warmGrid');
 
-g.style.gridTemplateColumns =
+g.style.gridTemplateColumns=
 'repeat(5,1fr)';
 
 g.innerHTML='';
 
 w.warm.forEach((x,i)=>{
 
-g.innerHTML += `
+g.innerHTML+=`
 
 <div
 class="card exercise"
@@ -1975,52 +1953,54 @@ updateWarmUI();
 
 }
 
+
 /* =========================================================
-   RENDER MAIN
-========================================================= */
+   MAIN
+   ========================================================= */
 
 function renderMain(){
 
-let g =
-$('mainGrid');
+let g=$('mainGrid');
 
-let n =
-w.zones.length;
+let n=w.zones.length;
 
-g.style.gridTemplateColumns =
+g.style.gridTemplateColumns=
 `repeat(${n<=5?n:4},1fr)`;
 
 g.innerHTML='';
 
-let sizes =
-distribute(athletes,n);
+let sizes=
+distribute(
+athletes,
+n
+);
+
 
 if(w.type==='paired'){
 
-let block =
+let block=
 Math.min(
 4,
 Math.floor(mainRound/6)
 );
 
-let swap =
+let swap=
 mainRound%2===1;
+
 
 w.zones.forEach((z,i)=>{
 
-let team =
+let team=
 ((i-block+n)%n);
 
-let q =
-sizes[team];
+let q=sizes[team];
 
-let a =
-Math.ceil(q/2);
+let a=Math.ceil(q/2);
 
-let b =
-Math.floor(q/2);
+let b=Math.floor(q/2);
 
-g.innerHTML += `
+
+g.innerHTML+=`
 
 <div class="card exercise">
 
@@ -2050,6 +2030,7 @@ ${swap?b:a} atletas
 
 </div>
 
+
 <div class="pair">
 
 <strong>
@@ -2078,18 +2059,20 @@ ${swap?a:b} atletas
 
 else{
 
-let r =
+let r=
 mainRound%n;
+
 
 w.zones.forEach((z,i)=>{
 
-let team =
+let team=
 (i-r+n)%n;
 
-let next =
+let next=
 (i+1)%n;
 
-g.innerHTML += `
+
+g.innerHTML+=`
 
 <div class="card exercise">
 
@@ -2106,18 +2089,22 @@ ${sizes[team]}
 
 </div>
 
+
 <div class="exerciseName">
 ${z.single}
 </div>
 
+
 <div class="exerciseSub">
 
-${
-mainSec<=3 && mainWork
-?
+${mainSec<=3&&mainWork?
+
 `→ PRÓXIMA Z${next+1}`
+
 :
+
 '03:00 • RPE 8'
+
 }
 
 </div>
@@ -2132,62 +2119,66 @@ mainSec<=3 && mainWork
 
 }
 
+
 /* =========================================================
-   UPDATE AQUECIMENTO
-========================================================= */
+   ATUALIZAÇÃO AQUECIMENTO
+   ========================================================= */
 
 function updateWarmUI(){
 
-if(!$('warmClock'))return;
+if(!$('warmClock'))
+return;
 
-$('warmClock').textContent =
+$('warmClock').textContent=
 fmt(warmSec);
 
-$('warmRound').textContent =
+$('warmRound').textContent=
 `Round ${warmRound+1}/5`;
 
-$('warmState').textContent =
+$('warmState').textContent=
 warmWork
 ?
 'TRABALHO'
 :
 'DESCANSO / TROCA';
 
-$('warmNext').textContent =
+$('warmNext').textContent=
 w.warm[(warmRound+1)%5];
 
 $('warmPanel')
 .classList
-.toggle('rest',!warmWork);
+.toggle(
+'rest',
+!warmWork
+);
 
-$('warmProgress').style.width =
+$('warmProgress').style.width=
 (
 (
 warmWork
 ?
-(45-warmSec)/45
+(w.warmWork-warmSec)/w.warmWork
 :
-(15-warmSec)/15
+(w.warmRest-warmSec)/w.warmRest
 )
 *100
-)
-+'%';
+)+'%';
+
 
 w.warm.forEach((_,i)=>{
 
-let e =
-$('warmCard'+i);
+let e=$('warmCard'+i);
 
 if(e){
 
-e.style.borderColor =
+e.style.borderColor=
 i===warmRound
 ?
 '#FFD700'
 :
 '#303943';
 
-e.style.boxShadow =
+e.style.boxShadow=
 i===warmRound
 ?
 '0 0 0 1px #FFD700 inset'
@@ -2200,21 +2191,23 @@ i===warmRound
 
 }
 
+
 /* =========================================================
-   UPDATE MAIN
-========================================================= */
+   ATUALIZAÇÃO MAIN
+   ========================================================= */
 
 function updateMainUI(){
 
-if(!$('mainClock'))return;
+if(!$('mainClock'))
+return;
 
-$('mainClock').textContent =
+$('mainClock').textContent=
 fmt(mainSec);
 
-$('mainRound').textContent =
+$('mainRound').textContent=
 `Round ${mainRound+1}/${w.mainRounds}`;
 
-$('mainState').textContent =
+$('mainState').textContent=
 mainWork
 ?
 'TRABALHO'
@@ -2234,26 +2227,28 @@ $('mainPanel')
 !mainWork
 );
 
-let per =
+let per=
 w.work+w.rest;
 
-let elapsed =
-mainRound*per
-+
+let elapsed=
+mainRound*per+
 (
 mainWork
 ?
 (w.work-mainSec)
 :
-(w.work+(w.rest-mainSec))
+(
+w.work+
+(w.rest-mainSec)
+)
 );
 
-$('mainNext').textContent =
+$('mainNext').textContent=
 fmt(
 w.mainRounds*per-elapsed
 );
 
-$('mainProgress').style.width =
+$('mainProgress').style.width=
 (
 (
 mainWork
@@ -2263,77 +2258,73 @@ mainWork
 (w.rest-mainSec)/w.rest
 )
 *100
-)
-+'%';
+)+'%';
 
 renderMain();
 
 }
 
+
 /* =========================================================
-   UPDATE COOLDOWN
-========================================================= */
+   ATUALIZAÇÃO COOLDOWN
+   ========================================================= */
 
 function updateCoolUI(){
 
-if(!$('coolClock'))return;
+if(!$('coolClock'))
+return;
 
-$('coolClock').textContent =
+$('coolClock').textContent=
 fmt(coolSec);
 
-$('coolRound').textContent =
+$('coolRound').textContent=
 '5 minutos';
 
-$('coolNext').textContent =
+$('coolNext').textContent=
 'Desacelerar';
 
-$('coolProgress').style.width =
+$('coolProgress').style.width=
 (
-(300-coolSec)
-/
-300
-*
-100
-)
-+'%';
+(300-coolSec)/300*100
+)+'%';
 
 }
 
+
 /* =========================================================
-   ÁUDIO
-========================================================= */
+   SOM
+   ========================================================= */
 
 function audioCtx(){
 
-if(!ac){
+if(!ac)
 
-ac =
+ac=
 new(
-window.AudioContext
-||
+window.AudioContext||
 window.webkitAudioContext
 )();
 
-}
-
-if(ac.state==='suspended'){
-
+if(ac.state==='suspended')
 ac.resume();
 
 }
 
-}
 
-function beep(f=850,d=.11){
+function beep(
+f=850,
+d=.11
+){
 
-if(!soundOn)return;
+if(!soundOn)
+return;
 
 audioCtx();
 
-let o =
+let o=
 ac.createOscillator();
 
-let g =
+let g=
 ac.createGain();
 
 o.frequency.value=f;
@@ -2357,15 +2348,23 @@ ac.currentTime+d
 
 }
 
+
 function goBeep(){
 
-beep(1200,.28);
+beep(
+1200,
+.28
+);
 
 }
 
+
 function finishBeep(){
 
-beep(650,.18);
+beep(
+650,
+.18
+);
 
 setTimeout(
 ()=>beep(950,.35),
@@ -2374,19 +2373,18 @@ setTimeout(
 
 }
 
+
 /* =========================================================
-   PRÉ START 5 SEGUNDOS
-========================================================= */
+   PREPARAÇÃO 5 SEGUNDOS
+   ========================================================= */
 
 function prep(cb){
 
 audioCtx();
 
-let ov =
-$('prep');
+let ov=$('prep');
 
-let num =
-$('prepNum');
+let num=$('prepNum');
 
 let n=5;
 
@@ -2394,8 +2392,7 @@ num.textContent=n;
 
 ov.style.display='flex';
 
-let t =
-setInterval(()=>{
+let t=setInterval(()=>{
 
 n--;
 
@@ -2430,9 +2427,10 @@ beep();
 
 }
 
+
 /* =========================================================
-   STOP
-========================================================= */
+   MOTOR DO TIMER
+   ========================================================= */
 
 function stopEngine(){
 
@@ -2449,9 +2447,10 @@ phase=null;
 
 }
 
+
 /* =========================================================
    START AQUECIMENTO
-========================================================= */
+   ========================================================= */
 
 function startWarm(){
 
@@ -2465,35 +2464,40 @@ warmRound=0;
 
 warmWork=true;
 
-warmSec=45;
+warmSec=w.warmWork;
 
 updateWarmUI();
 
 updateStartLabel();
 
-timer =
-setInterval(()=>{
 
-if(paused)return;
+timer=setInterval(()=>{
+
+if(paused)
+return;
 
 warmSec--;
 
+
+/* BIP 3-2-1 */
+
 if(
-warmSec<=3
-&&
+warmSec<=3 &&
 warmSec>0
 )
 beep();
+
 
 if(warmSec<=0){
 
 goBeep();
 
+
 if(warmWork){
 
 warmWork=false;
 
-warmSec=15;
+warmSec=w.warmRest;
 
 }
 
@@ -2501,11 +2505,13 @@ else{
 
 warmRound++;
 
+
 if(warmRound>=5){
 
 stopEngine();
 
 finishBeep();
+
 
 if(autoMode){
 
@@ -2528,9 +2534,10 @@ return;
 
 }
 
+
 warmWork=true;
 
-warmSec=45;
+warmSec=w.warmWork;
 
 }
 
@@ -2542,9 +2549,10 @@ updateWarmUI();
 
 }
 
+
 /* =========================================================
    START MAIN
-========================================================= */
+   ========================================================= */
 
 function startMain(){
 
@@ -2564,16 +2572,19 @@ updateMainUI();
 
 updateStartLabel();
 
-timer =
-setInterval(()=>{
 
-if(paused)return;
+timer=setInterval(()=>{
+
+if(paused)
+return;
 
 mainSec--;
 
+
+/* BIP NOS 3 SEGUNDOS FINAIS */
+
 if(
-mainSec<=3
-&&
+mainSec<=3 &&
 mainSec>0
 ){
 
@@ -2583,13 +2594,16 @@ renderMain();
 
 }
 
+
 if(mainSec<=0){
 
 goBeep();
 
+
+/* TREINO 9H TEM REST */
+
 if(
-w.rest>0
-&&
+w.rest>0 &&
 mainWork
 ){
 
@@ -2603,11 +2617,17 @@ else{
 
 mainRound++;
 
-if(mainRound>=w.mainRounds){
+
+/* FIM DO MAIN */
+
+if(
+mainRound>=w.mainRounds
+){
 
 stopEngine();
 
 finishBeep();
+
 
 if(autoMode){
 
@@ -2630,11 +2650,15 @@ return;
 
 }
 
+
+/* PRÓXIMO ROUND */
+
 mainWork=true;
 
 mainSec=w.work;
 
 }
+
 
 updateMainUI();
 
@@ -2644,9 +2668,10 @@ updateMainUI();
 
 }
 
+
 /* =========================================================
    START COOLDOWN
-========================================================= */
+   ========================================================= */
 
 function startCool(){
 
@@ -2662,21 +2687,24 @@ updateCoolUI();
 
 updateStartLabel();
 
-timer =
-setInterval(()=>{
 
-if(paused)return;
+timer=setInterval(()=>{
+
+if(paused)
+return;
 
 coolSec--;
 
+
 if(
-coolSec<=3
-&&
+coolSec<=3 &&
 coolSec>0
 )
 beep();
 
+
 updateCoolUI();
+
 
 if(coolSec<=0){
 
@@ -2692,13 +2720,18 @@ updateStartLabel();
 
 }
 
+
 /* =========================================================
-   START POR PÁGINA
-========================================================= */
+   INICIAR A FASE DA TELA ATUAL
+   ========================================================= */
 
 function startForSlide(){
 
 stopEngine();
+
+
+/* ORIENTAÇÕES OU RODÍZIO:
+   INICIA A AULA PELO AQUECIMENTO */
 
 if(slide<=2){
 
@@ -2708,11 +2741,17 @@ prep(startWarm);
 
 }
 
+
+/* MAIN */
+
 else if(slide===3){
 
 prep(startMain);
 
 }
+
+
+/* COOLDOWN */
 
 else{
 
@@ -2722,15 +2761,18 @@ prep(startCool);
 
 }
 
+
 /* =========================================================
    BOTÃO PRINCIPAL
-========================================================= */
+   ========================================================= */
 
 function masterAction(){
 
-if(!w)return;
+if(!w)
+return;
 
 audioCtx();
+
 
 if(running){
 
@@ -2742,28 +2784,31 @@ return;
 
 }
 
+
 startForSlide();
 
 }
 
+
 /* =========================================================
-   LABEL BOTÃO
-========================================================= */
+   TEXTO DO BOTÃO INICIAR
+   ========================================================= */
 
 function updateStartLabel(){
 
 if(!w){
 
-$('startBtn').textContent =
+$('startBtn').textContent=
 'SELECIONE O TREINO';
 
 return;
 
 }
 
+
 if(running){
 
-$('startBtn').textContent =
+$('startBtn').textContent=
 paused
 ?
 '▶ CONTINUAR'
@@ -2773,6 +2818,7 @@ paused
 return;
 
 }
+
 
 let a=[
 
@@ -2788,20 +2834,24 @@ let a=[
 
 ];
 
-$('startBtn').textContent =
+
+$('startBtn').textContent=
 a[slide];
 
 }
 
+
 /* =========================================================
-   RESET DA FASE ATUAL
-========================================================= */
+   RESET SOMENTE DA FASE ATUAL
+   ========================================================= */
 
 function resetCurrent(){
 
-if(!w)return;
+if(!w)
+return;
 
 stopEngine();
+
 
 if(slide===2){
 
@@ -2809,11 +2859,12 @@ warmRound=0;
 
 warmWork=true;
 
-warmSec=45;
+warmSec=w.warmWork;
 
 updateWarmUI();
 
 }
+
 
 else if(slide===3){
 
@@ -2827,6 +2878,7 @@ updateMainUI();
 
 }
 
+
 else if(slide===4){
 
 coolSec=300;
@@ -2835,19 +2887,21 @@ updateCoolUI();
 
 }
 
+
 updateStartLabel();
 
 }
 
+
 /* =========================================================
    AUTO / MANUAL
-========================================================= */
+   ========================================================= */
 
 function toggleMode(){
 
 autoMode=!autoMode;
 
-$('modeBtn').textContent =
+$('modeBtn').textContent=
 autoMode
 ?
 'AUTO'
@@ -2856,9 +2910,10 @@ autoMode
 
 }
 
+
 /* =========================================================
-   SOM
-========================================================= */
+   SOM ON/OFF
+   ========================================================= */
 
 function toggleSound(){
 
@@ -2867,7 +2922,7 @@ soundOn=!soundOn;
 if(soundOn)
 audioCtx();
 
-$('soundBtn').textContent =
+$('soundBtn').textContent=
 soundOn
 ?
 '🔊 SOM ON'
@@ -2876,38 +2931,38 @@ soundOn
 
 }
 
+
 /* =========================================================
    FULL SCREEN
-========================================================= */
+   ========================================================= */
 
 async function toggleFS(){
 
 try{
 
-if(!document.fullscreenElement){
+if(!document.fullscreenElement)
 
-await
-document.documentElement.requestFullscreen();
+await document
+.documentElement
+.requestFullscreen();
 
-}
+else
 
-else{
-
-await
-document.exitFullscreen();
-
-}
+await document
+.exitFullscreen();
 
 }
+
 catch(e){}
 
 }
+
 
 document.addEventListener(
 'fullscreenchange',
 ()=>{
 
-$('fsBtn').textContent =
+$('fsBtn').textContent=
 document.fullscreenElement
 ?
 'SAIR DA TELA CHEIA'
@@ -2917,9 +2972,10 @@ document.fullscreenElement
 }
 );
 
+
 /* =========================================================
-   INICIALIZA HUB
-========================================================= */
+   INICIALIZAÇÃO
+   ========================================================= */
 
 goHub();
 
