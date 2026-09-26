@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0d0d0d">
-<title>HYROX Studio 5 | HUB Sábado</title>
-<script src="https://cdn.tailwindcss.com"></script>
+
+<title>HYROX Studio 5 | HUB Sábado V3</title>
 
 <style>
 :root{
@@ -18,723 +18,697 @@
   --red:#ff4755;
   --white:#f7f8fa;
   --muted:#9aa4b2;
-  --ctrl:68px;
+  --control:68px;
 }
 
 *{box-sizing:border-box}
-
 html,body{
   margin:0;
+  width:100%;
   height:100%;
   background:var(--bg);
   color:var(--white);
-  font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial,sans-serif;
+  font-family:Arial,Helvetica,sans-serif;
   overflow:hidden;
+}
+
+body{
+  background:
+    radial-gradient(circle at 50% 10%,#17212c 0,#0d1116 40%,#080a0d 100%);
 }
 
 button{font:inherit}
 
 #app{
+  width:100%;
   height:100dvh;
   display:flex;
   flex-direction:column;
-  background:radial-gradient(circle at 50% -20%,#26323f 0,#111820 35%,#0d0d0d 72%);
 }
 
-header{
-  height:94px;
-  flex:0 0 94px;
-  border-bottom:1px solid var(--line);
+.screen{
+  display:none;
+  flex:1;
+  min-height:0;
+  overflow:hidden;
+}
+
+.screen.active{display:flex}
+
+.page{
+  width:100%;
+  height:100%;
+  padding:18px 24px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.header{
+  min-height:76px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:10px 22px;
-  gap:18px;
-  background:rgba(13,13,13,.97);
+  gap:20px;
+  border-bottom:1px solid var(--line);
+  padding-bottom:12px;
 }
 
-.brand{
+.brandBlock{
   display:flex;
   align-items:center;
-  gap:17px;
+  gap:18px;
   min-width:0;
 }
 
 .logoBox{
-  height:76px;
-  width:265px;
   background:#fff;
   border-radius:12px;
+  padding:7px 12px;
+  height:64px;
+  min-width:170px;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:5px 9px;
-  flex:0 0 auto;
 }
 
 .logoBox img{
-  max-height:100%;
-  max-width:100%;
+  max-height:52px;
+  max-width:230px;
+  width:auto;
+  height:auto;
   object-fit:contain;
 }
 
-.brandText{min-width:0}
+.brandTitle{
+  min-width:0;
+}
 
 .eyebrow{
   color:var(--yellow);
-  font-weight:950;
   font-size:13px;
-  letter-spacing:.13em;
+  font-weight:900;
+  letter-spacing:1.8px;
 }
 
-.title{
-  font-size:clamp(18px,2vw,31px);
-  font-weight:950;
-  line-height:1.05;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
+h1,h2,h3,p{margin:0}
 
-.subtitle{
-  font-size:12px;
-  color:var(--muted);
-  font-weight:850;
-  margin-top:4px;
+.brandTitle h1{
+  font-size:clamp(22px,2.3vw,38px);
+  line-height:1;
+  margin-top:5px;
+  font-weight:1000;
 }
 
 .badges{
   display:flex;
-  gap:8px;
   align-items:center;
   justify-content:flex-end;
   flex-wrap:wrap;
+  gap:8px;
 }
 
 .badge{
+  padding:10px 15px;
   border:1px solid var(--line);
   border-radius:999px;
-  padding:7px 11px;
-  font-size:11px;
-  font-weight:950;
-  background:#111820;
+  font-size:13px;
+  font-weight:900;
   white-space:nowrap;
+  background:#151b23;
 }
 
-.badge.y{
-  border-color:#8d7b00;
+.badge.yellow{
+  color:var(--yellow);
+  border-color:#8a7610;
+}
+
+.card{
+  background:linear-gradient(145deg,#141b23,#0f141a);
+  border:1px solid var(--line);
+  border-radius:18px;
+}
+
+.sectionLabel{
+  color:var(--yellow);
+  font-weight:1000;
+  letter-spacing:1.4px;
+  font-size:13px;
+}
+
+.pageTitle{
+  font-size:clamp(24px,2.5vw,42px);
+  font-weight:1000;
+  line-height:1.05;
+}
+
+.muted{color:var(--muted)}
+
+.yellow{color:var(--yellow)}
+.green{color:var(--green)}
+.red{color:var(--red)}
+
+.hubPage{
+  justify-content:center;
+}
+
+.hubHero{
+  text-align:center;
+  margin-bottom:12px;
+}
+
+.hubHero h1{
+  font-size:clamp(38px,5vw,78px);
+  font-weight:1000;
   color:var(--yellow);
 }
 
-#content{
-  height:calc(100dvh - 94px - var(--ctrl));
-  position:relative;
-  overflow:hidden;
-}
-
-.view{
-  height:100%;
-  width:100%;
-}
-
-.hidden{display:none!important}
-
-/* HUB */
-
-#hub{
-  padding:24px;
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-}
-
-.hubHead{text-align:center}
-
-.hubHead h1{
-  font-size:clamp(30px,4vw,58px);
-  font-weight:1000;
-  margin:0;
-}
-
-.hubHead p{
+.hubHero p{
   color:var(--muted);
-  font-weight:850;
-  margin-top:8px;
+  font-size:clamp(16px,1.4vw,23px);
+  margin-top:10px;
+  font-weight:700;
 }
 
 .hubGrid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:24px;
-  flex:1;
-  min-height:0;
+  gap:22px;
+  width:min(1200px,96%);
+  margin:0 auto;
 }
 
 .workoutChoice{
-  background:linear-gradient(180deg,#171e27,#0f141a);
-  border:1px solid var(--line);
-  border-radius:22px;
+  min-height:310px;
   padding:28px;
   display:flex;
   flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
+  justify-content:space-between;
   cursor:pointer;
-  transition:.2s;
+  transition:.18s;
 }
 
 .workoutChoice:hover{
-  transform:translateY(-2px);
-  border-color:#70651a;
+  transform:translateY(-3px);
+  border-color:#6d7279;
 }
 
-.timeTag{
+.choiceTime{
   color:var(--yellow);
-  font-size:clamp(26px,2.6vw,44px);
+  font-size:clamp(26px,3vw,48px);
   font-weight:1000;
 }
 
-.choiceTitle{
-  font-size:clamp(25px,2.5vw,42px);
+.choiceName{
+  font-size:clamp(24px,2.4vw,40px);
+  line-height:1.05;
   font-weight:1000;
-  line-height:1.08;
-  margin:16px 0;
+  margin-top:14px;
 }
 
 .choiceMeta{
-  color:#c9d0d8;
-  font-weight:850;
+  color:var(--muted);
   font-size:16px;
+  line-height:1.5;
+  margin-top:16px;
+  font-weight:700;
 }
 
 .openBtn{
-  margin-top:24px;
+  margin-top:20px;
+  padding:14px 20px;
+  border-radius:12px;
+  border:1px solid #9b8500;
   background:var(--yellow);
   color:#111;
-  padding:13px 24px;
-  border-radius:12px;
   font-weight:1000;
+  text-align:center;
 }
 
-/* SLIDES */
-
-#workoutView{
-  height:100%;
-  overflow:hidden;
-}
-
-#track{
-  height:100%;
-  display:flex;
-  transition:transform .32s ease;
-}
-
-.slide{
-  height:100%;
-  min-width:100%;
-  padding:18px 24px 16px;
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-  overflow:hidden;
-}
-
-.sectionHead{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-end;
-  gap:14px;
-}
-
-.kicker{
-  color:var(--yellow);
-  font-size:12px;
-  font-weight:950;
-  letter-spacing:.14em;
-}
-
-.sectionTitle{
-  font-size:clamp(24px,2.7vw,42px);
-  font-weight:1000;
-  line-height:1;
-}
-
-.sectionMeta{
-  font-size:12px;
-  color:var(--muted);
-  font-weight:850;
-  text-align:right;
-}
-
-.card{
-  background:linear-gradient(180deg,#151c24,#10161d);
-  border:1px solid var(--line);
-  border-radius:16px;
-}
-
-/* ORIENTAÇÕES */
-
-.infoGrid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
+.overviewGrid{
   flex:1;
   min-height:0;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
 }
 
 .infoCard{
-  padding:18px;
+  padding:24px;
   display:flex;
   flex-direction:column;
-  gap:8px;
+  justify-content:center;
 }
 
 .infoCard h3{
   color:var(--yellow);
-  font-size:17px;
+  font-size:clamp(18px,1.6vw,27px);
   font-weight:1000;
+  margin-bottom:14px;
 }
 
 .infoCard p{
-  font-size:15px;
-  line-height:1.35;
-  font-weight:760;
-  color:#e6e9ee;
+  font-size:clamp(16px,1.35vw,22px);
+  line-height:1.45;
+  font-weight:700;
 }
 
-.flow{
-  padding:14px 18px;
+.flowBox{
+  padding:18px 24px;
   text-align:center;
-  font-size:17px;
-  font-weight:1000;
 }
 
-/* RODÍZIO */
+.flowBox strong{
+  color:var(--yellow);
+  font-size:clamp(17px,1.5vw,25px);
+}
 
-.rosterTop{
+.flowBox div{
+  margin-top:6px;
+  font-size:clamp(15px,1.3vw,21px);
+  font-weight:800;
+}
+
+.rotationTop{
   display:flex;
-  gap:12px;
   align-items:center;
-  flex-wrap:wrap;
+  justify-content:space-between;
+  gap:20px;
 }
 
-.countBtns{
+.counterBox{
   display:flex;
-  gap:7px;
-  flex-wrap:wrap;
+  align-items:center;
+  gap:8px;
 }
 
-.countBtn{
-  border:1px solid var(--line);
-  background:#111820;
-  color:#fff;
-  padding:8px 11px;
+.counterBtn{
+  width:44px;
+  height:44px;
   border-radius:10px;
-  font-weight:950;
-  font-size:13px;
+  border:1px solid var(--line);
+  background:#181f27;
+  color:#fff;
+  font-weight:1000;
+  cursor:pointer;
 }
 
-.countBtn.active{
-  background:var(--yellow);
-  color:#111;
-  border-color:var(--yellow);
-}
-
-.notice{
-  border:1px solid #8d7b00;
-  background:#2b260b;
-  color:#fff3a2;
-  border-radius:12px;
-  padding:9px 12px;
-  font-size:12px;
-  font-weight:850;
+.athleteCount{
+  min-width:90px;
+  text-align:center;
+  font-size:27px;
+  font-weight:1000;
 }
 
 .rotationGrid{
-  display:grid;
-  gap:12px;
   flex:1;
   min-height:0;
+  display:grid;
+  gap:12px;
+  align-content:stretch;
 }
+
+.rotationGrid.cols5{grid-template-columns:repeat(5,1fr)}
+.rotationGrid.cols8{grid-template-columns:repeat(4,1fr)}
 
 .rotationCard{
-  padding:14px;
+  padding:16px;
   display:flex;
   flex-direction:column;
-  gap:6px;
+  justify-content:center;
+  text-align:center;
+  min-width:0;
 }
 
-.rotationCard .team{
+.teamBig{
   color:var(--yellow);
-  font-size:18px;
+  font-size:clamp(20px,2vw,34px);
   font-weight:1000;
 }
 
-.rotationCard .num{
-  font-size:32px;
-  font-weight:1000;
+.teamCount{
+  font-size:clamp(15px,1.2vw,20px);
+  font-weight:900;
+  margin-top:7px;
 }
 
-.rotationCard .station{
-  font-size:15px;
-  font-weight:950;
-}
-
-.rotationCard .split{
-  font-size:12px;
+.stationText{
   color:var(--muted);
-  font-weight:850;
+  font-size:clamp(13px,1.05vw,18px);
   line-height:1.25;
+  margin-top:10px;
+  font-weight:800;
 }
 
-/* EXERCÍCIOS */
+.execution{
+  flex:1;
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.executionHead{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:18px;
+}
+
+.roundBox{
+  text-align:right;
+}
+
+.roundBox .small{
+  color:var(--muted);
+  font-size:12px;
+  font-weight:900;
+}
+
+.roundBox .big{
+  font-size:clamp(24px,2.5vw,42px);
+  font-weight:1000;
+}
+
+.exerciseArea{
+  flex:1;
+  min-height:0;
+}
 
 .exerciseGrid{
+  width:100%;
+  height:100%;
   display:grid;
-  gap:12px;
-  flex:1;
-  min-height:0;
+  gap:10px;
 }
+
+.grid5{grid-template-columns:repeat(5,1fr)}
+.grid8{grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr)}
+.grid10{grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(2,1fr)}
 
 .exercise{
-  padding:14px;
   position:relative;
-  min-width:0;
-  display:flex;
-  flex-direction:column;
-}
-
-.zoneTag{
-  font-size:11px;
-  color:var(--yellow);
-  font-weight:1000;
-  letter-spacing:.08em;
-}
-
-.exerciseName{
-  font-size:clamp(17px,1.65vw,26px);
-  font-weight:1000;
-  line-height:1.08;
-  margin:auto 0;
-  text-align:center;
-}
-
-.exerciseSub{
-  font-size:12px;
-  color:var(--muted);
-  font-weight:850;
-  text-align:center;
-  margin-top:6px;
-}
-
-.teamPill{
-  position:absolute;
-  right:10px;
-  top:10px;
-  border:1px solid #596573;
-  border-radius:999px;
-  padding:5px 8px;
-  font-size:10px;
-  font-weight:1000;
-  background:#0c1117;
-}
-
-.mainPair{
-  margin:auto 0;
-  display:grid;
-  gap:9px;
-  width:100%;
-}
-
-.pair{
-  border:1px solid #39434e;
-  border-radius:11px;
-  padding:9px;
-  text-align:center;
-}
-
-.pair strong{
-  display:block;
-  color:var(--yellow);
-  font-size:11px;
-  margin-bottom:4px;
-}
-
-.pair span{
-  font-size:clamp(14px,1.2vw,20px);
-  font-weight:1000;
-  line-height:1.1;
-}
-
-/* TIMER */
-
-.timerPanel{
-  height:154px;
-  flex:0 0 154px;
-  border-radius:18px;
-  border:1px solid #33404b;
-  display:grid;
-  grid-template-columns:1fr 1.3fr 1fr;
-  align-items:center;
-  padding:12px 22px;
-  background:#13251b;
-}
-
-.timerPanel.rest{
-  background:#32151a;
-}
-
-.timerSide{text-align:center}
-
-.timerLabel{
-  font-size:12px;
-  font-weight:1000;
-  letter-spacing:.12em;
-}
-
-.timerBig{
-  font-size:clamp(56px,6.6vw,104px);
-  font-weight:1000;
-  line-height:.9;
-  text-align:center;
-  font-variant-numeric:tabular-nums;
-}
-
-.timerSmall{
-  font-size:15px;
-  font-weight:900;
-  margin-top:6px;
-}
-
-.progress{
-  height:7px;
-  background:#202832;
-  border-radius:999px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:linear-gradient(145deg,#17202a,#11171e);
   overflow:hidden;
-}
-
-.progress>div{
-  height:100%;
-  width:0;
-  background:var(--yellow);
-  transition:width .25s linear;
-}
-
-/* COOLDOWN */
-
-.coolGrid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
-  flex:1;
-  min-height:0;
-}
-
-.coolCard{
-  padding:18px;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
-  font-size:clamp(18px,2vw,31px);
-  font-weight:1000;
-  line-height:1.15;
+  padding:28px 12px 18px;
 }
 
-.coolCard small{
-  display:block;
+.exercise.activeExercise{
+  border-color:var(--yellow);
+  box-shadow:0 0 0 2px rgba(255,215,0,.16) inset;
+}
+
+.exerciseIndex{
+  position:absolute;
+  top:10px;
+  left:12px;
+  color:var(--yellow);
+  font-weight:1000;
+  font-size:13px;
+}
+
+.teamTag{
+  position:absolute;
+  top:9px;
+  right:10px;
+  padding:5px 8px;
+  border-radius:8px;
+  background:#232c36;
+  color:var(--yellow);
+  font-size:11px;
+  font-weight:1000;
+}
+
+.exerciseContent{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+.exerciseName{
+  font-size:clamp(18px,1.8vw,32px);
+  font-weight:1000;
+  line-height:1.08;
+}
+
+.exerciseName.medium{
+  font-size:clamp(16px,1.55vw,27px);
+}
+
+.exerciseName.long{
+  font-size:clamp(14px,1.35vw,23px);
+}
+
+.exerciseSub{
   color:var(--muted);
-  font-size:12px;
+  margin-top:10px;
+  font-size:clamp(13px,1.05vw,18px);
+  font-weight:900;
+}
+
+.timerArea{
+  min-height:180px;
+}
+
+.timerBox{
+  height:100%;
+  min-height:180px;
+  border:1px solid #266d43;
+  background:linear-gradient(145deg,#10251a,#0e1b14);
+  border-radius:18px;
+  padding:14px 22px 10px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.timerBox.rest{
+  border-color:#7b2930;
+  background:linear-gradient(145deg,#291217,#1c0f12);
+}
+
+.timerInfo{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+}
+
+.phaseTag{
+  color:var(--green);
+  font-size:14px;
+  font-weight:1000;
+  letter-spacing:1px;
+}
+
+.timerBox.rest .phaseTag{color:var(--red)}
+
+.timer{
+  font-size:clamp(58px,7vw,108px);
+  line-height:.92;
+  font-weight:1000;
+  text-align:center;
+  font-variant-numeric:tabular-nums;
+  margin-top:3px;
+}
+
+.progress{
+  height:7px;
+  border-radius:999px;
+  background:#252c32;
+  overflow:hidden;
   margin-top:8px;
 }
 
-/* CONTROLES */
+.progressFill{
+  height:100%;
+  width:0%;
+  background:var(--green);
+  transition:width .2s linear;
+}
+
+.timerBox.rest .progressFill{background:var(--red)}
+
+.coolGrid{
+  flex:1;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  min-height:0;
+}
+
+.coolItem{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+  font-size:clamp(18px,1.8vw,32px);
+  font-weight:1000;
+}
 
 .controls{
-  height:var(--ctrl);
-  flex:0 0 var(--ctrl);
+  height:var(--control);
+  flex:0 0 var(--control);
   border-top:1px solid var(--line);
-  background:#090c10;
+  background:#090b0e;
   display:flex;
   align-items:center;
   justify-content:center;
   gap:8px;
   padding:8px 12px;
+  z-index:30;
 }
 
-.ctl{
+.btn{
+  height:46px;
+  padding:0 15px;
+  border-radius:10px;
   border:1px solid var(--line);
   background:#151b22;
   color:#fff;
-  border-radius:10px;
-  padding:9px 12px;
-  font-size:11px;
   font-weight:1000;
+  font-size:12px;
+  cursor:pointer;
+  white-space:nowrap;
 }
 
-.ctl.primary{
+.btn:hover{border-color:#707983}
+
+.btnYellow{
+  background:var(--yellow);
+  color:#111;
+  border-color:var(--yellow);
+}
+
+.btnGreen{
   background:var(--green);
-  color:#07150c;
+  color:#07140c;
   border-color:var(--green);
 }
 
-.ctl.yellow{
-  border-color:#8d7b00;
-  color:var(--yellow);
+.btnRed{
+  background:#331419;
+  border-color:#722c34;
 }
 
-.ctl.danger{
-  border-color:#71313a;
-  color:#ff9ba5;
-}
-
-.dots{
-  font-size:11px;
-  color:#7f8994;
+.pageCounter{
+  color:var(--muted);
+  font-size:12px;
   font-weight:900;
-  min-width:48px;
+  min-width:46px;
   text-align:center;
 }
 
-/* PREPARAÇÃO */
-
-#prep{
+#countdownOverlay{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.9);
-  z-index:99;
+  z-index:999;
+  background:rgba(0,0,0,.92);
   display:none;
   align-items:center;
   justify-content:center;
   flex-direction:column;
 }
 
-.prepNum{
-  font-size:min(30vw,300px);
-  font-weight:1000;
+#countdownOverlay.show{display:flex}
+
+.countLabel{
   color:var(--yellow);
-  line-height:.8;
-}
-
-.prepTxt{
-  font-size:24px;
+  font-size:clamp(24px,3vw,50px);
   font-weight:1000;
-  margin-top:25px;
+  letter-spacing:3px;
 }
 
-@media(max-width:1000px){
-  .logoBox{width:210px;height:66px}
-  .badges .hideSm{display:none}
-  .slide{padding:14px}
-  .timerPanel{height:138px;flex-basis:138px}
-  .pair span{font-size:14px}
+.countNumber{
+  font-size:clamp(130px,20vw,320px);
+  line-height:.9;
+  font-weight:1000;
+  margin-top:20px;
 }
 
-/* FULL SCREEN / TV */
-
-:fullscreen header{
-  height:112px;
-  flex-basis:112px;
-  padding:12px 30px;
+.warning{
+  color:#ffca55;
+  font-weight:900;
 }
 
-:fullscreen .logoBox{
-  height:98px;
-  width:360px;
-  padding:6px 14px;
+/* FULLSCREEN — REGRA DEFINITIVA */
+:fullscreen .page,
+:-webkit-full-screen .page{
+  padding:24px 32px;
 }
 
-:fullscreen #content{
-  height:calc(100dvh - 112px - var(--ctrl));
+:fullscreen .logoBox,
+:-webkit-full-screen .logoBox{
+  height:74px;
+  min-width:210px;
 }
 
-:fullscreen .slide{
-  padding:22px 30px 18px;
-  gap:18px;
+:fullscreen .logoBox img,
+:-webkit-full-screen .logoBox img{
+  max-height:60px;
+  max-width:270px;
 }
 
-:fullscreen .infoGrid{gap:22px}
-
-:fullscreen .infoCard{
+:fullscreen .exercise,
+:-webkit-full-screen .exercise{
+  align-items:center;
   justify-content:center;
   text-align:center;
-  padding:28px;
 }
 
-:fullscreen .infoCard h3{
-  font-size:clamp(22px,1.8vw,34px);
+:fullscreen .exerciseName,
+:-webkit-full-screen .exerciseName{
+  font-size:clamp(25px,2.2vw,42px);
 }
 
-:fullscreen .infoCard p{
-  font-size:clamp(17px,1.3vw,24px);
+:fullscreen .exerciseName.medium,
+:-webkit-full-screen .exerciseName.medium{
+  font-size:clamp(22px,1.9vw,35px);
 }
 
-:fullscreen .flow{
-  padding:24px;
-  font-size:clamp(19px,1.6vw,29px);
+:fullscreen .exerciseName.long,
+:-webkit-full-screen .exerciseName.long{
+  font-size:clamp(19px,1.65vw,30px);
 }
 
-:fullscreen .rotationGrid{gap:18px}
-
-:fullscreen .rotationCard{
+:fullscreen .rotationCard,
+:-webkit-full-screen .rotationCard{
   justify-content:center;
   align-items:center;
-  text-align:center;
-  padding:22px;
 }
 
-:fullscreen .rotationCard .team{
-  font-size:clamp(23px,2vw,38px);
-}
-
-:fullscreen .rotationCard .num{
-  font-size:clamp(40px,4vw,70px);
-}
-
-:fullscreen .rotationCard .station{
-  font-size:clamp(18px,1.45vw,28px);
-}
-
-:fullscreen .rotationCard .split{
-  font-size:clamp(13px,1vw,19px);
-}
-
-:fullscreen .exercise{
+:fullscreen .infoCard,
+:-webkit-full-screen .infoCard{
   justify-content:center;
+}
+
+:fullscreen .coolItem,
+:-webkit-full-screen .coolItem{
   align-items:center;
-  text-align:center;
-  padding:18px;
+  justify-content:center;
 }
 
-:fullscreen .exerciseName{
-  font-size:clamp(25px,2.25vw,42px);
-  margin:auto;
-  text-align:center;
-}
-
-:fullscreen .exerciseSub{
-  font-size:clamp(13px,1vw,19px);
-}
-
-:fullscreen .mainPair{
-  margin:auto;
-}
-
-:fullscreen .pair{
-  padding:14px 8px;
-}
-
-:fullscreen .pair strong{
-  font-size:clamp(12px,.9vw,17px);
-}
-
-:fullscreen .pair span{
-  font-size:clamp(18px,1.5vw,28px);
-}
-
-:fullscreen .coolCard{
-  font-size:clamp(26px,2.3vw,44px);
+@media(max-width:900px){
+  .page{padding:12px}
+  .header{min-height:60px}
+  .logoBox{height:50px;min-width:120px}
+  .logoBox img{max-height:39px;max-width:160px}
+  .hubGrid{grid-template-columns:1fr}
+  .workoutChoice{min-height:200px}
+  .overviewGrid{grid-template-columns:1fr}
+  .rotationGrid.cols8{grid-template-columns:repeat(2,1fr)}
+  .grid8{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(4,1fr)}
+  .grid10{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(5,1fr)}
+  .controls{overflow-x:auto;justify-content:flex-start}
 }
 </style>
 </head>
@@ -743,2241 +717,2544 @@ header{
 
 <div id="app">
 
-<header>
+<!-- ========================================================= -->
+<!-- HUB -->
+<!-- ========================================================= -->
 
-<div class="brand">
+<section id="hub" class="screen active">
+  <div class="page hubPage">
 
-<div class="logoBox">
-<img src="logo-cia.png" alt="Cia Athletica">
-</div>
+    <div class="hubHero">
+      <div class="logoBox" style="margin:0 auto 20px;width:max-content">
+        <img src="logo-cia.png" alt="Companhia Athletica">
+      </div>
 
-<div class="brandText">
-<div class="eyebrow">
-HYROX TRAINING CLUB • CIA ATHLETICA STUDIO 5
-</div>
+      <div class="eyebrow">HYROX TRAINING CLUB • CIA ATHLETICA STUDIO 5</div>
+      <h1>AULAS DE SÁBADO</h1>
+      <p>Selecione a turma para abrir o dashboard da aula.</p>
+    </div>
 
-<div class="title" id="headerTitle">
-HUB DE AULAS • SÁBADO
-</div>
+    <div class="hubGrid">
 
-<div class="subtitle" id="headerSub">
-MANAUS • SELECIONE A TURMA
-</div>
-</div>
+      <div class="card workoutChoice" onclick="openWorkout('w9')">
+        <div>
+          <div class="choiceTime">TURMA DAS 9H</div>
+          <div class="choiceName">HYROX Foundation – Power Endurance #2</div>
+          <div class="choiceMeta">
+            RPE 8 • 50 MIN<br>
+            Capacidade operacional: 32–40 atletas<br>
+            5 zonas • Subzonas A/B
+          </div>
+        </div>
+        <div class="openBtn">ABRIR TREINO DAS 9H →</div>
+      </div>
 
-</div>
+      <div class="card workoutChoice" onclick="openWorkout('w1030')">
+        <div>
+          <div class="choiceTime">TURMA DAS 10H30</div>
+          <div class="choiceName">Treino de Zonas Comprometidas #5 TS</div>
+          <div class="choiceMeta">
+            RPE 8 • 58 MIN<br>
+            32 atletas • 8 equipes de 4<br>
+            16 × 03:00 • sem pausa
+          </div>
+        </div>
+        <div class="openBtn">ABRIR TREINO DAS 10H30 →</div>
+      </div>
 
-<div class="badges">
-<div class="badge y" id="timeBadge">SÁBADO</div>
-<div class="badge" id="capBadge">2 AULAS</div>
-<div class="badge">HUB V2 • TIMER FIX</div>
-</div>
+    </div>
 
-</header>
+    <div style="text-align:center;margin-top:18px;color:#66717d;font-weight:900">
+      STUDIO 5 • HUB V3 • TIMERS INDEPENDENTES
+    </div>
 
-<div id="content">
-
-<section id="hub" class="view">
-
-<div class="hubHead">
-<h1>AULAS DE SÁBADO</h1>
-<p>Escolha a turma para abrir o dashboard completo.</p>
-</div>
-
-<div class="hubGrid">
-
-<div class="workoutChoice" onclick="openWorkout('nine')">
-
-<div class="timeTag">
-TURMA DAS 9H
-</div>
-
-<div class="choiceTitle">
-HYROX Foundation<br>
-Power Endurance #2
-</div>
-
-<div class="choiceMeta">
-32–40 atletas • 50 min • RPE 8
-</div>
-
-<div class="openBtn">
-ABRIR TREINO →
-</div>
-
-</div>
-
-<div class="workoutChoice" onclick="openWorkout('ten')">
-
-<div class="timeTag">
-TURMA DAS 10H30
-</div>
-
-<div class="choiceTitle">
-Treino de Zonas<br>
-Comprometidas #5 TS
-</div>
-
-<div class="choiceMeta">
-32 atletas • 58 min • RPE 8
-</div>
-
-<div class="openBtn">
-ABRIR TREINO →
-</div>
-
-</div>
-
-</div>
+  </div>
 </section>
 
-<section id="workoutView" class="view hidden">
-<div id="track"></div>
+
+<!-- ========================================================= -->
+<!-- WORKOUT -->
+<!-- ========================================================= -->
+
+<section id="workoutScreen" class="screen">
+  <div id="workoutPage" class="page"></div>
 </section>
 
-</div>
 
-<div class="controls">
+<!-- ========================================================= -->
+<!-- CONTROLES -->
+<!-- ========================================================= -->
 
-<button class="ctl yellow" id="hubBtn" onclick="goHub()">
-⌂ HUB
-</button>
+<div id="controls" class="controls" style="display:none">
 
-<button class="ctl" id="prevBtn" onclick="prevSlide()">
-◀
-</button>
+  <button class="btn" onclick="goHub()">⌂ HUB</button>
 
-<div class="dots" id="dots">
-HUB
-</div>
+  <button class="btn" onclick="prevPage()">◀</button>
 
-<button class="ctl" id="nextBtn" onclick="nextSlide()">
-▶
-</button>
+  <span id="pageCounter" class="pageCounter">1 / 5</span>
 
-<button class="ctl yellow" id="soundBtn" onclick="toggleSound()">
-🔊 SOM ON
-</button>
+  <button class="btn" onclick="nextPage()">▶</button>
 
-<button class="ctl yellow" id="modeBtn" onclick="toggleMode()">
-AUTO
-</button>
+  <button id="soundButton" class="btn btnYellow" onclick="toggleSound()">
+    🔊 SOM ON
+  </button>
 
-<button class="ctl yellow" id="fsBtn" onclick="toggleFS()">
-⛶ TELA CHEIA
-</button>
+  <button id="fullscreenButton" class="btn" onclick="toggleFullscreen()">
+    ⛶ TELA CHEIA
+  </button>
 
-<button class="ctl primary" id="startBtn" onclick="masterAction()">
-SELECIONE O TREINO
-</button>
+  <button id="masterButton" class="btn btnGreen" onclick="masterAction()">
+    ▶ INICIAR AULA
+  </button>
 
-<button class="ctl danger" id="resetBtn" onclick="resetCurrent()">
-RESET
-</button>
+  <button class="btn btnRed" onclick="resetCurrentPhase()">
+    RESET
+  </button>
 
 </div>
 
+
+<!-- COUNTDOWN -->
+<div id="countdownOverlay">
+  <div class="countLabel">PREPARE-SE</div>
+  <div id="countNumber" class="countNumber">5</div>
 </div>
 
-<div id="prep">
-<div class="prepNum" id="prepNum">5</div>
-<div class="prepTxt">PREPARAR</div>
 </div>
+
 
 <script>
 
-const workouts={
+/* ============================================================
+   UTILIDADES
+============================================================ */
 
-nine:{
-
-name:"HYROX Foundation – Power Endurance #2",
-
-time:"TURMA DAS 9H",
-
-cap:"32–40 ATLETAS",
-
-duration:"50 MIN",
-
-defaultAthletes:40,
-
-counts:[32,33,34,35,36,37,38,39,40],
-
-warm:[
-"Cossack Squats @ RPE 6",
-"OH Bowler Lunge",
-"World's Greatest Stretch",
-"Blast Off Push-ups",
-"Situp to Glute Bridges"
-],
-
-warmWork:45,
-
-warmRest:15,
-
-type:"paired",
-
-mainRounds:30,
-
-work:60,
-
-rest:20,
-
-zones:[
-
-{
-a:"Run @ RPE 8",
-b:"Wallballs"
-},
-
-{
-a:"Burpee to Plate",
-b:"Dual KB Clean"
-},
-
-{
-a:"Sandbag OH Forward Lunge",
-b:"Row Sprint @ RPE 8"
-},
-
-{
-a:"Sled Pull",
-b:"SkiErg @ RPE 8"
-},
-
-{
-a:"KB Pirate Ship Swing",
-b:"Low Squat Hold"
+function fmt(sec){
+  sec=Math.max(0,sec);
+  const m=Math.floor(sec/60);
+  const s=sec%60;
+  return String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
 }
 
-]
-
-},
-
-ten:{
-
-name:"Treino de Zonas Comprometidas #5 TS",
-
-time:"TURMA DAS 10H30",
-
-cap:"32 ATLETAS",
-
-duration:"58 MIN",
-
-defaultAthletes:32,
-
-counts:[32],
-
-warm:[
-"Bootstrapper",
-"Cossack Squats",
-"90-90 Transitions",
-"Inside-outside Plank Jumps",
-"Rotational Push-ups"
-],
-
-warmWork:45,
-
-warmRest:15,
-
-type:"continuous",
-
-mainRounds:16,
-
-work:180,
-
-rest:0,
-
-zones:[
-
-{
-single:"Run @ RPE 8"
-},
-
-{
-single:"20x DB Thrusters + 20x DB Skier Swing"
-},
-
-{
-single:"RowErg @ RPE 8"
-},
-
-{
-single:"20x Sandbag Back Rack Lunge + 20x Air Squats"
-},
-
-{
-single:"SkiErg @ RPE 8"
-},
-
-{
-single:"20m Overhand Sled Push + 20x Overhead Situp"
-},
-
-{
-single:"15x Wallballs + 10x Burpees Chest to Floor"
-},
-
-{
-single:"20x Bicycle Crunch + 20x DB Goblet Squats"
+function nameClass(name){
+  if(name.length>36)return "long";
+  if(name.length>24)return "medium";
+  return "";
 }
 
-]
-
+function el(id){
+  return document.getElementById(id);
 }
 
+
+/* ============================================================
+   ÁUDIO
+============================================================ */
+
+let soundEnabled=true;
+let audioCtx=null;
+
+function initAudio(){
+  if(!audioCtx){
+    const AC=window.AudioContext||window.webkitAudioContext;
+    if(AC) audioCtx=new AC();
+  }
+
+  if(audioCtx && audioCtx.state==="suspended"){
+    audioCtx.resume();
+  }
+}
+
+function tone(freq,duration,volume=.22){
+  if(!soundEnabled)return;
+
+  initAudio();
+
+  if(!audioCtx)return;
+
+  const oscillator=audioCtx.createOscillator();
+  const gain=audioCtx.createGain();
+
+  oscillator.type="sine";
+  oscillator.frequency.value=freq;
+
+  gain.gain.setValueAtTime(volume,audioCtx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(
+    .001,
+    audioCtx.currentTime+duration
+  );
+
+  oscillator.connect(gain);
+  gain.connect(audioCtx.destination);
+
+  oscillator.start();
+  oscillator.stop(audioCtx.currentTime+duration);
+}
+
+function shortBeep(){
+  tone(880,.10,.22);
+}
+
+function goBeep(){
+  tone(1250,.28,.30);
+}
+
+function finishBeep(){
+  tone(660,.15,.25);
+
+  setTimeout(()=>tone(880,.15,.25),180);
+  setTimeout(()=>tone(1200,.38,.30),360);
+}
+
+function toggleSound(){
+  soundEnabled=!soundEnabled;
+
+  el("soundButton").textContent=
+    soundEnabled ? "🔊 SOM ON" : "🔇 SOM OFF";
+
+  if(soundEnabled){
+    initAudio();
+    shortBeep();
+  }
+}
+
+
+/* ============================================================
+   DADOS — TREINO 9H
+============================================================ */
+
+const DATA9={
+  id:"w9",
+
+  time:"TURMA DAS 9H",
+
+  title:"HYROX Foundation – Power Endurance #2",
+
+  duration:"50 MIN",
+
+  capacity:"32–40 ATLETAS",
+
+  warmup:[
+    "Cossack Squats @ RPE 6",
+    "OH Bowler Lunge",
+    "World’s Greatest Stretch",
+    "Blast Off Push-ups",
+    "Situp to Glute Bridges"
+  ],
+
+  zones:[
+    {
+      name:"ZONA 1",
+      a:"Run @ RPE 8",
+      b:"Wallballs"
+    },
+    {
+      name:"ZONA 2",
+      a:"Burpee to Plate",
+      b:"Dual KB Clean"
+    },
+    {
+      name:"ZONA 3",
+      a:"Sandbag OH Forward Lunge",
+      b:"Row Sprint @ RPE 8"
+    },
+    {
+      name:"ZONA 4",
+      a:"Sled Pull",
+      b:"SkiErg @ RPE 8"
+    },
+    {
+      name:"ZONA 5",
+      a:"KB Pirate Ship Swing",
+      b:"Low Squat Hold"
+    }
+  ]
 };
 
 
-/* =========================================================
-   ESTADO GERAL
-   ========================================================= */
+/* ============================================================
+   DADOS — TREINO 10H30
+============================================================ */
 
-let key=null;
-let w=null;
-let slide=0;
-let athletes=32;
+const DATA1030={
+  id:"w1030",
 
-let autoMode=true;
-let soundOn=true;
+  time:"TURMA DAS 10H30",
 
-let timer=null;
-let running=false;
-let paused=false;
-let phase=null;
+  title:"Treino de Zonas Comprometidas #5 TS",
 
-let warmRound=0;
-let warmWork=true;
-let warmSec=45;
+  duration:"58 MIN",
 
-let mainRound=0;
-let mainWork=true;
-let mainSec=60;
+  capacity:"32 ATLETAS",
 
-let coolSec=300;
+  warmup:[
+    "Bootstrapper",
+    "Cossack Squats",
+    "90-90 Transitions",
+    "Inside-outside Plank Jumps",
+    "Rotational Push-ups"
+  ],
 
-let ac=null;
+  zones:[
+    {
+      name:"Run",
+      sub:"03:00 @ RPE 8"
+    },
+    {
+      name:"DB Thrusters + DB Skier Swing",
+      sub:"20x + 20x"
+    },
+    {
+      name:"RowErg",
+      sub:"03:00 @ RPE 8"
+    },
+    {
+      name:"Sandbag Back Rack Lunge + Air Squats",
+      sub:"20x + 20x"
+    },
+    {
+      name:"SkiErg",
+      sub:"03:00 @ RPE 8"
+    },
+    {
+      name:"Overhand Sled Push + Overhead Situp",
+      sub:"20m + 20x"
+    },
+    {
+      name:"Wallballs + Burpees Chest to Floor",
+      sub:"15x + 10x"
+    },
+    {
+      name:"Bicycle Crunch + DB Goblet Squats",
+      sub:"20x + 20x"
+    }
+  ]
+};
 
 
-const $=id=>document.getElementById(id);
+/* ============================================================
+   CONTROLADOR INDEPENDENTE — 9H
+============================================================ */
 
-const fmt=s=>
-String(Math.floor(Math.max(0,s)/60)).padStart(2,'0')
-+':'+
-String(Math.max(0,s)%60).padStart(2,'0');
+const TIMER9={
+
+  engine:null,
+
+  running:false,
+  paused:false,
+
+  phase:null,
+
+  warm:{
+    round:0,
+    part:"work",
+    sec:45
+  },
+
+  main:{
+    round:0,
+    part:"work",
+    sec:60
+  },
+
+  cool:{
+    sec:300
+  },
+
+  stop(){
+    if(this.engine){
+      clearInterval(this.engine);
+      this.engine=null;
+    }
+
+    this.running=false;
+    this.paused=false;
+  },
+
+  resetAll(){
+
+    this.stop();
+
+    this.phase=null;
+
+    this.warm={
+      round:0,
+      part:"work",
+      sec:45
+    };
+
+    this.main={
+      round:0,
+      part:"work",
+      sec:60
+    };
+
+    this.cool={
+      sec:300
+    };
+  },
+
+  startInterval(callback){
+
+    if(this.engine){
+      clearInterval(this.engine);
+    }
+
+    this.running=true;
+    this.paused=false;
+
+    this.engine=setInterval(()=>{
+      if(!this.paused){
+        callback();
+      }
+    },1000);
+  }
+};
 
 
-/* =========================================================
+/* ============================================================
+   CONTROLADOR INDEPENDENTE — 10H30
+============================================================ */
+
+const TIMER1030={
+
+  engine:null,
+
+  running:false,
+  paused:false,
+
+  phase:null,
+
+  warm:{
+    round:0,
+    part:"work",
+    sec:45
+  },
+
+  main:{
+    round:0,
+    sec:180
+  },
+
+  cool:{
+    sec:300
+  },
+
+  stop(){
+    if(this.engine){
+      clearInterval(this.engine);
+      this.engine=null;
+    }
+
+    this.running=false;
+    this.paused=false;
+  },
+
+  resetAll(){
+
+    this.stop();
+
+    this.phase=null;
+
+    this.warm={
+      round:0,
+      part:"work",
+      sec:45
+    };
+
+    this.main={
+      round:0,
+      sec:180
+    };
+
+    this.cool={
+      sec:300
+    };
+  },
+
+  startInterval(callback){
+
+    if(this.engine){
+      clearInterval(this.engine);
+    }
+
+    this.running=true;
+    this.paused=false;
+
+    this.engine=setInterval(()=>{
+      if(!this.paused){
+        callback();
+      }
+    },1000);
+  }
+};
+
+
+/* ============================================================
+   ESTADO DA INTERFACE
+============================================================ */
+
+let activeWorkout=null;
+
+let currentPage=0;
+
+let athlete9=32;
+let athlete1030=32;
+
+
+/* ============================================================
    ABRIR TREINO
-   CORREÇÃO V2:
-   CADA TREINO SEMPRE ABRE COM ESTADO NOVO E ZERADO
-   ========================================================= */
+============================================================ */
 
-function openWorkout(k){
+function openWorkout(id){
 
-stopEngine();
+  /* SEGURANÇA:
+     nunca deixar motor do outro treino funcionando
+  */
 
-key=k;
-w=workouts[k];
+  TIMER9.stop();
+  TIMER1030.stop();
 
-athletes=w.defaultAthletes;
+  activeWorkout=id;
 
-slide=0;
+  currentPage=0;
 
-/* ZERA COMPLETAMENTE O TREINO */
+  el("hub").classList.remove("active");
+  el("workoutScreen").classList.add("active");
 
-warmRound=0;
-warmWork=true;
-warmSec=w.warmWork;
+  el("controls").style.display="flex";
 
-mainRound=0;
-mainWork=true;
-mainSec=w.work;
+  initAudio();
 
-coolSec=300;
+  render();
 
-$('hub').classList.add('hidden');
-
-$('workoutView').classList.remove('hidden');
-
-$('headerTitle').textContent=w.name;
-
-$('headerSub').textContent=
-w.time+' • RPE 8';
-
-$('timeBadge').textContent=w.time;
-
-$('capBadge').textContent=w.cap;
-
-buildWorkout();
-
-showSlide(0);
-
+  updateMasterButton();
 }
 
 
-/* =========================================================
+/* ============================================================
    VOLTAR AO HUB
-   ========================================================= */
+
+   REGRA:
+   voltar ao HUB = ENCERRAR E ZERAR treino aberto.
+============================================================ */
 
 function goHub(){
 
-stopEngine();
+  TIMER9.resetAll();
+  TIMER1030.resetAll();
 
-/* LIMPA TODO O ESTADO ANTES DE ABRIR OUTRA AULA */
+  activeWorkout=null;
+  currentPage=0;
 
-key=null;
-w=null;
+  el("workoutScreen").classList.remove("active");
+  el("hub").classList.add("active");
 
-warmRound=0;
-warmWork=true;
-warmSec=45;
-
-mainRound=0;
-mainWork=true;
-mainSec=60;
-
-coolSec=300;
-
-$('workoutView').classList.add('hidden');
-
-$('hub').classList.remove('hidden');
-
-$('headerTitle').textContent=
-'HUB DE AULAS • SÁBADO';
-
-$('headerSub').textContent=
-'MANAUS • SELECIONE A TURMA';
-
-$('timeBadge').textContent=
-'SÁBADO';
-
-$('capBadge').textContent=
-'2 AULAS';
-
-$('dots').textContent=
-'HUB';
-
-$('startBtn').textContent=
-'SELECIONE O TREINO';
-
+  el("controls").style.display="none";
 }
 
 
-/* =========================================================
-   CONSTRUÇÃO DO DASHBOARD
-   ========================================================= */
-
-function buildWorkout(){
-
-$('track').innerHTML=
-coachSlide()+
-rotationSlide()+
-warmSlide()+
-mainSlide()+
-coolSlide();
-
-buildCounts();
-
-renderRotation();
-
-renderWarm();
-
-renderMain();
-
-updateCoolUI();
-
-}
-
-
-/* =========================================================
-   PÁGINA 1 — ORIENTAÇÕES
-   ========================================================= */
-
-function coachSlide(){
-
-let paired=w.type==='paired';
-
-return `
-
-<section class="slide">
-
-<div class="sectionHead">
-
-<div>
-
-<div class="kicker">
-ORIENTAÇÕES DO COACH • ${w.time}
-</div>
-
-<div class="sectionTitle">
-${w.name}
-</div>
-
-</div>
-
-<div class="sectionMeta">
-${w.cap} • ${w.duration} • RPE 8
-</div>
-
-</div>
-
-
-<div class="infoGrid">
-
-<div class="card infoCard">
-
-<h3>FORMATO</h3>
-
-<p>
-
-${paired?
-
-'5 zonas com lados A/B simultâneos. 1:00 trabalho + 0:20 descanso/troca. 6 rounds por zona = 8:00.'
-
-:
-
-'8 zonas. 16 rounds contínuos de 03:00, sem REST no Main. Cada equipe completa duas voltas.'
-
-}
-
-</p>
-
-</div>
-
-
-<div class="card infoCard">
-
-<h3>RODÍZIO</h3>
-
-<p>
-
-${paired?
-
-'5 equipes principais. Cada equipe é dividida em A/B; após 6 rounds, avança uma zona.'
-
-:
-
-'8 equipes de 4. A→Z1, B→Z2 ... H→Z8. A cada 03:00, todas avançam uma zona.'
-
-}
-
-</p>
-
-</div>
-
-
-<div class="card infoCard">
-
-<h3>PACING • RPE 8</h3>
-
-<p>
-Intensidade alta e sustentável.
-Evitar pico precoce nos ergômetros/corrida.
-Manter técnica sob fadiga.
-</p>
-
-</div>
-
-
-<div class="card infoCard">
-
-<h3>CAPACIDADE</h3>
-
-<p>
-
-${paired?
-
-'32–40 atletas. A divisão A/B mantém até 4 atletas em cada subestação crítica.'
-
-:
-
-'32 atletas. 8 equipes de 4, respeitando o limite de 4 nas estações críticas.'
-
-}
-
-</p>
-
-</div>
-
-
-<div class="card infoCard">
-
-<h3>SEGURANÇA / FLUXO</h3>
-
-<p>
-Trocas pelas laterais.
-Não cruzar pistas de Sled em movimento
-nem a área ativa de Wallballs.
-</p>
-
-</div>
-
-
-<div class="card infoCard">
-
-<h3>SINAL SONORO</h3>
-
-<p>
-Preparação 5–4–3–2–1.
-Bipes em 00:03, 00:02 e 00:01.
-Sinal distinto marca a troca.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="card flow">
-
-AQUECIMENTO →
-
-${paired?
-
-'POWER ENDURANCE • 5 ZONAS A/B'
-
-:
-
-'ZONAS COMPROMETIDAS • 8 ZONAS'
-
-}
-
-→ VOLTA À CALMA
-
-</div>
-
-</section>
-
-`;
-
-}
-
-
-/* =========================================================
-   PÁGINA 2 — RODÍZIO
-   ========================================================= */
-
-function rotationSlide(){
-
-return `
-
-<section class="slide">
-
-<div class="sectionHead">
-
-<div>
-
-<div class="kicker">
-RODÍZIO • ${w.time}
-</div>
-
-<div class="sectionTitle">
-DIVISÃO DA TURMA
-</div>
-
-</div>
-
-<div class="sectionMeta">
-Selecione o número real de atletas
-</div>
-
-</div>
-
-
-<div class="rosterTop">
-
-<div
-class="countBtns"
-id="countBtns">
-</div>
-
-<div
-class="notice"
-id="capNotice">
-</div>
-
-</div>
-
-
-<div
-class="rotationGrid"
-id="rotationGrid">
-</div>
-
-</section>
-
-`;
-
-}
-
-
-/* =========================================================
-   PÁGINA 3 — AQUECIMENTO
-   ========================================================= */
-
-function warmSlide(){
-
-return `
-
-<section class="slide">
-
-<div class="sectionHead">
-
-<div>
-
-<div class="kicker">
-AQUECIMENTO • 5 MIN
-</div>
-
-<div class="sectionTitle">
-45s TRABALHO / 15s DESCANSO
-</div>
-
-</div>
-
-<div class="sectionMeta">
-5 rounds • Zona Lateral Livre
-</div>
-
-</div>
-
-<div
-class="exerciseGrid"
-id="warmGrid">
-</div>
-
-${timerHTML('warm','00:45')}
-
-</section>
-
-`;
-
-}
-
-
-/* =========================================================
-   PÁGINA 4 — MAIN
-   ========================================================= */
-
-function mainSlide(){
-
-let paired=w.type==='paired';
-
-return `
-
-<section class="slide">
-
-<div class="sectionHead">
-
-<div>
-
-<div class="kicker">
-TREINO PRINCIPAL •
-${paired?'40':'48'} MIN
-</div>
-
-<div class="sectionTitle">
-
-${paired?
-
-'POWER ENDURANCE • 5 ZONAS'
-
-:
-
-'ZONAS COMPROMETIDAS • SEM REST'
-
-}
-
-</div>
-
-</div>
-
-<div class="sectionMeta">
-
-${paired?
-
-'30 rounds • 1:00 / 0:20'
-
-:
-
-'16 rounds • 03:00 contínuos'
-
-}
-
-</div>
-
-</div>
-
-
-<div
-class="exerciseGrid"
-id="mainGrid">
-</div>
-
-
-${timerHTML(
-'main',
-paired?'01:00':'03:00'
-)}
-
-</section>
-
-`;
-
-}
-
-
-/* =========================================================
-   PÁGINA 5 — COOLDOWN
-   ========================================================= */
-
-function coolSlide(){
-
-return `
-
-<section class="slide">
-
-<div class="sectionHead">
-
-<div>
-
-<div class="kicker">
-VOLTA À CALMA • 5 MIN
-</div>
-
-<div class="sectionTitle">
-RECUPERAÇÃO
-</div>
-
-</div>
-
-<div class="sectionMeta">
-Reduzir gradualmente a intensidade
-</div>
-
-</div>
-
-
-<div class="coolGrid">
-
-<div class="card coolCard">
-
-<div>
-
-DESACELERAR
-
-<small>
-Saia do esforço de forma progressiva.
-</small>
-
-</div>
-
-</div>
-
-
-<div class="card coolCard">
-
-<div>
-
-NORMALIZAR A RESPIRAÇÃO
-
-<small>
-Inspiração controlada e expiração longa.
-</small>
-
-</div>
-
-</div>
-
-
-<div class="card coolCard">
-
-<div>
-
-REDUZIR A FC
-
-<small>
-Caminhada leve e recuperação ativa.
-</small>
-
-</div>
-
-</div>
-
-
-<div class="card coolCard">
-
-<div>
-
-RECUPERAR
-
-<small>
-Hidratação e mobilidade leve,
-sem forçar amplitude.
-</small>
-
-</div>
-
-</div>
-
-</div>
-
-
-${timerHTML('cool','05:00')}
-
-</section>
-
-`;
-
-}
-
-
-/* =========================================================
-   TIMER VISUAL
-   ========================================================= */
-
-function timerHTML(p,t){
-
-return `
-
-<div
-class="timerPanel"
-id="${p}Panel">
-
-<div class="timerSide">
-
-<div
-class="timerLabel"
-id="${p}State">
-
-${p==='cool'?'RECUPERAÇÃO':'PRONTO'}
-
-</div>
-
-<div
-class="timerSmall"
-id="${p}Round">
-</div>
-
-</div>
-
-
-<div>
-
-<div
-class="timerBig"
-id="${p}Clock">
-
-${t}
-
-</div>
-
-<div class="progress">
-
-<div id="${p}Progress"></div>
-
-</div>
-
-</div>
-
-
-<div class="timerSide">
-
-<div class="timerLabel">
-
-${p==='main'?
-
-'TOTAL RESTANTE'
-
-:
-
-'PRÓXIMO'
-
-}
-
-</div>
-
-<div
-class="timerSmall"
-id="${p}Next">
-</div>
-
-</div>
-
-</div>
-
-`;
-
-}
-
-
-/* =========================================================
+/* ============================================================
    NAVEGAÇÃO
-   ========================================================= */
+============================================================ */
 
-function showSlide(n){
+function nextPage(){
 
-if(!w)return;
+  if(!activeWorkout)return;
 
-slide=Math.max(
-0,
-Math.min(4,n)
-);
+  currentPage=Math.min(4,currentPage+1);
 
-$('track').style.transform=
-`translateX(-${slide*100}%)`;
+  render();
+  updateMasterButton();
+}
 
-$('dots').textContent=
-`${slide+1} / 5`;
+function prevPage(){
 
-updateStartLabel();
+  if(!activeWorkout)return;
 
+  currentPage=Math.max(0,currentPage-1);
+
+  render();
+  updateMasterButton();
 }
 
 
-function prevSlide(){
+/* ============================================================
+   CABEÇALHO
+============================================================ */
 
-if(w)
-showSlide(slide-1);
+function header(data){
 
+  return `
+  <div class="header">
+
+    <div class="brandBlock">
+
+      <div class="logoBox">
+        <img src="logo-cia.png" alt="Companhia Athletica">
+      </div>
+
+      <div class="brandTitle">
+        <div class="eyebrow">
+          HYROX TRAINING CLUB • CIA ATHLETICA STUDIO 5
+        </div>
+
+        <h1>${data.title}</h1>
+      </div>
+
+    </div>
+
+    <div class="badges">
+
+      <div class="badge yellow">
+        ${data.time}
+      </div>
+
+      <div class="badge">
+        ${data.capacity}
+      </div>
+
+      <div class="badge">
+        ${data.duration}
+      </div>
+
+      <div class="badge">
+        RPE 8
+      </div>
+
+    </div>
+
+  </div>
+  `;
 }
 
 
-function nextSlide(){
+/* ============================================================
+   RENDER PRINCIPAL
+============================================================ */
 
-if(w)
-showSlide(slide+1);
+function render(){
 
+  if(activeWorkout==="w9"){
+    render9();
+  }
+
+  if(activeWorkout==="w1030"){
+    render1030();
+  }
+
+  el("pageCounter").textContent=
+    (currentPage+1)+" / 5";
 }
 
 
-/* =========================================================
-   CONTAGEM DE ALUNOS
-   ========================================================= */
+/* ============================================================
+   TREINO 9H — RENDER
+============================================================ */
 
-function buildCounts(){
+function render9(){
 
-let b=$('countBtns');
+  const data=DATA9;
 
-b.innerHTML='';
+  if(currentPage===0){
+    renderOverview9(data);
+  }
 
-w.counts.forEach(n=>{
+  if(currentPage===1){
+    renderRotation9(data);
+  }
 
-let x=document.createElement('button');
+  if(currentPage===2){
+    renderWarm9(data);
+  }
 
-x.className=
-'countBtn'+
-(n===athletes?' active':'');
+  if(currentPage===3){
+    renderMain9(data);
+  }
 
-x.textContent=n;
-
-x.onclick=()=>{
-
-athletes=n;
-
-buildCounts();
-
-renderRotation();
-
-renderMain();
-
-};
-
-b.appendChild(x);
-
-});
-
+  if(currentPage===4){
+    renderCool9(data);
+  }
 }
 
 
-function distribute(total,n){
+/* ============================================================
+   9H — ORIENTAÇÕES
+============================================================ */
 
-let base=Math.floor(total/n);
+function renderOverview9(data){
 
-let r=total%n;
+  el("workoutPage").innerHTML=`
 
-return Array.from(
-{length:n},
-(_,i)=>base+(i<r?1:0)
-);
+  ${header(data)}
 
+  <div class="sectionLabel">
+    ORIENTAÇÕES DO COACH
+  </div>
+
+  <div class="pageTitle">
+    POWER ENDURANCE • 5 ZONAS A/B
+  </div>
+
+  <div class="overviewGrid">
+
+    <div class="card infoCard">
+
+      <h3>FORMATO</h3>
+
+      <p>
+        Cada zona possui dois estímulos:
+        <strong>A</strong> e <strong>B</strong>.
+        São 6 rounds por zona:
+        3 passagens em A e 3 em B.
+      </p>
+
+    </div>
+
+    <div class="card infoCard">
+
+      <h3>RITMO / PACING</h3>
+
+      <p>
+        Trabalho de 01:00 em RPE 8.
+        Controle o primeiro round para sustentar
+        potência e técnica durante os 40 minutos.
+      </p>
+
+    </div>
+
+    <div class="card infoCard">
+
+      <h3>SEGURANÇA / FLUXO</h3>
+
+      <p>
+        Transições sempre pelas laterais.
+        Não cruzar as pistas de Sled em movimento.
+        Respeitar o limite operacional dos ergômetros.
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="card flowBox">
+
+    <strong>ESTRUTURA DA AULA</strong>
+
+    <div>
+      AQUECIMENTO 5'
+      →
+      5 ZONAS × 8'
+      →
+      01:00 TRABALHO / 00:20 TROCA
+      →
+      RECUPERAÇÃO 5'
+    </div>
+
+  </div>
+  `;
 }
 
 
-/* =========================================================
-   RODÍZIO
-   ========================================================= */
+/* ============================================================
+   9H — RODÍZIO
+============================================================ */
 
-function renderRotation(){
+function renderRotation9(data){
 
-let g=$('rotationGrid');
+  const sizes=groupSizes(athlete9,5);
 
-let n=w.zones.length;
+  el("workoutPage").innerHTML=`
 
-let s=distribute(
-athletes,
-n
-);
+  ${header(data)}
 
-g.style.gridTemplateColumns=
-`repeat(${n<=5?n:4},1fr)`;
+  <div class="rotationTop">
 
-g.innerHTML='';
+    <div>
 
+      <div class="sectionLabel">
+        ORGANIZAÇÃO DA TURMA
+      </div>
 
-if(w.type==='paired'){
+      <div class="pageTitle">
+        RODÍZIO • ${athlete9} ATLETAS
+      </div>
 
-s.forEach((q,i)=>{
+    </div>
 
-let a=Math.ceil(q/2);
+    <div class="counterBox">
 
-let b=Math.floor(q/2);
+      <button class="counterBtn"
+        onclick="changeAthletes9(-1)">−</button>
 
-g.innerHTML+=`
+      <div class="athleteCount">
+        ${athlete9}
+      </div>
 
-<div class="card rotationCard">
+      <button class="counterBtn"
+        onclick="changeAthletes9(1)">+</button>
 
-<div class="team">
-EQUIPE ${i+1}
-</div>
+    </div>
 
-<div class="num">
-${q}
-</div>
+  </div>
 
-<div class="station">
-INICIA ZONA ${i+1}
-</div>
+  <div class="card"
+       style="padding:12px 18px;text-align:center">
 
-<div class="split">
+    <span class="green">
+      5 EQUIPES PRINCIPAIS
+    </span>
 
-A: ${a} • B: ${b}
+    <span class="muted">
+      • cada equipe divide-se entre A/B dentro da zona.
+      Troca A ↔ B no sinal.
+    </span>
 
-<br>
+  </div>
 
-${w.zones[i].a}
-↔
-${w.zones[i].b}
+  <div class="rotationGrid cols5">
 
-</div>
+    ${data.zones.map((z,i)=>`
 
-</div>
+      <div class="card rotationCard">
 
-`;
+        <div class="teamBig">
+          EQUIPE ${String.fromCharCode(65+i)}
+        </div>
 
-});
+        <div class="teamCount">
+          ${sizes[i]} ATLETAS
+        </div>
 
-$('capNotice').textContent=
-`${athletes} atletas • 5 equipes • A/B com no máximo 4 atletas por lado.`;
+        <div class="stationText">
+          ${z.name}<br><br>
+          A • ${z.a}<br>
+          B • ${z.b}
+        </div>
 
-}
+      </div>
 
-else{
+    `).join("")}
 
-s.forEach((q,i)=>{
-
-g.innerHTML+=`
-
-<div class="card rotationCard">
-
-<div class="team">
-EQUIPE ${String.fromCharCode(65+i)}
-</div>
-
-<div class="num">
-${q}
-</div>
-
-<div class="station">
-INICIA ZONA ${i+1}
-</div>
-
-<div class="split">
-${w.zones[i].single}
-</div>
-
-</div>
-
-`;
-
-});
-
-$('capNotice').textContent=
-`${athletes} atletas • 8 equipes de 4 • uma zona por equipe.`;
-
-}
-
+  </div>
+  `;
 }
 
 
-/* =========================================================
-   AQUECIMENTO
-   ========================================================= */
+function changeAthletes9(v){
 
-function renderWarm(){
+  athlete9=Math.max(
+    32,
+    Math.min(40,athlete9+v)
+  );
 
-let g=$('warmGrid');
-
-g.style.gridTemplateColumns=
-'repeat(5,1fr)';
-
-g.innerHTML='';
-
-w.warm.forEach((x,i)=>{
-
-g.innerHTML+=`
-
-<div
-class="card exercise"
-id="warmCard${i}">
-
-<div class="zoneTag">
-ROUND ${i+1}
-</div>
-
-<div class="exerciseName">
-${x}
-</div>
-
-<div class="exerciseSub">
-00:45
-</div>
-
-</div>
-
-`;
-
-});
-
-updateWarmUI();
-
+  renderRotation9(DATA9);
 }
 
 
-/* =========================================================
-   MAIN
-   ========================================================= */
+/* ============================================================
+   9H — AQUECIMENTO
+============================================================ */
 
-function renderMain(){
+function renderWarm9(data){
 
-let g=$('mainGrid');
+  const w=TIMER9.warm;
 
-let n=w.zones.length;
+  const total=
+    (4-w.round)*60 +
+    (w.part==="work" ? w.sec+15 : w.sec);
 
-g.style.gridTemplateColumns=
-`repeat(${n<=5?n:4},1fr)`;
+  el("workoutPage").innerHTML=`
 
-g.innerHTML='';
+  ${header(data)}
 
-let sizes=
-distribute(
-athletes,
-n
-);
+  <div class="execution">
 
+    <div class="executionHead">
 
-if(w.type==='paired'){
+      <div>
 
-let block=
-Math.min(
-4,
-Math.floor(mainRound/6)
-);
+        <div class="sectionLabel">
+          AQUECIMENTO
+        </div>
 
-let swap=
-mainRound%2===1;
+        <div class="pageTitle">
+          45s TRABALHO / 15s DESCANSO
+        </div>
 
+      </div>
 
-w.zones.forEach((z,i)=>{
+      <div class="roundBox">
 
-let team=
-((i-block+n)%n);
+        <div class="small">
+          ROUND
+        </div>
 
-let q=sizes[team];
+        <div class="big">
+          ${w.round+1}/5
+        </div>
 
-let a=Math.ceil(q/2);
+      </div>
 
-let b=Math.floor(q/2);
+    </div>
 
+    <div class="exerciseArea">
 
-g.innerHTML+=`
+      <div class="exerciseGrid grid5">
 
-<div class="card exercise">
+        ${data.warmup.map((name,i)=>`
 
-<div class="zoneTag">
-ZONA ${i+1}
-</div>
+          <div class="exercise
+            ${i===w.round ? "activeExercise":""}">
 
-<div class="teamPill">
-EQUIPE ${team+1} • ${q}
-</div>
+            <div class="exerciseIndex">
+              ROUND ${i+1}
+            </div>
 
-<div class="mainPair">
+            <div class="exerciseContent">
 
-<div class="pair">
+              <div class="exerciseName ${nameClass(name)}">
+                ${name}
+              </div>
 
-<strong>
-${swap?'B → A':'LADO A'}
-</strong>
+              <div class="exerciseSub">
+                00:45
+              </div>
 
-<span>
-${z.a}
-</span>
+            </div>
 
-<div class="exerciseSub">
-${swap?b:a} atletas
-</div>
+          </div>
 
-</div>
+        `).join("")}
 
+      </div>
 
-<div class="pair">
+    </div>
 
-<strong>
-${swap?'A → B':'LADO B'}
-</strong>
+    <div class="timerArea">
 
-<span>
-${z.b}
-</span>
+      <div class="timerBox
+        ${w.part==="rest" ? "rest":""}">
 
-<div class="exerciseSub">
-${swap?a:b} atletas
-</div>
+        <div class="timerInfo">
 
-</div>
+          <div class="phaseTag">
+            ● ${w.part==="work"
+              ? "TRABALHO"
+              : "DESCANSO / TROCA"}
+          </div>
 
-</div>
+          <div style="font-weight:900">
+            TOTAL RESTANTE • ${fmt(total)}
+          </div>
 
-</div>
+        </div>
 
-`;
+        <div class="timer">
+          ${fmt(w.sec)}
+        </div>
 
-});
+        <div class="progress">
 
-}
+          <div class="progressFill"
+               style="width:${
+                 w.part==="work"
+                 ? ((45-w.sec)/45)*100
+                 : ((15-w.sec)/15)*100
+               }%">
+          </div>
 
-else{
+        </div>
 
-let r=
-mainRound%n;
+      </div>
 
+    </div>
 
-w.zones.forEach((z,i)=>{
-
-let team=
-(i-r+n)%n;
-
-let next=
-(i+1)%n;
-
-
-g.innerHTML+=`
-
-<div class="card exercise">
-
-<div class="zoneTag">
-ZONA ${i+1}
-</div>
-
-<div class="teamPill">
-
-EQUIPE
-${String.fromCharCode(65+team)}
-•
-${sizes[team]}
-
-</div>
-
-
-<div class="exerciseName">
-${z.single}
-</div>
-
-
-<div class="exerciseSub">
-
-${mainSec<=3&&mainWork?
-
-`→ PRÓXIMA Z${next+1}`
-
-:
-
-'03:00 • RPE 8'
-
-}
-
-</div>
-
-</div>
-
-`;
-
-});
-
-}
-
+  </div>
+  `;
 }
 
 
-/* =========================================================
-   ATUALIZAÇÃO AQUECIMENTO
-   ========================================================= */
+/* ============================================================
+   9H — MAIN
+============================================================ */
 
-function updateWarmUI(){
+function renderMain9(data){
 
-if(!$('warmClock'))
-return;
+  const m=TIMER9.main;
 
-$('warmClock').textContent=
-fmt(warmSec);
+  const zone=Math.floor(m.round/6);
+  const localRound=(m.round%6)+1;
 
-$('warmRound').textContent=
-`Round ${warmRound+1}/5`;
+  const isA=((m.round%2)===0);
 
-$('warmState').textContent=
-warmWork
-?
-'TRABALHO'
-:
-'DESCANSO / TROCA';
+  const current=
+    data.zones[Math.min(zone,4)];
 
-$('warmNext').textContent=
-w.warm[(warmRound+1)%5];
+  const remainingRounds=30-m.round-1;
 
-$('warmPanel')
-.classList
-.toggle(
-'rest',
-!warmWork
-);
+  const total=
+    remainingRounds*80 +
+    (m.part==="work" ? m.sec+20 : m.sec);
 
-$('warmProgress').style.width=
-(
-(
-warmWork
-?
-(w.warmWork-warmSec)/w.warmWork
-:
-(w.warmRest-warmSec)/w.warmRest
-)
-*100
-)+'%';
+  el("workoutPage").innerHTML=`
 
+  ${header(data)}
 
-w.warm.forEach((_,i)=>{
+  <div class="execution">
 
-let e=$('warmCard'+i);
+    <div class="executionHead">
 
-if(e){
+      <div>
 
-e.style.borderColor=
-i===warmRound
-?
-'#FFD700'
-:
-'#303943';
+        <div class="sectionLabel">
+          TREINO PRINCIPAL
+        </div>
 
-e.style.boxShadow=
-i===warmRound
-?
-'0 0 0 1px #FFD700 inset'
-:
-'none';
+        <div class="pageTitle">
+          ${current.name}
+          •
+          SUBZONA ${isA ? "A":"B"}
+        </div>
 
-}
+      </div>
 
-});
+      <div class="roundBox">
 
-}
+        <div class="small">
+          ROUND TOTAL
+        </div>
 
+        <div class="big">
+          ${m.round+1}/30
+        </div>
 
-/* =========================================================
-   ATUALIZAÇÃO MAIN
-   ========================================================= */
+      </div>
 
-function updateMainUI(){
+    </div>
 
-if(!$('mainClock'))
-return;
+    <div class="exerciseArea">
 
-$('mainClock').textContent=
-fmt(mainSec);
+      <div class="exerciseGrid grid10">
 
-$('mainRound').textContent=
-`Round ${mainRound+1}/${w.mainRounds}`;
+        ${data.zones.map((z,i)=>`
 
-$('mainState').textContent=
-mainWork
-?
-'TRABALHO'
-:
-(
-w.rest
-?
-'DESCANSO / TROCA'
-:
-'TROCA DE ZONA'
-);
+          <div class="exercise
+            ${i===zone && isA ? "activeExercise":""}">
 
-$('mainPanel')
-.classList
-.toggle(
-'rest',
-!mainWork
-);
+            <div class="exerciseIndex">
+              Z${i+1}A
+            </div>
 
-let per=
-w.work+w.rest;
+            <div class="exerciseContent">
 
-let elapsed=
-mainRound*per+
-(
-mainWork
-?
-(w.work-mainSec)
-:
-(
-w.work+
-(w.rest-mainSec)
-)
-);
+              <div class="exerciseName ${nameClass(z.a)}">
+                ${z.a}
+              </div>
 
-$('mainNext').textContent=
-fmt(
-w.mainRounds*per-elapsed
-);
+              <div class="exerciseSub">
+                01:00
+              </div>
 
-$('mainProgress').style.width=
-(
-(
-mainWork
-?
-(w.work-mainSec)/w.work
-:
-(w.rest-mainSec)/w.rest
-)
-*100
-)+'%';
+            </div>
 
-renderMain();
-
-}
+          </div>
 
 
-/* =========================================================
-   ATUALIZAÇÃO COOLDOWN
-   ========================================================= */
+          <div class="exercise
+            ${i===zone && !isA ? "activeExercise":""}">
 
-function updateCoolUI(){
+            <div class="exerciseIndex">
+              Z${i+1}B
+            </div>
 
-if(!$('coolClock'))
-return;
+            <div class="exerciseContent">
 
-$('coolClock').textContent=
-fmt(coolSec);
+              <div class="exerciseName ${nameClass(z.b)}">
+                ${z.b}
+              </div>
 
-$('coolRound').textContent=
-'5 minutos';
+              <div class="exerciseSub">
+                01:00
+              </div>
 
-$('coolNext').textContent=
-'Desacelerar';
+            </div>
 
-$('coolProgress').style.width=
-(
-(300-coolSec)/300*100
-)+'%';
+          </div>
 
-}
+        `).join("")}
 
+      </div>
 
-/* =========================================================
-   SOM
-   ========================================================= */
+    </div>
 
-function audioCtx(){
+    <div class="timerArea">
 
-if(!ac)
+      <div class="timerBox
+        ${m.part==="rest" ? "rest":""}">
 
-ac=
-new(
-window.AudioContext||
-window.webkitAudioContext
-)();
+        <div class="timerInfo">
 
-if(ac.state==='suspended')
-ac.resume();
+          <div>
 
+            <div class="phaseTag">
+
+              ● ${
+                m.part==="work"
+                ? "TRABALHO"
+                : "TRANSIÇÃO • 20s"
+              }
+
+            </div>
+
+            <div style="font-weight:1000;margin-top:5px">
+
+              ${current.name}
+              •
+              ROUND ${localRound}/6
+              •
+              ${isA ? "A":"B"}
+
+            </div>
+
+          </div>
+
+          <div style="font-weight:900">
+            TREINO RESTANTE • ${fmt(total)}
+          </div>
+
+        </div>
+
+        <div class="timer">
+          ${fmt(m.sec)}
+        </div>
+
+        <div class="progress">
+
+          <div class="progressFill"
+               style="width:${
+                 m.part==="work"
+                 ? ((60-m.sec)/60)*100
+                 : ((20-m.sec)/20)*100
+               }%">
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  `;
 }
 
 
-function beep(
-f=850,
-d=.11
-){
+/* ============================================================
+   9H — COOLDOWN
+============================================================ */
 
-if(!soundOn)
-return;
+function renderCool9(data){
 
-audioCtx();
+  el("workoutPage").innerHTML=`
 
-let o=
-ac.createOscillator();
+  ${header(data)}
 
-let g=
-ac.createGain();
+  <div class="execution">
 
-o.frequency.value=f;
+    <div>
 
-g.gain.value=.08;
+      <div class="sectionLabel">
+        VOLTA À CALMA / RECUPERAÇÃO
+      </div>
 
-o.connect(g);
+      <div class="pageTitle">
+        COOLDOWN • 05:00
+      </div>
 
-g.connect(ac.destination);
+    </div>
 
-o.start();
+    <div class="coolGrid">
 
-g.gain.exponentialRampToValueAtTime(
-.001,
-ac.currentTime+d
-);
+      <div class="card coolItem">
+        DESACELERE<br>GRADUALMENTE
+      </div>
 
-o.stop(
-ac.currentTime+d
-);
+      <div class="card coolItem">
+        NORMALIZE<br>A RESPIRAÇÃO
+      </div>
 
+      <div class="card coolItem">
+        CAMINHADA LEVE<br>RECUPERAÇÃO ATIVA
+      </div>
+
+      <div class="card coolItem">
+        REDUZA A<br>FREQUÊNCIA CARDÍACA
+      </div>
+
+    </div>
+
+    <div class="timerArea">
+
+      <div class="timerBox">
+
+        <div class="phaseTag">
+          ● RECUPERAÇÃO
+        </div>
+
+        <div class="timer">
+          ${fmt(TIMER9.cool.sec)}
+        </div>
+
+        <div class="progress">
+
+          <div class="progressFill"
+               style="width:${
+                 ((300-TIMER9.cool.sec)/300)*100
+               }%">
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  `;
 }
 
 
-function goBeep(){
+/* ============================================================
+   TREINO 10H30 — RENDER
+============================================================ */
 
-beep(
-1200,
-.28
-);
+function render1030(){
 
+  const data=DATA1030;
+
+  if(currentPage===0){
+    renderOverview1030(data);
+  }
+
+  if(currentPage===1){
+    renderRotation1030(data);
+  }
+
+  if(currentPage===2){
+    renderWarm1030(data);
+  }
+
+  if(currentPage===3){
+    renderMain1030(data);
+  }
+
+  if(currentPage===4){
+    renderCool1030(data);
+  }
 }
 
 
-function finishBeep(){
+/* ============================================================
+   10H30 — ORIENTAÇÕES
+============================================================ */
 
-beep(
-650,
-.18
-);
+function renderOverview1030(data){
 
-setTimeout(
-()=>beep(950,.35),
-190
-);
+  el("workoutPage").innerHTML=`
 
+  ${header(data)}
+
+  <div class="sectionLabel">
+    ORIENTAÇÕES DO COACH
+  </div>
+
+  <div class="pageTitle">
+    ZONAS COMPROMETIDAS • 8 EQUIPES
+  </div>
+
+  <div class="overviewGrid">
+
+    <div class="card infoCard">
+
+      <h3>RITMO / PACING</h3>
+
+      <p>
+        RPE 8 sustentável.
+        São 16 rounds de 03:00 sem pausa.
+        Evite acelerar excessivamente na primeira volta.
+      </p>
+
+    </div>
+
+    <div class="card infoCard">
+
+      <h3>COMPROMISED ZONES</h3>
+
+      <p>
+        Cada equipe percorre as 8 zonas duas vezes.
+        São duas voltas completas mantendo
+        qualidade técnica sob fadiga.
+      </p>
+
+    </div>
+
+    <div class="card infoCard">
+
+      <h3>SEGURANÇA / FLUXO</h3>
+
+      <p>
+        Máximo de 4 atletas por zona.
+        Trocas pelas laterais.
+        Nunca cruzar a faixa central com Sled em movimento
+        ou a área ativa de Wallballs.
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="card flowBox">
+
+    <strong>ESTRUTURA DA AULA</strong>
+
+    <div>
+      AQUECIMENTO 5'
+      →
+      16 × 03:00 CONTÍNUOS
+      →
+      2 VOLTAS NAS 8 ZONAS
+      →
+      RECUPERAÇÃO 5'
+    </div>
+
+    <div class="muted">
+      3 bipes nos segundos finais.
+      Em 00:00 ocorre troca imediata — SEM REST.
+    </div>
+
+  </div>
+  `;
 }
 
 
-/* =========================================================
-   PREPARAÇÃO 5 SEGUNDOS
-   ========================================================= */
+/* ============================================================
+   10H30 — RODÍZIO
+============================================================ */
 
-function prep(cb){
+function renderRotation1030(data){
 
-audioCtx();
+  const sizes=groupSizes(athlete1030,8);
 
-let ov=$('prep');
+  el("workoutPage").innerHTML=`
 
-let num=$('prepNum');
+  ${header(data)}
 
-let n=5;
+  <div class="rotationTop">
 
-num.textContent=n;
+    <div>
 
-ov.style.display='flex';
+      <div class="sectionLabel">
+        ORGANIZAÇÃO DA TURMA
+      </div>
 
-let t=setInterval(()=>{
+      <div class="pageTitle">
+        RODÍZIO • ${athlete1030} ATLETAS
+      </div>
 
-n--;
+    </div>
 
-if(n<=0){
+    <div class="counterBox">
 
-clearInterval(t);
+      <button class="counterBtn"
+        onclick="changeAthletes1030(-1)">−</button>
 
-num.textContent='GO';
+      <div class="athleteCount">
+        ${athlete1030}
+      </div>
 
-goBeep();
+      <button class="counterBtn"
+        onclick="changeAthletes1030(1)">+</button>
 
-setTimeout(()=>{
+    </div>
 
-ov.style.display='none';
+  </div>
 
-cb();
+  <div class="card"
+       style="padding:12px 18px;text-align:center">
 
-},450);
+    <span class="green">
+      8 EQUIPES
+    </span>
 
-}
+    <span class="muted">
+      • A → Z1 • B → Z2 • C → Z3 • D → Z4 •
+      E → Z5 • F → Z6 • G → Z7 • H → Z8
+    </span>
 
-else{
+  </div>
 
-num.textContent=n;
+  <div class="rotationGrid cols8">
 
-if(n<=3)
-beep();
+    ${data.zones.map((z,i)=>`
 
-}
+      <div class="card rotationCard">
 
-},1000);
+        <div class="teamBig">
+          EQUIPE ${String.fromCharCode(65+i)}
+        </div>
 
-}
+        <div class="teamCount">
+          ${sizes[i]} ATLETAS
+        </div>
 
+        <div class="stationText">
+          Z${i+1}<br>
+          ${z.name}<br>
+          ${z.sub}
+        </div>
 
-/* =========================================================
-   MOTOR DO TIMER
-   ========================================================= */
+      </div>
 
-function stopEngine(){
+    `).join("")}
 
-if(timer)
-clearInterval(timer);
-
-timer=null;
-
-running=false;
-
-paused=false;
-
-phase=null;
-
-}
-
-
-/* =========================================================
-   START AQUECIMENTO
-   ========================================================= */
-
-function startWarm(){
-
-phase='warm';
-
-running=true;
-
-paused=false;
-
-warmRound=0;
-
-warmWork=true;
-
-warmSec=w.warmWork;
-
-updateWarmUI();
-
-updateStartLabel();
-
-
-timer=setInterval(()=>{
-
-if(paused)
-return;
-
-warmSec--;
-
-
-/* BIP 3-2-1 */
-
-if(
-warmSec<=3 &&
-warmSec>0
-)
-beep();
-
-
-if(warmSec<=0){
-
-goBeep();
-
-
-if(warmWork){
-
-warmWork=false;
-
-warmSec=w.warmRest;
-
-}
-
-else{
-
-warmRound++;
-
-
-if(warmRound>=5){
-
-stopEngine();
-
-finishBeep();
-
-
-if(autoMode){
-
-showSlide(3);
-
-setTimeout(
-()=>prep(startMain),
-650
-);
-
-}
-
-else{
-
-updateStartLabel();
-
-}
-
-return;
-
+  </div>
+  `;
 }
 
 
-warmWork=true;
+function changeAthletes1030(v){
 
-warmSec=w.warmWork;
+  athlete1030=Math.max(
+    1,
+    Math.min(32,athlete1030+v)
+  );
 
-}
-
-updateWarmUI();
-
-}
-
-},1000);
-
+  renderRotation1030(DATA1030);
 }
 
 
-/* =========================================================
-   START MAIN
-   ========================================================= */
+/* ============================================================
+   10H30 — AQUECIMENTO
+============================================================ */
 
-function startMain(){
+function renderWarm1030(data){
 
-phase='main';
+  const w=TIMER1030.warm;
 
-running=true;
+  const total=
+    (4-w.round)*60 +
+    (w.part==="work" ? w.sec+15 : w.sec);
 
-paused=false;
+  el("workoutPage").innerHTML=`
 
-mainRound=0;
+  ${header(data)}
 
-mainWork=true;
+  <div class="execution">
 
-mainSec=w.work;
+    <div class="executionHead">
 
-updateMainUI();
+      <div>
 
-updateStartLabel();
+        <div class="sectionLabel">
+          AQUECIMENTO
+        </div>
 
+        <div class="pageTitle">
+          45s TRABALHO / 15s DESCANSO
+        </div>
 
-timer=setInterval(()=>{
+      </div>
 
-if(paused)
-return;
+      <div class="roundBox">
 
-mainSec--;
+        <div class="small">
+          ROUND
+        </div>
 
+        <div class="big">
+          ${w.round+1}/5
+        </div>
 
-/* BIP NOS 3 SEGUNDOS FINAIS */
+      </div>
 
-if(
-mainSec<=3 &&
-mainSec>0
-){
+    </div>
 
-beep();
+    <div class="exerciseArea">
 
-renderMain();
+      <div class="exerciseGrid grid5">
 
+        ${data.warmup.map((name,i)=>`
+
+          <div class="exercise
+            ${i===w.round ? "activeExercise":""}">
+
+            <div class="exerciseIndex">
+              ROUND ${i+1}
+            </div>
+
+            <div class="exerciseContent">
+
+              <div class="exerciseName ${nameClass(name)}">
+                ${name}
+              </div>
+
+              <div class="exerciseSub">
+                00:45
+              </div>
+
+            </div>
+
+          </div>
+
+        `).join("")}
+
+      </div>
+
+    </div>
+
+    <div class="timerArea">
+
+      <div class="timerBox
+        ${w.part==="rest" ? "rest":""}">
+
+        <div class="timerInfo">
+
+          <div class="phaseTag">
+
+            ● ${
+              w.part==="work"
+              ? "TRABALHO"
+              : "DESCANSO / TROCA"
+            }
+
+          </div>
+
+          <div style="font-weight:900">
+            TOTAL RESTANTE • ${fmt(total)}
+          </div>
+
+        </div>
+
+        <div class="timer">
+          ${fmt(w.sec)}
+        </div>
+
+        <div class="progress">
+
+          <div class="progressFill"
+               style="width:${
+                 w.part==="work"
+                 ? ((45-w.sec)/45)*100
+                 : ((15-w.sec)/15)*100
+               }%">
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  `;
 }
 
 
-if(mainSec<=0){
+/* ============================================================
+   10H30 — MAIN
+============================================================ */
 
-goBeep();
+function teamAtZone(zone,round){
 
+  const letters="ABCDEFGH";
 
-/* TREINO 9H TEM REST */
+  const index=
+    (zone-(round%8)+8)%8;
 
-if(
-w.rest>0 &&
-mainWork
-){
-
-mainWork=false;
-
-mainSec=w.rest;
-
-}
-
-else{
-
-mainRound++;
-
-
-/* FIM DO MAIN */
-
-if(
-mainRound>=w.mainRounds
-){
-
-stopEngine();
-
-finishBeep();
-
-
-if(autoMode){
-
-showSlide(4);
-
-setTimeout(
-()=>prep(startCool),
-650
-);
-
-}
-
-else{
-
-updateStartLabel();
-
-}
-
-return;
-
+  return letters[index];
 }
 
 
-/* PRÓXIMO ROUND */
+function renderMain1030(data){
 
-mainWork=true;
+  const m=TIMER1030.main;
 
-mainSec=w.work;
+  const total=
+    (15-m.round)*180 +
+    m.sec;
 
+  el("workoutPage").innerHTML=`
+
+  ${header(data)}
+
+  <div class="execution">
+
+    <div class="executionHead">
+
+      <div>
+
+        <div class="sectionLabel">
+          TREINO PRINCIPAL
+        </div>
+
+        <div class="pageTitle">
+          ZONAS COMPROMETIDAS • SEM REST
+        </div>
+
+      </div>
+
+      <div class="roundBox">
+
+        <div class="small">
+          ROUND
+        </div>
+
+        <div class="big">
+          ${m.round+1}/16
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="exerciseArea">
+
+      <div class="exerciseGrid grid8">
+
+        ${data.zones.map((z,i)=>{
+
+          const team=teamAtZone(i,m.round);
+          const nextZone=((i+1)%8)+1;
+
+          return `
+
+          <div class="exercise">
+
+            <div class="exerciseIndex">
+              Z${i+1}
+            </div>
+
+            <div class="teamTag">
+
+              EQUIPE ${team}
+
+              ${
+                m.sec<=3
+                ? " → Z"+nextZone
+                : ""
+              }
+
+            </div>
+
+            <div class="exerciseContent">
+
+              <div class="exerciseName ${nameClass(z.name)}">
+                ${z.name}
+              </div>
+
+              <div class="exerciseSub">
+                ${z.sub}
+              </div>
+
+            </div>
+
+          </div>
+
+          `;
+
+        }).join("")}
+
+      </div>
+
+    </div>
+
+    <div class="timerArea">
+
+      <div class="timerBox">
+
+        <div class="timerInfo">
+
+          <div>
+
+            <div class="phaseTag">
+              ● TRABALHO CONTÍNUO
+            </div>
+
+            <div style="font-weight:1000;margin-top:5px">
+
+              ROUND ${m.round+1}/16
+              •
+              VOLTA ${m.round<8 ? "1/2":"2/2"}
+
+            </div>
+
+          </div>
+
+          <div style="font-weight:900">
+            TREINO RESTANTE • ${fmt(total)}
+          </div>
+
+        </div>
+
+        <div class="timer">
+          ${fmt(m.sec)}
+        </div>
+
+        <div class="progress">
+
+          <div class="progressFill"
+               style="width:${
+                 ((180-m.sec)/180)*100
+               }%">
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  `;
 }
 
 
-updateMainUI();
+/* ============================================================
+   10H30 — COOLDOWN
+============================================================ */
 
-}
+function renderCool1030(data){
 
-},1000);
+  el("workoutPage").innerHTML=`
 
-}
+  ${header(data)}
 
+  <div class="execution">
 
-/* =========================================================
-   START COOLDOWN
-   ========================================================= */
+    <div>
 
-function startCool(){
+      <div class="sectionLabel">
+        VOLTA À CALMA / RECUPERAÇÃO
+      </div>
 
-phase='cool';
+      <div class="pageTitle">
+        COOLDOWN • 05:00
+      </div>
 
-running=true;
+    </div>
 
-paused=false;
+    <div class="coolGrid">
 
-coolSec=300;
+      <div class="card coolItem">
+        DESACELERE<br>GRADUALMENTE
+      </div>
 
-updateCoolUI();
+      <div class="card coolItem">
+        NORMALIZE<br>A RESPIRAÇÃO
+      </div>
 
-updateStartLabel();
+      <div class="card coolItem">
+        CAMINHADA LEVE<br>RECUPERAÇÃO ATIVA
+      </div>
 
+      <div class="card coolItem">
+        REDUZA A<br>FREQUÊNCIA CARDÍACA
+      </div>
 
-timer=setInterval(()=>{
+    </div>
 
-if(paused)
-return;
+    <div class="timerArea">
 
-coolSec--;
+      <div class="timerBox">
 
+        <div class="phaseTag">
+          ● RECUPERAÇÃO
+        </div>
 
-if(
-coolSec<=3 &&
-coolSec>0
-)
-beep();
+        <div class="timer">
+          ${fmt(TIMER1030.cool.sec)}
+        </div>
 
+        <div class="progress">
 
-updateCoolUI();
+          <div class="progressFill"
+               style="width:${
+                 ((300-TIMER1030.cool.sec)/300)*100
+               }%">
+          </div>
 
+        </div>
 
-if(coolSec<=0){
+      </div>
 
-stopEngine();
+    </div>
 
-finishBeep();
-
-updateStartLabel();
-
-}
-
-},1000);
-
-}
-
-
-/* =========================================================
-   INICIAR A FASE DA TELA ATUAL
-   ========================================================= */
-
-function startForSlide(){
-
-stopEngine();
-
-
-/* ORIENTAÇÕES OU RODÍZIO:
-   INICIA A AULA PELO AQUECIMENTO */
-
-if(slide<=2){
-
-showSlide(2);
-
-prep(startWarm);
-
+  </div>
+  `;
 }
 
 
-/* MAIN */
+/* ============================================================
+   DISTRIBUIÇÃO DOS ALUNOS
+============================================================ */
 
-else if(slide===3){
+function groupSizes(total,groups){
 
-prep(startMain);
+  const base=Math.floor(total/groups);
+  const remainder=total%groups;
 
+  return Array.from(
+    {length:groups},
+    (_,i)=>base+(i<remainder?1:0)
+  );
 }
 
 
-/* COOLDOWN */
+/* ============================================================
+   COUNTDOWN 5 SEGUNDOS
+============================================================ */
 
-else{
+function preparationCountdown(callback){
 
-prep(startCool);
+  initAudio();
 
+  const overlay=el("countdownOverlay");
+  const number=el("countNumber");
+
+  overlay.classList.add("show");
+
+  let n=5;
+
+  number.textContent=n;
+
+  const countdown=setInterval(()=>{
+
+    n--;
+
+    if(n>0){
+
+      number.textContent=n;
+
+      if(n<=3){
+        shortBeep();
+      }
+
+    }else{
+
+      clearInterval(countdown);
+
+      number.textContent="GO";
+
+      goBeep();
+
+      setTimeout(()=>{
+
+        overlay.classList.remove("show");
+
+        callback();
+
+      },450);
+    }
+
+  },1000);
 }
 
+
+/* ============================================================
+   MASTER BUTTON
+============================================================ */
+
+function getController(){
+
+  if(activeWorkout==="w9"){
+    return TIMER9;
+  }
+
+  if(activeWorkout==="w1030"){
+    return TIMER1030;
+  }
+
+  return null;
 }
 
-
-/* =========================================================
-   BOTÃO PRINCIPAL
-   ========================================================= */
 
 function masterAction(){
 
-if(!w)
-return;
+  initAudio();
 
-audioCtx();
+  const c=getController();
+
+  if(!c)return;
+
+  /* SE JÁ ESTÁ RODANDO:
+     botão vira PAUSE / CONTINUAR
+  */
+
+  if(c.running){
+
+    c.paused=!c.paused;
+
+    updateMasterButton();
+
+    return;
+  }
 
 
-if(running){
+  /* PÁGINAS 1/2:
+     iniciar aula começa aquecimento
+  */
 
-paused=!paused;
+  if(currentPage===0 || currentPage===1){
 
-updateStartLabel();
+    currentPage=2;
 
-return;
+    render();
 
+    preparationCountdown(()=>{
+
+      if(activeWorkout==="w9"){
+        startWarm9();
+      }else{
+        startWarm1030();
+      }
+
+    });
+
+    return;
+  }
+
+
+  /* AQUECIMENTO */
+
+  if(currentPage===2){
+
+    preparationCountdown(()=>{
+
+      if(activeWorkout==="w9"){
+        startWarm9();
+      }else{
+        startWarm1030();
+      }
+
+    });
+
+    return;
+  }
+
+
+  /* MAIN */
+
+  if(currentPage===3){
+
+    preparationCountdown(()=>{
+
+      if(activeWorkout==="w9"){
+        startMain9();
+      }else{
+        startMain1030();
+      }
+
+    });
+
+    return;
+  }
+
+
+  /* COOLDOWN */
+
+  if(currentPage===4){
+
+    preparationCountdown(()=>{
+
+      if(activeWorkout==="w9"){
+        startCool9();
+      }else{
+        startCool1030();
+      }
+
+    });
+  }
 }
 
 
-startForSlide();
+/* ============================================================
+   LABEL DO BOTÃO
+============================================================ */
 
+function updateMasterButton(){
+
+  const button=el("masterButton");
+
+  const c=getController();
+
+  if(!c)return;
+
+  if(c.running){
+
+    button.textContent=
+      c.paused
+      ? "▶ CONTINUAR"
+      : "⏸ PAUSAR";
+
+    return;
+  }
+
+  if(currentPage===0 || currentPage===1){
+    button.textContent="▶ INICIAR AULA";
+  }
+
+  if(currentPage===2){
+    button.textContent="▶ INICIAR AQUECIMENTO";
+  }
+
+  if(currentPage===3){
+    button.textContent="▶ INICIAR TREINO";
+  }
+
+  if(currentPage===4){
+    button.textContent="▶ INICIAR RECUPERAÇÃO";
+  }
 }
 
 
-/* =========================================================
-   TEXTO DO BOTÃO INICIAR
-   ========================================================= */
+/* ============================================================
+   TIMER 9H — WARM
+============================================================ */
 
-function updateStartLabel(){
+function startWarm9(){
 
-if(!w){
+  const c=TIMER9;
 
-$('startBtn').textContent=
-'SELECIONE O TREINO';
+  c.stop();
 
-return;
+  c.phase="warm";
+  c.running=true;
 
+  currentPage=2;
+
+  render();
+  updateMasterButton();
+
+  c.startInterval(()=>{
+
+    const w=c.warm;
+
+    if(w.sec<=3 && w.sec>0){
+      shortBeep();
+    }
+
+    w.sec--;
+
+    if(w.sec<=0){
+
+      goBeep();
+
+      if(w.part==="work"){
+
+        w.part="rest";
+        w.sec=15;
+
+      }else{
+
+        if(w.round>=4){
+
+          c.stop();
+
+          finishBeep();
+
+          w.round=0;
+          w.part="work";
+          w.sec=45;
+
+          render();
+          updateMasterButton();
+
+          return;
+        }
+
+        w.round++;
+        w.part="work";
+        w.sec=45;
+      }
+    }
+
+    if(activeWorkout==="w9" && currentPage===2){
+      renderWarm9(DATA9);
+    }
+
+  });
 }
 
 
-if(running){
+/* ============================================================
+   TIMER 9H — MAIN
+============================================================ */
 
-$('startBtn').textContent=
-paused
-?
-'▶ CONTINUAR'
-:
-'⏸ PAUSAR';
+function startMain9(){
 
-return;
+  const c=TIMER9;
 
+  c.stop();
+
+  c.phase="main";
+  c.running=true;
+
+  currentPage=3;
+
+  render();
+  updateMasterButton();
+
+  c.startInterval(()=>{
+
+    const m=c.main;
+
+    if(m.sec<=3 && m.sec>0){
+      shortBeep();
+    }
+
+    m.sec--;
+
+    if(m.sec<=0){
+
+      goBeep();
+
+      if(m.part==="work"){
+
+        m.part="rest";
+        m.sec=20;
+
+      }else{
+
+        if(m.round>=29){
+
+          c.stop();
+
+          finishBeep();
+
+          m.round=0;
+          m.part="work";
+          m.sec=60;
+
+          render();
+          updateMasterButton();
+
+          return;
+        }
+
+        m.round++;
+        m.part="work";
+        m.sec=60;
+      }
+    }
+
+    if(activeWorkout==="w9" && currentPage===3){
+      renderMain9(DATA9);
+    }
+
+  });
 }
 
 
-let a=[
+/* ============================================================
+   TIMER 9H — COOLDOWN
+============================================================ */
 
-'▶ INICIAR AULA',
+function startCool9(){
 
-'▶ INICIAR AULA',
+  const c=TIMER9;
 
-'▶ INICIAR AQUECIMENTO',
+  c.stop();
 
-'▶ INICIAR TREINO',
+  c.phase="cool";
+  c.running=true;
 
-'▶ INICIAR RECUPERAÇÃO'
+  currentPage=4;
 
-];
+  render();
+  updateMasterButton();
 
+  c.startInterval(()=>{
 
-$('startBtn').textContent=
-a[slide];
+    if(c.cool.sec<=3 && c.cool.sec>0){
+      shortBeep();
+    }
 
+    c.cool.sec--;
+
+    if(c.cool.sec<=0){
+
+      c.cool.sec=0;
+
+      c.stop();
+
+      finishBeep();
+
+      render();
+      updateMasterButton();
+
+      return;
+    }
+
+    if(activeWorkout==="w9" && currentPage===4){
+      renderCool9(DATA9);
+    }
+
+  });
 }
 
 
-/* =========================================================
-   RESET SOMENTE DA FASE ATUAL
-   ========================================================= */
+/* ============================================================
+   TIMER 10H30 — WARM
+============================================================ */
 
-function resetCurrent(){
+function startWarm1030(){
 
-if(!w)
-return;
+  const c=TIMER1030;
 
-stopEngine();
+  c.stop();
 
+  c.phase="warm";
+  c.running=true;
 
-if(slide===2){
+  currentPage=2;
 
-warmRound=0;
+  render();
+  updateMasterButton();
 
-warmWork=true;
+  c.startInterval(()=>{
 
-warmSec=w.warmWork;
+    const w=c.warm;
 
-updateWarmUI();
+    if(w.sec<=3 && w.sec>0){
+      shortBeep();
+    }
 
+    w.sec--;
+
+    if(w.sec<=0){
+
+      goBeep();
+
+      if(w.part==="work"){
+
+        w.part="rest";
+        w.sec=15;
+
+      }else{
+
+        if(w.round>=4){
+
+          c.stop();
+
+          finishBeep();
+
+          w.round=0;
+          w.part="work";
+          w.sec=45;
+
+          render();
+          updateMasterButton();
+
+          return;
+        }
+
+        w.round++;
+        w.part="work";
+        w.sec=45;
+      }
+    }
+
+    if(activeWorkout==="w1030" && currentPage===2){
+      renderWarm1030(DATA1030);
+    }
+
+  });
 }
 
 
-else if(slide===3){
+/* ============================================================
+   TIMER 10H30 — MAIN
+   16 × 03:00
+   SEM REST
+============================================================ */
 
-mainRound=0;
+function startMain1030(){
 
-mainWork=true;
+  const c=TIMER1030;
 
-mainSec=w.work;
+  c.stop();
 
-updateMainUI();
+  c.phase="main";
+  c.running=true;
 
+  currentPage=3;
+
+  render();
+  updateMasterButton();
+
+  c.startInterval(()=>{
+
+    const m=c.main;
+
+    /* ALERTA DE TROCA */
+
+    if(m.sec<=3 && m.sec>0){
+      shortBeep();
+    }
+
+    m.sec--;
+
+    if(m.sec<=0){
+
+      goBeep();
+
+      /* FINAL DO ROUND 16 */
+
+      if(m.round>=15){
+
+        c.stop();
+
+        finishBeep();
+
+        m.round=0;
+        m.sec=180;
+
+        render();
+        updateMasterButton();
+
+        return;
+      }
+
+      /* TROCA IMEDIATA
+         SEM REST
+      */
+
+      m.round++;
+      m.sec=180;
+    }
+
+    if(
+      activeWorkout==="w1030" &&
+      currentPage===3
+    ){
+      renderMain1030(DATA1030);
+    }
+
+  });
 }
 
 
-else if(slide===4){
+/* ============================================================
+   TIMER 10H30 — COOLDOWN
+============================================================ */
 
-coolSec=300;
+function startCool1030(){
 
-updateCoolUI();
+  const c=TIMER1030;
 
+  c.stop();
+
+  c.phase="cool";
+  c.running=true;
+
+  currentPage=4;
+
+  render();
+  updateMasterButton();
+
+  c.startInterval(()=>{
+
+    if(c.cool.sec<=3 && c.cool.sec>0){
+      shortBeep();
+    }
+
+    c.cool.sec--;
+
+    if(c.cool.sec<=0){
+
+      c.cool.sec=0;
+
+      c.stop();
+
+      finishBeep();
+
+      render();
+      updateMasterButton();
+
+      return;
+    }
+
+    if(
+      activeWorkout==="w1030" &&
+      currentPage===4
+    ){
+      renderCool1030(DATA1030);
+    }
+
+  });
 }
 
 
-updateStartLabel();
+/* ============================================================
+   RESET DA FASE ATUAL
+============================================================ */
 
+function resetCurrentPhase(){
+
+  if(activeWorkout==="w9"){
+
+    TIMER9.stop();
+
+    if(currentPage===2){
+
+      TIMER9.warm={
+        round:0,
+        part:"work",
+        sec:45
+      };
+
+    }
+
+    if(currentPage===3){
+
+      TIMER9.main={
+        round:0,
+        part:"work",
+        sec:60
+      };
+
+    }
+
+    if(currentPage===4){
+
+      TIMER9.cool={
+        sec:300
+      };
+
+    }
+
+  }
+
+
+  if(activeWorkout==="w1030"){
+
+    TIMER1030.stop();
+
+    if(currentPage===2){
+
+      TIMER1030.warm={
+        round:0,
+        part:"work",
+        sec:45
+      };
+
+    }
+
+    if(currentPage===3){
+
+      TIMER1030.main={
+        round:0,
+        sec:180
+      };
+
+    }
+
+    if(currentPage===4){
+
+      TIMER1030.cool={
+        sec:300
+      };
+
+    }
+
+  }
+
+  render();
+  updateMasterButton();
 }
 
 
-/* =========================================================
-   AUTO / MANUAL
-   ========================================================= */
+/* ============================================================
+   FULLSCREEN
+============================================================ */
 
-function toggleMode(){
+async function toggleFullscreen(){
 
-autoMode=!autoMode;
+  try{
 
-$('modeBtn').textContent=
-autoMode
-?
-'AUTO'
-:
-'MANUAL';
+    if(
+      !document.fullscreenElement &&
+      !document.webkitFullscreenElement
+    ){
 
+      const root=document.documentElement;
+
+      if(root.requestFullscreen){
+        await root.requestFullscreen();
+      }
+      else if(root.webkitRequestFullscreen){
+        root.webkitRequestFullscreen();
+      }
+
+    }else{
+
+      if(document.exitFullscreen){
+        await document.exitFullscreen();
+      }
+      else if(document.webkitExitFullscreen){
+        document.webkitExitFullscreen();
+      }
+
+    }
+
+  }catch(e){
+    console.log(e);
+  }
 }
 
 
-/* =========================================================
-   SOM ON/OFF
-   ========================================================= */
+function fullscreenLabel(){
 
-function toggleSound(){
+  const active=
+    document.fullscreenElement ||
+    document.webkitFullscreenElement;
 
-soundOn=!soundOn;
-
-if(soundOn)
-audioCtx();
-
-$('soundBtn').textContent=
-soundOn
-?
-'🔊 SOM ON'
-:
-'🔇 SOM OFF';
-
+  el("fullscreenButton").textContent=
+    active
+    ? "⛶ SAIR DA TELA CHEIA"
+    : "⛶ TELA CHEIA";
 }
-
-
-/* =========================================================
-   FULL SCREEN
-   ========================================================= */
-
-async function toggleFS(){
-
-try{
-
-if(!document.fullscreenElement)
-
-await document
-.documentElement
-.requestFullscreen();
-
-else
-
-await document
-.exitFullscreen();
-
-}
-
-catch(e){}
-
-}
-
 
 document.addEventListener(
-'fullscreenchange',
-()=>{
+  "fullscreenchange",
+  fullscreenLabel
+);
 
-$('fsBtn').textContent=
-document.fullscreenElement
-?
-'SAIR DA TELA CHEIA'
-:
-'⛶ TELA CHEIA';
-
-}
+document.addEventListener(
+  "webkitfullscreenchange",
+  fullscreenLabel
 );
 
 
-/* =========================================================
-   INICIALIZAÇÃO
-   ========================================================= */
+/* ============================================================
+   SEGURANÇA AO FECHAR / RECARREGAR
+============================================================ */
 
-goHub();
+window.addEventListener("beforeunload",()=>{
+
+  TIMER9.stop();
+  TIMER1030.stop();
+
+});
+
+
+/* ============================================================
+   PRIMEIRO RENDER
+============================================================ */
+
+TIMER9.resetAll();
+TIMER1030.resetAll();
 
 </script>
 
