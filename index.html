@@ -3469,6 +3469,377 @@ function formatTime(seconds){
 
 }
 
+  /* =====================================================
+   POWER #1A
+   SEMANA 1 • TERÇA-FEIRA
+===================================================== */
+
+let powerSlide = 0;
+let powerAutoMode = true;
+
+
+/* =====================================================
+   ABRIR / FECHAR POWER
+===================================================== */
+
+function openPower(){
+
+  hideAllPages();
+
+  powerSlide = 0;
+
+  document.getElementById("powerPage").style.display = "block";
+
+  buildPowerAthleteSelector();
+  buildPowerRotation();
+
+  showPowerSlide();
+
+}
+
+
+function exitPower(){
+
+  stopAllTimers();
+
+  currentWeek = 1;
+
+  openWeek(1);
+
+}
+
+
+/* =====================================================
+   SLIDES POWER
+===================================================== */
+
+function showPowerSlide(){
+
+  stopAllTimers();
+
+  const slides = document.querySelectorAll("#powerPage .pSlide");
+
+  slides.forEach((slide,index)=>{
+
+    slide.classList.toggle(
+      "active",
+      index === powerSlide
+    );
+
+  });
+
+  document.getElementById("powerCounter").textContent =
+    (powerSlide + 1) + " / " + slides.length;
+
+  updatePowerStartButton();
+
+}
+
+
+function nextPowerSlide(){
+
+  const slides = document.querySelectorAll("#powerPage .pSlide");
+
+  if(powerSlide < slides.length - 1){
+
+    powerSlide++;
+
+    showPowerSlide();
+
+  }
+
+}
+
+
+function previousPowerSlide(){
+
+  if(powerSlide > 0){
+
+    powerSlide--;
+
+    showPowerSlide();
+
+  }
+
+}
+
+
+/* =====================================================
+   BOTÃO AUTO / MANUAL
+===================================================== */
+
+function togglePowerMode(){
+
+  powerAutoMode = !powerAutoMode;
+
+  const button =
+    document.getElementById("powerModeButton");
+
+  button.textContent =
+    powerAutoMode
+    ? "AUTO"
+    : "MANUAL";
+
+}
+
+
+/* =====================================================
+   TEXTO DO BOTÃO INICIAR
+===================================================== */
+
+function updatePowerStartButton(){
+
+  const button =
+    document.getElementById("powerStartButton");
+
+  if(powerSlide === 0){
+
+    button.textContent =
+      "▶ INICIAR AULA";
+
+  }
+
+  else if(powerSlide === 1){
+
+    button.textContent =
+      "▶ IR PARA AQUECIMENTO";
+
+  }
+
+  else if(powerSlide === 2){
+
+    button.textContent =
+      "▶ INICIAR AQUECIMENTO";
+
+  }
+
+  else if(powerSlide === 3){
+
+    button.textContent =
+      "▶ INICIAR CORPO TODO";
+
+  }
+
+  else if(powerSlide === 4){
+
+    button.textContent =
+      "▶ INICIAR FORÇA DE BASE";
+
+  }
+
+  else{
+
+    button.textContent =
+      "▶ INICIAR RECUPERAÇÃO";
+
+  }
+
+}
+
+
+/* =====================================================
+   ATLETAS POWER
+   SELETOR FIXO 1–32
+===================================================== */
+
+function buildPowerAthleteSelector(){
+
+  const selector =
+    document.getElementById("powerAthleteSelector");
+
+  if(!selector) return;
+
+  if(selector.options.length === 32) return;
+
+  selector.innerHTML = "";
+
+  for(let i = 1; i <= 32; i++){
+
+    const option =
+      document.createElement("option");
+
+    option.value = i;
+    option.textContent = i;
+
+    if(i === 24){
+      option.selected = true;
+    }
+
+    selector.appendChild(option);
+
+  }
+
+}
+
+
+/* =====================================================
+   RODÍZIO POWER
+===================================================== */
+
+function buildPowerRotation(){
+
+  const selector =
+    document.getElementById("powerAthleteSelector");
+
+  const grid =
+    document.getElementById("powerRotationGrid");
+
+  const summary =
+    document.getElementById("powerRotationSummary");
+
+  if(!selector || !grid || !summary) return;
+
+  const athletes =
+    parseInt(selector.value || 24);
+
+  const groupCount =
+    Math.ceil(athletes / 4);
+
+  const base =
+    Math.floor(athletes / groupCount);
+
+  const remainder =
+    athletes % groupCount;
+
+  const letters =
+    "ABCDEFGH".split("");
+
+  grid.innerHTML = "";
+
+  for(let i = 0; i < groupCount; i++){
+
+    const count =
+      base + (i < remainder ? 1 : 0);
+
+    const card =
+      document.createElement("div");
+
+    card.className =
+      "rotationCard";
+
+    card.innerHTML = `
+      <div class="rotationTeam">
+        EQUIPE ${letters[i]}
+      </div>
+
+      <div class="rotationCount">
+        ${count}
+        ${count === 1 ? "ATLETA" : "ATLETAS"}
+      </div>
+
+      <div class="rotationStation">
+        GRUPO ${i + 1}
+        <br>
+        <strong style="color:white;">
+          MÁXIMO 4 ATLETAS
+        </strong>
+      </div>
+    `;
+
+    grid.appendChild(card);
+
+  }
+
+  summary.innerHTML = `
+    <strong style="color:#31df75;">
+      ✓ ${athletes} ATLETAS
+    </strong>
+    • ${groupCount}
+    ${groupCount === 1 ? "EQUIPE" : "EQUIPES"}
+    • MÁXIMO 4 ATLETAS POR GRUPO
+    • FLUXO PELAS LATERAIS
+  `;
+
+}
+
+
+/* =====================================================
+   START POWER
+===================================================== */
+
+function startPowerPhase(){
+
+  /*
+    ORIENTAÇÕES
+  */
+
+  if(powerSlide === 0){
+
+    powerSlide = 1;
+
+    showPowerSlide();
+
+    return;
+
+  }
+
+
+  /*
+    RODÍZIO
+  */
+
+  if(powerSlide === 1){
+
+    powerSlide = 2;
+
+    showPowerSlide();
+
+    return;
+
+  }
+
+
+  /*
+    AQUECIMENTO
+  */
+
+  if(powerSlide === 2){
+
+    startPowerWarmup();
+
+    return;
+
+  }
+
+
+  /*
+    CORPO TODO
+  */
+
+  if(powerSlide === 3){
+
+    startPowerMain();
+
+    return;
+
+  }
+
+
+  /*
+    FORÇA DE BASE
+  */
+
+  if(powerSlide === 4){
+
+    startPowerBase();
+
+    return;
+
+  }
+
+
+  /*
+    VOLTA À CALMA
+    SEM 5-4-3-2-1
+  */
+
+  if(powerSlide === 5){
+
+    startPowerCooldown();
+
+  }
+
+}
 
 /* =====================================================
    FULLSCREEN
