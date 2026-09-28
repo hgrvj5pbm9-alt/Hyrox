@@ -2,887 +2,452 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0d0d0d">
-
-<title>HYROX Studio 5 | HUB Sábado</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HYROX Studio 5 | Training Hub</title>
 
 <style>
 :root{
-  --bg:#0d0d0d;
-  --card:#121820;
-  --card2:#0f141b;
-  --line:#303943;
-  --yellow:#FFD700;
-  --green:#31df75;
-  --red:#ff4755;
-  --white:#f7f8fa;
-  --muted:#9aa4b2;
-  --control:66px;
+  --bg:#080808;
+  --card:#121212;
+  --card2:#181818;
+  --yellow:#ffd400;
+  --white:#f5f5f5;
+  --muted:#969696;
+  --border:#292929;
 }
 
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
 html,body{
-  margin:0;
   width:100%;
-  height:100%;
+  min-height:100%;
   background:var(--bg);
   color:var(--white);
   font-family:Arial,Helvetica,sans-serif;
-  overflow:hidden;
 }
 
 body{
-  background:
-    radial-gradient(circle at 50% 10%,#17212c 0,#0d1116 40%,#080a0d 100%);
+  overflow-x:hidden;
 }
 
-button{font:inherit}
+/* =====================================================
+   APP
+===================================================== */
 
 #app{
-  width:100%;
-  height:100dvh;
+  min-height:100vh;
   display:flex;
   flex-direction:column;
 }
 
-.screen{
-  display:none;
-  flex:1;
-  min-height:0;
-  overflow:hidden;
-}
-
-.screen.active{display:flex}
-
-.page{
-  width:100%;
-  height:100%;
-  padding:16px 24px;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
-
-/* =========================================================
+/* =====================================================
    HEADER
-========================================================= */
+===================================================== */
 
 .header{
-  min-height:74px;
+  min-height:105px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:18px;
-  border-bottom:1px solid var(--line);
-  padding-bottom:10px;
+  padding:18px 4vw;
+  border-bottom:1px solid var(--border);
+  background:#0b0b0b;
 }
 
-.brandBlock{
+.brand{
   display:flex;
   align-items:center;
-  gap:17px;
-  min-width:0;
+  gap:22px;
 }
 
 .logoBox{
-  background:#fff;
-  border-radius:12px;
-  padding:6px 12px;
-  height:66px;
-  min-width:180px;
+  min-width:225px;
+  height:76px;
+  padding:8px 18px;
+  border-radius:10px;
+  background:white;
   display:flex;
   align-items:center;
   justify-content:center;
 }
 
 .logoBox img{
-  max-height:54px;
-  max-width:240px;
-  width:auto;
-  height:auto;
+  display:block;
+  max-height:62px;
+  max-width:205px;
   object-fit:contain;
 }
 
-.brandTitle{
-  min-width:0;
+.brandDivider{
+  width:1px;
+  height:55px;
+  background:#444;
+}
+
+.brandText .hyrox{
+  color:var(--yellow);
+  font-size:22px;
+  font-weight:1000;
+  letter-spacing:2px;
+}
+
+.brandText .unit{
+  color:#fff;
+  margin-top:7px;
+  font-size:15px;
+  font-weight:800;
+  letter-spacing:1.3px;
+}
+
+.headerRight{
+  display:flex;
+  gap:10px;
+}
+
+.topButton{
+  border:1px solid #353535;
+  background:#151515;
+  color:white;
+  padding:13px 18px;
+  border-radius:10px;
+  font-size:13px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.topButton:hover{
+  border-color:var(--yellow);
+}
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.content{
+  width:min(1500px,94vw);
+  margin:auto;
+  padding:38px 0 44px;
+  flex:1;
 }
 
 .eyebrow{
   color:var(--yellow);
-  font-size:13px;
-  font-weight:900;
-  letter-spacing:1.7px;
-}
-
-h1,h2,h3,p{margin:0}
-
-.brandTitle h1{
-  font-size:clamp(21px,2.25vw,37px);
-  line-height:1;
-  margin-top:5px;
   font-weight:1000;
-}
-
-.badges{
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
-  flex-wrap:wrap;
-  gap:7px;
-}
-
-.badge{
-  padding:9px 14px;
-  border:1px solid var(--line);
-  border-radius:999px;
-  font-size:12px;
-  font-weight:900;
-  white-space:nowrap;
-  background:#151b23;
-}
-
-.badge.yellow{
-  color:var(--yellow);
-  border-color:#8a7610;
-}
-
-.card{
-  background:linear-gradient(145deg,#141b23,#0f141a);
-  border:1px solid var(--line);
-  border-radius:18px;
-}
-
-.sectionLabel{
-  color:var(--yellow);
-  font-weight:1000;
-  letter-spacing:1.4px;
+  letter-spacing:2.5px;
   font-size:14px;
+  margin-bottom:10px;
 }
 
-.pageTitle{
-  font-size:clamp(25px,2.55vw,43px);
+h1{
+  font-size:clamp(36px,4vw,64px);
+  line-height:.95;
   font-weight:1000;
-  line-height:1.04;
+  letter-spacing:-2px;
 }
 
-.muted{color:var(--muted)}
-.yellow{color:var(--yellow)}
-.green{color:var(--green)}
-.red{color:var(--red)}
-
-/* =========================================================
-   HUB
-========================================================= */
-
-.hubPage{
-  justify-content:center;
-}
-
-.hubHero{
-  text-align:center;
-  margin-bottom:18px;
-}
-
-.hubLogo{
-  background:#fff;
-  width:max-content;
-  min-width:270px;
-  height:105px;
-  padding:10px 22px;
-  border-radius:18px;
-  margin:0 auto 22px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 0 35px rgba(255,255,255,.05);
-}
-
-.hubLogo img{
-  max-height:86px;
-  max-width:350px;
-  object-fit:contain;
-}
-
-.hubHero h1{
-  font-size:clamp(42px,5.2vw,82px);
-  font-weight:1000;
-  color:var(--yellow);
-  line-height:1;
-  margin-top:7px;
-}
-
-.hubHero p{
-  color:var(--muted);
-  font-size:clamp(17px,1.45vw,24px);
-  margin-top:12px;
-  font-weight:700;
-}
-
-.hubGrid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:24px;
-  width:min(1240px,96%);
-  margin:0 auto;
-}
-
-.workoutChoice{
-  min-height:285px;
-  padding:27px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  cursor:pointer;
-  transition:.18s;
-}
-
-.workoutChoice:hover{
-  transform:translateY(-3px);
-  border-color:#737b84;
-}
-
-.choiceTime{
-  color:var(--yellow);
-  font-size:clamp(28px,3vw,49px);
-  font-weight:1000;
-}
-
-.choiceName{
-  font-size:clamp(23px,2.35vw,39px);
-  line-height:1.05;
-  font-weight:1000;
-  margin-top:12px;
-}
-
-.choiceMeta{
-  color:var(--muted);
-  font-size:16px;
-  line-height:1.45;
+.subtitle{
   margin-top:14px;
-  font-weight:700;
+  color:var(--muted);
+  font-size:17px;
+  font-weight:600;
 }
 
-.openBtn{
-  margin-top:18px;
-  padding:14px 20px;
-  border-radius:12px;
-  border:1px solid #9b8500;
-  background:var(--yellow);
-  color:#111;
-  font-weight:1000;
-  text-align:center;
-}
+/* =====================================================
+   WEEK GRID
+===================================================== */
 
-/* =========================================================
-   ORIENTAÇÕES
-========================================================= */
-
-.overviewGrid{
-  flex:1;
-  min-height:0;
+.weekGrid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:repeat(4,1fr);
   gap:18px;
+  margin-top:38px;
 }
 
-.infoCard{
-  padding:25px;
+.weekCard{
+  min-height:310px;
+  background:linear-gradient(145deg,#171717,#101010);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:26px;
   display:flex;
   flex-direction:column;
-  justify-content:center;
-}
-
-.infoCard h3{
-  color:var(--yellow);
-  font-size:clamp(19px,1.7vw,29px);
-  font-weight:1000;
-  margin-bottom:15px;
-}
-
-.infoCard p{
-  font-size:clamp(16px,1.38vw,23px);
-  line-height:1.45;
-  font-weight:700;
-}
-
-.flowBox{
-  padding:18px 24px;
-  text-align:center;
-}
-
-.flowBox strong{
-  color:var(--yellow);
-  font-size:clamp(17px,1.55vw,26px);
-}
-
-.flowBox div{
-  margin-top:7px;
-  font-size:clamp(15px,1.3vw,21px);
-  font-weight:800;
-}
-
-/* =========================================================
-   RODÍZIO
-========================================================= */
-
-.rotationTop{
-  display:flex;
-  align-items:center;
   justify-content:space-between;
-  gap:20px;
-}
-
-.counterBox{
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-
-.counterBtn{
-  width:48px;
-  height:48px;
-  border-radius:10px;
-  border:1px solid var(--line);
-  background:#181f27;
-  color:#fff;
-  font-size:23px;
-  font-weight:1000;
   cursor:pointer;
+  transition:.2s ease;
+  position:relative;
+  overflow:hidden;
 }
 
-.athleteCount{
-  min-width:100px;
-  text-align:center;
+.weekCard:before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:100%;
+  height:5px;
+  background:var(--yellow);
+}
+
+.weekCard:hover{
+  transform:translateY(-4px);
+  border-color:#555;
+}
+
+.weekNumber{
+  color:#6d6d6d;
+  font-size:72px;
+  line-height:1;
+  font-weight:1000;
+}
+
+.weekCard h2{
   font-size:30px;
   font-weight:1000;
+  margin-bottom:7px;
 }
 
-.rotationGrid{
-  flex:1;
-  min-height:0;
-  display:grid;
-  gap:13px;
-  align-content:stretch;
-}
-
-.rotationGrid.cols5{
-  grid-template-columns:repeat(5,1fr);
-}
-
-.rotationGrid.cols8{
-  grid-template-columns:repeat(4,1fr);
-  grid-template-rows:repeat(2,1fr);
-}
-
-.rotationCard{
-  padding:17px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  min-width:0;
-}
-
-.teamBig{
-  color:var(--yellow);
-  font-size:clamp(22px,2.15vw,36px);
-  font-weight:1000;
-}
-
-.teamCount{
-  font-size:clamp(16px,1.3vw,22px);
-  font-weight:900;
-  margin-top:8px;
-}
-
-.stationText{
-  color:var(--muted);
-  font-size:clamp(14px,1.1vw,19px);
-  line-height:1.3;
-  margin-top:12px;
-  font-weight:800;
-}
-
-/* =========================================================
-   EXECUÇÃO
-========================================================= */
-
-.execution{
-  flex:1;
-  min-height:0;
-  display:flex;
-  flex-direction:column;
-  gap:9px;
-}
-
-.executionHead{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:18px;
-}
-
-.roundBox{
-  text-align:right;
-}
-
-.roundBox .small{
-  color:var(--muted);
+.weekCard p{
+  color:#909090;
   font-size:14px;
-  font-weight:1000;
+  line-height:1.5;
 }
 
-.roundBox .big{
-  font-size:clamp(26px,2.6vw,44px);
-  font-weight:1000;
-}
-
-.exerciseArea{
-  flex:1;
-  min-height:0;
-}
-
-.exerciseGrid{
-  width:100%;
-  height:100%;
-  display:grid;
-  gap:9px;
-}
-
-.grid5{
-  grid-template-columns:repeat(5,1fr);
-}
-
-.grid8{
-  grid-template-columns:repeat(4,1fr);
-  grid-template-rows:repeat(2,1fr);
-}
-
-.grid10{
-  grid-template-columns:repeat(5,1fr);
-  grid-template-rows:repeat(2,1fr);
-}
-
-.exercise{
-  position:relative;
-  border:1px solid var(--line);
-  border-radius:15px;
-  background:linear-gradient(145deg,#17202a,#11171e);
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:25px 11px 15px;
-}
-
-.exercise.activeExercise{
-  border-color:var(--yellow);
-  box-shadow:0 0 0 2px rgba(255,215,0,.18) inset;
-}
-
-.exerciseIndex{
-  position:absolute;
-  top:9px;
-  left:11px;
-  color:var(--yellow);
-  font-weight:1000;
-  font-size:13px;
-}
-
-.teamTag{
-  position:absolute;
-  top:8px;
-  right:9px;
-  padding:5px 8px;
-  border-radius:8px;
-  background:#232c36;
-  color:var(--yellow);
-  font-size:11px;
-  font-weight:1000;
-}
-
-.exerciseContent{
-  width:100%;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-}
-
-.exerciseName{
-  font-size:clamp(18px,1.75vw,31px);
-  font-weight:1000;
-  line-height:1.08;
-}
-
-.exerciseName.medium{
-  font-size:clamp(16px,1.5vw,26px);
-}
-
-.exerciseName.long{
-  font-size:clamp(14px,1.3vw,22px);
-}
-
-.exerciseSub{
-  color:var(--muted);
-  margin-top:9px;
-  font-size:clamp(13px,1.05vw,18px);
-  font-weight:900;
-}
-
-/* =========================================================
-   TIMER — MAIOR E MAIS VISÍVEL
-========================================================= */
-
-.timerArea{
-  min-height:205px;
-  flex:0 0 205px;
-}
-
-.timerBox{
-  height:100%;
-  border:1px solid #267646;
-  background:linear-gradient(145deg,#10291c,#0d2016);
-  border-radius:18px;
-  padding:13px 24px 10px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-}
-
-.timerBox.rest{
-  border-color:#852e36;
-  background:linear-gradient(145deg,#2c1318,#1d0e12);
-}
-
-.timerInfo{
+.openWeek{
+  margin-top:22px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:18px;
-}
-
-.phaseTag{
-  color:var(--green);
-  font-size:clamp(15px,1.25vw,21px);
+  color:var(--yellow);
+  font-size:13px;
   font-weight:1000;
   letter-spacing:1px;
 }
 
-.timerBox.rest .phaseTag{
-  color:var(--red);
+.arrow{
+  font-size:24px;
 }
 
-.timerContext{
-  font-size:clamp(14px,1.15vw,20px);
-  font-weight:1000;
-  margin-top:5px;
+/* =====================================================
+   WEEK PAGE
+===================================================== */
+
+.weekPage{
+  display:none;
 }
 
-.remainingLabel{
-  text-align:right;
-  font-size:clamp(15px,1.2vw,21px);
-  font-weight:1000;
-}
-
-.timer{
-  font-size:clamp(72px,8.4vw,136px);
-  line-height:.82;
-  font-weight:1000;
-  text-align:center;
-  font-variant-numeric:tabular-nums;
-  margin-top:1px;
-}
-
-.progress{
-  height:9px;
-  border-radius:999px;
-  background:#252c32;
-  overflow:hidden;
-  margin-top:9px;
-}
-
-.progressFill{
-  height:100%;
-  width:0%;
-  background:var(--green);
-  transition:width .2s linear;
-}
-
-.timerBox.rest .progressFill{
-  background:var(--red);
-}
-
-/* =========================================================
-   COOLDOWN
-========================================================= */
-
-.coolGrid{
-  flex:1;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
-  min-height:0;
-}
-
-.coolItem{
-  display:flex;
-  justify-content:center;
+.back{
+  display:inline-flex;
   align-items:center;
-  text-align:center;
-  padding:20px;
-  font-size:clamp(20px,1.9vw,34px);
-  font-weight:1000;
-}
-
-/* =========================================================
-   CONTROLES
-========================================================= */
-
-.controls{
-  height:var(--control);
-  flex:0 0 var(--control);
-  border-top:1px solid var(--line);
-  background:#090b0e;
-  display:flex;
-  align-items:center;
-  justify-content:center;
   gap:8px;
-  padding:8px 12px;
-  z-index:30;
-}
-
-.btn{
-  height:45px;
-  padding:0 15px;
-  border-radius:10px;
-  border:1px solid var(--line);
-  background:#151b22;
-  color:#fff;
-  font-weight:1000;
-  font-size:12px;
+  color:#aaa;
+  font-size:14px;
+  font-weight:900;
+  margin-bottom:25px;
   cursor:pointer;
-  white-space:nowrap;
 }
 
-.btn:hover{
-  border-color:#707983;
+.back:hover{
+  color:var(--yellow);
 }
 
-.btnYellow{
-  background:var(--yellow);
-  color:#111;
+.dayGrid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-top:32px;
+}
+
+.dayCard{
+  min-height:180px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:22px;
+  cursor:pointer;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  transition:.2s;
+}
+
+.dayCard:hover{
   border-color:var(--yellow);
+  transform:translateY(-2px);
 }
 
-.btnGreen{
-  background:var(--green);
-  color:#07140c;
-  border-color:var(--green);
+.day{
+  color:var(--yellow);
+  font-size:13px;
+  font-weight:1000;
+  letter-spacing:1.6px;
 }
 
-.btnRed{
-  background:#331419;
-  border-color:#722c34;
+.workoutName{
+  font-size:25px;
+  font-weight:1000;
+  margin-top:12px;
 }
 
-.pageCounter{
-  color:var(--muted);
+.status{
+  color:#777;
+  font-size:12px;
+  font-weight:800;
+  margin-top:8px;
+}
+
+.enterWorkout{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:22px;
+  padding-top:15px;
+  border-top:1px solid #292929;
+  color:#aaa;
   font-size:12px;
   font-weight:900;
-  min-width:46px;
-  text-align:center;
 }
 
-/* =========================================================
-   COUNTDOWN
-========================================================= */
-
-#countdownOverlay{
-  position:fixed;
-  inset:0;
-  z-index:999;
-  background:rgba(0,0,0,.94);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-}
-
-#countdownOverlay.show{
-  display:flex;
-}
-
-.countLabel{
+.dayCard:hover .enterWorkout{
   color:var(--yellow);
-  font-size:clamp(25px,3vw,52px);
-  font-weight:1000;
-  letter-spacing:3px;
 }
 
-.countNumber{
-  font-size:clamp(140px,20vw,330px);
-  line-height:.9;
-  font-weight:1000;
-  margin-top:20px;
+/* =====================================================
+   EMPTY WORKOUT
+===================================================== */
+
+.workoutPage{
+  display:none;
 }
 
-/* =========================================================
-   FULLSCREEN — REGRA DEFINITIVA
-========================================================= */
-
-:fullscreen .page,
-:-webkit-full-screen .page{
-  padding:20px 30px;
-}
-
-:fullscreen .header,
-:-webkit-full-screen .header{
-  min-height:82px;
-}
-
-:fullscreen .logoBox,
-:-webkit-full-screen .logoBox{
-  height:78px;
-  min-width:225px;
-}
-
-:fullscreen .logoBox img,
-:-webkit-full-screen .logoBox img{
-  max-height:64px;
-  max-width:290px;
-}
-
-:fullscreen .hubLogo,
-:-webkit-full-screen .hubLogo{
-  height:125px;
-  min-width:320px;
-}
-
-:fullscreen .hubLogo img,
-:-webkit-full-screen .hubLogo img{
-  max-height:103px;
-  max-width:420px;
-}
-
-:fullscreen .exercise,
-:-webkit-full-screen .exercise{
+.emptyWorkout{
+  margin-top:35px;
+  min-height:430px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
+  padding:40px;
 }
 
-:fullscreen .exerciseName,
-:-webkit-full-screen .exerciseName{
-  font-size:clamp(26px,2.25vw,43px);
+.emptyIcon{
+  font-size:52px;
+  margin-bottom:20px;
 }
 
-:fullscreen .exerciseName.medium,
-:-webkit-full-screen .exerciseName.medium{
-  font-size:clamp(22px,1.95vw,36px);
+.emptyWorkout h2{
+  font-size:32px;
+  font-weight:1000;
 }
 
-:fullscreen .exerciseName.long,
-:-webkit-full-screen .exerciseName.long{
-  font-size:clamp(19px,1.65vw,30px);
+.emptyWorkout p{
+  color:#888;
+  margin-top:12px;
+  line-height:1.5;
 }
 
-:fullscreen .rotationCard,
-:-webkit-full-screen .rotationCard{
-  justify-content:center;
-  align-items:center;
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer{
+  border-top:1px solid var(--border);
+  color:#666;
+  font-size:11px;
+  letter-spacing:1px;
+  padding:15px 4vw;
+  display:flex;
+  justify-content:space-between;
 }
 
-:fullscreen .infoCard,
-:-webkit-full-screen .infoCard{
-  justify-content:center;
-}
+/* =====================================================
+   RESPONSIVE
+===================================================== */
 
-:fullscreen .coolItem,
-:-webkit-full-screen .coolItem{
-  justify-content:center;
-  align-items:center;
-}
-
-:fullscreen .timerArea,
-:-webkit-full-screen .timerArea{
-  min-height:215px;
-  flex-basis:215px;
-}
-
-:fullscreen .timer,
-:-webkit-full-screen .timer{
-  font-size:clamp(86px,9vw,150px);
-}
-
-/* =========================================================
-   RESPONSIVO
-========================================================= */
-
-@media(max-width:900px){
-
-  .page{
-    padding:10px;
+@media(max-width:1100px){
+  .weekGrid{
+    grid-template-columns:repeat(2,1fr);
   }
 
+  .dayGrid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:700px){
+
   .header{
-    min-height:58px;
+    padding:12px 16px;
+    min-height:80px;
   }
 
   .logoBox{
-    height:48px;
-    min-width:115px;
+    min-width:130px;
+    height:54px;
+    padding:6px 10px;
   }
 
   .logoBox img{
-    max-height:38px;
-    max-width:155px;
+    max-width:120px;
+    max-height:44px;
   }
 
-  .hubLogo{
-    height:80px;
-    min-width:210px;
+  .brandDivider,
+  .brandText{
+    display:none;
   }
 
-  .hubLogo img{
-    max-height:64px;
-    max-width:270px;
+  .content{
+    width:92vw;
+    padding-top:25px;
   }
 
-  .hubGrid{
+  .weekGrid,
+  .dayGrid{
     grid-template-columns:1fr;
   }
 
-  .workoutChoice{
-    min-height:195px;
+  .weekCard{
+    min-height:210px;
   }
 
-  .overviewGrid{
-    grid-template-columns:1fr;
+  .weekNumber{
+    font-size:55px;
   }
 
-  .rotationGrid.cols8{
-    grid-template-columns:repeat(2,1fr);
+  .footer{
+    flex-direction:column;
+    gap:5px;
   }
+}
 
-  .grid8{
-    grid-template-columns:repeat(2,1fr);
-    grid-template-rows:repeat(4,1fr);
-  }
+/* =====================================================
+   FULLSCREEN / TV
+===================================================== */
 
-  .grid10{
-    grid-template-columns:repeat(2,1fr);
-    grid-template-rows:repeat(5,1fr);
-  }
+:fullscreen .content{
+  width:94vw;
+  max-width:1700px;
+}
 
-  .controls{
-    overflow-x:auto;
-    justify-content:flex-start;
-  }
+:fullscreen .weekCard{
+  min-height:340px;
+}
+
+:fullscreen .logoBox{
+  min-width:270px;
+  height:88px;
+}
+
+:fullscreen .logoBox img{
+  max-width:245px;
+  max-height:72px;
 }
 
 </style>
@@ -892,3068 +457,406 @@ h1,h2,h3,p{margin:0}
 
 <div id="app">
 
-<!-- =======================================================
-     HUB
-======================================================= -->
+<header class="header">
 
-<section id="hub" class="screen active">
+  <div class="brand">
 
-  <div class="page hubPage">
+    <div class="logoBox">
+      <!-- Mantém o mesmo arquivo de logo já usado no projeto -->
+      <img src="logo-cia.png" alt="Cia Athletica">
+    </div>
 
-    <div class="hubHero">
+    <div class="brandDivider"></div>
 
-      <div class="hubLogo">
-        <img src="logo-cia.png" alt="Companhia Athletica">
+    <div class="brandText">
+      <div class="hyrox">HYROX TRAINING CLUB</div>
+      <div class="unit">MANAUS • STUDIO 5</div>
+    </div>
+
+  </div>
+
+  <div class="headerRight">
+
+    <button class="topButton" onclick="goHome()">
+      ⌂ HUB
+    </button>
+
+    <button class="topButton" onclick="toggleFullscreen()">
+      ⛶ TELA CHEIA
+    </button>
+
+  </div>
+
+</header>
+
+
+<main class="content">
+
+<!-- ===================================================
+     HOME
+=================================================== -->
+
+<section id="homePage">
+
+  <div class="eyebrow">
+    PROGRAMAÇÃO HYROX
+  </div>
+
+  <h1>
+    CICLO DE TREINAMENTO
+  </h1>
+
+  <div class="subtitle">
+    Selecione a semana para acessar a programação do Studio 5.
+  </div>
+
+  <div class="weekGrid">
+
+    <div class="weekCard" onclick="openWeek(1)">
+      <div class="weekNumber">01</div>
+
+      <div>
+        <h2>SEMANA 1</h2>
+        <p>Programação semanal HYROX • Studio 5</p>
+
+        <div class="openWeek">
+          ABRIR SEMANA
+          <span class="arrow">→</span>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="weekCard" onclick="openWeek(2)">
+      <div class="weekNumber">02</div>
+
+      <div>
+        <h2>SEMANA 2</h2>
+        <p>Programação semanal HYROX • Studio 5</p>
+
+        <div class="openWeek">
+          ABRIR SEMANA
+          <span class="arrow">→</span>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="weekCard" onclick="openWeek(3)">
+      <div class="weekNumber">03</div>
+
+      <div>
+        <h2>SEMANA 3</h2>
+        <p>Programação semanal HYROX • Studio 5</p>
+
+        <div class="openWeek">
+          ABRIR SEMANA
+          <span class="arrow">→</span>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="weekCard" onclick="openWeek(4)">
+      <div class="weekNumber">04</div>
+
+      <div>
+        <h2>SEMANA 4</h2>
+        <p>Programação semanal HYROX • Studio 5</p>
+
+        <div class="openWeek">
+          ABRIR SEMANA
+          <span class="arrow">→</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ===================================================
+     WEEK
+=================================================== -->
+
+<section id="weekPage" class="weekPage">
+
+  <div class="back" onclick="goHome()">
+    ← VOLTAR PARA AS SEMANAS
+  </div>
+
+  <div class="eyebrow" id="weekEyebrow">
+    PROGRAMAÇÃO
+  </div>
+
+  <h1 id="weekTitle">
+    SEMANA 1
+  </h1>
+
+  <div class="subtitle">
+    Selecione o treino do dia.
+  </div>
+
+  <div class="dayGrid" id="dayGrid"></div>
+
+</section>
+
+
+<!-- ===================================================
+     WORKOUT PLACEHOLDER
+=================================================== -->
+
+<section id="workoutPage" class="workoutPage">
+
+  <div class="back" onclick="backToWeek()">
+    ← VOLTAR PARA A SEMANA
+  </div>
+
+  <div class="eyebrow" id="workoutWeek">
+    SEMANA 1
+  </div>
+
+  <h1 id="workoutTitle">
+    SEGUNDA-FEIRA
+  </h1>
+
+  <div class="emptyWorkout">
+
+    <div>
+
+      <div class="emptyIcon">
+        ⏱
       </div>
 
-      <div class="eyebrow">
-        HYROX TRAINING CLUB • CIA ATHLETICA STUDIO 5
-      </div>
-
-      <h1>AULAS DE SÁBADO</h1>
+      <h2 id="emptyWorkoutName">
+        TREINO
+      </h2>
 
       <p>
-        Selecione a turma para abrir o dashboard da aula.
+        Dashboard do treino será inserido nesta área.
+        <br>
+        Estrutura preparada para Aquecimento, Rodízio,
+        Treino Principal e Volta à Calma.
       </p>
 
     </div>
 
-    <div class="hubGrid">
-
-      <div class="card workoutChoice"
-           onclick="openWorkout('w9')">
-
-        <div>
-
-          <div class="choiceTime">
-            TURMA DAS 9H
-          </div>
-
-          <div class="choiceName">
-            HYROX Foundation – Power Endurance #2
-          </div>
-
-          <div class="choiceMeta">
-            RPE 8 • 50 MIN<br>
-            Capacidade: até 40 atletas<br>
-            5 zonas • Subzonas A/B
-          </div>
-
-        </div>
-
-        <div class="openBtn">
-          ABRIR TREINO DAS 9H →
-        </div>
-
-      </div>
-
-
-      <div class="card workoutChoice"
-           onclick="openWorkout('w1030')">
-
-        <div>
-
-          <div class="choiceTime">
-            TURMA DAS 10H30
-          </div>
-
-          <div class="choiceName">
-            Treino de Zonas Comprometidas #5 TS
-          </div>
-
-          <div class="choiceMeta">
-            RPE 8 • 58 MIN<br>
-            Capacidade: até 32 atletas<br>
-            8 equipes • 16 × 03:00 • sem pausa
-          </div>
-
-        </div>
-
-        <div class="openBtn">
-          ABRIR TREINO DAS 10H30 →
-        </div>
-
-      </div>
-
-    </div>
-
-    <div style="
-      text-align:center;
-      margin-top:18px;
-      color:#66717d;
-      font-weight:900;
-    ">
-      STUDIO 5 • HUB SÁBADO • CONTROLE INDEPENDENTE
-    </div>
-
   </div>
 
 </section>
 
-
-<!-- =======================================================
-     WORKOUT
-======================================================= -->
-
-<section id="workoutScreen" class="screen">
-
-  <div id="workoutPage" class="page"></div>
-
-</section>
+</main>
 
 
-<!-- =======================================================
-     CONTROLES
-======================================================= -->
-
-<div id="controls"
-     class="controls"
-     style="display:none">
-
-  <button class="btn" onclick="goHub()">
-    ⌂ HUB
-  </button>
-
-  <button class="btn" onclick="prevPage()">
-    ◀
-  </button>
-
-  <span id="pageCounter" class="pageCounter">
-    1 / 5
-  </span>
-
-  <button class="btn" onclick="nextPage()">
-    ▶
-  </button>
-
-  <button id="soundButton"
-          class="btn btnYellow"
-          onclick="toggleSound()">
-    🔊 SOM ON
-  </button>
-
-  <button id="fullscreenButton"
-          class="btn"
-          onclick="toggleFullscreen()">
-    ⛶ TELA CHEIA
-  </button>
-
-  <button id="masterButton"
-          class="btn btnGreen"
-          onclick="masterAction()">
-    ▶ INICIAR AULA
-  </button>
-
-  <button class="btn btnRed"
-          onclick="resetCurrentPhase()">
-    RESET
-  </button>
-
-</div>
-
-
-<!-- =======================================================
-     COUNTDOWN
-======================================================= -->
-
-<div id="countdownOverlay">
-
-  <div class="countLabel">
-    PREPARE-SE
-  </div>
-
-  <div id="countNumber"
-       class="countNumber">
-    5
-  </div>
-
-</div>
+<footer class="footer">
+  <span>HYROX TRAINING CLUB • CIA ATHLETICA</span>
+  <span>MANAUS • STUDIO 5</span>
+</footer>
 
 </div>
 
 
 <script>
 
-/* =========================================================
-   UTILIDADES
-========================================================= */
+/* =====================================================
+   ESTRUTURA DO CICLO
 
-function el(id){
-  return document.getElementById(id);
-}
+   Por enquanto SOMENTE nomes.
+   Depois cada treino receberá seu próprio objeto
+   com warmup, main, cooldown, timers, rodízio etc.
+===================================================== */
 
-function fmt(sec){
+const PROGRAM = {
 
-  sec=Math.max(0,Math.round(sec));
-
-  const m=Math.floor(sec/60);
-  const s=sec%60;
-
-  return String(m).padStart(2,"0")
-    +":"+
-    String(s).padStart(2,"0");
-}
-
-function nameClass(name){
-
-  if(name.length>36){
-    return "long";
-  }
-
-  if(name.length>24){
-    return "medium";
-  }
-
-  return "";
-}
-
-
-/* =========================================================
-   ÁUDIO
-========================================================= */
-
-let soundEnabled=true;
-let audioCtx=null;
-
-function initAudio(){
-
-  if(!audioCtx){
-
-    const AC=
-      window.AudioContext ||
-      window.webkitAudioContext;
-
-    if(AC){
-      audioCtx=new AC();
-    }
-  }
-
-  if(
-    audioCtx &&
-    audioCtx.state==="suspended"
-  ){
-    audioCtx.resume();
-  }
-}
-
-function tone(freq,duration,volume=.22){
-
-  if(!soundEnabled){
-    return;
-  }
-
-  initAudio();
-
-  if(!audioCtx){
-    return;
-  }
-
-  const oscillator=
-    audioCtx.createOscillator();
-
-  const gain=
-    audioCtx.createGain();
-
-  oscillator.type="sine";
-  oscillator.frequency.value=freq;
-
-  gain.gain.setValueAtTime(
-    volume,
-    audioCtx.currentTime
-  );
-
-  gain.gain.exponentialRampToValueAtTime(
-    .001,
-    audioCtx.currentTime+duration
-  );
-
-  oscillator.connect(gain);
-  gain.connect(audioCtx.destination);
-
-  oscillator.start();
-
-  oscillator.stop(
-    audioCtx.currentTime+duration
-  );
-}
-
-function shortBeep(){
-  tone(880,.10,.22);
-}
-
-function goBeep(){
-  tone(1250,.28,.30);
-}
-
-function finishBeep(){
-
-  tone(660,.15,.25);
-
-  setTimeout(
-    ()=>tone(880,.15,.25),
-    180
-  );
-
-  setTimeout(
-    ()=>tone(1200,.38,.30),
-    360
-  );
-}
-
-function toggleSound(){
-
-  soundEnabled=!soundEnabled;
-
-  el("soundButton").textContent=
-    soundEnabled
-    ? "🔊 SOM ON"
-    : "🔇 SOM OFF";
-
-  if(soundEnabled){
-    initAudio();
-    shortBeep();
-  }
-}
-
-
-/* =========================================================
-   DADOS — 9H
-========================================================= */
-
-const DATA9={
-
-  id:"w9",
-
-  time:"TURMA DAS 9H",
-
-  title:
-    "HYROX Foundation – Power Endurance #2",
-
-  duration:"50 MIN",
-
-  capacity:"ATÉ 40 ATLETAS",
-
-  warmup:[
-    "Cossack Squats @ RPE 6",
-    "OH Bowler Lunge",
-    "World’s Greatest Stretch",
-    "Blast Off Push-ups",
-    "Situp to Glute Bridges"
+  1:[
+    {day:"SEGUNDA-FEIRA", workout:"TREINO A DEFINIR"},
+    {day:"TERÇA-FEIRA",   workout:"TREINO A DEFINIR"},
+    {day:"QUARTA-FEIRA",  workout:"TREINO A DEFINIR"},
+    {day:"QUINTA-FEIRA",  workout:"TREINO A DEFINIR"},
+    {day:"SEXTA-FEIRA",   workout:"TREINO A DEFINIR"},
+    {day:"SÁBADO",        workout:"TREINO A DEFINIR"}
   ],
 
-  zones:[
-
-    {
-      name:"ZONA 1",
-      a:"Run @ RPE 8",
-      b:"Wallballs"
-    },
-
-    {
-      name:"ZONA 2",
-      a:"Burpee to Plate",
-      b:"Dual KB Clean"
-    },
-
-    {
-      name:"ZONA 3",
-      a:"Sandbag OH Forward Lunge",
-      b:"Row Sprint @ RPE 8"
-    },
-
-    {
-      name:"ZONA 4",
-      a:"Sled Pull",
-      b:"SkiErg @ RPE 8"
-    },
-
-    {
-      name:"ZONA 5",
-      a:"KB Pirate Ship Swing",
-      b:"Low Squat Hold"
-    }
-
-  ]
-};
-
-
-/* =========================================================
-   DADOS — 10H30
-========================================================= */
-
-const DATA1030={
-
-  id:"w1030",
-
-  time:"TURMA DAS 10H30",
-
-  title:
-    "Treino de Zonas Comprometidas #5 TS",
-
-  duration:"58 MIN",
-
-  capacity:"32 ATLETAS",
-
-  warmup:[
-    "Bootstrapper",
-    "Cossack Squats",
-    "90-90 Transitions",
-    "Inside-outside Plank Jumps",
-    "Rotational Push-ups"
+  2:[
+    {day:"SEGUNDA-FEIRA", workout:"TREINO A DEFINIR"},
+    {day:"TERÇA-FEIRA",   workout:"TREINO A DEFINIR"},
+    {day:"QUARTA-FEIRA",  workout:"TREINO A DEFINIR"},
+    {day:"QUINTA-FEIRA",  workout:"TREINO A DEFINIR"},
+    {day:"SEXTA-FEIRA",   workout:"TREINO A DEFINIR"},
+    {day:"SÁBADO",        workout:"TREINO A DEFINIR"}
   ],
 
-  zones:[
+  3:[
+    {day:"SEGUNDA-FEIRA", workout:"TREINO A DEFINIR"},
+    {day:"TERÇA-FEIRA",   workout:"TREINO A DEFINIR"},
+    {day:"QUARTA-FEIRA",  workout:"TREINO A DEFINIR"},
+    {day:"QUINTA-FEIRA",  workout:"TREINO A DEFINIR"},
+    {day:"SEXTA-FEIRA",   workout:"TREINO A DEFINIR"},
+    {day:"SÁBADO",        workout:"TREINO A DEFINIR"}
+  ],
 
-    {
-      name:"Run",
-      sub:"03:00 @ RPE 8"
-    },
-
-    {
-      name:"DB Thrusters + DB Skier Swing",
-      sub:"20x + 20x"
-    },
-
-    {
-      name:"RowErg",
-      sub:"03:00 @ RPE 8"
-    },
-
-    {
-      name:"Sandbag Back Rack Lunge + Air Squats",
-      sub:"20x + 20x"
-    },
-
-    {
-      name:"SkiErg",
-      sub:"03:00 @ RPE 8"
-    },
-
-    {
-      name:"Overhand Sled Push + Overhead Situp",
-      sub:"20m + 20x"
-    },
-
-    {
-      name:"Wallballs + Burpees Chest to Floor",
-      sub:"15x + 10x"
-    },
-
-    {
-      name:"Bicycle Crunch + DB Goblet Squats",
-      sub:"20x + 20x"
-    }
-
+  4:[
+    {day:"SEGUNDA-FEIRA", workout:"TREINO A DEFINIR"},
+    {day:"TERÇA-FEIRA",   workout:"TREINO A DEFINIR"},
+    {day:"QUARTA-FEIRA",  workout:"TREINO A DEFINIR"},
+    {day:"QUINTA-FEIRA",  workout:"TREINO A DEFINIR"},
+    {day:"SEXTA-FEIRA",   workout:"TREINO A DEFINIR"},
+    {day:"SÁBADO",        workout:"TREINO A DEFINIR"}
   ]
-};
-
-
-/* =========================================================
-   CONTROLADOR 9H
-========================================================= */
-
-const TIMER9={
-
-  engine:null,
-
-  running:false,
-  paused:false,
-
-  phase:null,
-
-  warm:{
-    round:0,
-    part:"work",
-    sec:45
-  },
-
-  main:{
-    round:0,
-    part:"work",
-    sec:60
-  },
-
-  cool:{
-    sec:300
-  },
-
-  stop(){
-
-    if(this.engine){
-
-      clearInterval(this.engine);
-
-      this.engine=null;
-    }
-
-    this.running=false;
-    this.paused=false;
-  },
-
-  resetAll(){
-
-    this.stop();
-
-    this.phase=null;
-
-    this.warm={
-      round:0,
-      part:"work",
-      sec:45
-    };
-
-    this.main={
-      round:0,
-      part:"work",
-      sec:60
-    };
-
-    this.cool={
-      sec:300
-    };
-  },
-
-  startInterval(callback){
-
-    if(this.engine){
-      clearInterval(this.engine);
-    }
-
-    this.running=true;
-    this.paused=false;
-
-    this.engine=setInterval(()=>{
-
-      if(!this.paused){
-        callback();
-      }
-
-    },1000);
-  }
 
 };
 
 
-/* =========================================================
-   CONTROLADOR 10H30
-========================================================= */
-
-const TIMER1030={
-
-  engine:null,
-
-  running:false,
-  paused:false,
-
-  phase:null,
-
-  warm:{
-    round:0,
-    part:"work",
-    sec:45
-  },
-
-  main:{
-    round:0,
-    sec:180
-  },
-
-  cool:{
-    sec:300
-  },
-
-  stop(){
-
-    if(this.engine){
-
-      clearInterval(this.engine);
-
-      this.engine=null;
-    }
-
-    this.running=false;
-    this.paused=false;
-  },
-
-  resetAll(){
-
-    this.stop();
-
-    this.phase=null;
-
-    this.warm={
-      round:0,
-      part:"work",
-      sec:45
-    };
-
-    this.main={
-      round:0,
-      sec:180
-    };
-
-    this.cool={
-      sec:300
-    };
-  },
-
-  startInterval(callback){
-
-    if(this.engine){
-      clearInterval(this.engine);
-    }
-
-    this.running=true;
-    this.paused=false;
-
-    this.engine=setInterval(()=>{
-
-      if(!this.paused){
-        callback();
-      }
-
-    },1000);
-  }
-
-};
+let currentWeek=1;
 
 
-/* =========================================================
-   ESTADO
-========================================================= */
+/* =====================================================
+   HOME
+===================================================== */
 
-let activeWorkout=null;
+function goHome(){
 
-let currentPage=0;
+  document.getElementById("homePage").style.display="block";
+  document.getElementById("weekPage").style.display="none";
+  document.getElementById("workoutPage").style.display="none";
 
-let athlete9=32;
-
-let athlete1030=32;
-
-
-/* =========================================================
-   CONTROLADOR ATIVO
-========================================================= */
-
-function getController(){
-
-  if(activeWorkout==="w9"){
-    return TIMER9;
-  }
-
-  if(activeWorkout==="w1030"){
-    return TIMER1030;
-  }
-
-  return null;
 }
 
 
-/* =========================================================
-   ABRIR TREINO
-========================================================= */
+/* =====================================================
+   OPEN WEEK
+===================================================== */
 
-function openWorkout(id){
+function openWeek(week){
 
-  TIMER9.resetAll();
-  TIMER1030.resetAll();
+  currentWeek=week;
 
-  activeWorkout=id;
+  document.getElementById("homePage").style.display="none";
+  document.getElementById("workoutPage").style.display="none";
+  document.getElementById("weekPage").style.display="block";
 
-  currentPage=0;
+  document.getElementById("weekEyebrow").textContent=
+    "CICLO • SEMANA "+week;
 
-  el("hub").classList.remove("active");
+  document.getElementById("weekTitle").textContent=
+    "SEMANA "+week;
 
-  el("workoutScreen")
-    .classList.add("active");
+  renderDays();
 
-  el("controls").style.display="flex";
-
-  initAudio();
-
-  render();
-
-  updateMasterButton();
 }
 
 
-/* =========================================================
-   HUB
-========================================================= */
+/* =====================================================
+   DAYS
+===================================================== */
 
-function goHub(){
+function renderDays(){
 
-  TIMER9.resetAll();
-  TIMER1030.resetAll();
+  const grid=document.getElementById("dayGrid");
 
-  activeWorkout=null;
-  currentPage=0;
+  grid.innerHTML="";
 
-  el("workoutScreen")
-    .classList.remove("active");
+  PROGRAM[currentWeek].forEach((item,index)=>{
 
-  el("hub")
-    .classList.add("active");
+    const card=document.createElement("div");
 
-  el("controls").style.display="none";
-}
+    card.className="dayCard";
 
+    card.onclick=()=>openWorkout(index);
 
-/* =========================================================
-   NAVEGAÇÃO
-
-   REGRA:
-   TROCOU DE PÁGINA = TIMER DA FASE ANTERIOR PARA.
-
-   ISSO PERMITE:
-   AQUECIMENTO → TREINO PRINCIPAL → INICIAR TREINO
-   SEM PRECISAR ESPERAR O REST.
-========================================================= */
-
-function stopCurrentTimerForNavigation(){
-
-  const c=getController();
-
-  if(!c){
-    return;
-  }
-
-  c.stop();
-}
-
-function nextPage(){
-
-  if(!activeWorkout){
-    return;
-  }
-
-  stopCurrentTimerForNavigation();
-
-  currentPage=
-    Math.min(4,currentPage+1);
-
-  render();
-
-  updateMasterButton();
-}
-
-function prevPage(){
-
-  if(!activeWorkout){
-    return;
-  }
-
-  stopCurrentTimerForNavigation();
-
-  currentPage=
-    Math.max(0,currentPage-1);
-
-  render();
-
-  updateMasterButton();
-}
-
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-function header(data){
-
-  return `
-
-  <div class="header">
-
-    <div class="brandBlock">
-
-      <div class="logoBox">
-
-        <img
-          src="logo-cia.png"
-          alt="Companhia Athletica"
-        >
-
-      </div>
-
-      <div class="brandTitle">
-
-        <div class="eyebrow">
-          HYROX TRAINING CLUB • CIA ATHLETICA STUDIO 5
-        </div>
-
-        <h1>
-          ${data.title}
-        </h1>
-
-      </div>
-
-    </div>
-
-    <div class="badges">
-
-      <div class="badge yellow">
-        ${data.time}
-      </div>
-
-      <div class="badge">
-        ${data.capacity}
-      </div>
-
-      <div class="badge">
-        ${data.duration}
-      </div>
-
-      <div class="badge">
-        RPE 8
-      </div>
-
-    </div>
-
-  </div>
-
-  `;
-}
-
-
-/* =========================================================
-   RENDER
-========================================================= */
-
-function render(){
-
-  if(activeWorkout==="w9"){
-    render9();
-  }
-
-  if(activeWorkout==="w1030"){
-    render1030();
-  }
-
-  el("pageCounter").textContent=
-    (currentPage+1)+" / 5";
-}
-
-
-/* =========================================================
-   9H
-========================================================= */
-
-function render9(){
-
-  const data=DATA9;
-
-  if(currentPage===0){
-    renderOverview9(data);
-  }
-
-  if(currentPage===1){
-    renderRotation9(data);
-  }
-
-  if(currentPage===2){
-    renderWarm9(data);
-  }
-
-  if(currentPage===3){
-    renderMain9(data);
-  }
-
-  if(currentPage===4){
-    renderCool9(data);
-  }
-}
-
-
-/* =========================================================
-   9H — ORIENTAÇÕES
-========================================================= */
-
-function renderOverview9(data){
-
-  el("workoutPage").innerHTML=`
-
-  ${header(data)}
-
-  <div class="sectionLabel">
-    ORIENTAÇÕES DO COACH
-  </div>
-
-  <div class="pageTitle">
-    POWER ENDURANCE • 5 ZONAS A/B
-  </div>
-
-  <div class="overviewGrid">
-
-    <div class="card infoCard">
-
-      <h3>FORMATO</h3>
-
-      <p>
-        Cada zona possui dois estímulos:
-        <strong>A</strong> e <strong>B</strong>.
-        São 6 rounds por zona:
-        3 passagens em A e 3 em B.
-      </p>
-
-    </div>
-
-    <div class="card infoCard">
-
-      <h3>RITMO / PACING</h3>
-
-      <p>
-        Trabalho de 01:00 em RPE 8.
-        Controle o primeiro round para sustentar
-        potência, cadência e qualidade técnica
-        durante todo o bloco principal.
-      </p>
-
-    </div>
-
-    <div class="card infoCard">
-
-      <h3>SEGURANÇA / FLUXO</h3>
-
-      <p>
-        Transições sempre pelas laterais.
-        Não cruzar as pistas de Sled em movimento.
-        Respeitar a organização dos ergômetros
-        e o fluxo determinado pelo coach.
-      </p>
-
-    </div>
-
-  </div>
-
-  <div class="card flowBox">
-
-    <strong>
-      ESTRUTURA DA AULA
-    </strong>
-
-    <div>
-      AQUECIMENTO 5'
-      →
-      5 ZONAS × 8'
-      →
-      01:00 TRABALHO / 00:20 TRANSIÇÃO
-      →
-      RECUPERAÇÃO 5'
-    </div>
-
-  </div>
-
-  `;
-}
-
-
-/* =========================================================
-   DISTRIBUIÇÃO
-========================================================= */
-
-function groupSizes(total,groups){
-
-  const base=
-    Math.floor(total/groups);
-
-  const remainder=
-    total%groups;
-
-  return Array.from(
-    {length:groups},
-    (_,i)=>
-      base+(i<remainder ? 1:0)
-  );
-}
-
-
-/* =========================================================
-   9H — RODÍZIO
-========================================================= */
-
-function renderRotation9(data){
-
-  const sizes=
-    groupSizes(athlete9,5);
-
-  el("workoutPage").innerHTML=`
-
-  ${header(data)}
-
-  <div class="rotationTop">
-
-    <div>
-
-      <div class="sectionLabel">
-        ORGANIZAÇÃO DA TURMA
-      </div>
-
-      <div class="pageTitle">
-        RODÍZIO • ${athlete9} ATLETAS
-      </div>
-
-    </div>
-
-    <div class="counterBox">
-
-      <button
-        class="counterBtn"
-        onclick="changeAthletes9(-1)">
-        −
-      </button>
-
-      <div class="athleteCount">
-        ${athlete9}
-      </div>
-
-      <button
-        class="counterBtn"
-        onclick="changeAthletes9(1)">
-        +
-      </button>
-
-    </div>
-
-  </div>
-
-  <div class="card"
-       style="
-         padding:13px 18px;
-         text-align:center
-       ">
-
-    <span class="green"
-          style="font-weight:1000">
-
-      5 EQUIPES PRINCIPAIS
-
-    </span>
-
-    <span class="muted"
-          style="font-weight:800">
-
-      • cada equipe trabalha nas subzonas A/B
-      e realiza a troca no sinal do timer.
-
-    </span>
-
-  </div>
-
-  <div class="rotationGrid cols5">
-
-    ${data.zones.map((z,i)=>`
-
-      <div class="card rotationCard">
-
-        <div class="teamBig">
-          EQUIPE ${String.fromCharCode(65+i)}
-        </div>
-
-        <div class="teamCount">
-          ${sizes[i]} ATLETAS
-        </div>
-
-        <div class="stationText">
-
-          ${z.name}
-
-          <br><br>
-
-          A • ${z.a}
-
-          <br>
-
-          B • ${z.b}
-
-        </div>
-
-      </div>
-
-    `).join("")}
-
-  </div>
-
-  `;
-}
-
-
-/* REGRA DEFINITIVA:
-   9H = QUALQUER QUANTIDADE DE 1 A 40
-*/
-
-function changeAthletes9(v){
-
-  athlete9=
-    Math.max(
-      1,
-      Math.min(
-        40,
-        athlete9+v
-      )
-    );
-
-  renderRotation9(DATA9);
-}
-
-
-/* =========================================================
-   9H — AQUECIMENTO
-========================================================= */
-
-function renderWarm9(data){
-
-  const w=TIMER9.warm;
-
-  const total=
-    (4-w.round)*60+
-    (
-      w.part==="work"
-      ? w.sec+15
-      : w.sec
-    );
-
-  el("workoutPage").innerHTML=`
-
-  ${header(data)}
-
-  <div class="execution">
-
-    <div class="executionHead">
-
+    card.innerHTML=`
       <div>
+        <div class="day">${item.day}</div>
 
-        <div class="sectionLabel">
-          AQUECIMENTO
+        <div class="workoutName">
+          ${item.workout}
         </div>
 
-        <div class="pageTitle">
-          45s TRABALHO / 15s DESCANSO
+        <div class="status">
+          DASHBOARD AGUARDANDO TREINO
         </div>
-
       </div>
 
-      <div class="roundBox">
-
-        <div class="small">
-          ROUND
-        </div>
-
-        <div class="big">
-          ${w.round+1}/5
-        </div>
-
+      <div class="enterWorkout">
+        ABRIR TREINO
+        <span>→</span>
       </div>
+    `;
 
-    </div>
-
-    <div class="exerciseArea">
-
-      <div class="exerciseGrid grid5">
-
-        ${data.warmup.map((name,i)=>`
-
-          <div class="
-            exercise
-            ${i===w.round
-              ? "activeExercise"
-              : ""}
-          ">
-
-            <div class="exerciseIndex">
-              ROUND ${i+1}
-            </div>
-
-            <div class="exerciseContent">
-
-              <div class="
-                exerciseName
-                ${nameClass(name)}
-              ">
-
-                ${name}
-
-              </div>
-
-              <div class="exerciseSub">
-                00:45
-              </div>
-
-            </div>
-
-          </div>
-
-        `).join("")}
-
-      </div>
-
-    </div>
-
-    <div class="timerArea">
-
-      <div class="
-        timerBox
-        ${w.part==="rest"
-          ? "rest"
-          : ""}
-      ">
-
-        <div class="timerInfo">
-
-          <div class="phaseTag">
-
-            ● ${
-              w.part==="work"
-              ? "TRABALHO"
-              : "DESCANSO / TROCA"
-            }
-
-          </div>
-
-          <div class="remainingLabel">
-
-            TEMPO RESTANTE • ${fmt(total)}
-
-          </div>
-
-        </div>
-
-        <div class="timer">
-          ${fmt(w.sec)}
-        </div>
-
-        <div class="progress">
-
-          <div
-            class="progressFill"
-            style="
-              width:${
-                w.part==="work"
-                ? ((45-w.sec)/45)*100
-                : ((15-w.sec)/15)*100
-              }%
-            ">
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  `;
-}
-
-
-/* =========================================================
-   9H — MAIN
-========================================================= */
-
-function renderMain9(data){
-
-  const m=TIMER9.main;
-
-  const zone=
-    Math.floor(m.round/6);
-
-  const localRound=
-    (m.round%6)+1;
-
-  const isA=
-    ((m.round%2)===0);
-
-  const current=
-    data.zones[
-      Math.min(zone,4)
-    ];
-
-  const remainingRounds=
-    30-m.round-1;
-
-  const total=
-    remainingRounds*80+
-    (
-      m.part==="work"
-      ? m.sec+20
-      : m.sec
-    );
-
-  el("workoutPage").innerHTML=`
-
-  ${header(data)}
-
-  <div class="execution">
-
-    <div class="executionHead">
-
-      <div>
-
-        <div class="sectionLabel">
-          TREINO PRINCIPAL
-        </div>
-
-        <div class="pageTitle">
-
-          ${current.name}
-          •
-          SUBZONA ${isA ? "A":"B"}
-
-        </div>
-
-      </div>
-
-      <div class="roundBox">
-
-        <div class="small">
-          ROUND TOTAL
-        </div>
-
-        <div class="big">
-          ${m.round+1}/30
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="exerciseArea">
-
-      <div class="exerciseGrid grid10">
-
-        ${data.zones.map((z,i)=>`
-
-          <div class="
-            exercise
-            ${
-              i===zone && isA
-              ? "activeExercise"
-              : ""
-            }
-          ">
-
-            <div class="exerciseIndex">
-              Z${i+1}A
-            </div>
-
-            <div class="exerciseContent">
-
-              <div class="
-                exerciseName
-                ${nameClass(z.a)}
-              ">
-                ${z.a}
-              </div>
-
-              <div class="exerciseSub">
-                01:00
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div class="
-            exercise
-            ${
-              i===zone && !isA
-              ? "activeExercise"
-              : ""
-            }
-          ">
-
-            <div class="exerciseIndex">
-              Z${i+1}B
-            </div>
-
-            <div class="exerciseContent">
-
-              <div class="
-                exerciseName
-                ${nameClass(z.b)}
-              ">
-                ${z.b}
-              </div>
-
-              <div class="exerciseSub">
-                01:00
-              </div>
-
-            </div>
-
-          </div>
-
-        `).join("")}
-
-      </div>
-
-    </div>
-
-    <div class="timerArea">
-
-      <div class="
-        timerBox
-        ${m.part==="rest"
-          ? "rest"
-          : ""}
-      ">
-
-        <div class="timerInfo">
-
-          <div>
-
-            <div class="phaseTag">
-
-              ● ${
-                m.part==="work"
-                ? "TRABALHO"
-                : "TRANSIÇÃO • 20s"
-              }
-
-            </div>
-
-            <div class="timerContext">
-
-              ${current.name}
-              •
-              ROUND ${localRound}/6
-              •
-              SUBZONA ${isA ? "A":"B"}
-
-            </div>
-
-          </div>
-
-          <div class="remainingLabel">
-
-            TEMPO RESTANTE • ${fmt(total)}
-
-          </div>
-
-        </div>
-
-        <div class="timer">
-          ${fmt(m.sec)}
-        </div>
-
-        <div class="progress">
-
-          <div
-            class="progressFill"
-            style="
-              width:${
-                m.part==="work"
-                ? ((60-m.sec)/60)*100
-                : ((20-m.sec)/20)*100
-              }%
-            ">
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  `;
-}
-
-
-/* =========================================================
-   9H — COOLDOWN
-========================================================= */
-
-function renderCool9(data){
-
-  const sec=TIMER9.cool.sec;
-
-  el("workoutPage").innerHTML=`
-
-  ${header(data)}
-
-  <div class="execution">
-
-    <div>
-
-      <div class="sectionLabel">
-        VOLTA À CALMA / RECUPERAÇÃO
-      </div>
-
-      <div class="pageTitle">
-        COOLDOWN • 05:00
-      </div>
-
-    </div>
-
-    <div class="coolGrid">
-
-      <div class="card coolItem">
-        DESACELERE<br>
-        GRADUALMENTE
-      </div>
-
-      <div class="card coolItem">
-        NORMALIZE<br>
-        A RESPIRAÇÃO
-      </div>
-
-      <div class="card coolItem">
-        CAMINHADA LEVE<br>
-        RECUPERAÇÃO ATIVA
-      </div>
-
-      <div class="card coolItem">
-        REDUZA A<br>
-        FREQUÊNCIA CARDÍACA
-      </div>
-
-    </div>
-
-    <div class="timerArea">
-
-      <div class="timerBox">
-
-        <div class="timerInfo">
-
-          <div class="phaseTag">
-            ● RECUPERAÇÃO
-          </div>
-
-          <div class="remainingLabel">
-            TEMPO RESTANTE • ${fmt(sec)}
-          </div>
-
-        </div>
-
-        <div class="timer">
-          ${fmt(sec)}
-        </div>
-
-        <div class="progress">
-
-          <div
-            class="progressFill"
-            style="
-              width:${
-                ((300-sec)/300)*100
-              }%
-            ">
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  `;
-}
-
-
-/* =========================================================
-   10H30
-========================================================= */
-
-function render1030(){
-
-  const data=DATA1030;
-
-  if(currentPage===0){
-    renderOverview1030(data);
-  }
-
-  if(currentPage===1){
-    renderRotation1030(data);
-  }
-
-  if(currentPage===2){
-    renderWarm1030(data);
-  }
-
-  if(currentPage===3){
-    renderMain1030(data);
-  }
-
-  if(currentPage===4){
-    renderCool1030(data);
-  }
-}
-
-
-/* =========================================================
-   10H30 — ORIENTAÇÕES
-========================================================= */
-
-function renderOverview1030(data){
-
-  el("workoutPage").innerHTML=`
-
-  ${header(data)}
-
-  <div class="sectionLabel">
-    ORIENTAÇÕES DO COACH
-  </div>
-
-  <div class="pageTitle">
-    ZONAS COMPROMETIDAS • 8 EQUIPES
-  </div>
-
-  <div class="overviewGrid">
-
-    <div class="card infoCard">
-
-      <h3>RITMO / PACING</h3>
-
-      <p>
-        RPE 8 sustentável.
-        São 16 rounds de 03:00 sem pausa.
-        Evite acelerar excessivamente na primeira
-        volta para preservar consistência.
-      </p>
-
-    </div>
-
-    <div class="card infoCard">
-
-      <h3>COMPROMISED ZONES</h3>
-
-      <p>
-        Cada equipe percorre as 8 zonas duas vezes.
-        São duas voltas completas mantendo
-        técnica, ritmo e qualidade de movimento
-        sob fadiga.
-      </p>
-
-    </div>
-
-    <div class="card infoCard">
-
-      <h3>SEGURANÇA / FLUXO</h3>
-
-      <p>
-        Máximo de 4 atletas por zona.
-        Trocas pelas laterais.
-        Nunca cruzar a faixa central com Sled
-        em movimento ou a área ativa de Wallballs.
-      </p>
-
-    </div>
-
-  </div>
-
-  <div class="card flowBox">
-
-    <strong>
-      ESTRUTURA DA AULA
-    </strong>
-
-    <div>
-      AQUECIMENTO 5'
-      →
-      16 × 03:00 CONTÍNUOS
-      →
-      2 VOLTAS NAS 8 ZONAS
-      →
-      RECUPERAÇÃO 5'
-    </div>
-
-    <div class="muted">
-
-      3 bipes nos segundos finais.
-      Em 00:00 ocorre troca imediata —
-      SEM REST.
-
-    </div>
-
-  </div>
-
-  `;
-}
-
-
-/* =========================================================
-   10H30 — RODÍZIO
-========================================================= */
-
-function renderRotation1030(data){
-
-  const sizes=
-    groupSizes(athlete1030,8);
-
-  el("workoutPage").innerHTML=`
-
-  ${header(data)}
-
-  <div class="rotationTop">
-
-    <div>
-
-      <div class="sectionLabel">
-        ORGANIZAÇÃO DA TURMA
-      </div>
-
-      <div class="pageTitle">
-        RODÍZIO • ${athlete1030} ATLETAS
-      </div>
-
-    </div>
-
-    <div class="counterBox">
-
-      <button
-        class="counterBtn"
-        onclick="changeAthletes1030(-1)">
-        −
-      </button>
-
-      <div class="athleteCount">
-        ${athlete1030}
-      </div>
-
-      <button
-        class="counterBtn"
-        onclick="changeAthletes1030(1)">
-        +
-      </button>
-
-    </div>
-
-  </div>
-
-  <div class="card"
-       style="
-         padding:13px 18px;
-         text-align:center
-       ">
-
-    <span class="green"
-          style="font-weight:1000">
-      8 EQUIPES
-    </span>
-
-    <span class="muted"
-          style="font-weight:800">
-
-      • A → Z1
-      • B → Z2
-      • C → Z3
-      • D → Z4
-      • E → Z5
-      • F → Z6
-      • G → Z7
-      • H → Z8
-
-    </span>
-
-  </div>
-
-  <div class="rotationGrid cols8">
-
-    ${data.zones.map((z,i)=>`
-
-      <div class="card rotationCard">
-
-        <div class="teamBig">
-          EQUIPE ${String.fromCharCode(65+i)}
-        </div>
-
-        <div class="teamCount">
-          ${sizes[i]} ATLETAS
-        </div>
-
-        <div class="stationText">
-
-          Z${i+1}
-
-          <br>
-
-          ${z.name}
-
-          <br>
-
-          ${z.sub}
-
-        </div>
-
-      </div>
-
-    `).join("")}
-
-  </div>
-
-  `;
-}
-
-
-/* REGRA DEFINITIVA:
-   TODO TREINO POSSUI 1 ATÉ 32.
-*/
-
-function changeAthletes1030(v){
-
-  athlete1030=
-    Math.max(
-      1,
-      Math.min(
-        32,
-        athlete1030+v
-      )
-    );
-
-  renderRotation1030(DATA1030);
-}
-
-
-/* =========================================================
-   10H30 — AQUECIMENTO
-========================================================= */
-
-function renderWarm1030(data){
-
-  const w=TIMER1030.warm;
-
-  const total=
-    (4-w.round)*60+
-    (
-      w.part==="work"
-      ? w.sec+15
-      : w.sec
-    );
-
-  el("workoutPage").innerHTML=`
-
-  ${header(data)}
-
-  <div class="execution">
-
-    <div class="executionHead">
-
-      <div>
-
-        <div class="sectionLabel">
-          AQUECIMENTO
-        </div>
-
-        <div class="pageTitle">
-          45s TRABALHO / 15s DESCANSO
-        </div>
-
-      </div>
-
-      <div class="roundBox">
-
-        <div class="small">
-          ROUND
-        </div>
-
-        <div class="big">
-          ${w.round+1}/5
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="exerciseArea">
-
-      <div class="exerciseGrid grid5">
-
-        ${data.warmup.map((name,i)=>`
-
-          <div class="
-            exercise
-            ${
-              i===w.round
-              ? "activeExercise"
-              : ""
-            }
-          ">
-
-            <div class="exerciseIndex">
-              ROUND ${i+1}
-            </div>
-
-            <div class="exerciseContent">
-
-              <div class="
-                exerciseName
-                ${nameClass(name)}
-              ">
-                ${name}
-              </div>
-
-              <div class="exerciseSub">
-                00:45
-              </div>
-
-            </div>
-
-          </div>
-
-        `).join("")}
-
-      </div>
-
-    </div>
-
-    <div class="timerArea">
-
-      <div class="
-        timerBox
-        ${
-          w.part==="rest"
-          ? "rest"
-          : ""
-        }
-      ">
-
-        <div class="timerInfo">
-
-          <div class="phaseTag">
-
-            ● ${
-              w.part==="work"
-              ? "TRABALHO"
-              : "DESCANSO / TROCA"
-            }
-
-          </div>
-
-          <div class="remainingLabel">
-
-            TEMPO RESTANTE • ${fmt(total)}
-
-          </div>
-
-        </div>
-
-        <div class="timer">
-          ${fmt(w.sec)}
-        </div>
-
-        <div class="progress">
-
-          <div
-            class="progressFill"
-            style="
-              width:${
-                w.part==="work"
-                ? ((45-w.sec)/45)*100
-                : ((15-w.sec)/15)*100
-              }%
-            ">
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  `;
-}
-
-
-/* =========================================================
-   EQUIPE POR ZONA
-========================================================= */
-
-function teamAtZone(zone,round){
-
-  const letters="ABCDEFGH";
-
-  const index=
-    (
-      zone-
-      (round%8)+
-      8
-    )%8;
-
-  return letters[index];
-}
-
-
-/* =========================================================
-   10H30 — MAIN
-========================================================= */
-
-function renderMain1030(data){
-
-  const m=TIMER1030.main;
-
-  const total=
-    (15-m.round)*180+
-    m.sec;
-
-  el("workoutPage").innerHTML=`
-
-  ${header(data)}
-
-  <div class="execution">
-
-    <div class="executionHead">
-
-      <div>
-
-        <div class="sectionLabel">
-          TREINO PRINCIPAL
-        </div>
-
-        <div class="pageTitle">
-          ZONAS COMPROMETIDAS • SEM REST
-        </div>
-
-      </div>
-
-      <div class="roundBox">
-
-        <div class="small">
-          ROUND
-        </div>
-
-        <div class="big">
-          ${m.round+1}/16
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="exerciseArea">
-
-      <div class="exerciseGrid grid8">
-
-        ${data.zones.map((z,i)=>{
-
-          const team=
-            teamAtZone(i,m.round);
-
-          const nextZone=
-            ((i+1)%8)+1;
-
-          return `
-
-          <div class="exercise">
-
-            <div class="exerciseIndex">
-              Z${i+1}
-            </div>
-
-            <div class="teamTag">
-
-              EQUIPE ${team}
-
-              ${
-                m.sec<=3
-                ? " → Z"+nextZone
-                : ""
-              }
-
-            </div>
-
-            <div class="exerciseContent">
-
-              <div class="
-                exerciseName
-                ${nameClass(z.name)}
-              ">
-                ${z.name}
-              </div>
-
-              <div class="exerciseSub">
-                ${z.sub}
-              </div>
-
-            </div>
-
-          </div>
-
-          `;
-
-        }).join("")}
-
-      </div>
-
-    </div>
-
-    <div class="timerArea">
-
-      <div class="timerBox">
-
-        <div class="timerInfo">
-
-          <div>
-
-            <div class="phaseTag">
-              ● TRABALHO CONTÍNUO
-            </div>
-
-            <div class="timerContext">
-
-              ROUND ${m.round+1}/16
-              •
-              VOLTA ${
-                m.round<8
-                ? "1/2"
-                : "2/2"
-              }
-
-            </div>
-
-          </div>
-
-          <div class="remainingLabel">
-
-            TEMPO RESTANTE • ${fmt(total)}
-
-          </div>
-
-        </div>
-
-        <div class="timer">
-          ${fmt(m.sec)}
-        </div>
-
-        <div class="progress">
-
-          <div
-            class="progressFill"
-            style="
-              width:${
-                ((180-m.sec)/180)*100
-              }%
-            ">
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  `;
-}
-
-
-/* =========================================================
-   10H30 — COOLDOWN
-========================================================= */
-
-function renderCool1030(data){
-
-  const sec=
-    TIMER1030.cool.sec;
-
-  el("workoutPage").innerHTML=`
-
-  ${header(data)}
-
-  <div class="execution">
-
-    <div>
-
-      <div class="sectionLabel">
-        VOLTA À CALMA / RECUPERAÇÃO
-      </div>
-
-      <div class="pageTitle">
-        COOLDOWN • 05:00
-      </div>
-
-    </div>
-
-    <div class="coolGrid">
-
-      <div class="card coolItem">
-        DESACELERE<br>
-        GRADUALMENTE
-      </div>
-
-      <div class="card coolItem">
-        NORMALIZE<br>
-        A RESPIRAÇÃO
-      </div>
-
-      <div class="card coolItem">
-        CAMINHADA LEVE<br>
-        RECUPERAÇÃO ATIVA
-      </div>
-
-      <div class="card coolItem">
-        REDUZA A<br>
-        FREQUÊNCIA CARDÍACA
-      </div>
-
-    </div>
-
-    <div class="timerArea">
-
-      <div class="timerBox">
-
-        <div class="timerInfo">
-
-          <div class="phaseTag">
-            ● RECUPERAÇÃO
-          </div>
-
-          <div class="remainingLabel">
-            TEMPO RESTANTE • ${fmt(sec)}
-          </div>
-
-        </div>
-
-        <div class="timer">
-          ${fmt(sec)}
-        </div>
-
-        <div class="progress">
-
-          <div
-            class="progressFill"
-            style="
-              width:${
-                ((300-sec)/300)*100
-              }%
-            ">
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  `;
-}
-
-
-/* =========================================================
-   PREPARAÇÃO — 5 SEGUNDOS
-========================================================= */
-
-function preparationCountdown(callback){
-
-  initAudio();
-
-  const overlay=
-    el("countdownOverlay");
-
-  const number=
-    el("countNumber");
-
-  overlay.classList.add("show");
-
-  let n=5;
-
-  number.textContent=n;
-
-  const countdown=
-    setInterval(()=>{
-
-      n--;
-
-      if(n>0){
-
-        number.textContent=n;
-
-        if(n<=3){
-          shortBeep();
-        }
-
-      }else{
-
-        clearInterval(countdown);
-
-        number.textContent="GO";
-
-        goBeep();
-
-        setTimeout(()=>{
-
-          overlay.classList.remove("show");
-
-          callback();
-
-        },450);
-      }
-
-    },1000);
-}
-
-
-/* =========================================================
-   MASTER
-========================================================= */
-
-function masterAction(){
-
-  initAudio();
-
-  const c=getController();
-
-  if(!c){
-    return;
-  }
-
-  if(c.running){
-
-    c.paused=!c.paused;
-
-    updateMasterButton();
-
-    return;
-  }
-
-
-  /* ORIENTAÇÕES / RODÍZIO
-     = COMEÇA AQUECIMENTO
-  */
-
-  if(
-    currentPage===0 ||
-    currentPage===1
-  ){
-
-    currentPage=2;
-
-    render();
-
-    updateMasterButton();
-
-    preparationCountdown(()=>{
-
-      if(activeWorkout==="w9"){
-        startWarm9();
-      }else{
-        startWarm1030();
-      }
-
-    });
-
-    return;
-  }
-
-
-  /* AQUECIMENTO */
-
-  if(currentPage===2){
-
-    preparationCountdown(()=>{
-
-      if(activeWorkout==="w9"){
-        startWarm9();
-      }else{
-        startWarm1030();
-      }
-
-    });
-
-    return;
-  }
-
-
-  /* MAIN */
-
-  if(currentPage===3){
-
-    preparationCountdown(()=>{
-
-      if(activeWorkout==="w9"){
-        startMain9();
-      }else{
-        startMain1030();
-      }
-
-    });
-
-    return;
-  }
-
-
-  /* COOLDOWN */
-
-  if(currentPage===4){
-
-    preparationCountdown(()=>{
-
-      if(activeWorkout==="w9"){
-        startCool9();
-      }else{
-        startCool1030();
-      }
-
-    });
-  }
-}
-
-
-/* =========================================================
-   LABEL DO BOTÃO
-========================================================= */
-
-function updateMasterButton(){
-
-  const button=
-    el("masterButton");
-
-  const c=
-    getController();
-
-  if(!c){
-    return;
-  }
-
-  if(c.running){
-
-    button.textContent=
-      c.paused
-      ? "▶ CONTINUAR"
-      : "⏸ PAUSAR";
-
-    return;
-  }
-
-  if(
-    currentPage===0 ||
-    currentPage===1
-  ){
-
-    button.textContent=
-      "▶ INICIAR AULA";
-  }
-
-  if(currentPage===2){
-
-    button.textContent=
-      "▶ INICIAR AQUECIMENTO";
-  }
-
-  if(currentPage===3){
-
-    button.textContent=
-      "▶ INICIAR TREINO";
-  }
-
-  if(currentPage===4){
-
-    button.textContent=
-      "▶ INICIAR RECUPERAÇÃO";
-  }
-}
-
-
-/* =========================================================
-   TIMER 9H — WARM
-========================================================= */
-
-function startWarm9(){
-
-  const c=TIMER9;
-
-  c.stop();
-
-  c.phase="warm";
-
-  c.running=true;
-
-  currentPage=2;
-
-  render();
-
-  updateMasterButton();
-
-  c.startInterval(()=>{
-
-    const w=c.warm;
-
-    if(
-      w.sec<=3 &&
-      w.sec>0
-    ){
-      shortBeep();
-    }
-
-    w.sec--;
-
-    if(w.sec<=0){
-
-      goBeep();
-
-      if(w.part==="work"){
-
-        w.part="rest";
-        w.sec=15;
-
-      }else{
-
-        if(w.round>=4){
-
-          c.stop();
-
-          finishBeep();
-
-          w.round=0;
-          w.part="work";
-          w.sec=45;
-
-          render();
-          updateMasterButton();
-
-          return;
-        }
-
-        w.round++;
-
-        w.part="work";
-
-        w.sec=45;
-      }
-    }
-
-    if(
-      activeWorkout==="w9" &&
-      currentPage===2
-    ){
-      renderWarm9(DATA9);
-    }
+    grid.appendChild(card);
 
   });
+
 }
 
 
-/* =========================================================
-   TIMER 9H — MAIN
-========================================================= */
+/* =====================================================
+   WORKOUT PLACEHOLDER
+===================================================== */
 
-function startMain9(){
+function openWorkout(index){
 
-  const c=TIMER9;
+  const workout=PROGRAM[currentWeek][index];
 
-  c.stop();
+  document.getElementById("weekPage").style.display="none";
+  document.getElementById("workoutPage").style.display="block";
 
-  c.phase="main";
+  document.getElementById("workoutWeek").textContent=
+    "SEMANA "+currentWeek;
 
-  c.running=true;
+  document.getElementById("workoutTitle").textContent=
+    workout.day;
 
-  currentPage=3;
+  document.getElementById("emptyWorkoutName").textContent=
+    workout.workout;
 
-  render();
-
-  updateMasterButton();
-
-  c.startInterval(()=>{
-
-    const m=c.main;
-
-    if(
-      m.sec<=3 &&
-      m.sec>0
-    ){
-      shortBeep();
-    }
-
-    m.sec--;
-
-    if(m.sec<=0){
-
-      goBeep();
-
-      if(m.part==="work"){
-
-        m.part="rest";
-
-        m.sec=20;
-
-      }else{
-
-        if(m.round>=29){
-
-          c.stop();
-
-          finishBeep();
-
-          m.round=0;
-          m.part="work";
-          m.sec=60;
-
-          render();
-
-          updateMasterButton();
-
-          return;
-        }
-
-        m.round++;
-
-        m.part="work";
-
-        m.sec=60;
-      }
-    }
-
-    if(
-      activeWorkout==="w9" &&
-      currentPage===3
-    ){
-      renderMain9(DATA9);
-    }
-
-  });
 }
 
 
-/* =========================================================
-   TIMER 9H — COOLDOWN
-========================================================= */
+/* =====================================================
+   BACK
+===================================================== */
 
-function startCool9(){
+function backToWeek(){
 
-  const c=TIMER9;
+  document.getElementById("workoutPage").style.display="none";
+  document.getElementById("weekPage").style.display="block";
 
-  c.stop();
-
-  c.phase="cool";
-
-  c.running=true;
-
-  currentPage=4;
-
-  render();
-
-  updateMasterButton();
-
-  c.startInterval(()=>{
-
-    if(
-      c.cool.sec<=3 &&
-      c.cool.sec>0
-    ){
-      shortBeep();
-    }
-
-    c.cool.sec--;
-
-    if(c.cool.sec<=0){
-
-      c.cool.sec=0;
-
-      c.stop();
-
-      finishBeep();
-
-      render();
-
-      updateMasterButton();
-
-      return;
-    }
-
-    if(
-      activeWorkout==="w9" &&
-      currentPage===4
-    ){
-      renderCool9(DATA9);
-    }
-
-  });
 }
 
 
-/* =========================================================
-   TIMER 10H30 — WARM
-========================================================= */
-
-function startWarm1030(){
-
-  const c=TIMER1030;
-
-  c.stop();
-
-  c.phase="warm";
-
-  c.running=true;
-
-  currentPage=2;
-
-  render();
-
-  updateMasterButton();
-
-  c.startInterval(()=>{
-
-    const w=c.warm;
-
-    if(
-      w.sec<=3 &&
-      w.sec>0
-    ){
-      shortBeep();
-    }
-
-    w.sec--;
-
-    if(w.sec<=0){
-
-      goBeep();
-
-      if(w.part==="work"){
-
-        w.part="rest";
-
-        w.sec=15;
-
-      }else{
-
-        if(w.round>=4){
-
-          c.stop();
-
-          finishBeep();
-
-          w.round=0;
-          w.part="work";
-          w.sec=45;
-
-          render();
-
-          updateMasterButton();
-
-          return;
-        }
-
-        w.round++;
-
-        w.part="work";
-
-        w.sec=45;
-      }
-    }
-
-    if(
-      activeWorkout==="w1030" &&
-      currentPage===2
-    ){
-      renderWarm1030(DATA1030);
-    }
-
-  });
-}
-
-
-/* =========================================================
-   TIMER 10H30 — MAIN
-   16 × 03:00
-   SEM REST
-========================================================= */
-
-function startMain1030(){
-
-  const c=TIMER1030;
-
-  c.stop();
-
-  c.phase="main";
-
-  c.running=true;
-
-  currentPage=3;
-
-  render();
-
-  updateMasterButton();
-
-  c.startInterval(()=>{
-
-    const m=c.main;
-
-    if(
-      m.sec<=3 &&
-      m.sec>0
-    ){
-      shortBeep();
-    }
-
-    m.sec--;
-
-    if(m.sec<=0){
-
-      goBeep();
-
-      /* FINAL DO ROUND 16 */
-
-      if(m.round>=15){
-
-        c.stop();
-
-        finishBeep();
-
-        m.round=0;
-
-        m.sec=180;
-
-        render();
-
-        updateMasterButton();
-
-        return;
-      }
-
-      /* TROCA IMEDIATA
-         SEM DESCANSO
-      */
-
-      m.round++;
-
-      m.sec=180;
-    }
-
-    if(
-      activeWorkout==="w1030" &&
-      currentPage===3
-    ){
-      renderMain1030(DATA1030);
-    }
-
-  });
-}
-
-
-/* =========================================================
-   TIMER 10H30 — COOLDOWN
-========================================================= */
-
-function startCool1030(){
-
-  const c=TIMER1030;
-
-  c.stop();
-
-  c.phase="cool";
-
-  c.running=true;
-
-  currentPage=4;
-
-  render();
-
-  updateMasterButton();
-
-  c.startInterval(()=>{
-
-    if(
-      c.cool.sec<=3 &&
-      c.cool.sec>0
-    ){
-      shortBeep();
-    }
-
-    c.cool.sec--;
-
-    if(c.cool.sec<=0){
-
-      c.cool.sec=0;
-
-      c.stop();
-
-      finishBeep();
-
-      render();
-
-      updateMasterButton();
-
-      return;
-    }
-
-    if(
-      activeWorkout==="w1030" &&
-      currentPage===4
-    ){
-      renderCool1030(DATA1030);
-    }
-
-  });
-}
-
-
-/* =========================================================
-   RESET DA FASE ATUAL
-
-   NÃO VOLTA PARA O HUB.
-   NÃO MUDA DE PÁGINA.
-========================================================= */
-
-function resetCurrentPhase(){
-
-  if(activeWorkout==="w9"){
-
-    TIMER9.stop();
-
-    if(currentPage===2){
-
-      TIMER9.warm={
-        round:0,
-        part:"work",
-        sec:45
-      };
-    }
-
-    if(currentPage===3){
-
-      TIMER9.main={
-        round:0,
-        part:"work",
-        sec:60
-      };
-    }
-
-    if(currentPage===4){
-
-      TIMER9.cool={
-        sec:300
-      };
-    }
-  }
-
-
-  if(activeWorkout==="w1030"){
-
-    TIMER1030.stop();
-
-    if(currentPage===2){
-
-      TIMER1030.warm={
-        round:0,
-        part:"work",
-        sec:45
-      };
-    }
-
-    if(currentPage===3){
-
-      TIMER1030.main={
-        round:0,
-        sec:180
-      };
-    }
-
-    if(currentPage===4){
-
-      TIMER1030.cool={
-        sec:300
-      };
-    }
-  }
-
-  render();
-
-  updateMasterButton();
-}
-
-
-/* =========================================================
+/* =====================================================
    FULLSCREEN
-========================================================= */
+===================================================== */
 
-async function toggleFullscreen(){
+function toggleFullscreen(){
 
-  try{
+  if(!document.fullscreenElement){
 
-    if(
-      !document.fullscreenElement &&
-      !document.webkitFullscreenElement
-    ){
+    const el=document.documentElement;
 
-      const root=
-        document.documentElement;
-
-      if(root.requestFullscreen){
-
-        await root.requestFullscreen();
-
-      }else if(
-        root.webkitRequestFullscreen
-      ){
-
-        root.webkitRequestFullscreen();
-      }
-
-    }else{
-
-      if(document.exitFullscreen){
-
-        await document.exitFullscreen();
-
-      }else if(
-        document.webkitExitFullscreen
-      ){
-
-        document.webkitExitFullscreen();
-      }
+    if(el.requestFullscreen){
+      el.requestFullscreen();
     }
 
-  }catch(e){
+    else if(el.webkitRequestFullscreen){
+      el.webkitRequestFullscreen();
+    }
 
-    console.log(e);
+  }else{
+
+    if(document.exitFullscreen){
+      document.exitFullscreen();
+    }
+
+    else if(document.webkitExitFullscreen){
+      document.webkitExitFullscreen();
+    }
+
   }
+
 }
-
-
-function fullscreenLabel(){
-
-  const active=
-    document.fullscreenElement ||
-    document.webkitFullscreenElement;
-
-  el("fullscreenButton").textContent=
-    active
-    ? "⛶ SAIR DA TELA CHEIA"
-    : "⛶ TELA CHEIA";
-}
-
-document.addEventListener(
-  "fullscreenchange",
-  fullscreenLabel
-);
-
-document.addEventListener(
-  "webkitfullscreenchange",
-  fullscreenLabel
-);
-
-
-/* =========================================================
-   SEGURANÇA
-========================================================= */
-
-window.addEventListener(
-  "beforeunload",
-  ()=>{
-
-    TIMER9.stop();
-
-    TIMER1030.stop();
-  }
-);
-
-
-/* =========================================================
-   INICIALIZAÇÃO
-========================================================= */
-
-TIMER9.resetAll();
-
-TIMER1030.resetAll();
 
 </script>
 
