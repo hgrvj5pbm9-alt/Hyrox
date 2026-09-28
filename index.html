@@ -2329,6 +2329,118 @@ h1{
   </div>
 </section>
 
+
+<!-- ===================================================
+     SEMANA 1 | SEXTA | ENGINE #1B
+=================================================== -->
+<section id="engineBPage" class="foundationPage">
+  <div class="foundationShell">
+    <div class="foundationTop">
+      <div><div class="eyebrow">SEMANA 1 • SEXTA-FEIRA</div><div class="foundationTitle">ENGINE #1B</div></div>
+      <div class="foundationBadges">
+        <div class="badge yellow">ENGINE</div><div class="badge">RPE 7</div><div class="badge">50 MIN</div>
+        <div class="badge">RECOMENDADO • ATÉ 24</div><div class="badge">1–32 ATLETAS</div>
+      </div>
+    </div>
+
+    <div class="workoutSlides">
+      <section class="ebSlide active">
+        <div class="slideHeader"><div><div class="sectionLabel">ORIENTAÇÕES DO COACH</div><div class="slideTitle">ENGINE #1B</div></div></div>
+        <div class="orientationGrid">
+          <div class="infoCard"><h3>OBJETIVO</h3><div class="infoBig">TEMPO<br>CONDITIONING</div><div class="infoText">Construir engine sustentável e manter técnica de corrida/ergômetros sob fadiga.</div></div>
+          <div class="infoCard"><h3>PACING</h3><div class="infoBig">RPE 7</div><div class="infoText">Evitar saída agressiva. Buscar splits consistentes durante os 4 blocos.</div></div>
+          <div class="infoCard"><h3>CAPACIDADE</h3><div class="infoBig">ATÉ 24<br>RECOMENDADO</div><div class="infoText">Seletor Studio 5 permanece 1–32. Acima de 24, usar ondas escalonadas para respeitar 4 atletas por ergômetro.</div></div>
+          <div class="infoCard"><h3>AQUECIMENTO</h3><div class="infoBig">05:00</div><div class="infoText">Mobilidade + ativação de corrida. Sem inventar intervalos adicionais.</div></div>
+          <div class="infoCard"><h3>TREINO PRINCIPAL</h3><div class="infoBig">40 MIN</div><div class="infoText">4 rounds • 09:00 trabalho / 01:00 recuperação.</div></div>
+          <div class="infoCard"><h3>SEGURANÇA</h3><div class="infoBig">FLUXO<br>LATERAL</div><div class="infoText">Entradas e saídas dos Ergs/esteiras sempre pelas laterais. Máximo 4 simultâneos por equipamento.</div></div>
+        </div>
+      </section>
+
+      <section class="ebSlide">
+        <div class="slideHeader">
+          <div><div class="sectionLabel">TURMA / RODÍZIO</div><div class="slideTitle">DISTRIBUIÇÃO DOS ATLETAS</div></div>
+          <div class="athleteSelectRow"><strong>ATLETAS:</strong><select id="engineBAthleteSelector" class="athleteSelect" onchange="buildEngineBRotation()"></select></div>
+        </div>
+        <div id="engineBRotationSummary" class="subtitle" style="margin:0 0 12px;"></div>
+        <div id="engineBRotationGrid" class="rotationGrid"></div>
+      </section>
+
+      <section class="ebSlide">
+        <div class="executionPanel">
+          <div class="slideHeader"><div><div class="sectionLabel">AQUECIMENTO</div><div class="slideTitle">MOBILIDADE + ATIVAÇÃO • 05:00</div></div></div>
+          <div class="exerciseArea">
+            <div style="width:100%;display:grid;grid-template-columns:repeat(5,1fr);gap:8px">
+              <div class="exerciseCard"><div class="exerciseIndex">01</div><div class="exerciseName">Cat-Cow</div><div class="exerciseDose">00:30</div></div>
+              <div class="exerciseCard"><div class="exerciseIndex">02</div><div class="exerciseName">90-90 Transitions</div><div class="exerciseDose">00:30</div></div>
+              <div class="exerciseCard"><div class="exerciseIndex">03</div><div class="exerciseName">Glute Bridge Reachover</div><div class="exerciseDose">00:30</div></div>
+              <div class="exerciseCard"><div class="exerciseIndex">04</div><div class="exerciseName">Seal Jacks</div><div class="exerciseDose">00:30</div></div>
+              <div class="exerciseCard"><div class="exerciseIndex">05</div><div class="exerciseName">Walkout Pushup</div><div class="exerciseDose">00:30</div></div>
+            </div>
+            <div style="width:100%;display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:8px">
+              <div class="exerciseCard"><div class="exerciseIndex">06</div><div class="exerciseName">Walking Hamstring Scoops</div><div class="exerciseDose">6 M</div></div>
+              <div class="exerciseCard"><div class="exerciseIndex">07</div><div class="exerciseName">Lunge and Twist</div><div class="exerciseDose">6 M</div></div>
+              <div class="exerciseCard"><div class="exerciseIndex">08</div><div class="exerciseName">Butt Kickers</div><div class="exerciseDose">12 M</div></div>
+              <div class="exerciseCard"><div class="exerciseIndex">09</div><div class="exerciseName">High Knees</div><div class="exerciseDose">12 M</div></div>
+              <div class="exerciseCard"><div class="exerciseIndex">10</div><div class="exerciseName">Alt Walking Lateral Lunge</div><div class="exerciseDose">12 M</div></div>
+            </div>
+          </div>
+          <div class="timerArea"><div class="timerBox">
+            <div class="timerTop"><div><div class="phaseTag">● AQUECIMENTO</div><div class="contextLabel">MOBILIDADE + ATIVAÇÃO</div></div><div style="text-align:right"><div class="muted">TEMPO RESTANTE</div><div id="engineBWarmTotal" style="font-size:18px;font-weight:1000">05:00</div></div></div>
+            <div id="engineBWarmTimer" class="timer">05:00</div><div class="progress"><div id="engineBWarmProgress" class="progressFill"></div></div>
+          </div></div>
+        </div>
+      </section>
+
+      <section class="ebSlide">
+        <div class="executionPanel">
+          <div class="slideHeader">
+            <div><div class="sectionLabel">TREINO PRINCIPAL • TEMPO CONDITIONING</div><div class="slideTitle">09:00 WORK / 01:00 RECUPERAÇÃO • 4 ROUNDS</div></div>
+            <div style="text-align:right"><div class="muted">ROUND</div><div style="font-size:28px;font-weight:1000"><span id="engineBMainRound">1</span>/4</div></div>
+          </div>
+          <div class="exerciseArea">
+            <div style="width:100%;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <div class="exerciseCard">
+                <div class="exerciseIndex">ZONA 1 • SOLO</div>
+                <div class="exerciseName">Run + Jogging Recovery</div>
+                <div class="exerciseDose">200/300 M Run @ RPE 7 • 00:45 Jogging Recovery @ RPE 4 • REPEAT</div>
+                <div class="levels"><div class="green">🟢 INICIANTE • 200 M</div><div class="yellowText">🟡 INTERMEDIÁRIO • 300 M</div><div class="red">🔴 AVANÇADO • 300 M + SPLIT MAIS FORTE</div></div>
+              </div>
+              <div class="exerciseCard">
+                <div class="exerciseIndex">ZONA 2 • PARTNER</div>
+                <div class="exerciseName">RowErg + Air Squats + SkiErg</div>
+                <div class="exerciseDose">P1: 300/350 M RowErg @ RPE 7 • P2: 20 Air Squats • FRT SkiErg @ RPE 6</div>
+                <div class="levels"><div class="green">🟢 300 M ROW • RPE 6</div><div class="yellowText">🟡 350 M ROW • RPE 7</div><div class="red">🔴 350 M ROW • RPE 8</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="timerArea"><div class="timerBox">
+            <div class="timerTop">
+              <div><div id="engineBMainPhase" class="phaseTag">● TRABALHO</div><div id="engineBMainContext" class="contextLabel">ROUND 1/4 • 09:00 TEMPO CONDITIONING</div></div>
+              <div style="text-align:right"><div class="muted">BLOCO RESTANTE</div><div id="engineBMainTotal" style="font-size:18px;font-weight:1000">40:00</div></div>
+            </div>
+            <div id="engineBMainTimer" class="timer">09:00</div><div class="progress"><div id="engineBMainProgress" class="progressFill"></div></div>
+          </div></div>
+        </div>
+      </section>
+
+      <section class="ebSlide">
+        <div class="executionPanel">
+          <div class="slideHeader"><div><div class="sectionLabel">VOLTA À CALMA / RECUPERAÇÃO</div><div class="slideTitle">COACH'S CHOICE • 05:00</div></div></div>
+          <div class="coolGrid"><div class="coolCard">COACH'S CHOICE</div><div class="coolCard">RECUPERAÇÃO<br>GUIADA</div><div class="coolCard">RESPIRAÇÃO<br>CONTROLADA</div><div class="coolCard">MOBILIDADE<br>LEVE</div></div>
+          <div class="timerArea"><div class="timerBox"><div class="timerTop"><div><div class="phaseTag recovery">● RECUPERAÇÃO</div><div class="contextLabel">TEMPO RESTANTE</div></div></div><div id="engineBCoolTimer" class="timer recovery">05:00</div><div class="progress"><div id="engineBCoolProgress" class="progressFill recovery"></div></div></div></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="workoutControls">
+      <button class="controlBtn" onclick="previousEngineBSlide()">◀</button><span id="engineBCounter" class="pageCounter">1 / 5</span><button class="controlBtn" onclick="nextEngineBSlide()">▶</button>
+      <button id="engineBModeButton" class="controlBtn modeActive" onclick="toggleEngineBMode()">AUTO</button>
+      <button id="engineBStartButton" class="controlBtn primary" onclick="startEngineBPhase()">▶ INICIAR AULA</button>
+      <button class="controlBtn danger" onclick="resetEngineBPhase()">RESET</button><button class="controlBtn" onclick="exitEngineB()">← SEMANA 1</button>
+    </div>
+  </div>
+</section>
+
 </main>
 
 
@@ -2589,6 +2701,7 @@ function hideAllPages(){
   document.getElementById("powerPage").style.display="none";
   document.getElementById("powerBPage").style.display="none";
   document.getElementById("foundationBPage").style.display="none";
+  document.getElementById("engineBPage").style.display="none";
 
 }
 
@@ -2718,6 +2831,11 @@ function openWorkout(index){
 
   if(currentWeek===1 && index===3){
     openFoundationB();
+    return;
+  }
+
+  if(currentWeek===1 && index===4){
+    openEngineB();
     return;
   }
 
@@ -5145,6 +5263,109 @@ function resetFoundationBPhase(){
 }
 
 
+
+/* =====================================================
+   ENGINE #1B • SEXTA-FEIRA
+===================================================== */
+let engineBSlide=0, engineBAutoMode=true;
+let engineBWarmRemaining=300;
+let engineBMainRoundValue=1, engineBMainPhaseValue="work", engineBMainRemaining=540, engineBMainTotalRemaining=2400;
+let engineBCoolRemaining=300;
+
+function openEngineB(){
+  hideAllPages(); engineBSlide=0;
+  document.getElementById("engineBPage").style.display="block";
+  buildEngineBAthleteSelector(); buildEngineBRotation(); showEngineBSlide();
+}
+function exitEngineB(){ stopAllTimers(); currentWeek=1; openWeek(1); }
+function showEngineBSlide(){
+  stopAllTimers();
+  const slides=document.querySelectorAll("#engineBPage .ebSlide");
+  slides.forEach((x,i)=>x.classList.toggle("active",i===engineBSlide));
+  const c=document.getElementById("engineBCounter"); if(c)c.textContent=(engineBSlide+1)+" / "+slides.length;
+  updateEngineBStartButton();
+}
+function nextEngineBSlide(){const a=document.querySelectorAll("#engineBPage .ebSlide");if(engineBSlide<a.length-1){engineBSlide++;showEngineBSlide();}}
+function previousEngineBSlide(){if(engineBSlide>0){engineBSlide--;showEngineBSlide();}}
+function toggleEngineBMode(){
+  engineBAutoMode=!engineBAutoMode;
+  const b=document.getElementById("engineBModeButton");
+  if(b){b.textContent=engineBAutoMode?"AUTO":"MANUAL";b.classList.toggle("modeActive",engineBAutoMode);}
+}
+function updateEngineBStartButton(){
+  const b=document.getElementById("engineBStartButton"); if(!b)return;
+  b.textContent=["▶ INICIAR AULA","▶ IR PARA AQUECIMENTO","▶ INICIAR AQUECIMENTO","▶ INICIAR TREINO PRINCIPAL","▶ INICIAR RECUPERAÇÃO"][engineBSlide];
+}
+function buildEngineBAthleteSelector(){
+  const s=document.getElementById("engineBAthleteSelector"); if(!s||s.options.length===32)return;
+  for(let i=1;i<=32;i++){const o=document.createElement("option");o.value=i;o.textContent=i;if(i===24)o.selected=true;s.appendChild(o);}
+}
+function buildEngineBRotation(){
+  const s=document.getElementById("engineBAthleteSelector"),g=document.getElementById("engineBRotationGrid"),m=document.getElementById("engineBRotationSummary");
+  if(!s||!g||!m)return;
+  const athletes=+s.value||24, teams=Math.ceil(athletes/4), base=Math.floor(athletes/teams), rem=athletes%teams, letters="ABCDEFGH";
+  const starts=["Z1 • Run","Z2 • RowErg","Z2 • Air Squats","Z2 • SkiErg","Z1 • Jogging Recovery","Z2 • Partner Flow","ONDA 2 • Run","ONDA 2 • Partner Flow"];
+  g.innerHTML="";
+  for(let i=0;i<teams;i++){
+    const count=base+(i<rem?1:0),d=document.createElement("div");d.className="rotationCard";
+    d.innerHTML=`<div class="rotationTeam">EQUIPE ${letters[i]}</div><div class="rotationCount">${count} ${count===1?"ATLETA":"ATLETAS"}</div><div class="rotationStation">INÍCIO → <strong style="color:white">${starts[i]}</strong></div>`;
+    g.appendChild(d);
+  }
+  const alert=athletes>24?" • <strong style='color:#ffd700'>25–32: USAR 2ª ONDA ESCALONADA</strong>":"";
+  m.innerHTML=`<strong style="color:#31df75">✓ ${athletes} ATLETAS</strong> • ${teams} EQUIPES • MÁX. 4/GRUPO • 4 SKI / 4 ROW / 4 ESTEIRAS${alert}`;
+}
+function startEngineBPhase(){
+  if(engineBSlide<2){engineBSlide++;showEngineBSlide();return;}
+  if(engineBSlide===2)startEngineBWarmup();else if(engineBSlide===3)startEngineBMain();else startEngineBCooldown();
+}
+function startEngineBWarmup(){
+  stopAllTimers();
+  preStart(()=>{engineBWarmRemaining=300;renderEngineBWarm();timerHandle=setInterval(()=>{
+    engineBWarmRemaining--;if(engineBWarmRemaining<=3&&engineBWarmRemaining>0)beep();
+    if(engineBWarmRemaining<=0){engineBWarmRemaining=0;renderEngineBWarm();stopAllTimers();endBeep();if(engineBAutoMode){engineBSlide=3;showEngineBSlide();}return;}
+    renderEngineBWarm();
+  },1000);});
+}
+function renderEngineBWarm(){
+  const x=document.getElementById("engineBWarmTimer"),t=document.getElementById("engineBWarmTotal"),p=document.getElementById("engineBWarmProgress");
+  if(x)x.textContent=formatTime(engineBWarmRemaining);if(t)t.textContent=formatTime(engineBWarmRemaining);if(p)p.style.width=(engineBWarmRemaining/300*100)+"%";
+}
+function startEngineBMain(){
+  stopAllTimers();
+  preStart(()=>{engineBMainRoundValue=1;engineBMainPhaseValue="work";engineBMainRemaining=540;engineBMainTotalRemaining=2400;renderEngineBMain();timerHandle=setInterval(tickEngineBMain,1000);});
+}
+function tickEngineBMain(){
+  engineBMainRemaining--;engineBMainTotalRemaining--;
+  if(engineBMainRemaining<=3&&engineBMainRemaining>0)beep();
+  if(engineBMainRemaining<=0){
+    if(engineBMainPhaseValue==="work"){endBeep();engineBMainPhaseValue="rest";engineBMainRemaining=60;}
+    else if(engineBMainRoundValue>=4){engineBMainRemaining=0;engineBMainTotalRemaining=0;renderEngineBMain();stopAllTimers();endBeep();if(engineBAutoMode){engineBSlide=4;showEngineBSlide();}return;}
+    else{engineBMainRoundValue++;engineBMainPhaseValue="work";engineBMainRemaining=540;goBeep();}
+  }
+  renderEngineBMain();
+}
+function renderEngineBMain(){
+  const rest=engineBMainPhaseValue!=="work",r=document.getElementById("engineBMainRound"),x=document.getElementById("engineBMainTimer"),t=document.getElementById("engineBMainTotal"),c=document.getElementById("engineBMainContext"),ph=document.getElementById("engineBMainPhase"),p=document.getElementById("engineBMainProgress");
+  if(r)r.textContent=engineBMainRoundValue;if(x){x.textContent=formatTime(engineBMainRemaining);x.classList.toggle("rest",rest);}if(t)t.textContent=formatTime(engineBMainTotalRemaining);
+  if(c)c.textContent=`ROUND ${engineBMainRoundValue}/4 • ${rest?"01:00 RECUPERAÇÃO":"09:00 TEMPO CONDITIONING"}`;
+  if(ph){ph.textContent=rest?"● DESCANSO":"● TRABALHO";ph.classList.toggle("rest",rest);}
+  if(p){p.classList.toggle("rest",rest);p.style.width=(engineBMainRemaining/(rest?60:540)*100)+"%";}
+}
+function startEngineBCooldown(){
+  stopAllTimers();ensureAudio();engineBCoolRemaining=300;renderEngineBCooldown();goBeep();
+  timerHandle=setInterval(()=>{engineBCoolRemaining--;if(engineBCoolRemaining<=3&&engineBCoolRemaining>0)beep();if(engineBCoolRemaining<=0){engineBCoolRemaining=0;renderEngineBCooldown();stopAllTimers();endBeep();return;}renderEngineBCooldown();},1000);
+}
+function renderEngineBCooldown(){
+  const x=document.getElementById("engineBCoolTimer"),p=document.getElementById("engineBCoolProgress");
+  if(x)x.textContent=formatTime(engineBCoolRemaining);if(p)p.style.width=(engineBCoolRemaining/300*100)+"%";
+}
+function resetEngineBPhase(){
+  stopAllTimers();
+  if(engineBSlide===2){engineBWarmRemaining=300;renderEngineBWarm();}
+  else if(engineBSlide===3){engineBMainRoundValue=1;engineBMainPhaseValue="work";engineBMainRemaining=540;engineBMainTotalRemaining=2400;renderEngineBMain();}
+  else if(engineBSlide===4){engineBCoolRemaining=300;renderEngineBCooldown();}
+}
+
 /* =====================================================
    FULLSCREEN
 ===================================================== */
@@ -5232,6 +5453,9 @@ renderPowerBCooldown();
 renderFoundationBWarm();
 renderFoundationBMain();
 renderFoundationBCooldown();
+renderEngineBWarm();
+renderEngineBMain();
+renderEngineBCooldown();
 
 goHome();
 
