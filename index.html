@@ -1577,6 +1577,571 @@ h1{
 
 </div>
 
+  <!-- ===================================================
+     SEMANA 1 | TERÇA
+     POWER #1A
+=================================================== -->
+
+<section id="powerPage" class="foundationPage">
+
+  <div class="foundationShell">
+
+    <div class="foundationTop">
+      <div>
+        <div class="eyebrow">SEMANA 1 • TERÇA-FEIRA</div>
+        <div class="foundationTitle">POWER #1A</div>
+      </div>
+
+      <div class="foundationBadges">
+        <div class="badge yellow">POWER</div>
+        <div class="badge">RPE 7</div>
+        <div class="badge">51 MIN</div>
+        <div class="badge">1–32 ATLETAS</div>
+      </div>
+    </div>
+
+    <div class="workoutSlides">
+
+      <!-- 1 ORIENTAÇÕES -->
+      <section class="pSlide active">
+
+        <div class="slideHeader">
+          <div>
+            <div class="sectionLabel">ORIENTAÇÕES DO COACH</div>
+            <div class="slideTitle">POWER #1A</div>
+          </div>
+        </div>
+
+        <div class="orientationGrid">
+
+          <div class="infoCard">
+            <h3>OBJETIVO</h3>
+            <div class="infoBig">FORÇA DE PUXADA<br>+ POTÊNCIA GLOBAL</div>
+            <div class="infoText">
+              Qualidade técnica antes da velocidade.
+            </div>
+          </div>
+
+          <div class="infoCard">
+            <h3>FORMATO</h3>
+            <div class="infoBig">2 BLOCOS</div>
+            <div class="infoText">
+              Bloco principal com 2 zonas + bloco final com 4 zonas.
+            </div>
+          </div>
+
+          <div class="infoCard">
+            <h3>SEGURANÇA</h3>
+            <div class="infoBig">FLUXO LATERAL</div>
+            <div class="infoText">
+              Nunca cruzar as pistas de Sled durante trabalho.
+              Manter a corda organizada e a frente do trenó livre.
+            </div>
+          </div>
+
+          <div class="infoCard">
+            <h3>AQUECIMENTO</h3>
+            <div class="infoBig">04:00</div>
+            <div class="infoText">
+              Fluxo contínuo. Máximo de voltas com qualidade.
+            </div>
+          </div>
+
+          <div class="infoCard">
+            <h3>CORPO TODO</h3>
+            <div class="infoBig">24 MIN</div>
+            <div class="infoText">
+              10' trabalho + 2' transição × 2 zonas.
+            </div>
+          </div>
+
+          <div class="infoCard">
+            <h3>FORÇA DE BASE</h3>
+            <div class="infoBig">18 MIN</div>
+            <div class="infoText">
+              1' trabalho + 30" troca × 12 rounds.
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- 2 RODÍZIO -->
+      <section class="pSlide">
+
+        <div class="slideHeader">
+          <div>
+            <div class="sectionLabel">TURMA / RODÍZIO</div>
+            <div class="slideTitle">DISTRIBUIÇÃO DOS ATLETAS</div>
+          </div>
+
+          <div class="athleteSelectRow">
+            <strong>ATLETAS:</strong>
+            <select
+              id="powerAthleteSelector"
+              class="athleteSelect"
+              onchange="buildPowerRotation()">
+            </select>
+          </div>
+        </div>
+
+        <div id="powerRotationSummary"
+             class="subtitle"
+             style="margin:0 0 12px;">
+        </div>
+
+        <div id="powerRotationGrid"
+             class="rotationGrid">
+        </div>
+
+      </section>
+
+
+      <!-- 3 AQUECIMENTO -->
+      <section class="pSlide">
+
+        <div class="executionPanel">
+
+          <div class="slideHeader">
+            <div>
+              <div class="sectionLabel">AQUECIMENTO</div>
+              <div class="slideTitle">FLUXO CONTÍNUO • 04:00</div>
+            </div>
+          </div>
+
+          <div class="exerciseArea">
+
+            <div class="exerciseGrid6"
+                 style="grid-template-columns:repeat(4,1fr);grid-template-rows:1fr;">
+
+              <div class="exerciseCard">
+                <div class="exerciseIndex">01</div>
+                <div class="exerciseName">Bootstrapper</div>
+                <div class="exerciseDose">4 REPS</div>
+              </div>
+
+              <div class="exerciseCard">
+                <div class="exerciseIndex">02</div>
+                <div class="exerciseName">Extreme Scorpion Stretch</div>
+                <div class="exerciseDose">8 REPS</div>
+              </div>
+
+              <div class="exerciseCard">
+                <div class="exerciseIndex">03</div>
+                <div class="exerciseName">Pushup + Arm Reach</div>
+                <div class="exerciseDose">10 REPS</div>
+              </div>
+
+              <div class="exerciseCard">
+                <div class="exerciseIndex">04</div>
+                <div class="exerciseName">Speed Skaters</div>
+                <div class="exerciseDose">16 REPS</div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="timerArea">
+            <div class="timerBox">
+
+              <div class="timerTop">
+                <div>
+                  <div class="phaseTag">● TRABALHO CONTÍNUO</div>
+                  <div class="contextLabel">MÁXIMO DE VOLTAS COM QUALIDADE</div>
+                </div>
+
+                <div style="text-align:right;">
+                  <div class="muted"
+                       style="font-size:10px;font-weight:900;">
+                    TEMPO RESTANTE
+                  </div>
+                </div>
+              </div>
+
+              <div id="powerWarmTimer" class="timer">04:00</div>
+
+              <div class="progress">
+                <div id="powerWarmProgress"
+                     class="progressFill">
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- 4 BLOCO PRINCIPAL -->
+      <section class="pSlide">
+
+        <div class="executionPanel">
+
+          <div class="slideHeader">
+            <div>
+              <div class="sectionLabel">TREINO PRINCIPAL • CORPO TODO</div>
+              <div class="slideTitle">2 ZONAS • 10' WORK / 2' TRANSIÇÃO</div>
+            </div>
+
+            <div style="text-align:right;">
+              <div class="muted"
+                   style="font-size:11px;font-weight:900;">
+                ZONA
+              </div>
+
+              <div style="font-size:28px;font-weight:1000;">
+                <span id="powerMainRound">1</span>/2
+              </div>
+            </div>
+          </div>
+
+          <div class="exerciseArea">
+
+            <div style="
+              width:100%;
+              display:grid;
+              grid-template-columns:1fr 1fr;
+              gap:10px;
+            ">
+
+              <div class="exerciseCard">
+
+                <div class="exerciseIndex">ZONA 1 • SLED</div>
+
+                <div class="exerciseName">
+                  Sled Pull
+                </div>
+
+                <div class="exerciseDose">
+                  5×8m ARMS ONLY<br>
+                  + 5×8m FULL SLED PULL
+                </div>
+
+                <div class="levels">
+                  <span class="level green">🟢 TÉCNICA / CARGA ADAPTADA</span>
+                  <span class="level yellowText">🟡 OPEN / CARGA DO DIA</span>
+                  <span class="level red">🔴 AVANÇADO / ALTA DENSIDADE</span>
+                </div>
+
+                <div class="exerciseDose"
+                     style="margin-top:10px;">
+                  EU VOU / VOCÊ VAI
+                </div>
+
+              </div>
+
+
+              <div class="exerciseCard">
+
+                <div class="exerciseIndex">ZONA 2 • STRENGTH</div>
+
+                <div class="exerciseName">
+                  DB Squat + DB Floor Press
+                </div>
+
+                <div class="exerciseDose">
+                  5×10 DB Squat<br>
+                  + 5×10 DB Floor Press<br>
+                  20s REST ENTRE SÉRIES
+                </div>
+
+                <div class="levels">
+                  <span class="level green">🟢 2×5 KG</span>
+                  <span class="level yellowText">🟡 2×10 KG</span>
+                  <span class="level red">🔴 2×15 KG</span>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="timerArea">
+            <div class="timerBox">
+
+              <div class="timerTop">
+
+                <div>
+                  <div id="powerMainPhase"
+                       class="phaseTag">
+                    ● TRABALHO
+                  </div>
+
+                  <div id="powerMainContext"
+                       class="contextLabel">
+                    ZONA 1/2
+                  </div>
+                </div>
+
+                <div style="text-align:right;">
+                  <div class="muted"
+                       style="font-size:10px;font-weight:900;">
+                    BLOCO RESTANTE
+                  </div>
+
+                  <div id="powerMainTotal"
+                       style="font-size:18px;font-weight:1000;">
+                    24:00
+                  </div>
+                </div>
+
+              </div>
+
+              <div id="powerMainTimer"
+                   class="timer">
+                10:00
+              </div>
+
+              <div class="progress">
+                <div id="powerMainProgress"
+                     class="progressFill">
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- 5 FORÇA DE BASE -->
+      <section class="pSlide">
+
+        <div class="executionPanel">
+
+          <div class="slideHeader">
+
+            <div>
+              <div class="sectionLabel">FORÇA DE BASE</div>
+              <div class="slideTitle">4 ZONAS • 1' WORK / 30" TROCA</div>
+            </div>
+
+            <div style="text-align:right;">
+              <div class="muted"
+                   style="font-size:11px;font-weight:900;">
+                ROUND
+              </div>
+
+              <div style="font-size:28px;font-weight:1000;">
+                <span id="powerBaseRound">1</span>/12
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="exerciseArea">
+
+            <div style="
+              width:100%;
+              display:grid;
+              grid-template-columns:repeat(4,1fr);
+              gap:8px;
+            ">
+
+              <div class="exerciseCard">
+                <div class="exerciseIndex">Z1 • POWER</div>
+                <div class="exerciseName">Burpees Chest to Floor</div>
+                <div class="exerciseDose">MAX REPS • 01:00</div>
+              </div>
+
+              <div class="exerciseCard">
+                <div class="exerciseIndex">Z2 • CORE</div>
+                <div class="exerciseName">Plank Up Down</div>
+                <div class="exerciseDose">
+                  10 REPS + LOW PLANK FRT
+                </div>
+              </div>
+
+              <div class="exerciseCard">
+                <div class="exerciseIndex">Z3 • HINGE</div>
+                <div class="exerciseName">Dual DB Deadlift</div>
+                <div class="exerciseDose">01:00</div>
+
+                <div class="levels">
+                  <span class="level green">🟢 2×10 KG</span>
+                  <span class="level yellowText">🟡 2×15 KG</span>
+                  <span class="level red">🔴 2×20 KG</span>
+                </div>
+              </div>
+
+              <div class="exerciseCard">
+                <div class="exerciseIndex">Z4 • LEGS</div>
+                <div class="exerciseName">Squat + Lunge</div>
+                <div class="exerciseDose">01:00</div>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="timerArea">
+            <div class="timerBox">
+
+              <div class="timerTop">
+
+                <div>
+                  <div id="powerBasePhase"
+                       class="phaseTag">
+                    ● TRABALHO
+                  </div>
+
+                  <div id="powerBaseContext"
+                       class="contextLabel">
+                    ROUND 1/12 • PASSAGEM 1/3
+                  </div>
+                </div>
+
+                <div style="text-align:right;">
+                  <div class="muted"
+                       style="font-size:10px;font-weight:900;">
+                    BLOCO RESTANTE
+                  </div>
+
+                  <div id="powerBaseTotal"
+                       style="font-size:18px;font-weight:1000;">
+                    18:00
+                  </div>
+                </div>
+
+              </div>
+
+              <div id="powerBaseTimer"
+                   class="timer">
+                01:00
+              </div>
+
+              <div class="progress">
+                <div id="powerBaseProgress"
+                     class="progressFill">
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- 6 VOLTA À CALMA -->
+      <section class="pSlide">
+
+        <div class="executionPanel">
+
+          <div class="slideHeader">
+            <div>
+              <div class="sectionLabel">
+                VOLTA À CALMA / RECUPERAÇÃO
+              </div>
+              <div class="slideTitle">
+                COACH'S CHOICE • 05:00
+              </div>
+            </div>
+          </div>
+
+          <div class="coolGrid">
+
+            <div class="coolCard">CAMINHADA LEVE</div>
+            <div class="coolCard">NORMALIZAR<br>RESPIRAÇÃO</div>
+            <div class="coolCard">MOBILIDADE<br>DE QUADRIL</div>
+            <div class="coolCard">MOBILIDADE<br>DE TORNOZELO</div>
+
+          </div>
+
+          <div class="timerArea">
+            <div class="timerBox">
+
+              <div class="timerTop">
+                <div>
+                  <div class="phaseTag recovery">● RECUPERAÇÃO</div>
+                  <div class="contextLabel">TEMPO RESTANTE</div>
+                </div>
+              </div>
+
+              <div id="powerCoolTimer"
+                   class="timer recovery">
+                05:00
+              </div>
+
+              <div class="progress">
+                <div id="powerCoolProgress"
+                     class="progressFill recovery">
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+
+    <!-- CONTROLES POWER -->
+
+    <div class="workoutControls">
+
+      <button class="controlBtn"
+              onclick="previousPowerSlide()">◀</button>
+
+      <span id="powerCounter"
+            class="pageCounter">1 / 6</span>
+
+      <button class="controlBtn"
+              onclick="nextPowerSlide()">▶</button>
+
+      <button id="powerModeButton"
+              class="controlBtn modeActive"
+              onclick="togglePowerMode()">
+        AUTO
+      </button>
+
+      <button id="powerSoundButton"
+              class="controlBtn"
+              onclick="toggleSound()">
+        🔊 SOM ON
+      </button>
+
+      <button id="powerFullscreenButton"
+              class="controlBtn"
+              onclick="toggleFullscreen()">
+        ⛶ TELA CHEIA
+      </button>
+
+      <button id="powerStartButton"
+              class="controlBtn primary"
+              onclick="startPowerPhase()">
+        ▶ INICIAR AULA
+      </button>
+
+      <button class="controlBtn danger"
+              onclick="resetPowerPhase()">
+        RESET
+      </button>
+
+      <button class="controlBtn"
+              onclick="exitPower()">
+        ← SEMANA 1
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
 
 <!-- PRE START -->
 
