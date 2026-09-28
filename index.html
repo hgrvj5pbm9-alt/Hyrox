@@ -3,17 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+
 <title>HYROX Studio 5 | Training Hub</title>
 
 <style>
+
 :root{
   --bg:#080808;
   --card:#121212;
   --card2:#181818;
-  --yellow:#ffd400;
-  --white:#f5f5f5;
+  --yellow:#FFD700;
+  --white:#F5F5F5;
   --muted:#969696;
   --border:#292929;
+  --green:#31df75;
+  --red:#ff4755;
 }
 
 *{
@@ -22,7 +27,8 @@
   padding:0;
 }
 
-html,body{
+html,
+body{
   width:100%;
   min-height:100%;
   background:var(--bg);
@@ -34,9 +40,9 @@ body{
   overflow-x:hidden;
 }
 
-/* =====================================================
-   APP
-===================================================== */
+button{
+  font-family:inherit;
+}
 
 #app{
   min-height:100vh;
@@ -49,13 +55,16 @@ body{
 ===================================================== */
 
 .header{
-  min-height:105px;
+  min-height:110px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:18px 4vw;
+  gap:20px;
+
+  padding:16px 4vw;
+
   border-bottom:1px solid var(--border);
-  background:#0b0b0b;
+  background:#0B0B0B;
 }
 
 .brand{
@@ -65,11 +74,14 @@ body{
 }
 
 .logoBox{
-  min-width:225px;
-  height:76px;
+  min-width:250px;
+  height:82px;
+
   padding:8px 18px;
-  border-radius:10px;
+
+  border-radius:11px;
   background:white;
+
   display:flex;
   align-items:center;
   justify-content:center;
@@ -77,19 +89,27 @@ body{
 
 .logoBox img{
   display:block;
-  max-height:62px;
-  max-width:205px;
+  max-height:68px;
+  max-width:225px;
   object-fit:contain;
+}
+
+.logoFallback{
+  color:#111;
+  font-weight:1000;
+  font-size:22px;
+  letter-spacing:-1px;
 }
 
 .brandDivider{
   width:1px;
-  height:55px;
+  height:58px;
   background:#444;
 }
 
 .brandText .hyrox{
   color:var(--yellow);
+
   font-size:22px;
   font-weight:1000;
   letter-spacing:2px;
@@ -97,7 +117,9 @@ body{
 
 .brandText .unit{
   color:#fff;
+
   margin-top:7px;
+
   font-size:15px;
   font-weight:800;
   letter-spacing:1.3px;
@@ -105,6 +127,7 @@ body{
 
 .headerRight{
   display:flex;
+  align-items:center;
   gap:10px;
 }
 
@@ -112,15 +135,20 @@ body{
   border:1px solid #353535;
   background:#151515;
   color:white;
+
   padding:13px 18px;
+
   border-radius:10px;
+
   font-size:13px;
   font-weight:900;
+
   cursor:pointer;
 }
 
 .topButton:hover{
   border-color:var(--yellow);
+  color:var(--yellow);
 }
 
 /* =====================================================
@@ -130,65 +158,90 @@ body{
 .content{
   width:min(1500px,94vw);
   margin:auto;
-  padding:38px 0 44px;
+
+  padding:36px 0 42px;
+
   flex:1;
 }
 
 .eyebrow{
   color:var(--yellow);
+
   font-weight:1000;
   letter-spacing:2.5px;
   font-size:14px;
+
   margin-bottom:10px;
 }
 
 h1{
   font-size:clamp(36px,4vw,64px);
   line-height:.95;
+
   font-weight:1000;
   letter-spacing:-2px;
 }
 
 .subtitle{
   margin-top:14px;
+
   color:var(--muted);
+
   font-size:17px;
   font-weight:600;
 }
 
 /* =====================================================
-   WEEK GRID
+   HUB DAS SEMANAS
 ===================================================== */
 
 .weekGrid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
+
   gap:18px;
+
   margin-top:38px;
 }
 
 .weekCard{
   min-height:310px;
-  background:linear-gradient(145deg,#171717,#101010);
+
+  background:
+    linear-gradient(
+      145deg,
+      #171717,
+      #101010
+    );
+
   border:1px solid var(--border);
   border-radius:18px;
+
   padding:26px;
+
   display:flex;
   flex-direction:column;
   justify-content:space-between;
+
   cursor:pointer;
+
   transition:.2s ease;
+
   position:relative;
   overflow:hidden;
 }
 
-.weekCard:before{
+.weekCard::before{
   content:"";
+
   position:absolute;
+
   left:0;
   top:0;
+
   width:100%;
   height:5px;
+
   background:var(--yellow);
 }
 
@@ -198,30 +251,37 @@ h1{
 }
 
 .weekNumber{
-  color:#6d6d6d;
+  color:#6D6D6D;
+
   font-size:72px;
   line-height:1;
+
   font-weight:1000;
 }
 
 .weekCard h2{
   font-size:30px;
   font-weight:1000;
+
   margin-bottom:7px;
 }
 
 .weekCard p{
   color:#909090;
+
   font-size:14px;
   line-height:1.5;
 }
 
 .openWeek{
   margin-top:22px;
+
   display:flex;
   justify-content:space-between;
   align-items:center;
+
   color:var(--yellow);
+
   font-size:13px;
   font-weight:1000;
   letter-spacing:1px;
@@ -232,7 +292,7 @@ h1{
 }
 
 /* =====================================================
-   WEEK PAGE
+   PÁGINA DA SEMANA
 ===================================================== */
 
 .weekPage{
@@ -243,10 +303,14 @@ h1{
   display:inline-flex;
   align-items:center;
   gap:8px;
-  color:#aaa;
+
+  color:#AAA;
+
   font-size:14px;
   font-weight:900;
-  margin-bottom:25px;
+
+  margin-bottom:24px;
+
   cursor:pointer;
 }
 
@@ -254,23 +318,35 @@ h1{
   color:var(--yellow);
 }
 
+/* =====================================================
+   CARDS DOS DIAS
+===================================================== */
+
 .dayGrid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
+
   gap:16px;
-  margin-top:32px;
+
+  margin-top:30px;
 }
 
 .dayCard{
-  min-height:180px;
+  min-height:185px;
+
   background:var(--card);
+
   border:1px solid var(--border);
   border-radius:15px;
+
   padding:22px;
+
   cursor:pointer;
+
   display:flex;
   flex-direction:column;
   justify-content:space-between;
+
   transition:.2s;
 }
 
@@ -281,6 +357,7 @@ h1{
 
 .day{
   color:var(--yellow);
+
   font-size:13px;
   font-weight:1000;
   letter-spacing:1.6px;
@@ -289,24 +366,33 @@ h1{
 .workoutName{
   font-size:25px;
   font-weight:1000;
+
+  line-height:1.05;
+
   margin-top:12px;
 }
 
-.status{
-  color:#777;
+.workoutMeta{
+  color:#888;
+
   font-size:12px;
   font-weight:800;
-  margin-top:8px;
+
+  margin-top:9px;
 }
 
 .enterWorkout{
   display:flex;
   justify-content:space-between;
   align-items:center;
+
   margin-top:22px;
   padding-top:15px;
+
   border-top:1px solid #292929;
-  color:#aaa;
+
+  color:#AAA;
+
   font-size:12px;
   font-weight:900;
 }
@@ -316,7 +402,36 @@ h1{
 }
 
 /* =====================================================
-   EMPTY WORKOUT
+   TREINOS PERSONALIZADOS
+===================================================== */
+
+.customCard{
+  border-color:#514700;
+
+  background:
+    linear-gradient(
+      145deg,
+      #1D1A0D,
+      #111
+    );
+}
+
+.customCard .day{
+  color:var(--yellow);
+}
+
+.customIcon{
+  font-size:30px;
+
+  margin-bottom:8px;
+}
+
+.customCard .workoutName{
+  color:var(--yellow);
+}
+
+/* =====================================================
+   WORKOUT PLACEHOLDER
 ===================================================== */
 
 .workoutPage{
@@ -324,15 +439,21 @@ h1{
 }
 
 .emptyWorkout{
-  margin-top:35px;
+  margin-top:34px;
+
   min-height:430px;
+
   background:var(--card);
+
   border:1px solid var(--border);
   border-radius:18px;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   text-align:center;
+
   padding:40px;
 }
 
@@ -348,7 +469,57 @@ h1{
 
 .emptyWorkout p{
   color:#888;
+
   margin-top:12px;
+
+  line-height:1.5;
+}
+
+/* =====================================================
+   CUSTOM PAGE
+===================================================== */
+
+.customPage{
+  display:none;
+}
+
+.customEmpty{
+  margin-top:34px;
+
+  min-height:430px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #17150A,
+      #111
+    );
+
+  border:1px solid #514700;
+  border-radius:18px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+  padding:40px;
+}
+
+.customEmpty h2{
+  color:var(--yellow);
+
+  font-size:34px;
+  font-weight:1000;
+}
+
+.customEmpty p{
+  color:#999;
+
+  margin-top:14px;
+
+  font-size:16px;
   line-height:1.5;
 }
 
@@ -358,19 +529,24 @@ h1{
 
 .footer{
   border-top:1px solid var(--border);
+
   color:#666;
+
   font-size:11px;
   letter-spacing:1px;
+
   padding:15px 4vw;
+
   display:flex;
   justify-content:space-between;
 }
 
 /* =====================================================
-   RESPONSIVE
+   RESPONSIVO
 ===================================================== */
 
 @media(max-width:1100px){
+
   .weekGrid{
     grid-template-columns:repeat(2,1fr);
   }
@@ -378,6 +554,7 @@ h1{
   .dayGrid{
     grid-template-columns:repeat(2,1fr);
   }
+
 }
 
 @media(max-width:700px){
@@ -388,14 +565,19 @@ h1{
   }
 
   .logoBox{
-    min-width:130px;
-    height:54px;
+    min-width:135px;
+    height:55px;
+
     padding:6px 10px;
   }
 
   .logoBox img{
-    max-width:120px;
+    max-width:125px;
     max-height:44px;
+  }
+
+  .logoFallback{
+    font-size:15px;
   }
 
   .brandDivider,
@@ -405,6 +587,7 @@ h1{
 
   .content{
     width:92vw;
+
     padding-top:25px;
   }
 
@@ -425,6 +608,7 @@ h1{
     flex-direction:column;
     gap:5px;
   }
+
 }
 
 /* =====================================================
@@ -441,13 +625,32 @@ h1{
 }
 
 :fullscreen .logoBox{
-  min-width:270px;
-  height:88px;
+  min-width:290px;
+  height:96px;
 }
 
 :fullscreen .logoBox img{
-  max-width:245px;
-  max-height:72px;
+  max-width:265px;
+  max-height:80px;
+}
+
+:-webkit-full-screen .content{
+  width:94vw;
+  max-width:1700px;
+}
+
+:-webkit-full-screen .weekCard{
+  min-height:340px;
+}
+
+:-webkit-full-screen .logoBox{
+  min-width:290px;
+  height:96px;
+}
+
+:-webkit-full-screen .logoBox img{
+  max-width:265px;
+  max-height:80px;
 }
 
 </style>
@@ -457,31 +660,71 @@ h1{
 
 <div id="app">
 
+<!-- ===================================================
+     HEADER
+=================================================== -->
+
 <header class="header">
 
   <div class="brand">
 
     <div class="logoBox">
-      <!-- Mantém o mesmo arquivo de logo já usado no projeto -->
-      <img src="logo-cia.png" alt="Cia Athletica">
+
+      <!--
+        Se o arquivo logo-cia.png já estiver no GitHub,
+        a logo oficial aparecerá automaticamente.
+      -->
+
+      <img
+        src="logo-cia.png"
+        alt="Cia Athletica"
+        onerror="
+          this.style.display='none';
+          document.getElementById('logoFallback').style.display='block';
+        "
+      >
+
+      <div
+        id="logoFallback"
+        class="logoFallback"
+        style="display:none;"
+      >
+        CIA ATHLETICA
+      </div>
+
     </div>
 
     <div class="brandDivider"></div>
 
     <div class="brandText">
-      <div class="hyrox">HYROX TRAINING CLUB</div>
-      <div class="unit">MANAUS • STUDIO 5</div>
+
+      <div class="hyrox">
+        HYROX TRAINING CLUB
+      </div>
+
+      <div class="unit">
+        MANAUS • STUDIO 5
+      </div>
+
     </div>
 
   </div>
 
+
   <div class="headerRight">
 
-    <button class="topButton" onclick="goHome()">
+    <button
+      class="topButton"
+      onclick="goHome()"
+    >
       ⌂ HUB
     </button>
 
-    <button class="topButton" onclick="toggleFullscreen()">
+    <button
+      id="fullscreenButton"
+      class="topButton"
+      onclick="toggleFullscreen()"
+    >
       ⛶ TELA CHEIA
     </button>
 
@@ -490,10 +733,15 @@ h1{
 </header>
 
 
+<!-- ===================================================
+     CONTEÚDO
+=================================================== -->
+
 <main class="content">
 
+
 <!-- ===================================================
-     HOME
+     HUB PRINCIPAL
 =================================================== -->
 
 <section id="homePage">
@@ -510,65 +758,130 @@ h1{
     Selecione a semana para acessar a programação do Studio 5.
   </div>
 
+
   <div class="weekGrid">
 
-    <div class="weekCard" onclick="openWeek(1)">
-      <div class="weekNumber">01</div>
+    <!-- SEMANA 1 -->
+
+    <div
+      class="weekCard"
+      onclick="openWeek(1)"
+    >
+
+      <div class="weekNumber">
+        01
+      </div>
 
       <div>
-        <h2>SEMANA 1</h2>
-        <p>Programação semanal HYROX • Studio 5</p>
+
+        <h2>
+          SEMANA 1
+        </h2>
+
+        <p>
+          Programação oficial HYROX • Studio 5
+        </p>
 
         <div class="openWeek">
           ABRIR SEMANA
           <span class="arrow">→</span>
         </div>
+
       </div>
+
     </div>
 
 
-    <div class="weekCard" onclick="openWeek(2)">
-      <div class="weekNumber">02</div>
+    <!-- SEMANA 2 -->
+
+    <div
+      class="weekCard"
+      onclick="openWeek(2)"
+    >
+
+      <div class="weekNumber">
+        02
+      </div>
 
       <div>
-        <h2>SEMANA 2</h2>
-        <p>Programação semanal HYROX • Studio 5</p>
+
+        <h2>
+          SEMANA 2
+        </h2>
+
+        <p>
+          Programação semanal HYROX • Studio 5
+        </p>
 
         <div class="openWeek">
           ABRIR SEMANA
           <span class="arrow">→</span>
         </div>
+
       </div>
+
     </div>
 
 
-    <div class="weekCard" onclick="openWeek(3)">
-      <div class="weekNumber">03</div>
+    <!-- SEMANA 3 -->
+
+    <div
+      class="weekCard"
+      onclick="openWeek(3)"
+    >
+
+      <div class="weekNumber">
+        03
+      </div>
 
       <div>
-        <h2>SEMANA 3</h2>
-        <p>Programação semanal HYROX • Studio 5</p>
+
+        <h2>
+          SEMANA 3
+        </h2>
+
+        <p>
+          Programação semanal HYROX • Studio 5
+        </p>
 
         <div class="openWeek">
           ABRIR SEMANA
           <span class="arrow">→</span>
         </div>
+
       </div>
+
     </div>
 
 
-    <div class="weekCard" onclick="openWeek(4)">
-      <div class="weekNumber">04</div>
+    <!-- SEMANA 4 -->
+
+    <div
+      class="weekCard"
+      onclick="openWeek(4)"
+    >
+
+      <div class="weekNumber">
+        04
+      </div>
 
       <div>
-        <h2>SEMANA 4</h2>
-        <p>Programação semanal HYROX • Studio 5</p>
+
+        <h2>
+          SEMANA 4
+        </h2>
+
+        <p>
+          Programação semanal HYROX • Studio 5
+        </p>
 
         <div class="openWeek">
           ABRIR SEMANA
           <span class="arrow">→</span>
         </div>
+
       </div>
+
     </div>
 
   </div>
@@ -577,48 +890,69 @@ h1{
 
 
 <!-- ===================================================
-     WEEK
+     PÁGINA DA SEMANA
 =================================================== -->
 
-<section id="weekPage" class="weekPage">
+<section
+  id="weekPage"
+  class="weekPage"
+>
 
-  <div class="back" onclick="goHome()">
+  <div
+    class="back"
+    onclick="goHome()"
+  >
     ← VOLTAR PARA AS SEMANAS
   </div>
 
-  <div class="eyebrow" id="weekEyebrow">
+  <div
+    class="eyebrow"
+    id="weekEyebrow"
+  >
     PROGRAMAÇÃO
   </div>
 
   <h1 id="weekTitle">
-    SEMANA 1
+    SEMANA
   </h1>
 
   <div class="subtitle">
     Selecione o treino do dia.
   </div>
 
-  <div class="dayGrid" id="dayGrid"></div>
+  <div
+    class="dayGrid"
+    id="dayGrid"
+  ></div>
 
 </section>
 
 
 <!-- ===================================================
-     WORKOUT PLACEHOLDER
+     PLACEHOLDER DO TREINO
 =================================================== -->
 
-<section id="workoutPage" class="workoutPage">
+<section
+  id="workoutPage"
+  class="workoutPage"
+>
 
-  <div class="back" onclick="backToWeek()">
+  <div
+    class="back"
+    onclick="backToWeek()"
+  >
     ← VOLTAR PARA A SEMANA
   </div>
 
-  <div class="eyebrow" id="workoutWeek">
-    SEMANA 1
+  <div
+    class="eyebrow"
+    id="workoutWeek"
+  >
+    SEMANA
   </div>
 
-  <h1 id="workoutTitle">
-    SEGUNDA-FEIRA
+  <h1 id="workoutDay">
+    DIA
   </h1>
 
   <div class="emptyWorkout">
@@ -633,11 +967,8 @@ h1{
         TREINO
       </h2>
 
-      <p>
-        Dashboard do treino será inserido nesta área.
-        <br>
-        Estrutura preparada para Aquecimento, Rodízio,
-        Treino Principal e Volta à Calma.
+      <p id="emptyWorkoutInfo">
+        Dashboard completo será inserido nesta área.
       </p>
 
     </div>
@@ -646,12 +977,77 @@ h1{
 
 </section>
 
+
+<!-- ===================================================
+     TREINOS PERSONALIZADOS
+=================================================== -->
+
+<section
+  id="customPage"
+  class="customPage"
+>
+
+  <div
+    class="back"
+    onclick="backToWeek()"
+  >
+    ← VOLTAR PARA A SEMANA
+  </div>
+
+  <div
+    class="eyebrow"
+    id="customWeek"
+  >
+    SEMANA
+  </div>
+
+  <h1>
+    TREINOS PERSONALIZADOS
+  </h1>
+
+  <div class="customEmpty">
+
+    <div>
+
+      <div
+        style="
+          font-size:54px;
+          margin-bottom:18px;
+        "
+      >
+        +
+      </div>
+
+      <h2>
+        ÁREA DOS COACHES
+      </h2>
+
+      <p>
+        Os treinos personalizados serão adicionados aqui.
+        <br>
+        Esta área funcionará independentemente da programação oficial da semana.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
 </main>
 
 
 <footer class="footer">
-  <span>HYROX TRAINING CLUB • CIA ATHLETICA</span>
-  <span>MANAUS • STUDIO 5</span>
+
+  <span>
+    HYROX TRAINING CLUB • CIA ATHLETICA
+  </span>
+
+  <span>
+    MANAUS • STUDIO 5
+  </span>
+
 </footer>
 
 </div>
@@ -660,50 +1056,137 @@ h1{
 <script>
 
 /* =====================================================
-   ESTRUTURA DO CICLO
-
-   Por enquanto SOMENTE nomes.
-   Depois cada treino receberá seu próprio objeto
-   com warmup, main, cooldown, timers, rodízio etc.
+   PROGRAMAÇÃO
 ===================================================== */
+
+const WEEK_1 = [
+
+  {
+    type:"workout",
+    day:"SEGUNDA-FEIRA",
+    workout:"FOUNDATIONAL #1A",
+    meta:"RPE 7 • 48 MIN • ATÉ 32 ATLETAS"
+  },
+
+  {
+    type:"workout",
+    day:"TERÇA-FEIRA",
+    workout:"POWER #1A",
+    meta:"RPE 7 • ATÉ 24 ATLETAS"
+  },
+
+  {
+    type:"workout",
+    day:"QUARTA-FEIRA",
+    workout:"POWER #1B",
+    meta:"RPE 7 • 54 MIN • ATÉ 24 ATLETAS"
+  },
+
+  {
+    type:"workout",
+    day:"QUINTA-FEIRA",
+    workout:"FOUNDATIONAL #1B",
+    meta:"RPE 6 • 50 MIN"
+  },
+
+  {
+    type:"workout",
+    day:"SEXTA-FEIRA",
+    workout:"ENGINE #1B",
+    meta:"RPE 7 • 50 MIN • ATÉ 24 ATLETAS"
+  },
+
+  {
+    type:"workout",
+    day:"SÁBADO",
+    workout:"COMPLETE #1",
+    meta:"RPE 7 • ATÉ 24 ATLETAS"
+  },
+
+  {
+    type:"custom",
+    day:"ÁREA DOS COACHES",
+    workout:"TREINOS PERSONALIZADOS",
+    meta:"WODS CRIADOS / ADAPTADOS PELOS COACHES"
+  }
+
+];
+
+
+/* =====================================================
+   SEMANAS 2, 3 E 4
+
+   Nesta etapa continuam sem os treinos oficiais.
+   O card de personalizados já existe.
+===================================================== */
+
+function emptyWeek(){
+
+  return [
+
+    {
+      type:"workout",
+      day:"SEGUNDA-FEIRA",
+      workout:"TREINO A DEFINIR",
+      meta:"PROGRAMAÇÃO AGUARDANDO TREINO"
+    },
+
+    {
+      type:"workout",
+      day:"TERÇA-FEIRA",
+      workout:"TREINO A DEFINIR",
+      meta:"PROGRAMAÇÃO AGUARDANDO TREINO"
+    },
+
+    {
+      type:"workout",
+      day:"QUARTA-FEIRA",
+      workout:"TREINO A DEFINIR",
+      meta:"PROGRAMAÇÃO AGUARDANDO TREINO"
+    },
+
+    {
+      type:"workout",
+      day:"QUINTA-FEIRA",
+      workout:"TREINO A DEFINIR",
+      meta:"PROGRAMAÇÃO AGUARDANDO TREINO"
+    },
+
+    {
+      type:"workout",
+      day:"SEXTA-FEIRA",
+      workout:"TREINO A DEFINIR",
+      meta:"PROGRAMAÇÃO AGUARDANDO TREINO"
+    },
+
+    {
+      type:"workout",
+      day:"SÁBADO",
+      workout:"TREINO A DEFINIR",
+      meta:"PROGRAMAÇÃO AGUARDANDO TREINO"
+    },
+
+    {
+      type:"custom",
+      day:"ÁREA DOS COACHES",
+      workout:"TREINOS PERSONALIZADOS",
+      meta:"WODS CRIADOS / ADAPTADOS PELOS COACHES"
+    }
+
+  ];
+
+}
+
 
 const PROGRAM = {
 
-  1:[
-    {day:"SEGUNDA-FEIRA", workout:"TREINO A DEFINIR"},
-    {day:"TERÇA-FEIRA",   workout:"TREINO A DEFINIR"},
-    {day:"QUARTA-FEIRA",  workout:"TREINO A DEFINIR"},
-    {day:"QUINTA-FEIRA",  workout:"TREINO A DEFINIR"},
-    {day:"SEXTA-FEIRA",   workout:"TREINO A DEFINIR"},
-    {day:"SÁBADO",        workout:"TREINO A DEFINIR"}
-  ],
+  1:WEEK_1,
 
-  2:[
-    {day:"SEGUNDA-FEIRA", workout:"TREINO A DEFINIR"},
-    {day:"TERÇA-FEIRA",   workout:"TREINO A DEFINIR"},
-    {day:"QUARTA-FEIRA",  workout:"TREINO A DEFINIR"},
-    {day:"QUINTA-FEIRA",  workout:"TREINO A DEFINIR"},
-    {day:"SEXTA-FEIRA",   workout:"TREINO A DEFINIR"},
-    {day:"SÁBADO",        workout:"TREINO A DEFINIR"}
-  ],
+  2:emptyWeek(),
 
-  3:[
-    {day:"SEGUNDA-FEIRA", workout:"TREINO A DEFINIR"},
-    {day:"TERÇA-FEIRA",   workout:"TREINO A DEFINIR"},
-    {day:"QUARTA-FEIRA",  workout:"TREINO A DEFINIR"},
-    {day:"QUINTA-FEIRA",  workout:"TREINO A DEFINIR"},
-    {day:"SEXTA-FEIRA",   workout:"TREINO A DEFINIR"},
-    {day:"SÁBADO",        workout:"TREINO A DEFINIR"}
-  ],
+  3:emptyWeek(),
 
-  4:[
-    {day:"SEGUNDA-FEIRA", workout:"TREINO A DEFINIR"},
-    {day:"TERÇA-FEIRA",   workout:"TREINO A DEFINIR"},
-    {day:"QUARTA-FEIRA",  workout:"TREINO A DEFINIR"},
-    {day:"QUINTA-FEIRA",  workout:"TREINO A DEFINIR"},
-    {day:"SEXTA-FEIRA",   workout:"TREINO A DEFINIR"},
-    {day:"SÁBADO",        workout:"TREINO A DEFINIR"}
-  ]
+  4:emptyWeek()
 
 };
 
@@ -712,35 +1195,55 @@ let currentWeek=1;
 
 
 /* =====================================================
-   HOME
+   ESCONDER TODAS AS PÁGINAS
 ===================================================== */
 
-function goHome(){
+function hideAllPages(){
 
-  document.getElementById("homePage").style.display="block";
+  document.getElementById("homePage").style.display="none";
+
   document.getElementById("weekPage").style.display="none";
+
   document.getElementById("workoutPage").style.display="none";
+
+  document.getElementById("customPage").style.display="none";
 
 }
 
 
 /* =====================================================
-   OPEN WEEK
+   HUB
+===================================================== */
+
+function goHome(){
+
+  hideAllPages();
+
+  document.getElementById("homePage").style.display="block";
+
+}
+
+
+/* =====================================================
+   ABRIR SEMANA
 ===================================================== */
 
 function openWeek(week){
 
   currentWeek=week;
 
-  document.getElementById("homePage").style.display="none";
-  document.getElementById("workoutPage").style.display="none";
+  hideAllPages();
+
   document.getElementById("weekPage").style.display="block";
 
+
   document.getElementById("weekEyebrow").textContent=
-    "CICLO • SEMANA "+week;
+    "CICLO DE TREINAMENTO • SEMANA "+week;
+
 
   document.getElementById("weekTitle").textContent=
     "SEMANA "+week;
+
 
   renderDays();
 
@@ -748,80 +1251,171 @@ function openWeek(week){
 
 
 /* =====================================================
-   DAYS
+   RENDERIZAR CARDS
 ===================================================== */
 
 function renderDays(){
 
-  const grid=document.getElementById("dayGrid");
+  const grid=
+    document.getElementById("dayGrid");
+
 
   grid.innerHTML="";
 
-  PROGRAM[currentWeek].forEach((item,index)=>{
 
-    const card=document.createElement("div");
+  PROGRAM[currentWeek].forEach(
+    (item,index)=>{
 
-    card.className="dayCard";
 
-    card.onclick=()=>openWorkout(index);
+      const card=
+        document.createElement("div");
 
-    card.innerHTML=`
-      <div>
-        <div class="day">${item.day}</div>
 
-        <div class="workoutName">
-          ${item.workout}
+      card.className=
+        item.type==="custom"
+        ? "dayCard customCard"
+        : "dayCard";
+
+
+      card.onclick=()=>{
+
+        if(item.type==="custom"){
+
+          openCustom();
+
+        }else{
+
+          openWorkout(index);
+
+        }
+
+      };
+
+
+      const icon=
+        item.type==="custom"
+        ? `<div class="customIcon">＋</div>`
+        : "";
+
+
+      const action=
+        item.type==="custom"
+        ? "ABRIR PERSONALIZADOS"
+        : "ABRIR TREINO";
+
+
+      card.innerHTML=`
+
+        <div>
+
+          ${icon}
+
+          <div class="day">
+            ${item.day}
+          </div>
+
+          <div class="workoutName">
+            ${item.workout}
+          </div>
+
+          <div class="workoutMeta">
+            ${item.meta}
+          </div>
+
         </div>
 
-        <div class="status">
-          DASHBOARD AGUARDANDO TREINO
+
+        <div class="enterWorkout">
+
+          ${action}
+
+          <span>
+            →
+          </span>
+
         </div>
-      </div>
 
-      <div class="enterWorkout">
-        ABRIR TREINO
-        <span>→</span>
-      </div>
-    `;
+      `;
 
-    grid.appendChild(card);
 
-  });
+      grid.appendChild(card);
+
+    }
+
+  );
 
 }
 
 
 /* =====================================================
-   WORKOUT PLACEHOLDER
+   ABRIR TREINO
 ===================================================== */
 
 function openWorkout(index){
 
-  const workout=PROGRAM[currentWeek][index];
+  const workout=
+    PROGRAM[currentWeek][index];
 
-  document.getElementById("weekPage").style.display="none";
-  document.getElementById("workoutPage").style.display="block";
+
+  hideAllPages();
+
+
+  document.getElementById("workoutPage").style.display=
+    "block";
+
 
   document.getElementById("workoutWeek").textContent=
     "SEMANA "+currentWeek;
 
-  document.getElementById("workoutTitle").textContent=
+
+  document.getElementById("workoutDay").textContent=
     workout.day;
+
 
   document.getElementById("emptyWorkoutName").textContent=
     workout.workout;
+
+
+  document.getElementById("emptyWorkoutInfo").innerHTML=
+
+    workout.meta+
+
+    "<br><br>"+
+
+    "Dashboard completo deste treino será inserido na próxima etapa.";
 
 }
 
 
 /* =====================================================
-   BACK
+   PERSONALIZADOS
+===================================================== */
+
+function openCustom(){
+
+  hideAllPages();
+
+
+  document.getElementById("customPage").style.display=
+    "block";
+
+
+  document.getElementById("customWeek").textContent=
+    "SEMANA "+currentWeek;
+
+}
+
+
+/* =====================================================
+   VOLTAR PARA A SEMANA
 ===================================================== */
 
 function backToWeek(){
 
-  document.getElementById("workoutPage").style.display="none";
-  document.getElementById("weekPage").style.display="block";
+  hideAllPages();
+
+  document.getElementById("weekPage").style.display=
+    "block";
 
 }
 
@@ -832,31 +1426,96 @@ function backToWeek(){
 
 function toggleFullscreen(){
 
+  const button=
+    document.getElementById("fullscreenButton");
+
+
   if(!document.fullscreenElement){
 
-    const el=document.documentElement;
+    const element=
+      document.documentElement;
 
-    if(el.requestFullscreen){
-      el.requestFullscreen();
+
+    if(element.requestFullscreen){
+
+      element.requestFullscreen();
+
     }
 
-    else if(el.webkitRequestFullscreen){
-      el.webkitRequestFullscreen();
+    else if(element.webkitRequestFullscreen){
+
+      element.webkitRequestFullscreen();
+
     }
 
-  }else{
+  }
+
+  else{
 
     if(document.exitFullscreen){
+
       document.exitFullscreen();
+
     }
 
     else if(document.webkitExitFullscreen){
+
       document.webkitExitFullscreen();
+
     }
 
   }
 
 }
+
+
+/* =====================================================
+   TEXTO DO BOTÃO FULLSCREEN
+===================================================== */
+
+document.addEventListener(
+  "fullscreenchange",
+  updateFullscreenButton
+);
+
+
+document.addEventListener(
+  "webkitfullscreenchange",
+  updateFullscreenButton
+);
+
+
+function updateFullscreenButton(){
+
+  const button=
+    document.getElementById("fullscreenButton");
+
+
+  if(
+    document.fullscreenElement ||
+    document.webkitFullscreenElement
+  ){
+
+    button.textContent=
+      "SAIR DA TELA CHEIA";
+
+  }
+
+  else{
+
+    button.textContent=
+      "⛶ TELA CHEIA";
+
+  }
+
+}
+
+
+/* =====================================================
+   INICIALIZAÇÃO
+===================================================== */
+
+goHome();
 
 </script>
 
