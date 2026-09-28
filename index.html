@@ -1533,65 +1533,36 @@ h1{
 
     <div class="workoutControls">
 
-  <button class="controlBtn" onclick="previousFoundationSlide()">
-    ◀
-  </button>
+      <button class="controlBtn" onclick="previousFoundationSlide()">
+        ◀
+      </button>
 
-  <span id="foundationCounter" class="pageCounter">
-    1 / 5
-  </span>
+      <span id="foundationCounter" class="pageCounter">
+        1 / 5
+      </span>
 
-  <button class="controlBtn" onclick="nextFoundationSlide()">
-    ▶
-  </button>
+      <button class="controlBtn" onclick="nextFoundationSlide()">
+        ▶
+      </button>
 
-  <button
-    id="modeButton"
-    class="controlBtn modeActive"
-    onclick="toggleMode()"
-  >
-    AUTO
-  </button>
+      <button
+        id="phaseStartButton"
+        class="controlBtn primary"
+        onclick="startCurrentPhase()"
+      >
+        ▶ INICIAR AULA
+      </button>
 
-  <button
-    id="workoutSoundButton"
-    class="controlBtn"
-    onclick="toggleSound()"
-  >
-    🔊 SOM ON
-  </button>
+      <button class="controlBtn danger" onclick="resetCurrentPhase()">
+        RESET
+      </button>
 
-  <button
-    id="workoutFullscreenButton"
-    class="controlBtn"
-    onclick="toggleFullscreen()"
-  >
-    ⛶ TELA CHEIA
-  </button>
+      <button class="controlBtn" onclick="exitFoundation()">
+        ← SEMANA 1
+      </button>
 
-  <button
-    id="phaseStartButton"
-    class="controlBtn primary"
-    onclick="startCurrentPhase()"
-  >
-    ▶ INICIAR AULA
-  </button>
+    </div>
 
-  <button
-    class="controlBtn danger"
-    onclick="resetCurrentPhase()"
-  >
-    RESET
-  </button>
-
-  <button
-    class="controlBtn"
-    onclick="exitFoundation()"
-  >
-    ← SEMANA 1
-  </button>
-
-</div>
   </div>
 
 </section>
