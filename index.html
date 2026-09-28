@@ -2124,6 +2124,738 @@ h1{
       <button id="powerStartButton"
               class="controlBtn primary"
               onclick="startPowerPhase()">
+        /* =====================================================
+   POWER #1A • TIMERS
+===================================================== */
+
+
+/* =========================
+   AQUECIMENTO
+   04:00 CONTÍNUOS
+========================= */
+
+let powerWarmRemaining = 240;
+
+function startPowerWarmup(){
+
+  stopAllTimers();
+
+  preStart(()=>{
+
+    powerWarmRemaining = 240;
+
+    renderPowerWarm();
+
+    timerHandle = setInterval(()=>{
+
+      powerWarmRemaining--;
+
+      if(powerWarmRemaining <= 3 &&
+         powerWarmRemaining > 0){
+        beep();
+      }
+
+      if(powerWarmRemaining <= 0){
+
+        powerWarmRemaining = 0;
+
+        renderPowerWarm();
+
+        stopAllTimers();
+
+        endBeep();
+
+        if(powerAutoMode){
+
+          powerSlide = 3;
+
+          showPowerSlide();
+
+        }
+
+        return;
+
+      }
+
+      renderPowerWarm();
+
+    },1000);
+
+  });
+
+}
+
+
+function renderPowerWarm(){
+
+  const timer =
+    document.getElementById("powerWarmTimer");
+
+  const progress =
+    document.getElementById("powerWarmProgress");
+
+  if(timer){
+    timer.textContent =
+      formatTime(powerWarmRemaining);
+  }
+
+  if(progress){
+
+    progress.style.width =
+      ((powerWarmRemaining / 240) * 100) + "%";
+
+  }
+
+}
+
+
+/* =========================
+   CORPO TODO
+   10:00 WORK
+   02:00 TRANSIÇÃO
+   2 ZONAS
+   TOTAL = 24:00
+========================= */
+
+let powerMainZone = 1;
+let powerMainPhaseValue = "work";
+let powerMainRemaining = 600;
+let powerMainTotalRemaining = 1440;
+
+
+function startPowerMain(){
+
+  stopAllTimers();
+
+  preStart(()=>{
+
+    powerMainZone = 1;
+
+    powerMainPhaseValue = "work";
+
+    powerMainRemaining = 600;
+
+    powerMainTotalRemaining = 1440;
+
+    renderPowerMain();
+
+    timerHandle =
+      setInterval(tickPowerMain,1000);
+
+  });
+
+}
+
+
+function tickPowerMain(){
+
+  powerMainRemaining--;
+
+  powerMainTotalRemaining--;
+
+  if(powerMainRemaining <= 3 &&
+     powerMainRemaining > 0){
+
+    beep();
+
+  }
+
+
+  if(powerMainRemaining <= 0){
+
+    /*
+      TERMINOU 10' DE TRABALHO
+    */
+
+    if(powerMainPhaseValue === "work"){
+
+      endBeep();
+
+      powerMainPhaseValue = "transition";
+
+      powerMainRemaining = 120;
+
+    }
+
+    /*
+      TERMINOU 2' DE TRANSIÇÃO
+    */
+
+    else{
+
+      if(powerMainZone >= 2){
+
+        powerMainRemaining = 0;
+
+        powerMainTotalRemaining = 0;
+
+        renderPowerMain();
+
+        stopAllTimers();
+
+        endBeep();
+
+        if(powerAutoMode){
+
+          powerSlide = 4;
+
+          showPowerSlide();
+
+        }
+
+        return;
+
+      }
+
+      powerMainZone++;
+
+      powerMainPhaseValue = "work";
+
+      powerMainRemaining = 600;
+
+      goBeep();
+
+    }
+
+  }
+
+  renderPowerMain();
+
+}
+
+
+function renderPowerMain(){
+
+  const round =
+    document.getElementById("powerMainRound");
+
+  const timer =
+    document.getElementById("powerMainTimer");
+
+  const total =
+    document.getElementById("powerMainTotal");
+
+  const context =
+    document.getElementById("powerMainContext");
+
+  const phase =
+    document.getElementById("powerMainPhase");
+
+  const progress =
+    document.getElementById("powerMainProgress");
+
+
+  if(round){
+
+    round.textContent =
+      powerMainZone;
+
+  }
+
+
+  if(timer){
+
+    timer.textContent =
+      formatTime(powerMainRemaining);
+
+  }
+
+
+  if(total){
+
+    total.textContent =
+      formatTime(powerMainTotalRemaining);
+
+  }
+
+
+  if(context){
+
+    context.textContent =
+      "ZONA " +
+      powerMainZone +
+      "/2";
+
+  }
+
+
+  if(powerMainPhaseValue === "work"){
+
+    if(phase){
+
+      phase.textContent =
+        "● TRABALHO";
+
+      phase.classList.remove("rest");
+
+    }
+
+    if(timer){
+
+      timer.classList.remove("rest");
+
+    }
+
+    if(progress){
+
+      progress.classList.remove("rest");
+
+      progress.style.width =
+        ((powerMainRemaining / 600) * 100) + "%";
+
+    }
+
+  }
+
+  else{
+
+    if(phase){
+
+      phase.textContent =
+        "● TRANSIÇÃO";
+
+      phase.classList.add("rest");
+
+    }
+
+    if(timer){
+
+      timer.classList.add("rest");
+
+    }
+
+    if(progress){
+
+      progress.classList.add("rest");
+
+      progress.style.width =
+        ((powerMainRemaining / 120) * 100) + "%";
+
+    }
+
+  }
+
+}
+
+
+/* =========================
+   FORÇA DE BASE
+
+   4 ZONAS
+   01:00 WORK
+   00:30 TRANSIÇÃO
+
+   12 ROUNDS
+   3 PASSAGENS
+
+   TOTAL = 18:00
+========================= */
+
+let powerBaseRoundValue = 1;
+
+let powerBasePhaseValue = "work";
+
+let powerBaseRemaining = 60;
+
+let powerBaseTotalRemaining = 1080;
+
+
+function startPowerBase(){
+
+  stopAllTimers();
+
+  preStart(()=>{
+
+    powerBaseRoundValue = 1;
+
+    powerBasePhaseValue = "work";
+
+    powerBaseRemaining = 60;
+
+    powerBaseTotalRemaining = 1080;
+
+    renderPowerBase();
+
+    timerHandle =
+      setInterval(tickPowerBase,1000);
+
+  });
+
+}
+
+
+function tickPowerBase(){
+
+  powerBaseRemaining--;
+
+  powerBaseTotalRemaining--;
+
+
+  if(powerBaseRemaining <= 3 &&
+     powerBaseRemaining > 0){
+
+    beep();
+
+  }
+
+
+  if(powerBaseRemaining <= 0){
+
+    /*
+      TERMINOU WORK
+    */
+
+    if(powerBasePhaseValue === "work"){
+
+      endBeep();
+
+      powerBasePhaseValue =
+        "transition";
+
+      powerBaseRemaining = 30;
+
+    }
+
+    /*
+      TERMINOU TRANSIÇÃO
+    */
+
+    else{
+
+      if(powerBaseRoundValue >= 12){
+
+        powerBaseRemaining = 0;
+
+        powerBaseTotalRemaining = 0;
+
+        renderPowerBase();
+
+        stopAllTimers();
+
+        endBeep();
+
+        if(powerAutoMode){
+
+          powerSlide = 5;
+
+          showPowerSlide();
+
+        }
+
+        return;
+
+      }
+
+
+      powerBaseRoundValue++;
+
+      powerBasePhaseValue =
+        "work";
+
+      powerBaseRemaining = 60;
+
+      goBeep();
+
+    }
+
+  }
+
+
+  renderPowerBase();
+
+}
+
+
+function renderPowerBase(){
+
+  const round =
+    document.getElementById("powerBaseRound");
+
+  const timer =
+    document.getElementById("powerBaseTimer");
+
+  const total =
+    document.getElementById("powerBaseTotal");
+
+  const context =
+    document.getElementById("powerBaseContext");
+
+  const phase =
+    document.getElementById("powerBasePhase");
+
+  const progress =
+    document.getElementById("powerBaseProgress");
+
+
+  if(round){
+
+    round.textContent =
+      powerBaseRoundValue;
+
+  }
+
+
+  if(timer){
+
+    timer.textContent =
+      formatTime(powerBaseRemaining);
+
+  }
+
+
+  if(total){
+
+    total.textContent =
+      formatTime(powerBaseTotalRemaining);
+
+  }
+
+
+  const passage =
+    Math.ceil(
+      powerBaseRoundValue / 4
+    );
+
+
+  if(context){
+
+    context.textContent =
+      "ROUND " +
+      powerBaseRoundValue +
+      "/12 • PASSAGEM " +
+      passage +
+      "/3";
+
+  }
+
+
+  if(powerBasePhaseValue === "work"){
+
+    if(phase){
+
+      phase.textContent =
+        "● TRABALHO";
+
+      phase.classList.remove("rest");
+
+    }
+
+    if(timer){
+
+      timer.classList.remove("rest");
+
+    }
+
+    if(progress){
+
+      progress.classList.remove("rest");
+
+      progress.style.width =
+        ((powerBaseRemaining / 60) * 100) + "%";
+
+    }
+
+  }
+
+  else{
+
+    if(phase){
+
+      phase.textContent =
+        "● TROCA";
+
+      phase.classList.add("rest");
+
+    }
+
+    if(timer){
+
+      timer.classList.add("rest");
+
+    }
+
+    if(progress){
+
+      progress.classList.add("rest");
+
+      progress.style.width =
+        ((powerBaseRemaining / 30) * 100) + "%";
+
+    }
+
+  }
+
+}
+
+
+/* =========================
+   VOLTA À CALMA
+   05:00
+
+   IMPORTANTE:
+   SEM PRE-START 5-4-3-2-1
+========================= */
+
+let powerCoolRemaining = 300;
+
+
+function startPowerCooldown(){
+
+  stopAllTimers();
+
+  ensureAudio();
+
+  powerCoolRemaining = 300;
+
+  renderPowerCooldown();
+
+  goBeep();
+
+
+  timerHandle =
+    setInterval(()=>{
+
+      powerCoolRemaining--;
+
+
+      if(powerCoolRemaining <= 3 &&
+         powerCoolRemaining > 0){
+
+        beep();
+
+      }
+
+
+      if(powerCoolRemaining <= 0){
+
+        powerCoolRemaining = 0;
+
+        renderPowerCooldown();
+
+        stopAllTimers();
+
+        endBeep();
+
+        return;
+
+      }
+
+
+      renderPowerCooldown();
+
+    },1000);
+
+}
+
+
+function renderPowerCooldown(){
+
+  const timer =
+    document.getElementById("powerCoolTimer");
+
+  const progress =
+    document.getElementById("powerCoolProgress");
+
+
+  if(timer){
+
+    timer.textContent =
+      formatTime(powerCoolRemaining);
+
+  }
+
+
+  if(progress){
+
+    progress.style.width =
+      ((powerCoolRemaining / 300) * 100) + "%";
+
+  }
+
+}
+
+
+/* =====================================================
+   RESET SOMENTE DA FASE ATUAL
+===================================================== */
+
+function resetPowerPhase(){
+
+  stopAllTimers();
+
+
+  /*
+    AQUECIMENTO
+  */
+
+  if(powerSlide === 2){
+
+    powerWarmRemaining = 240;
+
+    renderPowerWarm();
+
+  }
+
+
+  /*
+    CORPO TODO
+  */
+
+  else if(powerSlide === 3){
+
+    powerMainZone = 1;
+
+    powerMainPhaseValue =
+      "work";
+
+    powerMainRemaining =
+      600;
+
+    powerMainTotalRemaining =
+      1440;
+
+    renderPowerMain();
+
+  }
+
+
+  /*
+    FORÇA DE BASE
+  */
+
+  else if(powerSlide === 4){
+
+    powerBaseRoundValue =
+      1;
+
+    powerBasePhaseValue =
+      "work";
+
+    powerBaseRemaining =
+      60;
+
+    powerBaseTotalRemaining =
+      1080;
+
+    renderPowerBase();
+
+  }
+
+
+  /*
+    RECUPERAÇÃO
+  */
+
+  else if(powerSlide === 5){
+
+    powerCoolRemaining =
+      300;
+
+    renderPowerCooldown();
+
+  }
+
+}
         ▶ INICIAR AULA
       </button>
 
