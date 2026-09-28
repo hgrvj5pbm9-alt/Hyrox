@@ -2204,6 +2204,131 @@ h1{
   </div>
 </section>
 
+
+<!-- ===================================================
+     SEMANA 1 | QUINTA | FOUNDATIONAL #1B
+=================================================== -->
+<section id="foundationBPage" class="foundationPage">
+  <div class="foundationShell">
+    <div class="foundationTop">
+      <div>
+        <div class="eyebrow">SEMANA 1 • QUINTA-FEIRA</div>
+        <div class="foundationTitle">FOUNDATIONAL #1B</div>
+      </div>
+      <div class="foundationBadges">
+        <div class="badge yellow">FOUNDATIONAL</div>
+        <div class="badge">RPE 6</div>
+        <div class="badge">50 MIN</div>
+        <div class="badge">1–32 ATLETAS</div>
+      </div>
+    </div>
+
+    <div class="workoutSlides">
+      <section class="fbSlide active">
+        <div class="slideHeader">
+          <div><div class="sectionLabel">ORIENTAÇÕES DO COACH</div><div class="slideTitle">FOUNDATIONAL #1B</div></div>
+        </div>
+        <div class="orientationGrid">
+          <div class="infoCard"><h3>OBJETIVO</h3><div class="infoBig">FOUNDATIONAL<br>ENGINE</div><div class="infoText">Trabalho moderado em RPE 6, preservando técnica nas trocas A/B e qualidade sob fadiga.</div></div>
+          <div class="infoCard"><h3>PACING</h3><div class="infoBig">RPE 6</div><div class="infoText">Ritmo sustentável. Nos ergômetros e Run, controlar a saída para não quebrar a mecânica.</div></div>
+          <div class="infoCard"><h3>CAPACIDADE</h3><div class="infoBig">1–32<br>ATLETAS</div><div class="infoText">Studio 5: máximo 4 atletas por grupo/equipamento. Transições sempre pelas laterais.</div></div>
+          <div class="infoCard"><h3>AQUECIMENTO</h3><div class="infoBig">05:00</div><div class="infoText">5 rounds • 00:45 trabalho / 00:15 transição.</div></div>
+          <div class="infoCard"><h3>TREINO PRINCIPAL</h3><div class="infoBig">40 MIN</div><div class="infoText">30 rounds • 01:00 trabalho / 00:20 transição • 5 zonas A/B.</div></div>
+          <div class="infoCard"><h3>SEGURANÇA</h3><div class="infoBig">FLUXO<br>LATERAL</div><div class="infoText">Nunca cruzar a faixa central durante Underhand Sled Push e evitar passagem sob Wall Ball targets.</div></div>
+        </div>
+      </section>
+
+      <section class="fbSlide">
+        <div class="slideHeader">
+          <div><div class="sectionLabel">TURMA / RODÍZIO</div><div class="slideTitle">DISTRIBUIÇÃO DOS ATLETAS</div></div>
+          <div class="athleteSelectRow"><strong>ATLETAS:</strong><select id="foundationBAthleteSelector" class="athleteSelect" onchange="buildFoundationBRotation()"></select></div>
+        </div>
+        <div id="foundationBRotationSummary" class="subtitle" style="margin:0 0 12px;"></div>
+        <div id="foundationBRotationGrid" class="rotationGrid"></div>
+      </section>
+
+      <section class="fbSlide">
+        <div class="executionPanel">
+          <div class="slideHeader">
+            <div><div class="sectionLabel">AQUECIMENTO</div><div class="slideTitle">00:45 WORK / 00:15 TRANSIÇÃO • 5 ROUNDS</div></div>
+            <div style="text-align:right"><div class="muted">ROUND</div><div style="font-size:28px;font-weight:1000"><span id="foundationBWarmRound">1</span>/5</div></div>
+          </div>
+          <div class="exerciseArea">
+            <div class="exerciseGrid6" style="grid-template-columns:repeat(5,1fr);grid-template-rows:1fr;">
+              <div class="exerciseCard"><div class="exerciseIndex">01</div><div class="exerciseName">Cat-Cow</div><div class="exerciseDose">00:45</div></div>
+              <div class="exerciseCard"><div class="exerciseIndex">02</div><div class="exerciseName">SkiErg @ RPE 5</div><div class="exerciseDose">00:45</div></div>
+              <div class="exerciseCard"><div class="exerciseIndex">03</div><div class="exerciseName">Inchworm Pushup</div><div class="exerciseDose">00:45</div></div>
+              <div class="exerciseCard"><div class="exerciseIndex">04</div><div class="exerciseName">Hamstring Walkouts</div><div class="exerciseDose">00:45</div></div>
+              <div class="exerciseCard"><div class="exerciseIndex">05</div><div class="exerciseName">DB Lunge and Twist</div><div class="exerciseDose">00:45</div></div>
+            </div>
+          </div>
+          <div class="timerArea"><div class="timerBox">
+            <div class="timerTop">
+              <div><div id="foundationBWarmPhase" class="phaseTag">● TRABALHO</div><div id="foundationBWarmContext" class="contextLabel">ROUND 1/5 • CAT-COW</div></div>
+              <div style="text-align:right"><div class="muted">BLOCO RESTANTE</div><div id="foundationBWarmTotal" style="font-size:18px;font-weight:1000">05:00</div></div>
+            </div>
+            <div id="foundationBWarmTimer" class="timer">00:45</div>
+            <div class="progress"><div id="foundationBWarmProgress" class="progressFill"></div></div>
+          </div></div>
+        </div>
+      </section>
+
+      <section class="fbSlide">
+        <div class="executionPanel">
+          <div class="slideHeader">
+            <div><div class="sectionLabel">TREINO PRINCIPAL</div><div class="slideTitle">5 ZONAS A/B • 01:00 WORK / 00:20 TRANSIÇÃO</div></div>
+            <div style="text-align:right"><div class="muted">ROUND</div><div style="font-size:28px;font-weight:1000"><span id="foundationBMainRound">1</span>/30</div></div>
+          </div>
+          <div class="exerciseArea">
+            <div style="width:100%;display:grid;grid-template-columns:repeat(5,1fr);gap:8px">
+              <div class="exerciseCard"><div class="exerciseIndex">Z1</div><div class="exerciseName">A • DB Squat Cleans<br>B • Run @ RPE 9</div><div class="exerciseDose">ALTERNAR A/B A CADA PASSAGEM</div></div>
+              <div class="exerciseCard"><div class="exerciseIndex">Z2</div><div class="exerciseName">A • DB Z Press<br>B • RowErg @ RPE 9</div><div class="exerciseDose">ALTERNAR A/B A CADA PASSAGEM</div></div>
+              <div class="exerciseCard"><div class="exerciseIndex">Z3</div><div class="exerciseName">A • KB Goblet Kneel To Stand<br>B • SkiErg @ RPE 9</div><div class="exerciseDose">ALTERNAR A/B A CADA PASSAGEM</div></div>
+              <div class="exerciseCard"><div class="exerciseIndex">Z4</div><div class="exerciseName">A • Mountain Climbers<br>B • Underhand Sled Push</div><div class="exerciseDose">ALTERNAR A/B A CADA PASSAGEM</div></div>
+              <div class="exerciseCard"><div class="exerciseIndex">Z5</div><div class="exerciseName">A • Blast Off Push-ups<br>B • Sandbag Front Rack Lunge</div><div class="exerciseDose">ALTERNAR A/B A CADA PASSAGEM</div></div>
+            </div>
+          </div>
+          <div class="timerArea"><div class="timerBox">
+            <div class="timerTop">
+              <div><div id="foundationBMainPhase" class="phaseTag">● TRABALHO</div><div id="foundationBMainContext" class="contextLabel">ROUND 1/30 • PASSAGEM 1/6 • LADO A</div></div>
+              <div style="text-align:right"><div class="muted">BLOCO RESTANTE</div><div id="foundationBMainTotal" style="font-size:18px;font-weight:1000">40:00</div></div>
+            </div>
+            <div id="foundationBMainTimer" class="timer">01:00</div>
+            <div class="progress"><div id="foundationBMainProgress" class="progressFill"></div></div>
+          </div></div>
+        </div>
+      </section>
+
+      <section class="fbSlide">
+        <div class="executionPanel">
+          <div class="slideHeader"><div><div class="sectionLabel">VOLTA À CALMA / RECUPERAÇÃO</div><div class="slideTitle">COACH'S CHOICE • 05:00</div></div></div>
+          <div class="coolGrid">
+            <div class="coolCard">COACH'S CHOICE</div>
+            <div class="coolCard">RECUPERAÇÃO<br>GUIADA</div>
+            <div class="coolCard">RESPIRAÇÃO<br>CONTROLADA</div>
+            <div class="coolCard">MOBILIDADE<br>LEVE</div>
+          </div>
+          <div class="timerArea"><div class="timerBox">
+            <div class="timerTop"><div><div class="phaseTag recovery">● RECUPERAÇÃO</div><div class="contextLabel">TEMPO RESTANTE</div></div></div>
+            <div id="foundationBCoolTimer" class="timer recovery">05:00</div>
+            <div class="progress"><div id="foundationBCoolProgress" class="progressFill recovery"></div></div>
+          </div></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="workoutControls">
+      <button class="controlBtn" onclick="previousFoundationBSlide()">◀</button>
+      <span id="foundationBCounter" class="pageCounter">1 / 5</span>
+      <button class="controlBtn" onclick="nextFoundationBSlide()">▶</button>
+      <button id="foundationBModeButton" class="controlBtn modeActive" onclick="toggleFoundationBMode()">AUTO</button>
+      <button id="foundationBStartButton" class="controlBtn primary" onclick="startFoundationBPhase()">▶ INICIAR AULA</button>
+      <button class="controlBtn danger" onclick="resetFoundationBPhase()">RESET</button>
+      <button class="controlBtn" onclick="exitFoundationB()">← SEMANA 1</button>
+    </div>
+  </div>
+</section>
+
 </main>
 
 
@@ -2463,6 +2588,7 @@ function hideAllPages(){
   document.getElementById("foundationPage").style.display="none";
   document.getElementById("powerPage").style.display="none";
   document.getElementById("powerBPage").style.display="none";
+  document.getElementById("foundationBPage").style.display="none";
 
 }
 
@@ -2587,6 +2713,11 @@ function openWorkout(index){
 
   if(currentWeek===1 && index===2){
     openPowerB();
+    return;
+  }
+
+  if(currentWeek===1 && index===3){
+    openFoundationB();
     return;
   }
 
@@ -4676,6 +4807,344 @@ function startPowerBCooldown(){stopAllTimers();ensureAudio();powerBCoolRemaining
 function renderPowerBCooldown(){let x=document.getElementById("powerBCoolTimer"),p=document.getElementById("powerBCoolProgress");if(x)x.textContent=formatTime(powerBCoolRemaining);if(p)p.style.width=(powerBCoolRemaining/240*100)+"%";}
 function resetPowerBPhase(){stopAllTimers();if(powerBSlide===2){powerBWarmRemaining=240;renderPowerBWarm();}else if(powerBSlide===3){powerBStrengthZone=1;powerBStrengthPhaseValue="work";powerBStrengthRemaining=600;powerBStrengthTotalRemaining=1440;renderPowerBStrength();}else if(powerBSlide===4){powerBEngineRoundValue=1;powerBEnginePhaseValue="work";powerBEngineRemaining=60;powerBEngineTotalRemaining=1280;renderPowerBEngine();}else if(powerBSlide===5){powerBCoolRemaining=240;renderPowerBCooldown();}}
 
+
+/* =====================================================
+   FOUNDATIONAL #1B • QUINTA-FEIRA
+===================================================== */
+let foundationBSlide=0;
+let foundationBAutoMode=true;
+
+let foundationBWarmRoundValue=1;
+let foundationBWarmPhaseValue="work";
+let foundationBWarmRemaining=45;
+let foundationBWarmTotalRemaining=300;
+
+let foundationBMainRoundValue=1;
+let foundationBMainPhaseValue="work";
+let foundationBMainRemaining=60;
+let foundationBMainTotalRemaining=2400;
+
+let foundationBCoolRemaining=300;
+
+const foundationBWarmNames=[
+  "CAT-COW",
+  "SKIERG @ RPE 5",
+  "INCHWORM PUSHUP",
+  "HAMSTRING WALKOUTS",
+  "DB LUNGE AND TWIST"
+];
+
+function openFoundationB(){
+  hideAllPages();
+  foundationBSlide=0;
+  document.getElementById("foundationBPage").style.display="block";
+  buildFoundationBAthleteSelector();
+  buildFoundationBRotation();
+  showFoundationBSlide();
+}
+
+function exitFoundationB(){
+  stopAllTimers();
+  currentWeek=1;
+  openWeek(1);
+}
+
+function showFoundationBSlide(){
+  stopAllTimers();
+  const slides=document.querySelectorAll("#foundationBPage .fbSlide");
+  slides.forEach((slide,i)=>slide.classList.toggle("active",i===foundationBSlide));
+  const counter=document.getElementById("foundationBCounter");
+  if(counter) counter.textContent=(foundationBSlide+1)+" / "+slides.length;
+  updateFoundationBStartButton();
+}
+
+function nextFoundationBSlide(){
+  const slides=document.querySelectorAll("#foundationBPage .fbSlide");
+  if(foundationBSlide<slides.length-1){
+    foundationBSlide++;
+    showFoundationBSlide();
+  }
+}
+
+function previousFoundationBSlide(){
+  if(foundationBSlide>0){
+    foundationBSlide--;
+    showFoundationBSlide();
+  }
+}
+
+function toggleFoundationBMode(){
+  foundationBAutoMode=!foundationBAutoMode;
+  const b=document.getElementById("foundationBModeButton");
+  if(b){
+    b.textContent=foundationBAutoMode?"AUTO":"MANUAL";
+    b.classList.toggle("modeActive",foundationBAutoMode);
+  }
+}
+
+function updateFoundationBStartButton(){
+  const b=document.getElementById("foundationBStartButton");
+  if(!b) return;
+  b.textContent=[
+    "▶ INICIAR AULA",
+    "▶ IR PARA AQUECIMENTO",
+    "▶ INICIAR AQUECIMENTO",
+    "▶ INICIAR TREINO PRINCIPAL",
+    "▶ INICIAR RECUPERAÇÃO"
+  ][foundationBSlide];
+}
+
+function buildFoundationBAthleteSelector(){
+  const s=document.getElementById("foundationBAthleteSelector");
+  if(!s || s.options.length===32) return;
+  for(let i=1;i<=32;i++){
+    const o=document.createElement("option");
+    o.value=i;
+    o.textContent=i;
+    if(i===30) o.selected=true;
+    s.appendChild(o);
+  }
+}
+
+function buildFoundationBRotation(){
+  const s=document.getElementById("foundationBAthleteSelector");
+  const g=document.getElementById("foundationBRotationGrid");
+  const m=document.getElementById("foundationBRotationSummary");
+  if(!s||!g||!m) return;
+
+  const athletes=+s.value||30;
+  const teams=Math.ceil(athletes/4);
+  const base=Math.floor(athletes/teams);
+  const remainder=athletes%teams;
+  const letters="ABCDEFGH";
+  const starts=[
+    "Z1 • DB Squat Cleans / Run",
+    "Z2 • DB Z Press / RowErg",
+    "Z3 • KB Goblet Kneel To Stand / SkiErg",
+    "Z4 • Mountain Climbers / Underhand Sled Push",
+    "Z5 • Blast Off Push-ups / Sandbag Front Rack Lunge",
+    "Z1 • DB Squat Cleans / Run",
+    "Z2 • DB Z Press / RowErg",
+    "Z3 • KB Goblet Kneel To Stand / SkiErg"
+  ];
+
+  g.innerHTML="";
+  for(let i=0;i<teams;i++){
+    const count=base+(i<remainder?1:0);
+    const d=document.createElement("div");
+    d.className="rotationCard";
+    d.innerHTML=`<div class="rotationTeam">EQUIPE ${letters[i]}</div>
+      <div class="rotationCount">${count} ${count===1?"ATLETA":"ATLETAS"}</div>
+      <div class="rotationStation">INÍCIO → <strong style="color:white">${starts[i]}</strong></div>`;
+    g.appendChild(d);
+  }
+
+  m.innerHTML=`<strong style="color:#31df75">✓ ${athletes} ATLETAS</strong> • ${teams} EQUIPES • MÁXIMO 4 POR GRUPO • FLUXO LATERAL • ERGS/SLED: MÁX. 4 SIMULTÂNEOS`;
+}
+
+function startFoundationBPhase(){
+  if(foundationBSlide<2){
+    foundationBSlide++;
+    showFoundationBSlide();
+    return;
+  }
+  if(foundationBSlide===2) startFoundationBWarmup();
+  else if(foundationBSlide===3) startFoundationBMain();
+  else startFoundationBCooldown();
+}
+
+function startFoundationBWarmup(){
+  stopAllTimers();
+  preStart(()=>{
+    foundationBWarmRoundValue=1;
+    foundationBWarmPhaseValue="work";
+    foundationBWarmRemaining=45;
+    foundationBWarmTotalRemaining=300;
+    renderFoundationBWarm();
+    timerHandle=setInterval(tickFoundationBWarm,1000);
+  });
+}
+
+function tickFoundationBWarm(){
+  foundationBWarmRemaining--;
+  foundationBWarmTotalRemaining--;
+
+  if(foundationBWarmRemaining<=3 && foundationBWarmRemaining>0) beep();
+
+  if(foundationBWarmRemaining<=0){
+    if(foundationBWarmPhaseValue==="work"){
+      endBeep();
+      foundationBWarmPhaseValue="transition";
+      foundationBWarmRemaining=15;
+    }else if(foundationBWarmRoundValue>=5){
+      foundationBWarmRemaining=0;
+      foundationBWarmTotalRemaining=0;
+      renderFoundationBWarm();
+      stopAllTimers();
+      endBeep();
+      if(foundationBAutoMode){
+        foundationBSlide=3;
+        showFoundationBSlide();
+      }
+      return;
+    }else{
+      foundationBWarmRoundValue++;
+      foundationBWarmPhaseValue="work";
+      foundationBWarmRemaining=45;
+      goBeep();
+    }
+  }
+  renderFoundationBWarm();
+}
+
+function renderFoundationBWarm(){
+  const r=document.getElementById("foundationBWarmRound");
+  const x=document.getElementById("foundationBWarmTimer");
+  const tot=document.getElementById("foundationBWarmTotal");
+  const c=document.getElementById("foundationBWarmContext");
+  const ph=document.getElementById("foundationBWarmPhase");
+  const p=document.getElementById("foundationBWarmProgress");
+  const rest=foundationBWarmPhaseValue!=="work";
+
+  if(r) r.textContent=foundationBWarmRoundValue;
+  if(x){
+    x.textContent=formatTime(foundationBWarmRemaining);
+    x.classList.toggle("rest",rest);
+  }
+  if(tot) tot.textContent=formatTime(foundationBWarmTotalRemaining);
+  if(c) c.textContent=`ROUND ${foundationBWarmRoundValue}/5 • ${foundationBWarmNames[foundationBWarmRoundValue-1]}`;
+  if(ph){
+    ph.textContent=rest?"● TRANSIÇÃO":"● TRABALHO";
+    ph.classList.toggle("rest",rest);
+  }
+  if(p){
+    p.classList.toggle("rest",rest);
+    p.style.width=(foundationBWarmRemaining/(rest?15:45)*100)+"%";
+  }
+}
+
+function startFoundationBMain(){
+  stopAllTimers();
+  preStart(()=>{
+    foundationBMainRoundValue=1;
+    foundationBMainPhaseValue="work";
+    foundationBMainRemaining=60;
+    foundationBMainTotalRemaining=2400;
+    renderFoundationBMain();
+    timerHandle=setInterval(tickFoundationBMain,1000);
+  });
+}
+
+function tickFoundationBMain(){
+  foundationBMainRemaining--;
+  foundationBMainTotalRemaining--;
+
+  if(foundationBMainRemaining<=3 && foundationBMainRemaining>0) beep();
+
+  if(foundationBMainRemaining<=0){
+    if(foundationBMainPhaseValue==="work"){
+      endBeep();
+      foundationBMainPhaseValue="transition";
+      foundationBMainRemaining=20;
+    }else if(foundationBMainRoundValue>=30){
+      foundationBMainRemaining=0;
+      foundationBMainTotalRemaining=0;
+      renderFoundationBMain();
+      stopAllTimers();
+      endBeep();
+      if(foundationBAutoMode){
+        foundationBSlide=4;
+        showFoundationBSlide();
+      }
+      return;
+    }else{
+      foundationBMainRoundValue++;
+      foundationBMainPhaseValue="work";
+      foundationBMainRemaining=60;
+      goBeep();
+    }
+  }
+  renderFoundationBMain();
+}
+
+function renderFoundationBMain(){
+  const r=document.getElementById("foundationBMainRound");
+  const x=document.getElementById("foundationBMainTimer");
+  const tot=document.getElementById("foundationBMainTotal");
+  const c=document.getElementById("foundationBMainContext");
+  const ph=document.getElementById("foundationBMainPhase");
+  const p=document.getElementById("foundationBMainProgress");
+  const rest=foundationBMainPhaseValue!=="work";
+  const passage=Math.ceil(foundationBMainRoundValue/5);
+  const side=((passage-1)%2===0)?"A":"B";
+
+  if(r) r.textContent=foundationBMainRoundValue;
+  if(x){
+    x.textContent=formatTime(foundationBMainRemaining);
+    x.classList.toggle("rest",rest);
+  }
+  if(tot) tot.textContent=formatTime(foundationBMainTotalRemaining);
+  if(c) c.textContent=`ROUND ${foundationBMainRoundValue}/30 • PASSAGEM ${passage}/6 • LADO ${side}`;
+  if(ph){
+    ph.textContent=rest?"● TRANSIÇÃO":"● TRABALHO";
+    ph.classList.toggle("rest",rest);
+  }
+  if(p){
+    p.classList.toggle("rest",rest);
+    p.style.width=(foundationBMainRemaining/(rest?20:60)*100)+"%";
+  }
+}
+
+function startFoundationBCooldown(){
+  stopAllTimers();
+  ensureAudio();
+  foundationBCoolRemaining=300;
+  renderFoundationBCooldown();
+  goBeep();
+
+  timerHandle=setInterval(()=>{
+    foundationBCoolRemaining--;
+    if(foundationBCoolRemaining<=3 && foundationBCoolRemaining>0) beep();
+    if(foundationBCoolRemaining<=0){
+      foundationBCoolRemaining=0;
+      renderFoundationBCooldown();
+      stopAllTimers();
+      endBeep();
+      return;
+    }
+    renderFoundationBCooldown();
+  },1000);
+}
+
+function renderFoundationBCooldown(){
+  const x=document.getElementById("foundationBCoolTimer");
+  const p=document.getElementById("foundationBCoolProgress");
+  if(x) x.textContent=formatTime(foundationBCoolRemaining);
+  if(p) p.style.width=(foundationBCoolRemaining/300*100)+"%";
+}
+
+function resetFoundationBPhase(){
+  stopAllTimers();
+
+  if(foundationBSlide===2){
+    foundationBWarmRoundValue=1;
+    foundationBWarmPhaseValue="work";
+    foundationBWarmRemaining=45;
+    foundationBWarmTotalRemaining=300;
+    renderFoundationBWarm();
+  }else if(foundationBSlide===3){
+    foundationBMainRoundValue=1;
+    foundationBMainPhaseValue="work";
+    foundationBMainRemaining=60;
+    foundationBMainTotalRemaining=2400;
+    renderFoundationBMain();
+  }else if(foundationBSlide===4){
+    foundationBCoolRemaining=300;
+    renderFoundationBCooldown();
+  }
+}
+
+
 /* =====================================================
    FULLSCREEN
 ===================================================== */
@@ -4760,6 +5229,9 @@ renderPowerBWarm();
 renderPowerBStrength();
 renderPowerBEngine();
 renderPowerBCooldown();
+renderFoundationBWarm();
+renderFoundationBMain();
+renderFoundationBCooldown();
 
 goHome();
 
