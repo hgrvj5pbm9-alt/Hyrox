@@ -425,6 +425,24 @@ h1{
 .wSlide{display:none;height:100%;}
 .wSlide.active{display:flex;flex-direction:column;}
 
+/* CORREÇÃO GLOBAL DOS SLIDES — QUINTA, SEXTA, SÁBADO E PERSONALIZADOS */
+.fbSlide,
+.ebSlide,
+.c1Slide,
+.cu1Slide{
+  display:none;
+  height:100%;
+  min-height:0;
+}
+
+.fbSlide.active,
+.ebSlide.active,
+.c1Slide.active,
+.cu1Slide.active{
+  display:flex;
+  flex-direction:column;
+}
+
 .fSlide.active{
   display:flex;
   flex-direction:column;
