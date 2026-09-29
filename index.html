@@ -1012,6 +1012,22 @@ h1{
   max-height:50px;
 }
 
+
+.controlBtn.pauseBtn{
+  color:#FFD700;
+  border-color:#665700;
+}
+.controlBtn.pauseBtn.paused{
+  background:#FFD700;
+  color:#111;
+  border-color:#FFD700;
+}
+#custom1Page .exerciseCard.workActive{
+  border:2px solid var(--yellow);
+  background:#211e0d;
+  box-shadow:0 0 0 1px rgba(255,215,0,.18), 0 0 18px rgba(255,215,0,.08);
+}
+
 </style>
 </head>
 
@@ -1658,7 +1674,7 @@ h1{
         ▶ INICIAR AULA
       </button>
 
-      <button class="controlBtn danger" onclick="resetCurrentPhase()">
+      <button class="controlBtn pauseBtn" onclick="toggleWorkoutPause()">⏸ PAUSAR</button><button class="controlBtn danger" onclick="resetCurrentPhase()">
         RESET
       </button>
 
@@ -2211,7 +2227,7 @@ h1{
         ▶ INICIAR AULA
       </button>
 
-      <button class="controlBtn danger"
+      <button class="controlBtn pauseBtn" onclick="toggleWorkoutPause()">⏸ PAUSAR</button><button class="controlBtn danger"
               onclick="resetPowerPhase()">
         RESET
       </button>
@@ -2288,7 +2304,7 @@ h1{
         <div class="timerArea"><div class="timerBox"><div class="timerTop"><div><div class="phaseTag recovery">● RECUPERAÇÃO</div><div class="contextLabel">TEMPO RESTANTE</div></div></div><div id="powerBCoolTimer" class="timer recovery">04:00</div><div class="progress"><div id="powerBCoolProgress" class="progressFill recovery"></div></div></div></div>
       </div></section>
     </div>
-    <div class="workoutControls"><button class="controlBtn" onclick="previousPowerBSlide()">◀</button><span id="powerBCounter" class="pageCounter">1 / 6</span><button class="controlBtn" onclick="nextPowerBSlide()">▶</button><button id="powerBModeButton" class="controlBtn" onclick="togglePowerBMode()">AUTO</button><button id="powerBStartButton" class="controlBtn primary" onclick="startPowerBPhase()">▶ INICIAR AULA</button><button class="controlBtn danger" onclick="resetPowerBPhase()">RESET</button><button class="controlBtn" onclick="exitPowerB()">← SEMANA 1</button></div>
+    <div class="workoutControls"><button class="controlBtn" onclick="previousPowerBSlide()">◀</button><span id="powerBCounter" class="pageCounter">1 / 6</span><button class="controlBtn" onclick="nextPowerBSlide()">▶</button><button id="powerBModeButton" class="controlBtn" onclick="togglePowerBMode()">AUTO</button><button id="powerBStartButton" class="controlBtn primary" onclick="startPowerBPhase()">▶ INICIAR AULA</button><button class="controlBtn pauseBtn" onclick="toggleWorkoutPause()">⏸ PAUSAR</button><button class="controlBtn danger" onclick="resetPowerBPhase()">RESET</button><button class="controlBtn" onclick="exitPowerB()">← SEMANA 1</button></div>
   </div>
 </section>
 
@@ -2411,7 +2427,7 @@ h1{
       <button class="controlBtn" onclick="nextFoundationBSlide()">▶</button>
       <button id="foundationBModeButton" class="controlBtn modeActive" onclick="toggleFoundationBMode()">AUTO</button>
       <button id="foundationBStartButton" class="controlBtn primary" onclick="startFoundationBPhase()">▶ INICIAR AULA</button>
-      <button class="controlBtn danger" onclick="resetFoundationBPhase()">RESET</button>
+      <button class="controlBtn pauseBtn" onclick="toggleWorkoutPause()">⏸ PAUSAR</button><button class="controlBtn danger" onclick="resetFoundationBPhase()">RESET</button>
       <button class="controlBtn" onclick="exitFoundationB()">← SEMANA 1</button>
     </div>
   </div>
@@ -2524,7 +2540,7 @@ h1{
       <button class="controlBtn" onclick="previousEngineBSlide()">◀</button><span id="engineBCounter" class="pageCounter">1 / 5</span><button class="controlBtn" onclick="nextEngineBSlide()">▶</button>
       <button id="engineBModeButton" class="controlBtn modeActive" onclick="toggleEngineBMode()">AUTO</button>
       <button id="engineBStartButton" class="controlBtn primary" onclick="startEngineBPhase()">▶ INICIAR AULA</button>
-      <button class="controlBtn danger" onclick="resetEngineBPhase()">RESET</button><button class="controlBtn" onclick="exitEngineB()">← SEMANA 1</button>
+      <button class="controlBtn pauseBtn" onclick="toggleWorkoutPause()">⏸ PAUSAR</button><button class="controlBtn danger" onclick="resetEngineBPhase()">RESET</button><button class="controlBtn" onclick="exitEngineB()">← SEMANA 1</button>
     </div>
   </div>
 </section>
@@ -2586,7 +2602,7 @@ h1{
 <div class="timerArea"><div class="timerBox"><div class="timerTop"><div><div class="phaseTag recovery">● RECUPERAÇÃO</div><div class="contextLabel">TEMPO RESTANTE</div></div></div><div id="c1cTimer" class="timer recovery">04:00</div><div class="progress"><div id="c1cProgress" class="progressFill recovery"></div></div></div></div>
 </div></section>
 </div>
-<div class="workoutControls"><button class="controlBtn" onclick="c1Prev()">◀</button><span id="c1Counter" class="pageCounter">1 / 6</span><button class="controlBtn" onclick="c1Next()">▶</button><button id="c1Mode" class="controlBtn modeActive" onclick="c1Toggle()">AUTO</button><button id="c1Start" class="controlBtn primary" onclick="c1StartPhase()">▶ INICIAR AULA</button><button class="controlBtn danger" onclick="c1Reset()">RESET</button><button class="controlBtn" onclick="c1Exit()">← SEMANA 1</button></div>
+<div class="workoutControls"><button class="controlBtn" onclick="c1Prev()">◀</button><span id="c1Counter" class="pageCounter">1 / 6</span><button class="controlBtn" onclick="c1Next()">▶</button><button id="c1Mode" class="controlBtn modeActive" onclick="c1Toggle()">AUTO</button><button id="c1Start" class="controlBtn primary" onclick="c1StartPhase()">▶ INICIAR AULA</button><button class="controlBtn pauseBtn" onclick="toggleWorkoutPause()">⏸ PAUSAR</button><button class="controlBtn danger" onclick="c1Reset()">RESET</button><button class="controlBtn" onclick="c1Exit()">← SEMANA 1</button></div>
 </div></section>
 
 
@@ -2607,21 +2623,13 @@ h1{
 <div class="infoCard"><h3>AQUECIMENTO</h3><div class="infoBig">4 MIN</div><div class="infoText">00:45 trabalho / 00:15 descanso • 4 séries.</div></div>
 <div class="infoCard"><h3>TEAM CHALLENGE</h3><div class="infoBig">4 MIN</div><div class="infoText">20m Burpee Broad Jumps; tempo restante em Low Squat Hold.</div></div>
 <div class="infoCard"><h3>FLUXO</h3><div class="infoBig">LATERAL</div><div class="infoText">Transições pelas laterais; preservar a faixa central durante o Sled Push.</div></div>
-<div class="infoCard"><h3>ESCALONAMENTO OBRIGATÓRIO</h3>
-  <div class="levels" style="justify-content:flex-start;font-size:11px;line-height:1.5">
-    <span class="level green">🟢 INICIANTE</span>
-    <span class="level yellowText">🟡 INTERMEDIÁRIO / OPEN</span>
-    <span class="level red">🔴 AVANÇADO / PRO</span>
-  </div>
-  <div class="infoText">As três opções aparecem nas estações do treino, inclusive nos personalizados.</div>
-</div>
 </div></section>
 <section class="cu1Slide"><div class="slideHeader"><div><div class="sectionLabel">TURMA / RODÍZIO</div><div class="slideTitle">DISTRIBUIÇÃO DOS ATLETAS</div></div><div class="athleteSelectRow"><strong>ATLETAS:</strong><select id="cu1Athletes" class="athleteSelect" onchange="cu1Rotation()"></select></div></div><div id="cu1RotationSummary" class="subtitle" style="margin:0 0 12px"></div><div id="cu1RotationGrid" class="rotationGrid"></div></section>
 <section class="cu1Slide"><div class="executionPanel"><div class="slideHeader"><div><div class="sectionLabel">AQUECIMENTO</div><div class="slideTitle">00:45 WORK / 00:15 REST • 4 ROUNDS</div></div><div style="text-align:right"><div class="muted">ROUND</div><div style="font-size:28px;font-weight:1000"><span id="cu1wRound">1</span>/4</div></div></div><div class="exerciseArea"><div style="width:100%;display:grid;grid-template-columns:repeat(4,1fr);gap:8px"><div class="exerciseCard"><div class="exerciseIndex">01</div><div class="exerciseName">Cossack Squats</div></div><div class="exerciseCard"><div class="exerciseIndex">02</div><div class="exerciseName">Walkout Pushup</div></div><div class="exerciseCard"><div class="exerciseIndex">03</div><div class="exerciseName">Low Plank Hip Rotations</div></div><div class="exerciseCard"><div class="exerciseIndex">04</div><div class="exerciseName">Lateral Lunges</div></div></div></div><div class="timerArea"><div class="timerBox"><div class="timerTop"><div><div id="cu1wPhase" class="phaseTag">● TRABALHO</div><div id="cu1wContext" class="contextLabel">ROUND 1/4 • COSSACK SQUATS</div></div></div><div id="cu1wTimer" class="timer">00:45</div><div class="progress"><div id="cu1wProgress" class="progressFill"></div></div></div></div></div></section>
 <section class="cu1Slide"><div class="executionPanel"><div class="slideHeader"><div><div class="sectionLabel">TREINO PRINCIPAL • INTERVALS</div><div class="slideTitle">01:15 WORK / 00:25 REST • 24 ROUNDS</div></div><div style="text-align:right"><div class="muted">ROUND</div><div style="font-size:28px;font-weight:1000"><span id="cu1mRound">1</span>/24</div></div></div><div class="exerciseArea"><div id="cu1MainGrid" style="width:100%;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr);gap:8px;height:100%"></div></div><div class="timerArea"><div class="timerBox"><div class="timerTop"><div><div id="cu1mPhase" class="phaseTag">● TRABALHO</div><div id="cu1mContext" class="contextLabel">ROUND 1/24 • PASSAGEM 1/3</div></div></div><div id="cu1mTimer" class="timer">01:15</div><div class="progress"><div id="cu1mProgress" class="progressFill"></div></div></div></div></div></section>
 <section class="cu1Slide"><div class="executionPanel"><div class="slideHeader"><div><div class="sectionLabel">TEAM CHALLENGE</div><div class="slideTitle">04:00 • 20m BURPEE BROAD JUMPS + FRT LOW SQUAT HOLD</div></div></div><div class="exerciseArea"><div style="width:100%;display:grid;grid-template-columns:1fr 1fr;gap:12px;height:100%"><div class="exerciseCard"><div class="exerciseIndex">01</div><div class="exerciseName">Burpee Broad Jumps</div><div class="exerciseDose">20m</div><div class="levels"><span class="level green">🟢 INICIANTE • STEP BACK + PASSO AMPLO</span><span class="level yellowText">🟡 INTERMEDIÁRIO • BURPEE BROAD JUMP</span><span class="level red">🔴 AVANÇADO • BURPEE BROAD JUMP CONTÍNUO</span></div></div><div class="exerciseCard"><div class="exerciseIndex">FRT</div><div class="exerciseName">Low Squat Hold</div><div class="exerciseDose">PARA O TEMPO RESTANTE</div><div class="levels"><span class="level green">🟢 INICIANTE • HOLD ALTO</span><span class="level yellowText">🟡 INTERMEDIÁRIO • LOW SQUAT HOLD</span><span class="level red">🔴 AVANÇADO • LOW SQUAT HOLD CONTÍNUO</span></div></div></div></div><div class="timerArea"><div class="timerBox"><div class="timerTop"><div><div id="cu1tPhase" class="phaseTag">● TRABALHO</div><div class="contextLabel">TEAM CHALLENGE • TEMPO RESTANTE</div></div></div><div id="cu1tTimer" class="timer">04:00</div><div class="progress"><div id="cu1tProgress" class="progressFill"></div></div></div></div></div></section>
 <section class="cu1Slide"><div class="executionPanel"><div class="slideHeader"><div><div class="sectionLabel">VOLTA À CALMA / RECUPERAÇÃO</div><div class="slideTitle">COOLDOWN • 04:00</div></div></div><div class="coolGrid"><div class="coolCard">COACH'S CHOICE</div><div class="coolCard">RECUPERAÇÃO<br>GUIADA</div><div class="coolCard">RESPIRAÇÃO<br>CONTROLADA</div><div class="coolCard">MOBILIDADE<br>LEVE</div></div><div class="timerArea"><div class="timerBox"><div class="timerTop"><div><div class="phaseTag recovery">● RECUPERAÇÃO</div><div class="contextLabel">TEMPO RESTANTE</div></div></div><div id="cu1cTimer" class="timer recovery">04:00</div><div class="progress"><div id="cu1cProgress" class="progressFill recovery"></div></div></div></div></div></section>
-</div><div class="workoutControls"><button class="controlBtn" onclick="cu1Prev()">◀</button><span id="cu1Counter" class="pageCounter">1 / 6</span><button class="controlBtn" onclick="cu1Next()">▶</button><button id="cu1Mode" class="controlBtn modeActive" onclick="cu1Toggle()">AUTO</button><button id="cu1Start" class="controlBtn primary" onclick="cu1StartPhase()">▶ INICIAR AULA</button><button class="controlBtn danger" onclick="cu1Reset()">RESET</button><button class="controlBtn" onclick="cu1Exit()">← PERSONALIZADOS</button></div></div></section>
+</div><div class="workoutControls"><button class="controlBtn" onclick="cu1Prev()">◀</button><span id="cu1Counter" class="pageCounter">1 / 6</span><button class="controlBtn" onclick="cu1Next()">▶</button><button id="cu1Mode" class="controlBtn modeActive" onclick="cu1Toggle()">AUTO</button><button id="cu1Start" class="controlBtn primary" onclick="cu1StartPhase()">▶ INICIAR AULA</button><button class="controlBtn pauseBtn" onclick="toggleWorkoutPause()">⏸ PAUSAR</button><button class="controlBtn danger" onclick="cu1Reset()">RESET</button><button class="controlBtn" onclick="cu1Exit()">← PERSONALIZADOS</button></div></div></section>
 </main>
 </div>
 
@@ -3556,7 +3564,7 @@ function startWarmup(){
 
     renderWarmupTimer();
 
-    timerHandle=setInterval(tickWarmup,1000);
+    timerHandle=startManagedTimer(tickWarmup,1000);
 
   });
 
@@ -3700,7 +3708,7 @@ function startMain(){
 
     renderMainTimer();
 
-    timerHandle=setInterval(tickMain,1000);
+    timerHandle=startManagedTimer(tickMain,1000);
 
   });
 
@@ -3838,7 +3846,7 @@ function startCooldown(){
 
   goBeep();
 
-  timerHandle=setInterval(()=>{
+  timerHandle=startManagedTimer(()=>{
 
     coolRemaining--;
 
@@ -3921,11 +3929,57 @@ function resetCurrentPhase(){
 }
 
 
+
+/* =====================================================
+   PAUSAR / CONTINUAR — TIMER GLOBAL DOS WORKOUTS
+===================================================== */
+let managedTimerCallback=null;
+let managedTimerDelay=1000;
+let workoutPaused=false;
+
+function startManagedTimer(callback,delay){
+  managedTimerCallback=callback;
+  managedTimerDelay=delay || 1000;
+  workoutPaused=false;
+  updatePauseButtons();
+  return setInterval(callback,managedTimerDelay);
+}
+
+function updatePauseButtons(){
+  document.querySelectorAll(".pauseBtn").forEach(btn=>{
+    btn.textContent=workoutPaused ? "▶ CONTINUAR" : "⏸ PAUSAR";
+    btn.classList.toggle("paused",workoutPaused);
+  });
+}
+
+function toggleWorkoutPause(){
+  if(workoutPaused){
+    if(managedTimerCallback && !timerHandle){
+      timerHandle=setInterval(managedTimerCallback,managedTimerDelay);
+      workoutPaused=false;
+      updatePauseButtons();
+    }
+    return;
+  }
+
+  if(timerHandle && managedTimerCallback){
+    clearInterval(timerHandle);
+    timerHandle=null;
+    workoutPaused=true;
+    updatePauseButtons();
+  }
+}
+
+
 /* =====================================================
    STOP
 ===================================================== */
 
 function stopAllTimers(){
+
+  managedTimerCallback=null;
+  workoutPaused=false;
+  updatePauseButtons();
 
   if(timerHandle){
 
@@ -5090,15 +5144,15 @@ function updatePowerBStartButton(){document.getElementById("powerBStartButton").
 function buildPowerBAthleteSelector(){const s=document.getElementById("powerBAthleteSelector");if(!s||s.options.length===32)return;for(let i=1;i<=32;i++){const o=document.createElement("option");o.value=i;o.textContent=i;if(i===24)o.selected=true;s.appendChild(o);}}
 function buildPowerBRotation(){const s=document.getElementById("powerBAthleteSelector"),g=document.getElementById("powerBRotationGrid"),m=document.getElementById("powerBRotationSummary");if(!s||!g||!m)return;const a=+s.value||24,n=Math.ceil(a/4),b=Math.floor(a/n),r=a%n,L="ABCDEFGH",z=["BASE • UPPER BODY PULL","BASE • LOWER BODY PUSH","ENGINE • KB GOBLET BOWLER LUNGE","ENGINE • DB REVERSE FLY","ENGINE • CORE","ENGINE • DB HAMMER CURLS","APOIO / PRÓXIMA ZONA","APOIO / PRÓXIMA ZONA"];g.innerHTML="";for(let i=0;i<n;i++){let c=b+(i<r?1:0),d=document.createElement("div");d.className="rotationCard";d.innerHTML=`<div class="rotationTeam">EQUIPE ${L[i]}</div><div class="rotationCount">${c} ${c===1?"ATLETA":"ATLETAS"}</div><div class="rotationStation">INÍCIO → <strong style="color:white">${z[i]}</strong></div>`;g.appendChild(d);}m.innerHTML=`<strong style="color:#31df75">✓ ${a} ATLETAS</strong> • ${n} EQUIPES • MÁXIMO 4 POR GRUPO • RECOMENDADO: ATÉ 24 • FLUXO LATERAL`;}
 function startPowerBPhase(){if(powerBSlide<2){powerBSlide++;showPowerBSlide();return;}if(powerBSlide===2)startPowerBWarmup();else if(powerBSlide===3)startPowerBStrength();else if(powerBSlide===4)startPowerBEngine();else startPowerBCooldown();}
-function startPowerBWarmup(){stopAllTimers();preStart(()=>{powerBWarmRemaining=240;renderPowerBWarm();timerHandle=setInterval(()=>{powerBWarmRemaining--;if(powerBWarmRemaining<=3&&powerBWarmRemaining>0)beep();if(powerBWarmRemaining<=0){powerBWarmRemaining=0;renderPowerBWarm();stopAllTimers();endBeep();if(powerBAutoMode){powerBSlide=3;showPowerBSlide();}return;}renderPowerBWarm();},1000);});}
+function startPowerBWarmup(){stopAllTimers();preStart(()=>{powerBWarmRemaining=240;renderPowerBWarm();timerHandle=startManagedTimer(()=>{powerBWarmRemaining--;if(powerBWarmRemaining<=3&&powerBWarmRemaining>0)beep();if(powerBWarmRemaining<=0){powerBWarmRemaining=0;renderPowerBWarm();stopAllTimers();endBeep();if(powerBAutoMode){powerBSlide=3;showPowerBSlide();}return;}renderPowerBWarm();},1000);});}
 function renderPowerBWarm(){let x=document.getElementById("powerBWarmTimer"),p=document.getElementById("powerBWarmProgress");if(x)x.textContent=formatTime(powerBWarmRemaining);if(p)p.style.width=(powerBWarmRemaining/240*100)+"%";}
-function startPowerBStrength(){stopAllTimers();preStart(()=>{powerBStrengthZone=1;powerBStrengthPhaseValue="work";powerBStrengthRemaining=600;powerBStrengthTotalRemaining=1440;renderPowerBStrength();timerHandle=setInterval(tickPowerBStrength,1000);});}
+function startPowerBStrength(){stopAllTimers();preStart(()=>{powerBStrengthZone=1;powerBStrengthPhaseValue="work";powerBStrengthRemaining=600;powerBStrengthTotalRemaining=1440;renderPowerBStrength();timerHandle=startManagedTimer(tickPowerBStrength,1000);});}
 function tickPowerBStrength(){powerBStrengthRemaining--;powerBStrengthTotalRemaining--;if(powerBStrengthRemaining<=3&&powerBStrengthRemaining>0)beep();if(powerBStrengthRemaining<=0){if(powerBStrengthPhaseValue==="work"){endBeep();powerBStrengthPhaseValue="transition";powerBStrengthRemaining=120;}else if(powerBStrengthZone>=2){powerBStrengthRemaining=powerBStrengthTotalRemaining=0;renderPowerBStrength();stopAllTimers();endBeep();if(powerBAutoMode){powerBSlide=4;showPowerBSlide();}return;}else{powerBStrengthZone++;powerBStrengthPhaseValue="work";powerBStrengthRemaining=600;goBeep();}}renderPowerBStrength();}
 function renderPowerBStrength(){let z=document.getElementById("powerBStrengthZone"),x=document.getElementById("powerBStrengthTimer"),tot=document.getElementById("powerBStrengthTotal"),c=document.getElementById("powerBStrengthContext"),ph=document.getElementById("powerBStrengthPhase"),p=document.getElementById("powerBStrengthProgress"),rest=powerBStrengthPhaseValue!=="work";if(z)z.textContent=powerBStrengthZone;if(x){x.textContent=formatTime(powerBStrengthRemaining);x.classList.toggle("rest",rest);}if(tot)tot.textContent=formatTime(powerBStrengthTotalRemaining);if(c)c.textContent="ZONA "+powerBStrengthZone+"/2";if(ph){ph.textContent=rest?"● TRANSIÇÃO":"● TRABALHO";ph.classList.toggle("rest",rest);}if(p){p.classList.toggle("rest",rest);p.style.width=(powerBStrengthRemaining/(rest?120:600)*100)+"%";}}
-function startPowerBEngine(){stopAllTimers();preStart(()=>{powerBEngineRoundValue=1;powerBEnginePhaseValue="work";powerBEngineRemaining=60;powerBEngineTotalRemaining=1280;renderPowerBEngine();timerHandle=setInterval(tickPowerBEngine,1000);});}
+function startPowerBEngine(){stopAllTimers();preStart(()=>{powerBEngineRoundValue=1;powerBEnginePhaseValue="work";powerBEngineRemaining=60;powerBEngineTotalRemaining=1280;renderPowerBEngine();timerHandle=startManagedTimer(tickPowerBEngine,1000);});}
 function tickPowerBEngine(){powerBEngineRemaining--;powerBEngineTotalRemaining--;if(powerBEngineRemaining<=3&&powerBEngineRemaining>0)beep();if(powerBEngineRemaining<=0){if(powerBEnginePhaseValue==="work"){endBeep();powerBEnginePhaseValue="transition";powerBEngineRemaining=20;}else if(powerBEngineRoundValue>=16){powerBEngineRemaining=powerBEngineTotalRemaining=0;renderPowerBEngine();stopAllTimers();endBeep();if(powerBAutoMode){powerBSlide=5;showPowerBSlide();}return;}else{powerBEngineRoundValue++;powerBEnginePhaseValue="work";powerBEngineRemaining=60;goBeep();}}renderPowerBEngine();}
 function renderPowerBEngine(){let r=document.getElementById("powerBEngineRound"),x=document.getElementById("powerBEngineTimer"),tot=document.getElementById("powerBEngineTotal"),c=document.getElementById("powerBEngineContext"),ph=document.getElementById("powerBEnginePhase"),p=document.getElementById("powerBEngineProgress"),rest=powerBEnginePhaseValue!=="work";if(r)r.textContent=powerBEngineRoundValue;if(x){x.textContent=formatTime(powerBEngineRemaining);x.classList.toggle("rest",rest);}if(tot)tot.textContent=formatTime(powerBEngineTotalRemaining);if(c)c.textContent=`ROUND ${powerBEngineRoundValue}/16 • PASSAGEM ${Math.ceil(powerBEngineRoundValue/4)}/4`;if(ph){ph.textContent=rest?"● TRANSIÇÃO":"● TRABALHO";ph.classList.toggle("rest",rest);}if(p){p.classList.toggle("rest",rest);p.style.width=(powerBEngineRemaining/(rest?20:60)*100)+"%";}}
-function startPowerBCooldown(){stopAllTimers();ensureAudio();powerBCoolRemaining=240;renderPowerBCooldown();goBeep();timerHandle=setInterval(()=>{powerBCoolRemaining--;if(powerBCoolRemaining<=3&&powerBCoolRemaining>0)beep();if(powerBCoolRemaining<=0){powerBCoolRemaining=0;renderPowerBCooldown();stopAllTimers();endBeep();return;}renderPowerBCooldown();},1000);}
+function startPowerBCooldown(){stopAllTimers();ensureAudio();powerBCoolRemaining=240;renderPowerBCooldown();goBeep();timerHandle=startManagedTimer(()=>{powerBCoolRemaining--;if(powerBCoolRemaining<=3&&powerBCoolRemaining>0)beep();if(powerBCoolRemaining<=0){powerBCoolRemaining=0;renderPowerBCooldown();stopAllTimers();endBeep();return;}renderPowerBCooldown();},1000);}
 function renderPowerBCooldown(){let x=document.getElementById("powerBCoolTimer"),p=document.getElementById("powerBCoolProgress");if(x)x.textContent=formatTime(powerBCoolRemaining);if(p)p.style.width=(powerBCoolRemaining/240*100)+"%";}
 function resetPowerBPhase(){stopAllTimers();if(powerBSlide===2){powerBWarmRemaining=240;renderPowerBWarm();}else if(powerBSlide===3){powerBStrengthZone=1;powerBStrengthPhaseValue="work";powerBStrengthRemaining=600;powerBStrengthTotalRemaining=1440;renderPowerBStrength();}else if(powerBSlide===4){powerBEngineRoundValue=1;powerBEnginePhaseValue="work";powerBEngineRemaining=60;powerBEngineTotalRemaining=1280;renderPowerBEngine();}else if(powerBSlide===5){powerBCoolRemaining=240;renderPowerBCooldown();}}
 
@@ -5256,7 +5310,7 @@ function startFoundationBWarmup(){
     foundationBWarmRemaining=45;
     foundationBWarmTotalRemaining=300;
     renderFoundationBWarm();
-    timerHandle=setInterval(tickFoundationBWarm,1000);
+    timerHandle=startManagedTimer(tickFoundationBWarm,1000);
   });
 }
 
@@ -5326,7 +5380,7 @@ function startFoundationBMain(){
     foundationBMainRemaining=60;
     foundationBMainTotalRemaining=2400;
     renderFoundationBMain();
-    timerHandle=setInterval(tickFoundationBMain,1000);
+    timerHandle=startManagedTimer(tickFoundationBMain,1000);
   });
 }
 
@@ -5397,7 +5451,7 @@ function startFoundationBCooldown(){
   renderFoundationBCooldown();
   goBeep();
 
-  timerHandle=setInterval(()=>{
+  timerHandle=startManagedTimer(()=>{
     foundationBCoolRemaining--;
     if(foundationBCoolRemaining<=3 && foundationBCoolRemaining>0) beep();
     if(foundationBCoolRemaining<=0){
@@ -5497,7 +5551,7 @@ function startEngineBPhase(){
 }
 function startEngineBWarmup(){
   stopAllTimers();
-  preStart(()=>{engineBWarmRemaining=300;renderEngineBWarm();timerHandle=setInterval(()=>{
+  preStart(()=>{engineBWarmRemaining=300;renderEngineBWarm();timerHandle=startManagedTimer(()=>{
     engineBWarmRemaining--;if(engineBWarmRemaining<=3&&engineBWarmRemaining>0)beep();
     if(engineBWarmRemaining<=0){engineBWarmRemaining=0;renderEngineBWarm();stopAllTimers();endBeep();if(engineBAutoMode){engineBSlide=3;showEngineBSlide();}return;}
     renderEngineBWarm();
@@ -5509,7 +5563,7 @@ function renderEngineBWarm(){
 }
 function startEngineBMain(){
   stopAllTimers();
-  preStart(()=>{engineBMainRoundValue=1;engineBMainPhaseValue="work";engineBMainRemaining=540;engineBMainTotalRemaining=2400;renderEngineBMain();timerHandle=setInterval(tickEngineBMain,1000);});
+  preStart(()=>{engineBMainRoundValue=1;engineBMainPhaseValue="work";engineBMainRemaining=540;engineBMainTotalRemaining=2400;renderEngineBMain();timerHandle=startManagedTimer(tickEngineBMain,1000);});
 }
 function tickEngineBMain(){
   engineBMainRemaining--;engineBMainTotalRemaining--;
@@ -5530,7 +5584,7 @@ function renderEngineBMain(){
 }
 function startEngineBCooldown(){
   stopAllTimers();ensureAudio();engineBCoolRemaining=300;renderEngineBCooldown();goBeep();
-  timerHandle=setInterval(()=>{engineBCoolRemaining--;if(engineBCoolRemaining<=3&&engineBCoolRemaining>0)beep();if(engineBCoolRemaining<=0){engineBCoolRemaining=0;renderEngineBCooldown();stopAllTimers();endBeep();return;}renderEngineBCooldown();},1000);
+  timerHandle=startManagedTimer(()=>{engineBCoolRemaining--;if(engineBCoolRemaining<=3&&engineBCoolRemaining>0)beep();if(engineBCoolRemaining<=0){engineBCoolRemaining=0;renderEngineBCooldown();stopAllTimers();endBeep();return;}renderEngineBCooldown();},1000);
 }
 function renderEngineBCooldown(){
   const x=document.getElementById("engineBCoolTimer"),p=document.getElementById("engineBCoolProgress");
@@ -5557,13 +5611,13 @@ function c1Button(){document.getElementById("c1Start").textContent=["▶ INICIAR
 function c1Selector(){let s=document.getElementById("c1Athletes");if(s.options.length)return;for(let i=1;i<=32;i++){let o=document.createElement("option");o.value=i;o.textContent=i;if(i===24)o.selected=true;s.appendChild(o)}}
 function c1Rotation(){let n=+document.getElementById("c1Athletes").value||24,t=Math.ceil(n/4),b=Math.floor(n/t),r=n%t,L="ABCDEFGH",S=["Z1 • Run","Z2 • SkiErg","Z3 • Run","Z4 • Sled Push + Pull","ONDA 2 • Run","ONDA 2 • SkiErg","ONDA 2 • Run","ONDA 2 • Sled"],g=document.getElementById("c1RotationGrid");g.innerHTML="";for(let i=0;i<t;i++){let q=b+(i<r?1:0),d=document.createElement("div");d.className="rotationCard";d.innerHTML=`<div class="rotationTeam">EQUIPE ${L[i]}</div><div class="rotationCount">${q} ATLETA${q>1?"S":""}</div><div class="rotationStation">INÍCIO → <strong style="color:white">${S[i]}</strong></div>`;g.appendChild(d)}document.getElementById("c1RotationSummary").innerHTML=`<strong style="color:#31df75">✓ ${n} ATLETAS</strong> • MÁX. 4/GRUPO${n>24?" • <strong style='color:#ffd700'>25–32: ONDA ESCALONADA</strong>":""}`}
 function c1StartPhase(){if(c1Slide<2){c1Slide++;c1Show();return}if(c1Slide===2)c1Warm();else if(c1Slide===3)c1Main();else if(c1Slide===4)c1Fin();else c1Cool()}
-function c1Warm(){stopAllTimers();preStart(()=>{c1wR=1;c1wP="work";c1w=30;c1RenderW();timerHandle=setInterval(()=>{c1w--;if(c1w<=3&&c1w>0)beep();if(c1w<=0){if(c1wP==="work"){endBeep();c1wP="rest";c1w=10}else if(c1wR>=5){stopAllTimers();endBeep();if(c1Auto){c1Slide=3;c1Show()}return}else{c1wR++;c1wP="work";c1w=30;goBeep()}}c1RenderW()},1000)})}
+function c1Warm(){stopAllTimers();preStart(()=>{c1wR=1;c1wP="work";c1w=30;c1RenderW();timerHandle=startManagedTimer(()=>{c1w--;if(c1w<=3&&c1w>0)beep();if(c1w<=0){if(c1wP==="work"){endBeep();c1wP="rest";c1w=10}else if(c1wR>=5){stopAllTimers();endBeep();if(c1Auto){c1Slide=3;c1Show()}return}else{c1wR++;c1wP="work";c1w=30;goBeep()}}c1RenderW()},1000)})}
 function c1RenderW(){let z=c1wP!=="work";document.getElementById("c1wRound").textContent=c1wR;let x=document.getElementById("c1wTimer");x.textContent=formatTime(c1w);x.classList.toggle("rest",z);document.getElementById("c1wContext").textContent=`ROUND ${c1wR}/5 • ${c1WN[c1wR-1]}`;let ph=document.getElementById("c1wPhase");ph.textContent=z?"● DESCANSO":"● TRABALHO";ph.classList.toggle("rest",z);document.getElementById("c1wProgress").style.width=(c1w/(z?10:30)*100)+"%"}
-function c1Main(){stopAllTimers();preStart(()=>{c1mR=1;c1mP="work";c1m=120;c1RenderM();timerHandle=setInterval(()=>{c1m--;if(c1m<=3&&c1m>0)beep();if(c1m<=0){if(c1mP==="work"){endBeep();c1mP="rest";c1m=15}else if(c1mR>=12){stopAllTimers();endBeep();if(c1Auto){c1Slide=4;c1Show()}return}else{c1mR++;c1mP="work";c1m=120;goBeep()}}c1RenderM()},1000)})}
+function c1Main(){stopAllTimers();preStart(()=>{c1mR=1;c1mP="work";c1m=120;c1RenderM();timerHandle=startManagedTimer(()=>{c1m--;if(c1m<=3&&c1m>0)beep();if(c1m<=0){if(c1mP==="work"){endBeep();c1mP="rest";c1m=15}else if(c1mR>=12){stopAllTimers();endBeep();if(c1Auto){c1Slide=4;c1Show()}return}else{c1mR++;c1mP="work";c1m=120;goBeep()}}c1RenderM()},1000)})}
 function c1RenderM(){let z=c1mP!=="work";document.getElementById("c1mRound").textContent=c1mR;let x=document.getElementById("c1mTimer");x.textContent=formatTime(c1m);x.classList.toggle("rest",z);document.getElementById("c1mContext").textContent=`ROUND ${c1mR}/12 • CIRCUITO ${Math.ceil(c1mR/4)}/3`;let ph=document.getElementById("c1mPhase");ph.textContent=z?"● TRANSIÇÃO":"● TRABALHO";ph.classList.toggle("rest",z);document.getElementById("c1mProgress").style.width=(c1m/(z?15:120)*100)+"%"}
-function c1Fin(){stopAllTimers();preStart(()=>{c1fR=1;c1fP="work";c1f=45;c1RenderF();timerHandle=setInterval(()=>{c1f--;if(c1f<=3&&c1f>0)beep();if(c1f<=0){if(c1fP==="work"){endBeep();c1fP="rest";c1f=15}else if(c1fR>=12){stopAllTimers();endBeep();if(c1Auto){c1Slide=5;c1Show()}return}else{c1fR++;c1fP="work";c1f=45;goBeep()}}c1RenderF()},1000)})}
+function c1Fin(){stopAllTimers();preStart(()=>{c1fR=1;c1fP="work";c1f=45;c1RenderF();timerHandle=startManagedTimer(()=>{c1f--;if(c1f<=3&&c1f>0)beep();if(c1f<=0){if(c1fP==="work"){endBeep();c1fP="rest";c1f=15}else if(c1fR>=12){stopAllTimers();endBeep();if(c1Auto){c1Slide=5;c1Show()}return}else{c1fR++;c1fP="work";c1f=45;goBeep()}}c1RenderF()},1000)})}
 function c1RenderF(){let z=c1fP!=="work";document.getElementById("c1fRound").textContent=c1fR;let x=document.getElementById("c1fTimer");x.textContent=formatTime(c1f);x.classList.toggle("rest",z);document.getElementById("c1fContext").textContent=`ROUND ${c1fR}/12 • ${c1FN[(c1fR-1)%4]}`;let ph=document.getElementById("c1fPhase");ph.textContent=z?"● DESCANSO":"● TRABALHO";ph.classList.toggle("rest",z);document.getElementById("c1fProgress").style.width=(c1f/(z?15:45)*100)+"%"}
-function c1Cool(){stopAllTimers();ensureAudio();c1c=240;c1RenderC();goBeep();timerHandle=setInterval(()=>{c1c--;if(c1c<=3&&c1c>0)beep();if(c1c<=0){c1c=0;c1RenderC();stopAllTimers();endBeep();return}c1RenderC()},1000)}
+function c1Cool(){stopAllTimers();ensureAudio();c1c=240;c1RenderC();goBeep();timerHandle=startManagedTimer(()=>{c1c--;if(c1c<=3&&c1c>0)beep();if(c1c<=0){c1c=0;c1RenderC();stopAllTimers();endBeep();return}c1RenderC()},1000)}
 function c1RenderC(){document.getElementById("c1cTimer").textContent=formatTime(c1c);document.getElementById("c1cProgress").style.width=(c1c/240*100)+"%"}
 function c1Reset(){stopAllTimers();if(c1Slide===2){c1wR=1;c1wP="work";c1w=30;c1RenderW()}else if(c1Slide===3){c1mR=1;c1mP="work";c1m=120;c1RenderM()}else if(c1Slide===4){c1fR=1;c1fP="work";c1f=45;c1RenderF()}else if(c1Slide===5){c1c=240;c1RenderC()}}
 
@@ -5597,13 +5651,13 @@ function cu1TeamAtZone(z,r){let n=+(document.getElementById("cu1Athletes")?.valu
 function cu1BuildMain(){let g=document.getElementById("cu1MainGrid");if(!g)return;g.innerHTML=cu1Stations.map((st,i)=>`<div class="exerciseCard"><div class="exerciseIndex">${st[0]} • <span id="cu1Team${i}" style="color:#FFD700"></span></div><div class="exerciseName">${st[1]}</div><div class="exerciseDose">${st[2]}</div><div class="levels"><span class="level green">${st[3][0]}</span><span class="level yellowText">${st[3][1]}</span><span class="level red">${st[3][2]}</span></div></div>`).join("");cu1RenderTeams()}
 function cu1RenderTeams(){for(let i=0;i<8;i++){let e=document.getElementById("cu1Team"+i);if(e){let t=cu1TeamAtZone(i,cu1mR-1);e.textContent=t==="—"?"LIVRE":"EQUIPE "+t}}}
 function cu1StartPhase(){if(cu1Slide<2){cu1Slide++;cu1Show();return}if(cu1Slide===2)cu1Warm();else if(cu1Slide===3)cu1Main();else if(cu1Slide===4)cu1Team();else cu1Cool()}
-function cu1Warm(){stopAllTimers();preStart(()=>{cu1wR=1;cu1wP="work";cu1w=45;cu1RenderW();timerHandle=setInterval(()=>{cu1w--;if(cu1w<=3&&cu1w>0)beep();if(cu1w<=0){if(cu1wP==="work"){endBeep();cu1wP="rest";cu1w=15}else if(cu1wR>=4){stopAllTimers();endBeep();if(cu1Auto){cu1Slide=3;cu1Show()}return}else{cu1wR++;cu1wP="work";cu1w=45;goBeep()}}cu1RenderW()},1000)})}
-function cu1RenderW(){let z=cu1wP!=="work";document.getElementById("cu1wRound").textContent=cu1wR;let x=document.getElementById("cu1wTimer");x.textContent=formatTime(cu1w);x.classList.toggle("rest",z);document.getElementById("cu1wContext").textContent=z?(cu1wR<4?`PRÓXIMO • ${cu1WN[cu1wR]}`:"PRÓXIMO • TREINO PRINCIPAL"):`ROUND ${cu1wR}/4 • ${cu1WN[cu1wR-1]}`;let ph=document.getElementById("cu1wPhase");ph.textContent=z?"● DESCANSO / TRANSIÇÃO":"● TRABALHO";ph.classList.toggle("rest",z);document.getElementById("cu1wProgress").style.width=(cu1w/(z?15:45)*100)+"%"}
-function cu1Main(){stopAllTimers();preStart(()=>{cu1mR=1;cu1mP="work";cu1m=75;cu1RenderM();timerHandle=setInterval(()=>{cu1m--;if(cu1m<=3&&cu1m>0)beep();if(cu1m<=0){if(cu1mP==="work"){endBeep();cu1mP="rest";cu1m=25}else if(cu1mR>=24){stopAllTimers();endBeep();if(cu1Auto){cu1Slide=4;cu1Show()}return}else{cu1mR++;cu1mP="work";cu1m=75;goBeep()}}cu1RenderM()},1000)})}
-function cu1RenderM(){let z=cu1mP!=="work";document.getElementById("cu1mRound").textContent=cu1mR;let x=document.getElementById("cu1mTimer");x.textContent=formatTime(cu1m);x.classList.toggle("rest",z);document.getElementById("cu1mContext").textContent=`ROUND ${cu1mR}/24 • PASSAGEM ${Math.ceil(cu1mR/8)}/3`;let ph=document.getElementById("cu1mPhase");ph.textContent=z?"● DESCANSO / TRANSIÇÃO":"● TRABALHO";ph.classList.toggle("rest",z);document.getElementById("cu1mProgress").style.width=(cu1m/(z?25:75)*100)+"%";cu1RenderTeams()}
-function cu1Team(){stopAllTimers();preStart(()=>{cu1t=240;cu1RenderT();timerHandle=setInterval(()=>{cu1t--;if(cu1t<=3&&cu1t>0)beep();if(cu1t<=0){cu1t=0;cu1RenderT();stopAllTimers();endBeep();if(cu1Auto){cu1Slide=5;cu1Show()}return}cu1RenderT()},1000)})}
+function cu1Warm(){stopAllTimers();preStart(()=>{cu1wR=1;cu1wP="work";cu1w=45;cu1RenderW();timerHandle=startManagedTimer(()=>{cu1w--;if(cu1w<=3&&cu1w>0)beep();if(cu1w<=0){if(cu1wP==="work"){endBeep();cu1wP="rest";cu1w=15}else if(cu1wR>=4){stopAllTimers();endBeep();if(cu1Auto){cu1Slide=3;cu1Show()}return}else{cu1wR++;cu1wP="work";cu1w=45;goBeep()}}cu1RenderW()},1000)})}
+function cu1RenderW(){let z=cu1wP!=="work";document.getElementById("cu1wRound").textContent=cu1wR;let x=document.getElementById("cu1wTimer");x.textContent=formatTime(cu1w);x.classList.toggle("rest",z);document.getElementById("cu1wContext").textContent=z?(cu1wR<4?`PRÓXIMO • ${cu1WN[cu1wR]}`:"PRÓXIMO • TREINO PRINCIPAL"):`ROUND ${cu1wR}/4 • ${cu1WN[cu1wR-1]}`;let ph=document.getElementById("cu1wPhase");ph.textContent=z?"● DESCANSO / TRANSIÇÃO":"● TRABALHO";ph.classList.toggle("rest",z);document.getElementById("cu1wProgress").style.width=(cu1w/(z?15:45)*100)+"%";document.querySelectorAll("#custom1Page .cu1Slide:nth-child(3) .exerciseCard").forEach((card,i)=>card.classList.toggle("activeExercise",!z&&i===cu1wR-1))}
+function cu1Main(){stopAllTimers();preStart(()=>{cu1mR=1;cu1mP="work";cu1m=75;cu1RenderM();timerHandle=startManagedTimer(()=>{cu1m--;if(cu1m<=3&&cu1m>0)beep();if(cu1m<=0){if(cu1mP==="work"){endBeep();cu1mP="rest";cu1m=25}else if(cu1mR>=24){stopAllTimers();endBeep();if(cu1Auto){cu1Slide=4;cu1Show()}return}else{cu1mR++;cu1mP="work";cu1m=75;goBeep()}}cu1RenderM()},1000)})}
+function cu1RenderM(){let z=cu1mP!=="work";document.getElementById("cu1mRound").textContent=cu1mR;let x=document.getElementById("cu1mTimer");x.textContent=formatTime(cu1m);x.classList.toggle("rest",z);document.getElementById("cu1mContext").textContent=`ROUND ${cu1mR}/24 • PASSAGEM ${Math.ceil(cu1mR/8)}/3`;let ph=document.getElementById("cu1mPhase");ph.textContent=z?"● DESCANSO / TRANSIÇÃO":"● TRABALHO";ph.classList.toggle("rest",z);document.getElementById("cu1mProgress").style.width=(cu1m/(z?25:75)*100)+"%";document.querySelectorAll("#cu1MainGrid .exerciseCard").forEach(card=>card.classList.toggle("workActive",!z));cu1RenderTeams()}
+function cu1Team(){stopAllTimers();preStart(()=>{cu1t=240;cu1RenderT();timerHandle=startManagedTimer(()=>{cu1t--;if(cu1t<=3&&cu1t>0)beep();if(cu1t<=0){cu1t=0;cu1RenderT();stopAllTimers();endBeep();if(cu1Auto){cu1Slide=5;cu1Show()}return}cu1RenderT()},1000)})}
 function cu1RenderT(){document.getElementById("cu1tTimer").textContent=formatTime(cu1t);document.getElementById("cu1tProgress").style.width=((240-cu1t)/240*100)+"%"}
-function cu1Cool(){stopAllTimers();ensureAudio();cu1c=240;cu1RenderC();goBeep();timerHandle=setInterval(()=>{cu1c--;if(cu1c<=3&&cu1c>0)beep();if(cu1c<=0){cu1c=0;cu1RenderC();stopAllTimers();endBeep();return}cu1RenderC()},1000)}
+function cu1Cool(){stopAllTimers();ensureAudio();cu1c=240;cu1RenderC();goBeep();timerHandle=startManagedTimer(()=>{cu1c--;if(cu1c<=3&&cu1c>0)beep();if(cu1c<=0){cu1c=0;cu1RenderC();stopAllTimers();endBeep();return}cu1RenderC()},1000)}
 function cu1RenderC(){document.getElementById("cu1cTimer").textContent=formatTime(cu1c);document.getElementById("cu1cProgress").style.width=((240-cu1c)/240*100)+"%"}
 function cu1Reset(){stopAllTimers();if(cu1Slide===2){cu1wR=1;cu1wP="work";cu1w=45;cu1RenderW()}else if(cu1Slide===3){cu1mR=1;cu1mP="work";cu1m=75;cu1RenderM()}else if(cu1Slide===4){cu1t=240;cu1RenderT()}else if(cu1Slide===5){cu1c=240;cu1RenderC()}}
 
