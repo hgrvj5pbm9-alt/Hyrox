@@ -1028,6 +1028,18 @@ h1{
   box-shadow:0 0 0 1px rgba(255,215,0,.18), 0 0 18px rgba(255,215,0,.08);
 }
 
+
+/* SOMBREAMENTO AMARELO GLOBAL — TODOS OS TREINOS */
+.exerciseCard.activeExercise,
+.infoCard.activeExercise,
+.zoneCard.activeExercise,
+.stationCard.activeExercise,
+.exerciseCard.workActive{
+  border-color:#FFD700 !important;
+  background:#211e0d !important;
+  box-shadow:0 0 0 1px rgba(255,215,0,.22),0 0 18px rgba(255,215,0,.10) !important;
+}
+
 </style>
 </head>
 
@@ -5755,6 +5767,44 @@ c1RenderW();c1RenderM();c1RenderF();c1RenderC();
 cu1Selector();cu1Rotation();cu1BuildMain();cu1RenderW();cu1RenderM();cu1RenderT();cu1RenderC();
 
 goHome();
+
+
+/* =====================================================
+   SOMBREAMENTO AMARELO UNIFORME — SEMANA 1 + PERSONALIZADO
+===================================================== */
+function hyroxClearYellow(scope){
+  if(!scope) return;
+  scope.querySelectorAll(".exerciseCard,.infoCard,.zoneCard,.stationCard")
+    .forEach(c=>c.classList.remove("activeExercise","workActive"));
+}
+
+function hyroxApplyYellow(){
+  document.querySelectorAll(".wSlide.active,.fSlide.active,.fbSlide.active,.ebSlide.active,.c1Slide.active,.cu1Slide.active")
+    .forEach(slide=>{
+      const phase=[...slide.querySelectorAll("*")].find(el=>{
+        const t=(el.textContent||"").trim().toUpperCase();
+        return t==="● TRABALHO" || t==="TRABALHO" || t==="● DESCANSO / TRANSIÇÃO" ||
+               t==="DESCANSO / TRANSIÇÃO" || t==="● DESCANSO" || t==="DESCANSO";
+      });
+      if(!phase) return;
+      const phaseText=(phase.textContent||"").toUpperCase();
+      const working=phaseText.includes("TRABALHO") && !phaseText.includes("DESCANSO");
+      const cards=[...slide.querySelectorAll(".exerciseCard")];
+      if(!cards.length) return;
+
+      // Preserva destaques específicos já calculados pelo treino.
+      if(slide.querySelector(".exerciseCard.activeExercise")) return;
+
+      cards.forEach(c=>c.classList.toggle("workActive",working));
+    });
+}
+
+/* Atualiza após cada renderização dos timers sem alterar os protocolos. */
+const hyroxYellowObserver=new MutationObserver(()=>requestAnimationFrame(hyroxApplyYellow));
+window.addEventListener("DOMContentLoaded",()=>{
+  hyroxYellowObserver.observe(document.body,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:["class"]});
+  hyroxApplyYellow();
+});
 
 </script>
 
