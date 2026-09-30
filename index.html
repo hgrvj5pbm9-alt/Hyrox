@@ -3284,7 +3284,7 @@ function buildRotation(){
     Nenhum grupo passa de 4 atletas.
   */
 
-  const groupCount=Math.ceil(athletes/4);
+  const groupCount=mainStations.length;
 
   const base=Math.floor(athletes/groupCount);
 
@@ -3309,7 +3309,7 @@ function buildRotation(){
 
     card.innerHTML=`
       <div class="rotationTeam">
-        EQUIPE ${letters[i]}
+        ${count>0 ? `EQUIPE ${letters[i]}` : "LIVRE"}
       </div>
 
       <div class="rotationCount">
@@ -3330,8 +3330,8 @@ function buildRotation(){
 
   document.getElementById("rotationSummary").innerHTML=
     `<strong style="color:#31df75;">✓ ${athletes} ATLETAS</strong>
-     • ${groupCount} ${groupCount===1 ? "EQUIPE" : "EQUIPES"}
-     • MÁXIMO 4 ATLETAS POR ZONA
+     • ${groupCount} ZONAS FIXAS
+     • DISTRIBUIÇÃO AUTOMÁTICA
      • TROCAS PELAS LATERAIS`;
 
 }
@@ -4261,8 +4261,7 @@ function buildPowerRotation(){
   const athletes =
     parseInt(selector.value || 24);
 
-  const groupCount =
-    Math.ceil(athletes / 4);
+  const groupCount = 8;
 
   const base =
     Math.floor(athletes / groupCount);
@@ -4288,7 +4287,7 @@ function buildPowerRotation(){
 
     card.innerHTML = `
       <div class="rotationTeam">
-        EQUIPE ${letters[i]}
+        ${count>0 ? `EQUIPE ${letters[i]}` : "LIVRE"}
       </div>
 
       <div class="rotationCount">
@@ -5154,7 +5153,7 @@ function previousPowerBSlide(){if(powerBSlide>0){powerBSlide--;showPowerBSlide()
 function togglePowerBMode(){powerBAutoMode=!powerBAutoMode;document.getElementById("powerBModeButton").textContent=powerBAutoMode?"AUTO":"MANUAL";}
 function updatePowerBStartButton(){document.getElementById("powerBStartButton").textContent=["▶ INICIAR AULA","▶ IR PARA AQUECIMENTO","▶ INICIAR AQUECIMENTO","▶ INICIAR BASE STRENGTH","▶ INICIAR ATHLETIC ENGINE","▶ INICIAR RECUPERAÇÃO"][powerBSlide];}
 function buildPowerBAthleteSelector(){const s=document.getElementById("powerBAthleteSelector");if(!s||s.options.length===32)return;for(let i=1;i<=32;i++){const o=document.createElement("option");o.value=i;o.textContent=i;if(i===24)o.selected=true;s.appendChild(o);}}
-function buildPowerBRotation(){const s=document.getElementById("powerBAthleteSelector"),g=document.getElementById("powerBRotationGrid"),m=document.getElementById("powerBRotationSummary");if(!s||!g||!m)return;const a=+s.value||24,n=Math.ceil(a/4),b=Math.floor(a/n),r=a%n,L="ABCDEFGH",z=["BASE • UPPER BODY PULL","BASE • LOWER BODY PUSH","ENGINE • KB GOBLET BOWLER LUNGE","ENGINE • DB REVERSE FLY","ENGINE • CORE","ENGINE • DB HAMMER CURLS","APOIO / PRÓXIMA ZONA","APOIO / PRÓXIMA ZONA"];g.innerHTML="";for(let i=0;i<n;i++){let c=b+(i<r?1:0),d=document.createElement("div");d.className="rotationCard";d.innerHTML=`<div class="rotationTeam">EQUIPE ${L[i]}</div><div class="rotationCount">${c} ${c===1?"ATLETA":"ATLETAS"}</div><div class="rotationStation">INÍCIO → <strong style="color:white">${z[i]}</strong></div>`;g.appendChild(d);}m.innerHTML=`<strong style="color:#31df75">✓ ${a} ATLETAS</strong> • ${n} EQUIPES • MÁXIMO 4 POR GRUPO • RECOMENDADO: ATÉ 24 • FLUXO LATERAL`;}
+function buildPowerBRotation(){const s=document.getElementById("powerBAthleteSelector"),g=document.getElementById("powerBRotationGrid"),m=document.getElementById("powerBRotationSummary");if(!s||!g||!m)return;const a=+s.value||24,n=8,b=Math.floor(a/n),r=a%n,L="ABCDEFGH",z=["BASE • UPPER BODY PULL","BASE • LOWER BODY PUSH","ENGINE • KB GOBLET BOWLER LUNGE","ENGINE • DB REVERSE FLY","ENGINE • CORE","ENGINE • DB HAMMER CURLS","APOIO / PRÓXIMA ZONA","APOIO / PRÓXIMA ZONA"];g.innerHTML="";for(let i=0;i<n;i++){let c=b+(i<r?1:0),d=document.createElement("div");d.className="rotationCard";d.innerHTML=`<div class="rotationTeam">${c>0?"EQUIPE "+L[i]:"LIVRE"}</div><div class="rotationCount">${c} ${c===1?"ATLETA":"ATLETAS"}</div><div class="rotationStation">INÍCIO → <strong style="color:white">${z[i]}</strong></div>`;g.appendChild(d);}m.innerHTML=`<strong style="color:#31df75">✓ ${a} ATLETAS</strong> • ${n} EQUIPES • MÁXIMO 4 POR GRUPO • RECOMENDADO: ATÉ 24 • FLUXO LATERAL`;}
 function startPowerBPhase(){if(powerBSlide<2){powerBSlide++;showPowerBSlide();return;}if(powerBSlide===2)startPowerBWarmup();else if(powerBSlide===3)startPowerBStrength();else if(powerBSlide===4)startPowerBEngine();else startPowerBCooldown();}
 function startPowerBWarmup(){stopAllTimers();preStart(()=>{powerBWarmRemaining=240;renderPowerBWarm();timerHandle=startManagedTimer(()=>{powerBWarmRemaining--;if(powerBWarmRemaining<=3&&powerBWarmRemaining>0)beep();if(powerBWarmRemaining<=0){powerBWarmRemaining=0;renderPowerBWarm();stopAllTimers();endBeep();if(powerBAutoMode){powerBSlide=3;showPowerBSlide();}return;}renderPowerBWarm();},1000);});}
 function renderPowerBWarm(){let x=document.getElementById("powerBWarmTimer"),p=document.getElementById("powerBWarmProgress");if(x)x.textContent=formatTime(powerBWarmRemaining);if(p)p.style.width=(powerBWarmRemaining/240*100)+"%";}
@@ -5274,7 +5273,7 @@ function buildFoundationBRotation(){
   if(!s||!g||!m) return;
 
   const athletes=+s.value||30;
-  const teams=Math.ceil(athletes/4);
+  const teams=5;
   const base=Math.floor(athletes/teams);
   const remainder=athletes%teams;
   const letters="ABCDEFGH";
@@ -5294,13 +5293,13 @@ function buildFoundationBRotation(){
     const count=base+(i<remainder?1:0);
     const d=document.createElement("div");
     d.className="rotationCard";
-    d.innerHTML=`<div class="rotationTeam">EQUIPE ${letters[i]}</div>
+    d.innerHTML=`<div class="rotationTeam">${count>0?"EQUIPE "+letters[i]:"LIVRE"}</div>
       <div class="rotationCount">${count} ${count===1?"ATLETA":"ATLETAS"}</div>
       <div class="rotationStation">INÍCIO → <strong style="color:white">${starts[i]}</strong></div>`;
     g.appendChild(d);
   }
 
-  m.innerHTML=`<strong style="color:#31df75">✓ ${athletes} ATLETAS</strong> • ${teams} EQUIPES • MÁXIMO 4 POR GRUPO • FLUXO LATERAL • ERGS/SLED: MÁX. 4 SIMULTÂNEOS`;
+  m.innerHTML=`<strong style="color:#31df75">✓ ${athletes} ATLETAS</strong> • ${teams} ZONAS FIXAS • DISTRIBUIÇÃO AUTOMÁTICA • FLUXO LATERAL • ERGS/SLED: MÁX. 4 SIMULTÂNEOS`;
 }
 
 function startFoundationBPhase(){
@@ -5546,12 +5545,12 @@ function buildEngineBAthleteSelector(){
 function buildEngineBRotation(){
   const s=document.getElementById("engineBAthleteSelector"),g=document.getElementById("engineBRotationGrid"),m=document.getElementById("engineBRotationSummary");
   if(!s||!g||!m)return;
-  const athletes=+s.value||24, teams=Math.ceil(athletes/4), base=Math.floor(athletes/teams), rem=athletes%teams, letters="ABCDEFGH";
+  const athletes=+s.value||24, teams=8, base=Math.floor(athletes/teams), rem=athletes%teams, letters="ABCDEFGH";
   const starts=["Z1 • Run","Z2 • RowErg","Z2 • Air Squats","Z2 • SkiErg","Z1 • Jogging Recovery","Z2 • Partner Flow","ONDA 2 • Run","ONDA 2 • Partner Flow"];
   g.innerHTML="";
   for(let i=0;i<teams;i++){
     const count=base+(i<rem?1:0),d=document.createElement("div");d.className="rotationCard";
-    d.innerHTML=`<div class="rotationTeam">EQUIPE ${letters[i]}</div><div class="rotationCount">${count} ${count===1?"ATLETA":"ATLETAS"}</div><div class="rotationStation">INÍCIO → <strong style="color:white">${starts[i]}</strong></div>`;
+    d.innerHTML=`<div class="rotationTeam">${count>0?"EQUIPE "+letters[i]:"LIVRE"}</div><div class="rotationCount">${count} ${count===1?"ATLETA":"ATLETAS"}</div><div class="rotationStation">INÍCIO → <strong style="color:white">${starts[i]}</strong></div>`;
     g.appendChild(d);
   }
   const alert=athletes>24?" • <strong style='color:#ffd700'>25–32: USAR 2ª ONDA ESCALONADA</strong>":"";
@@ -5621,7 +5620,7 @@ function c1Next(){if(c1Slide<5){c1Slide++;c1Show()}} function c1Prev(){if(c1Slid
 function c1Toggle(){c1Auto=!c1Auto;let b=document.getElementById("c1Mode");b.textContent=c1Auto?"AUTO":"MANUAL";b.classList.toggle("modeActive",c1Auto)}
 function c1Button(){document.getElementById("c1Start").textContent=["▶ INICIAR AULA","▶ IR PARA AQUECIMENTO","▶ INICIAR AQUECIMENTO","▶ INICIAR COMPROMISED RUNNING","▶ INICIAR FINISHER","▶ INICIAR RECUPERAÇÃO"][c1Slide]}
 function c1Selector(){let s=document.getElementById("c1Athletes");if(s.options.length)return;for(let i=1;i<=32;i++){let o=document.createElement("option");o.value=i;o.textContent=i;if(i===24)o.selected=true;s.appendChild(o)}}
-function c1Rotation(){let n=+document.getElementById("c1Athletes").value||24,t=Math.ceil(n/4),b=Math.floor(n/t),r=n%t,L="ABCDEFGH",S=["Z1 • Run","Z2 • SkiErg","Z3 • Run","Z4 • Sled Push + Pull","ONDA 2 • Run","ONDA 2 • SkiErg","ONDA 2 • Run","ONDA 2 • Sled"],g=document.getElementById("c1RotationGrid");g.innerHTML="";for(let i=0;i<t;i++){let q=b+(i<r?1:0),d=document.createElement("div");d.className="rotationCard";d.innerHTML=`<div class="rotationTeam">EQUIPE ${L[i]}</div><div class="rotationCount">${q} ATLETA${q>1?"S":""}</div><div class="rotationStation">INÍCIO → <strong style="color:white">${S[i]}</strong></div>`;g.appendChild(d)}document.getElementById("c1RotationSummary").innerHTML=`<strong style="color:#31df75">✓ ${n} ATLETAS</strong> • MÁX. 4/GRUPO${n>24?" • <strong style='color:#ffd700'>25–32: ONDA ESCALONADA</strong>":""}`}
+function c1Rotation(){let n=+document.getElementById("c1Athletes").value||24,t=8,b=Math.floor(n/t),r=n%t,L="ABCDEFGH",S=["Z1 • Run","Z2 • SkiErg","Z3 • Run","Z4 • Sled Push + Pull","ONDA 2 • Run","ONDA 2 • SkiErg","ONDA 2 • Run","ONDA 2 • Sled"],g=document.getElementById("c1RotationGrid");g.innerHTML="";for(let i=0;i<t;i++){let q=b+(i<r?1:0),d=document.createElement("div");d.className="rotationCard";d.innerHTML=`<div class="rotationTeam">${q>0?"EQUIPE "+L[i]:"LIVRE"}</div><div class="rotationCount">${q} ATLETA${q>1?"S":""}</div><div class="rotationStation">INÍCIO → <strong style="color:white">${S[i]}</strong></div>`;g.appendChild(d)}document.getElementById("c1RotationSummary").innerHTML=`<strong style="color:#31df75">✓ ${n} ATLETAS</strong> • MÁX. 4/GRUPO${n>24?" • <strong style='color:#ffd700'>25–32: ONDA ESCALONADA</strong>":""}`}
 function c1StartPhase(){if(c1Slide<2){c1Slide++;c1Show();return}if(c1Slide===2)c1Warm();else if(c1Slide===3)c1Main();else if(c1Slide===4)c1Fin();else c1Cool()}
 function c1Warm(){stopAllTimers();preStart(()=>{c1wR=1;c1wP="work";c1w=30;c1RenderW();timerHandle=startManagedTimer(()=>{c1w--;if(c1w<=3&&c1w>0)beep();if(c1w<=0){if(c1wP==="work"){endBeep();c1wP="rest";c1w=10}else if(c1wR>=5){stopAllTimers();endBeep();if(c1Auto){c1Slide=3;c1Show()}return}else{c1wR++;c1wP="work";c1w=30;goBeep()}}c1RenderW()},1000)})}
 function c1RenderW(){let z=c1wP!=="work";document.getElementById("c1wRound").textContent=c1wR;let x=document.getElementById("c1wTimer");x.textContent=formatTime(c1w);x.classList.toggle("rest",z);document.getElementById("c1wContext").textContent=`ROUND ${c1wR}/5 • ${c1WN[c1wR-1]}`;let ph=document.getElementById("c1wPhase");ph.textContent=z?"● DESCANSO":"● TRABALHO";ph.classList.toggle("rest",z);document.getElementById("c1wProgress").style.width=(c1w/(z?10:30)*100)+"%"}
@@ -5657,9 +5656,9 @@ function cu1Next(){if(cu1Slide<5){cu1Slide++;cu1Show()}} function cu1Prev(){if(c
 function cu1Toggle(){cu1Auto=!cu1Auto;let b=document.getElementById("cu1Mode");b.textContent=cu1Auto?"AUTO":"MANUAL";b.classList.toggle("modeActive",cu1Auto)}
 function cu1Button(){document.getElementById("cu1Start").textContent=["▶ INICIAR AULA","▶ IR PARA AQUECIMENTO","▶ INICIAR AQUECIMENTO","▶ INICIAR TREINO","▶ INICIAR TEAM CHALLENGE","▶ INICIAR RECUPERAÇÃO"][cu1Slide]}
 function cu1Selector(){let s=document.getElementById("cu1Athletes");if(s.options.length)return;for(let i=1;i<=32;i++){let o=document.createElement("option");o.value=i;o.textContent=i;if(i===32)o.selected=true;s.appendChild(o)}}
-function cu1GroupSizes(n){let teams=Math.min(8,Math.max(1,Math.ceil(n/4))),base=Math.floor(n/teams),rem=n%teams;return Array.from({length:teams},(_,i)=>base+(i<rem?1:0))}
-function cu1Rotation(){let s=document.getElementById("cu1Athletes"),n=+(s?s.value:32)||32,sizes=cu1GroupSizes(n),L="ABCDEFGH",g=document.getElementById("cu1RotationGrid");if(!g)return;g.innerHTML="";sizes.forEach((q,i)=>{let st=cu1Stations[i],d=document.createElement("div");d.className="rotationCard";d.innerHTML=`<div class="rotationTeam">EQUIPE ${L[i]}</div><div class="rotationCount">${q} ATLETA${q>1?"S":""}</div><div class="rotationStation">INÍCIO → <strong style="color:white">${st[0]} • ${st[1]}</strong></div>`;g.appendChild(d)});document.getElementById("cu1RotationSummary").innerHTML=`<strong style="color:#31df75">✓ ${n} ATLETAS</strong> • ${sizes.length} EQUIPE${sizes.length>1?"S":""} • MÁX. 4/GRUPO • 3 PASSAGENS NAS 8 ZONAS`;}
-function cu1TeamAtZone(z,r){let n=+(document.getElementById("cu1Athletes")?.value||32),teams=cu1GroupSizes(n).length,x=(z-r)%8;if(x<0)x+=8;return x<teams?"ABCDEFGH"[x]:"—"}
+function cu1GroupSizes(n){let base=Math.floor(n/8),rem=n%8;return Array.from({length:8},(_,i)=>base+(i<rem?1:0))}
+function cu1Rotation(){let s=document.getElementById("cu1Athletes"),n=+(s?s.value:32)||32,sizes=cu1GroupSizes(n),L="ABCDEFGH",g=document.getElementById("cu1RotationGrid");if(!g)return;g.innerHTML="";sizes.forEach((q,i)=>{let st=cu1Stations[i],d=document.createElement("div");d.className="rotationCard";d.innerHTML=`<div class="rotationTeam">${q>0?"EQUIPE "+L[i]:"LIVRE"}</div><div class="rotationCount">${q>0?(q+" ATLETA"+(q>1?"S":"")):"0 ATLETAS"}</div><div class="rotationStation">ZONA FIXA → <strong style="color:white">${st[0]} • ${st[1]}</strong></div>`;g.appendChild(d)});document.getElementById("cu1RotationSummary").innerHTML=`<strong style="color:#31df75">✓ ${n} ATLETAS</strong> • 8 ZONAS FIXAS • DISTRIBUIÇÃO ${sizes.join(" / ")} • MÁX. 4/GRUPO • 3 PASSAGENS`;}
+function cu1TeamAtZone(z,r){let n=+(document.getElementById("cu1Athletes")?.value||32),sizes=cu1GroupSizes(n),x=(z-r)%8;if(x<0)x+=8;return sizes[x]>0?"ABCDEFGH"[x]:"—"}
 function cu1BuildMain(){let g=document.getElementById("cu1MainGrid");if(!g)return;g.innerHTML=cu1Stations.map((st,i)=>`<div class="exerciseCard"><div class="exerciseIndex">${st[0]} • <span id="cu1Team${i}" style="color:#FFD700"></span></div><div class="exerciseName">${st[1]}</div><div class="exerciseDose">${st[2]}</div><div class="levels"><span class="level green">${st[3][0]}</span><span class="level yellowText">${st[3][1]}</span><span class="level red">${st[3][2]}</span></div></div>`).join("");cu1RenderTeams()}
 function cu1RenderTeams(){for(let i=0;i<8;i++){let e=document.getElementById("cu1Team"+i);if(e){let t=cu1TeamAtZone(i,cu1mR-1);e.textContent=t==="—"?"LIVRE":"EQUIPE "+t}}}
 function cu1StartPhase(){if(cu1Slide<2){cu1Slide++;cu1Show();return}if(cu1Slide===2)cu1Warm();else if(cu1Slide===3)cu1Main();else if(cu1Slide===4)cu1Team();else cu1Cool()}
