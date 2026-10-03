@@ -429,7 +429,8 @@ h1{
 .fbSlide,
 .ebSlide,
 .c1Slide,
-.cu1Slide{
+.cu1Slide,
+.cu2Slide{
   display:none;
   height:100%;
   min-height:0;
@@ -438,7 +439,8 @@ h1{
 .fbSlide.active,
 .ebSlide.active,
 .c1Slide.active,
-.cu1Slide.active{
+.cu1Slide.active,
+.cu2Slide.active{
   display:flex;
   flex-direction:column;
 }
@@ -1243,7 +1245,7 @@ h1{
         <div>
           <div class="dayName">PERSONALIZADO #2</div>
           <div class="workoutName">HYROX FOUNDATION – POWER ENDURANCE #3</div>
-          <div class="workoutMeta">RPE 8 • 46:40 • 1–40 ATLETAS • 5 ZONAS A/B</div>
+          <div class="workoutMeta">RPE 8 • 46:40 • 1–32 ATLETAS • 5 ZONAS A/B</div>
         </div>
         <div class="arrow">›</div>
       </div>
@@ -2664,7 +2666,7 @@ h1{
 <div class="orientationGrid">
 <div class="infoCard"><h3>INTENSIDADE</h3><div class="infoBig">RPE 8</div><div class="infoText">Power Endurance com esforço alto e sustentável; preservar técnica sob fadiga.</div></div>
 <div class="infoCard"><h3>FORMATO</h3><div class="infoBig">INTERVALS</div><div class="infoText">Main: 01:15 trabalho / 00:25 transição • 20 séries • 4 rounds por zona.</div></div>
-<div class="infoCard"><h3>CAPACIDADE STUDIO 5</h3><div class="infoBig">1–40<br>ATLETAS</div><div class="infoText">5 equipes fixas; cada equipe divide-se entre A/B. Ergômetros e Sled: máximo 4 simultâneos.</div></div>
+<div class="infoCard"><h3>CAPACIDADE STUDIO 5</h3><div class="infoBig">1–32<br>ATLETAS</div><div class="infoText">5 equipes fixas; cada equipe divide-se entre A/B. Ergômetros e Sled: máximo 4 simultâneos.</div></div>
 <div class="infoCard"><h3>AQUECIMENTO</h3><div class="infoBig">5 MIN</div><div class="infoText">00:45 trabalho / 00:15 descanso • 5 séries.</div></div>
 <div class="infoCard"><h3>TEAM CHALLENGE</h3><div class="infoBig">5 MIN</div><div class="infoText">4 equipes / 4 pistas • 20m Burpee Broad Jumps + Low Squat Hold.</div></div>
 <div class="infoCard"><h3>FLUXO</h3><div class="infoBig">LATERAL</div><div class="infoText">Trocas pelas laterais. Não cruzar as pistas de Sled em movimento.</div></div>
@@ -5727,7 +5729,7 @@ function cu2Show(){stopAllTimers();let a=document.querySelectorAll("#custom2Page
 function cu2Next(){if(cu2Slide<5){cu2Slide++;cu2Show()}} function cu2Prev(){if(cu2Slide>0){cu2Slide--;cu2Show()}}
 function cu2Toggle(){cu2Auto=!cu2Auto;let b=document.getElementById("cu2Mode");b.textContent=cu2Auto?"AUTO":"MANUAL";b.classList.toggle("modeActive",cu2Auto)}
 function cu2Button(){document.getElementById("cu2Start").textContent=["▶ INICIAR AULA","▶ IR PARA AQUECIMENTO","▶ INICIAR AQUECIMENTO","▶ INICIAR TREINO","▶ INICIAR TEAM CHALLENGE","▶ INICIAR RECUPERAÇÃO"][cu2Slide]}
-function cu2Selector(){let s=document.getElementById("cu2Athletes");if(s.options.length)return;for(let i=1;i<=40;i++){let o=document.createElement("option");o.value=i;o.textContent=i;if(i===32)o.selected=true;s.appendChild(o)}}
+function cu2Selector(){let s=document.getElementById("cu2Athletes");if(s.options.length)return;for(let i=1;i<=32;i++){let o=document.createElement("option");o.value=i;o.textContent=i;if(i===32)o.selected=true;s.appendChild(o)}}
 function cu2GroupSizes(n){let base=Math.floor(n/5),rem=n%5;return Array.from({length:5},(_,i)=>base+(i<rem?1:0))}
 function cu2Split(q){return [Math.ceil(q/2),Math.floor(q/2)]}
 function cu2Rotation(){let s=document.getElementById("cu2Athletes"),n=+(s?s.value:32)||32,sizes=cu2GroupSizes(n),L="ABCDE",g=document.getElementById("cu2RotationGrid");if(!g)return;g.innerHTML="";sizes.forEach((q,i)=>{let ab=cu2Split(q),st=cu2Stations[i],d=document.createElement("div");d.className="rotationCard";d.innerHTML=`<div class="rotationTeam">EQUIPE ${L[i]}</div><div class="rotationCount">${q} ATLETA${q!==1?"S":""} • A ${ab[0]} / B ${ab[1]}</div><div class="rotationStation">INÍCIO → <strong style="color:white">${st[0]} • ${st[1]} / ${st[3]}</strong></div>`;g.appendChild(d)});document.getElementById("cu2RotationSummary").innerHTML=`<strong style="color:#31df75">✓ ${n} ATLETAS</strong> • 5 ZONAS FIXAS • GRUPOS ${sizes.join(" / ")} • SUBGRUPOS A/B MÁX. 4`}
