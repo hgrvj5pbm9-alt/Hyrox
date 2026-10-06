@@ -430,7 +430,8 @@ h1{
 .ebSlide,
 .c1Slide,
 .cu1Slide,
-.cu2Slide{
+.cu2Slide,
+.cu3Slide{
   display:none;
   height:100%;
   min-height:0;
@@ -440,7 +441,8 @@ h1{
 .ebSlide.active,
 .c1Slide.active,
 .cu1Slide.active,
-.cu2Slide.active{
+.cu2Slide.active,
+.cu3Slide.active{
   display:flex;
   flex-direction:column;
 }
@@ -1246,6 +1248,14 @@ h1{
           <div class="dayName">PERSONALIZADO #2</div>
           <div class="workoutName">HYROX FOUNDATION – POWER ENDURANCE #3</div>
           <div class="workoutMeta">RPE 8 • 46:40 • 1–32 ATLETAS • 5 ZONAS A/B</div>
+        </div>
+        <div class="arrow">›</div>
+      </div>
+      <div class="dayCard" onclick="openCustom3()" style="cursor:pointer;text-align:left;margin-top:12px;">
+        <div>
+          <div class="dayName">PERSONALIZADO #3</div>
+          <div class="workoutName">TREINO DE FUNDAMENTOS HX8 #4 – TS</div>
+          <div class="workoutMeta">RPE 8 • 49 MIN • 1–32 ATLETAS • 8 ZONAS</div>
         </div>
         <div class="arrow">›</div>
       </div>
@@ -2678,6 +2688,31 @@ h1{
 <section class="cu2Slide"><div class="executionPanel"><div class="slideHeader"><div><div class="sectionLabel">VOLTA À CALMA / RECUPERAÇÃO</div><div class="slideTitle">COOLDOWN • 05:00</div></div></div><div class="coolGrid"><div class="coolCard">COACH'S CHOICE</div><div class="coolCard">QUADRIL +<br>TORNOZELOS</div><div class="coolCard">RESPIRAÇÃO<br>CONTROLADA</div><div class="coolCard">MOBILIDADE<br>LEVE</div></div><div class="timerArea"><div class="timerBox"><div class="timerTop"><div><div class="phaseTag recovery">● RECUPERAÇÃO</div><div class="contextLabel">TEMPO RESTANTE</div></div></div><div id="cu2cTimer" class="timer recovery">05:00</div><div class="progress"><div id="cu2cProgress" class="progressFill recovery"></div></div></div></div></div></section>
 </div><div class="workoutControls"><button class="controlBtn" onclick="cu2Prev()">◀</button><span id="cu2Counter" class="pageCounter">1 / 6</span><button class="controlBtn" onclick="cu2Next()">▶</button><button id="cu2Mode" class="controlBtn modeActive" onclick="cu2Toggle()">AUTO</button><button id="cu2Start" class="controlBtn primary" onclick="cu2StartPhase()">▶ INICIAR AULA</button><button class="controlBtn pauseBtn" onclick="toggleWorkoutPause()">⏸ PAUSAR</button><button class="controlBtn danger" onclick="cu2Reset()">RESET</button><button class="controlBtn" onclick="cu2Exit()">← PERSONALIZADOS</button></div></div></section>
 
+
+
+<!-- ===================================================
+     TREINO PERSONALIZADO #3 | FUNDAMENTOS HX8 #4 – TS
+=================================================== -->
+<section id="custom3Page" class="foundationPage">
+<div class="foundationShell">
+<div class="foundationTop"><div><div class="eyebrow">TREINOS PERSONALIZADOS • STUDIO 5</div><div class="foundationTitle">TREINO DE FUNDAMENTOS HX8 #4 – TS</div></div>
+<div class="foundationBadges"><div class="badge yellow">FOUNDATION</div><div class="badge">RPE 8</div><div class="badge">49 MIN</div><div class="badge">8 ZONAS</div><div class="badge">1–32 ATLETAS</div></div></div>
+<div class="workoutSlides">
+<section class="cu3Slide active"><div class="slideHeader"><div><div class="sectionLabel">ORIENTAÇÕES DO COACH</div></div></div><div class="orientationGrid">
+<div class="infoCard"><h3>INTENSIDADE</h3><div class="infoBig">RPE 8</div><div class="infoText">Fundamentos HYROX com força, engine e controle técnico sob fadiga.</div></div>
+<div class="infoCard"><h3>FORMATO</h3><div class="infoBig">INTERVALS</div><div class="infoText">Main: 01:30 trabalho / 00:30 transição • 16 séries • 2 passagens pelas 8 zonas.</div></div>
+<div class="infoCard"><h3>CAPACIDADE STUDIO 5</h3><div class="infoBig">1–32<br>ATLETAS</div><div class="infoText">8 zonas fixas • até 4 atletas por zona. Rodízio equilibrado sem retirar estações.</div></div>
+<div class="infoCard"><h3>AQUECIMENTO</h3><div class="infoBig">5 MIN</div><div class="infoText">00:45 trabalho / 00:15 descanso • 5 séries.</div></div>
+<div class="infoCard"><h3>TEAM CHALLENGE</h3><div class="infoBig">8 MIN</div><div class="infoText">200m SkiErg em revezamento + Low Squat Hold para o tempo restante.</div></div>
+<div class="infoCard"><h3>FLUXO</h3><div class="infoBig">LATERAL</div><div class="infoText">Transições pelas laterais. Não cruzar as pistas de Sled em movimento.</div></div>
+</div></section>
+<section class="cu3Slide"><div class="slideHeader"><div><div class="sectionLabel">TURMA / RODÍZIO</div><div class="slideTitle">8 ZONAS FIXAS • 2 PASSAGENS</div></div><div class="athleteSelectRow"><strong>ATLETAS:</strong><select id="cu3Athletes" class="athleteSelect" onchange="cu3Rotation();cu3BuildMain()"></select></div></div><div id="cu3RotationSummary" class="subtitle" style="margin:0 0 12px"></div><div id="cu3RotationGrid" class="rotationGrid"></div></section>
+<section class="cu3Slide"><div class="executionPanel"><div class="slideHeader"><div><div class="sectionLabel">AQUECIMENTO</div><div class="slideTitle">00:45 WORK / 00:15 REST • 5 ROUNDS</div></div><div style="text-align:right"><div class="muted">ROUND</div><div style="font-size:28px;font-weight:1000"><span id="cu3wRound">1</span>/5</div></div></div><div class="exerciseArea"><div style="width:100%;display:grid;grid-template-columns:repeat(5,1fr);gap:8px"><div class="exerciseCard"><div class="exerciseIndex">01</div><div class="exerciseName">Lateral Jump Squats</div></div><div class="exerciseCard"><div class="exerciseIndex">02</div><div class="exerciseName">Lunge and Twist</div></div><div class="exerciseCard"><div class="exerciseIndex">03</div><div class="exerciseName">Walkout Pushup</div></div><div class="exerciseCard"><div class="exerciseIndex">04</div><div class="exerciseName">90-90 Transitions</div></div><div class="exerciseCard"><div class="exerciseIndex">05</div><div class="exerciseName">Low Plank Hip Rotations</div></div></div></div><div class="timerArea"><div class="timerBox"><div class="timerTop"><div><div id="cu3wPhase" class="phaseTag">● TRABALHO</div><div id="cu3wContext" class="contextLabel">ROUND 1/5 • LATERAL JUMP SQUATS</div></div></div><div id="cu3wTimer" class="timer">00:45</div><div class="progress"><div id="cu3wProgress" class="progressFill"></div></div></div></div></div></section>
+<section class="cu3Slide"><div class="executionPanel"><div class="slideHeader"><div><div class="sectionLabel">TREINO PRINCIPAL</div><div class="slideTitle">01:30 WORK / 00:30 TRANSIÇÃO • 16 ROUNDS • 32:00</div></div><div style="text-align:right"><div class="muted">ROUND</div><div style="font-size:28px;font-weight:1000"><span id="cu3mRound">1</span>/16</div></div></div><div class="exerciseArea"><div id="cu3MainGrid" style="width:100%;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;height:100%"></div></div><div class="timerArea"><div class="timerBox"><div class="timerTop"><div><div id="cu3mPhase" class="phaseTag">● TRABALHO</div><div id="cu3mContext" class="contextLabel">ROUND 1/16 • PASSAGEM 1/2</div></div></div><div id="cu3mTimer" class="timer">01:30</div><div class="progress"><div id="cu3mProgress" class="progressFill"></div></div></div></div></div></section>
+<section class="cu3Slide"><div class="executionPanel"><div class="slideHeader"><div><div class="sectionLabel">TEAM CHALLENGE | SKI RELAY + SQUAT HOLD</div><div class="slideTitle">08:00 • 4 SKIERGS • REVEZAMENTO</div></div></div><div class="exerciseArea"><div style="width:100%;display:grid;grid-template-columns:1fr 1fr;gap:12px;height:100%"><div class="exerciseCard"><div class="exerciseIndex">01 • RELAY</div><div class="exerciseName">SkiErg</div><div class="exerciseDose">200m POR ATLETA</div><div class="levels"><span class="level green">🟢 INICIANTE • 150m</span><span class="level yellowText">🟡 INTERMEDIÁRIO • 200m</span><span class="level red">🔴 AVANÇADO • 250m</span></div></div><div class="exerciseCard"><div class="exerciseIndex">02 • ESPERA ATIVA</div><div class="exerciseName">Low Squat Hold</div><div class="exerciseDose">PARA O TEMPO RESTANTE</div><div class="levels"><span class="level green">🟢 INICIANTE • HOLD ALTO</span><span class="level yellowText">🟡 INTERMEDIÁRIO • LOW SQUAT HOLD</span><span class="level red">🔴 AVANÇADO • LOW SQUAT HOLD CONTÍNUO</span></div></div></div></div><div class="timerArea"><div class="timerBox"><div class="timerTop"><div><div id="cu3tPhase" class="phaseTag">● TRABALHO</div><div class="contextLabel">TEAM CHALLENGE • SKI RELAY + SQUAT HOLD</div></div></div><div id="cu3tTimer" class="timer">08:00</div><div class="progress"><div id="cu3tProgress" class="progressFill"></div></div></div></div></div></section>
+<section class="cu3Slide"><div class="executionPanel"><div class="slideHeader"><div><div class="sectionLabel">VOLTA À CALMA / RECUPERAÇÃO</div><div class="slideTitle">COOLDOWN • 04:00</div></div></div><div class="coolGrid"><div class="coolCard">COACH'S CHOICE</div><div class="coolCard">QUADRIL +<br>TORNOZELOS</div><div class="coolCard">RESPIRAÇÃO<br>CONTROLADA</div><div class="coolCard">MOBILIDADE<br>LEVE</div></div><div class="timerArea"><div class="timerBox"><div class="timerTop"><div><div class="phaseTag recovery">● RECUPERAÇÃO</div><div class="contextLabel">TEMPO RESTANTE</div></div></div><div id="cu3cTimer" class="timer recovery">04:00</div><div class="progress"><div id="cu3cProgress" class="progressFill recovery"></div></div></div></div></div></section>
+</div><div class="workoutControls"><button class="controlBtn" onclick="cu3Prev()">◀</button><span id="cu3Counter" class="pageCounter">1 / 6</span><button class="controlBtn" onclick="cu3Next()">▶</button><button id="cu3Mode" class="controlBtn modeActive" onclick="cu3Toggle()">AUTO</button><button id="cu3Start" class="controlBtn primary" onclick="cu3StartPhase()">▶ INICIAR AULA</button><button class="controlBtn pauseBtn" onclick="toggleWorkoutPause()">⏸ PAUSAR</button><button class="controlBtn danger" onclick="cu3Reset()">RESET</button><button class="controlBtn" onclick="cu3Exit()">← PERSONALIZADOS</button></div></div></section>
+
 </main>
 </div>
 
@@ -2935,6 +2970,7 @@ function hideAllPages(){
   document.getElementById("complete1Page").style.display="none";
   document.getElementById("custom1Page").style.display="none";
   document.getElementById("custom2Page").style.display="none";
+  document.getElementById("custom3Page").style.display="none";
 
 }
 
@@ -5747,6 +5783,48 @@ function cu2RenderT(){document.getElementById("cu2tTimer").textContent=formatTim
 function cu2Cool(){stopAllTimers();ensureAudio();cu2c=300;cu2RenderC();goBeep();timerHandle=startManagedTimer(()=>{cu2c--;if(cu2c<=3&&cu2c>0)beep();if(cu2c<=0){cu2c=0;cu2RenderC();stopAllTimers();endBeep();return}cu2RenderC()},1000)}
 function cu2RenderC(){document.getElementById("cu2cTimer").textContent=formatTime(cu2c);document.getElementById("cu2cProgress").style.width=((300-cu2c)/300*100)+"%"}
 function cu2Reset(){stopAllTimers();if(cu2Slide===2){cu2wR=1;cu2wP="work";cu2w=45;cu2RenderW()}else if(cu2Slide===3){cu2mR=1;cu2mP="work";cu2m=75;cu2RenderM()}else if(cu2Slide===4){cu2t=300;cu2RenderT()}else if(cu2Slide===5){cu2c=300;cu2RenderC()}}
+
+
+
+/* =====================================================
+   TREINO PERSONALIZADO #3 | FUNDAMENTOS HX8 #4 – TS
+===================================================== */
+const cu3Stations=[
+ ["Z1","Run","@ RPE 7",["🟢 RPE 6","🟡 RPE 7","🔴 RPE 8"]],
+ ["Z2","Sandbag Front Rack Lunge","@ RPE 7",["🟢 10 KG","🟡 20 KG","🔴 30 KG"]],
+ ["Z3","RowErg","@ RPE 8",["🟢 RPE 6","🟡 RPE 8","🔴 RPE 9"]],
+ ["Z4","Overhand Sled Push","",["🟢 50 KG","🟡 100 KG","🔴 150 KG"]],
+ ["Z5","DB Pullover Situp","",["🟢 5 KG","🟡 10 KG","🔴 15 KG"]],
+ ["Z6","Burpees Chest to Floor","@ RPE 8",["🟢 STEP BACK • RPE 6","🟡 RPE 8","🔴 RPE 9"]],
+ ["Z7","KB Reset Swings","",["🟢 8 KG","🟡 16 KG","🔴 24 KG"]],
+ ["Z8","Wallballs","",["🟢 4 KG","🟡 6 KG","🔴 9 KG"]]
+];
+const cu3WN=["LATERAL JUMP SQUATS","LUNGE AND TWIST","WALKOUT PUSHUP","90-90 TRANSITIONS","LOW PLANK HIP ROTATIONS"];
+let cu3Slide=0,cu3Auto=true,cu3wR=1,cu3wP="work",cu3w=45,cu3mR=1,cu3mP="work",cu3m=90,cu3t=480,cu3c=240;
+function openCustom3(){hideAllPages();cu3Slide=0;document.getElementById("custom3Page").style.display="block";cu3Selector();cu3Rotation();cu3BuildMain();cu3Show();}
+function cu3Exit(){stopAllTimers();hideAllPages();document.getElementById("customPage").style.display="block";}
+function cu3Show(){stopAllTimers();let a=document.querySelectorAll("#custom3Page .cu3Slide");a.forEach((x,i)=>x.classList.toggle("active",i===cu3Slide));document.getElementById("cu3Counter").textContent=(cu3Slide+1)+" / "+a.length;cu3Button();if(cu3Slide===3){cu3BuildMain();cu3RenderM();}}
+function cu3Next(){if(cu3Slide<5){cu3Slide++;cu3Show()}} function cu3Prev(){if(cu3Slide>0){cu3Slide--;cu3Show()}}
+function cu3Toggle(){cu3Auto=!cu3Auto;let b=document.getElementById("cu3Mode");b.textContent=cu3Auto?"AUTO":"MANUAL";b.classList.toggle("modeActive",cu3Auto)}
+function cu3Button(){document.getElementById("cu3Start").textContent=["▶ INICIAR AULA","▶ IR PARA AQUECIMENTO","▶ INICIAR AQUECIMENTO","▶ INICIAR TREINO","▶ INICIAR TEAM CHALLENGE","▶ INICIAR RECUPERAÇÃO"][cu3Slide]}
+function cu3Selector(){let s=document.getElementById("cu3Athletes");if(s.options.length)return;for(let i=1;i<=32;i++){let o=document.createElement("option");o.value=i;o.textContent=i;if(i===32)o.selected=true;s.appendChild(o)}}
+function cu3GroupSizes(n){let base=Math.floor(n/8),rem=n%8;return Array.from({length:8},(_,i)=>base+(i<rem?1:0))}
+function cu3Rotation(){let s=document.getElementById("cu3Athletes"),n=+(s?s.value:32)||32,sizes=cu3GroupSizes(n),L="ABCDEFGH",g=document.getElementById("cu3RotationGrid");if(!g)return;g.innerHTML="";sizes.forEach((q,i)=>{let st=cu3Stations[i],d=document.createElement("div");d.className="rotationCard";d.innerHTML=`<div class="rotationTeam">EQUIPE ${L[i]}</div><div class="rotationCount">${q?`${q} ATLETA${q!==1?"S":""}`:"LIVRE"}</div><div class="rotationStation">INÍCIO → <strong style="color:white">${st[0]} • ${st[1]}</strong></div>`;g.appendChild(d)});document.getElementById("cu3RotationSummary").innerHTML=`<strong style="color:#31df75">✓ ${n} ATLETAS</strong> • 8 ZONAS FIXAS • GRUPOS ${sizes.join(" / ")} • MÁX. 4 POR ZONA`}
+function cu3TeamAtZone(z,r){let shift=(r-1)%8,x=(z-shift)%8;if(x<0)x+=8;return "ABCDEFGH"[x]}
+function cu3Levels(a){return `<div class="levels"><span class="level green">${a[0]}</span><span class="level yellowText">${a[1]}</span><span class="level red">${a[2]}</span></div>`}
+function cu3BuildMain(){let g=document.getElementById("cu3MainGrid");if(!g)return;g.innerHTML=cu3Stations.map((st,i)=>`<div class="exerciseCard"><div class="exerciseIndex">${st[0]} • <span id="cu3Team${i}" style="color:#FFD700"></span></div><div class="exerciseName" style="font-size:16px">${st[1]}</div><div class="exerciseDose">01:30 ${st[2]}</div>${cu3Levels(st[3])}</div>`).join("");cu3RenderTeams()}
+function cu3RenderTeams(){for(let i=0;i<8;i++){let e=document.getElementById("cu3Team"+i);if(e)e.textContent="EQUIPE "+cu3TeamAtZone(i,cu3mR)}}
+function cu3StartPhase(){if(cu3Slide<2){cu3Slide++;cu3Show();return}if(cu3Slide===2)cu3Warm();else if(cu3Slide===3)cu3Main();else if(cu3Slide===4)cu3Team();else cu3Cool()}
+function cu3Warm(){stopAllTimers();preStart(()=>{cu3wR=1;cu3wP="work";cu3w=45;cu3RenderW();timerHandle=startManagedTimer(()=>{cu3w--;if(cu3w<=3&&cu3w>0)beep();if(cu3w<=0){if(cu3wP==="work"){endBeep();cu3wP="rest";cu3w=15}else if(cu3wR>=5){stopAllTimers();endBeep();if(cu3Auto){cu3Slide=3;cu3Show()}return}else{cu3wR++;cu3wP="work";cu3w=45;goBeep()}}cu3RenderW()},1000)})}
+function cu3RenderW(){let z=cu3wP!=="work";document.getElementById("cu3wRound").textContent=cu3wR;let x=document.getElementById("cu3wTimer");x.textContent=formatTime(cu3w);x.classList.toggle("rest",z);document.getElementById("cu3wContext").textContent=z?(cu3wR<5?`PRÓXIMO • ${cu3WN[cu3wR]}`:"PRÓXIMO • TREINO PRINCIPAL"):`ROUND ${cu3wR}/5 • ${cu3WN[cu3wR-1]}`;let ph=document.getElementById("cu3wPhase");ph.textContent=z?"● DESCANSO / TRANSIÇÃO":"● TRABALHO";ph.classList.toggle("rest",z);document.getElementById("cu3wProgress").style.width=(cu3w/(z?15:45)*100)+"%";document.querySelectorAll("#custom3Page .cu3Slide:nth-child(3) .exerciseCard").forEach((card,i)=>card.classList.toggle("activeExercise",!z&&i===cu3wR-1))}
+function cu3Main(){stopAllTimers();preStart(()=>{cu3mR=1;cu3mP="work";cu3m=90;cu3RenderM();timerHandle=startManagedTimer(()=>{cu3m--;if(cu3m<=3&&cu3m>0)beep();if(cu3m<=0){if(cu3mP==="work"){endBeep();cu3mP="rest";cu3m=30}else if(cu3mR>=16){stopAllTimers();endBeep();if(cu3Auto){cu3Slide=4;cu3Show()}return}else{cu3mR++;cu3mP="work";cu3m=90;goBeep()}}cu3RenderM()},1000)})}
+function cu3RenderM(){let z=cu3mP!=="work",pass=cu3mR<=8?1:2;document.getElementById("cu3mRound").textContent=cu3mR;let x=document.getElementById("cu3mTimer");x.textContent=formatTime(cu3m);x.classList.toggle("rest",z);document.getElementById("cu3mContext").textContent=`ROUND ${cu3mR}/16 • PASSAGEM ${pass}/2`;let ph=document.getElementById("cu3mPhase");ph.textContent=z?"● DESCANSO / TRANSIÇÃO":"● TRABALHO";ph.classList.toggle("rest",z);document.getElementById("cu3mProgress").style.width=(cu3m/(z?30:90)*100)+"%";document.querySelectorAll("#cu3MainGrid .exerciseCard").forEach(card=>card.classList.toggle("workActive",!z));cu3RenderTeams()}
+function cu3Team(){stopAllTimers();preStart(()=>{cu3t=480;cu3RenderT();timerHandle=startManagedTimer(()=>{cu3t--;if(cu3t<=3&&cu3t>0)beep();if(cu3t<=0){cu3t=0;cu3RenderT();stopAllTimers();endBeep();if(cu3Auto){cu3Slide=5;cu3Show()}return}cu3RenderT()},1000)})}
+function cu3RenderT(){document.getElementById("cu3tTimer").textContent=formatTime(cu3t);document.getElementById("cu3tProgress").style.width=((480-cu3t)/480*100)+"%"}
+function cu3Cool(){stopAllTimers();ensureAudio();cu3c=240;cu3RenderC();goBeep();timerHandle=startManagedTimer(()=>{cu3c--;if(cu3c<=3&&cu3c>0)beep();if(cu3c<=0){cu3c=0;cu3RenderC();stopAllTimers();endBeep();return}cu3RenderC()},1000)}
+function cu3RenderC(){document.getElementById("cu3cTimer").textContent=formatTime(cu3c);document.getElementById("cu3cProgress").style.width=((240-cu3c)/240*100)+"%"}
+function cu3Reset(){stopAllTimers();if(cu3Slide===2){cu3wR=1;cu3wP="work";cu3w=45;cu3RenderW()}else if(cu3Slide===3){cu3mR=1;cu3mP="work";cu3m=90;cu3RenderM()}else if(cu3Slide===4){cu3t=480;cu3RenderT()}else if(cu3Slide===5){cu3c=240;cu3RenderC()}}
+
 
 /* =====================================================
    FULLSCREEN
