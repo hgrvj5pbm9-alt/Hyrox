@@ -1049,12 +1049,7 @@ h1{
 }
 
 
-/* PERSONALIZADO #5 — ORIENTAÇÕES LEGÍVEIS NA TV */
-#custom5Page .orientationGrid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:12px;min-height:0}
-#custom5Page .orientationCard{background:#171717;border:1px solid #343434;border-radius:14px;padding:clamp(14px,1.5vw,24px);min-width:0;overflow:auto}
-#custom5Page .orientationCard h3{color:#FFD700;font-size:clamp(15px,1.2vw,21px);letter-spacing:1px;margin:0 0 12px}
-#custom5Page .orientationCard p{color:#e8e8e8;font-size:clamp(14px,1.25vw,20px);line-height:1.4;margin:0}
-@media(max-width:700px){#custom5Page .orientationGrid{grid-template-columns:1fr;grid-template-rows:repeat(4,minmax(0,1fr))}#custom5Page .orientationCard{padding:10px}#custom5Page .orientationCard h3{margin-bottom:4px}}
+#custom5Page .orientationCard{padding:10px}#custom5Page .orientationCard h3{margin-bottom:4px}}
 </style>
 </head>
 
@@ -1270,7 +1265,7 @@ h1{
         </div>
         <div class="arrow">›</div>
       </div>
-      <div class="dayCard" onclick="openCustom4()" style="cursor:pointer;text-align:left;margin-top:12px;"><div><div class="dayName">PERSONALIZADO #4</div><div class="workoutName">TREINO DE FUNDAMENTOS #9 TS</div><div class="workoutMeta">RPE 8 • 52 MIN • 1–32 ATLETAS • 5 ZONAS A/B</div></div><div class="arrow">›</div>
+      <div class="dayCard" onclick="openCustom4()" style="cursor:pointer;text-align:left;margin-top:12px;"><div><div class="dayName">PERSONALIZADO #4</div><div class="workoutName">TREINO DE FUNDAMENTOS #9 TS</div><div class="workoutMeta">RPE 8 • 52 MIN • 1–32 ATLETAS • 5 ZONAS A/B</div></div><div class="arrow">›</div></div>
       <div class="dayCard" onclick="openControleSobFadiga1(event)" data-workout="controle-sob-fadiga-1" style="cursor:pointer;text-align:left;margin-top:12px;"><div><div class="dayName">PERSONALIZADO #5</div><div class="workoutName">CONTROLE SOB FADIGA #1 TS</div><div class="workoutMeta">RPE 8 • 54 MIN • 1–40 ATLETAS • 5 ZONAS • 15 ROUNDS</div></div><div class="arrow">›</div></div></div>
       <p style="color:#9aa4b2;margin-top:18px;line-height:1.5;">Área independente da programação oficial. Novos WODs personalizados podem ser adicionados aqui sem alterar os treinos da semana.</p>
     </div>
@@ -2734,7 +2729,15 @@ h1{
 <section id="custom5Page" class="foundationPage"><div class="foundationShell">
 <div class="foundationTop"><div><div class="eyebrow">TREINOS PERSONALIZADOS • STUDIO 5</div><div class="foundationTitle">CONTROLE SOB FADIGA #1 TS</div></div><div class="foundationBadges"><div class="badge yellow">COMPROMISED</div><div class="badge">RPE 8</div><div class="badge">54 MIN</div><div class="badge">5 ZONAS</div><div class="badge">1–40 ATLETAS</div></div></div>
 <div class="workoutSlides">
-<section class="cu5Slide active"><div class="slideHeader"><div class="sectionLabel">ORIENTAÇÕES DO COACH</div></div><div class="orientationGrid"><div class="orientationCard"><h3>OBJETIVO</h3><p>Trabalho de Máquina Comprometida • RPE 8 • 5 zonas fixas • até 40 atletas.</p></div><div class="orientationCard"><h3>PROTOCOLO</h3><p>Aquecimento 04:00 (45/15 ×4). Principal: 15 rounds de 02:30 WORK + 00:25 TRANSIÇÃO (43:45). Desafio em duplas: 02:40 contínuos, troca a cada 10s. Desaceleração 04:00.</p></div><div class="orientationCard"><h3>SEGURANÇA</h3><p>Até 4 pessoas por esteira, remo ou SkiErg simultaneamente. Dividir cada zona em A/B, alternando acesso ao equipamento. Deslocamentos pelas laterais; sem cruzar Sleds ativos.</p></div><div class="orientationCard"><h3>RODÍZIO</h3><p>5 equipes, até 8 atletas por zona (A/B até 4 cada). A cada round, avançar para a zona seguinte; 3 passagens completas nas 5 zonas.</p></div></div></section>
+<section class="cu5Slide active"><div class="slideHeader"><div class="sectionLabel">ORIENTAÇÕES DO COACH</div></div>
+<div class="orientationGrid">
+<div class="infoCard"><h3>OBJETIVO</h3><div class="infoBig">MÁQUINA<br>COMPROMETIDA</div><div class="infoText">RPE 8 • 5 zonas fixas • controle técnico sob fadiga.</div></div>
+<div class="infoCard"><h3>PACING</h3><div class="infoBig">RPE 8</div><div class="infoText">Concluir as repetições com técnica e manter o esforço no ergômetro até a transição.</div></div>
+<div class="infoCard"><h3>CAPACIDADE</h3><div class="infoBig">ATÉ 40<br>ATLETAS</div><div class="infoText">5 zonas • equipes A/B • máximo de 4 simultâneos por máquina.</div></div>
+<div class="infoCard"><h3>AQUECIMENTO</h3><div class="infoBig">4 MIN</div><div class="infoText">00:45 Work / 00:15 Rest • 4 rounds.</div></div>
+<div class="infoCard"><h3>TRABALHO PRINCIPAL</h3><div class="infoBig">43:45</div><div class="infoText">02:30 Work / 00:25 Transição • 15 rounds • 3 passagens pelas 5 zonas.</div></div>
+<div class="infoCard"><h3>DESAFIO + RECUPERAÇÃO</h3><div class="infoBig">2:40 + 4 MIN</div><div class="infoText">Duplas: Burpees Chest to Floor ↔ Low Squat Hold, troca a cada 10s. Desaceleração 04:00.</div></div>
+</div></section>
 <section class="cu5Slide"><div class="slideHeader"><div><div class="sectionLabel">TURMA / RODÍZIO</div><div class="slideTitle">5 ZONAS FIXAS • SUBGRUPOS A/B</div></div><div class="athleteSelectRow"><strong>ATLETAS:</strong><select id="cu5Athletes" class="athleteSelect" onchange="cu5Rotation();cu5BuildMain()"></select></div></div><div id="cu5RotationSummary" class="subtitle" style="margin:0 0 12px"></div><div id="cu5RotationGrid" class="rotationGrid"></div></section>
 <section class="cu5Slide"><div class="executionPanel"><div class="slideHeader"><div><div class="sectionLabel">AQUECIMENTO</div><div class="slideTitle">00:45 WORK / 00:15 REST • 4 ROUNDS</div></div><div class="muted">ROUND <strong><span id="cu5wRound">1</span>/4</strong></div></div><div class="exerciseArea"><div style="width:100%;display:grid;grid-template-columns:repeat(4,1fr);gap:8px"><div class="exerciseCard"><div class="exerciseIndex">01</div><div class="exerciseName">90-90 Transitions</div></div><div class="exerciseCard"><div class="exerciseIndex">02</div><div class="exerciseName">Iron Cross Kicks</div></div><div class="exerciseCard"><div class="exerciseIndex">03</div><div class="exerciseName">Inchworm Pushup</div></div><div class="exerciseCard"><div class="exerciseIndex">04</div><div class="exerciseName">Lunge and Twist</div></div></div></div><div class="timerArea"><div class="timerBox"><div class="timerTop"><div id="cu5wPhase" class="phaseTag">● TRABALHO</div><div id="cu5wContext" class="contextLabel">ROUND 1/4</div></div><div id="cu5wTimer" class="timer">00:45</div><div class="progress"><div id="cu5wProgress" class="progressFill"></div></div></div></div></div></section>
 <section class="cu5Slide"><div class="executionPanel"><div class="slideHeader"><div><div class="sectionLabel">TRABALHO DE MÁQUINA COMPROMETIDA</div><div class="slideTitle">02:30 WORK / 00:25 TRANSIÇÃO • 15 ROUNDS</div></div><div class="muted">ROUND <strong><span id="cu5mRound">1</span>/15</strong></div></div><div class="exerciseArea"><div id="cu5MainGrid" style="width:100%;display:grid;grid-template-columns:repeat(5,1fr);gap:8px;height:100%"></div></div><div class="timerArea"><div class="timerBox"><div class="timerTop"><div id="cu5mPhase" class="phaseTag">● TRABALHO</div><div id="cu5mContext" class="contextLabel">ROUND 1/15</div></div><div id="cu5mTimer" class="timer">02:30</div><div class="progress"><div id="cu5mProgress" class="progressFill"></div></div></div></div></div></section>
