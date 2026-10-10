@@ -1264,7 +1264,7 @@ h1{
         <div class="arrow">›</div>
       </div>
       <div class="dayCard" onclick="openCustom4()" style="cursor:pointer;text-align:left;margin-top:12px;"><div><div class="dayName">PERSONALIZADO #4</div><div class="workoutName">TREINO DE FUNDAMENTOS #9 TS</div><div class="workoutMeta">RPE 8 • 52 MIN • 1–32 ATLETAS • 5 ZONAS A/B</div></div><div class="arrow">›</div>
-      <div class="dayCard" onclick="openCustom5()" style="cursor:pointer;text-align:left;margin-top:12px;"><div><div class="dayName">PERSONALIZADO #5</div><div class="workoutName">CONTROLE SOB FADIGA #1 TS</div><div class="workoutMeta">RPE 8 • 54 MIN • 1–40 ATLETAS • 5 ZONAS</div></div><div class="arrow">›</div></div></div>
+      <div class="dayCard" onclick="openControleSobFadiga1(event)" data-workout="controle-sob-fadiga-1" style="cursor:pointer;text-align:left;margin-top:12px;"><div><div class="dayName">PERSONALIZADO #5</div><div class="workoutName">CONTROLE SOB FADIGA #1 TS</div><div class="workoutMeta">RPE 8 • 54 MIN • 1–40 ATLETAS • 5 ZONAS • 15 ROUNDS</div></div><div class="arrow">›</div></div></div>
       <p style="color:#9aa4b2;margin-top:18px;line-height:1.5;">Área independente da programação oficial. Novos WODs personalizados podem ser adicionados aqui sem alterar os treinos da semana.</p>
     </div>
   </div>
@@ -6044,7 +6044,18 @@ const cu5Stations=[
 ];
 const cu5WN=["90-90 Transitions","Iron Cross Kicks","Inchworm Pushup","Lunge and Twist"];
 let cu5Slide=0,cu5Auto=true,cu5wR=1,cu5wP="work",cu5w=45,cu5mR=1,cu5mP="work",cu5m=150,cu5t=120,cu5c=240;
-function openCustom5(){hideAllPages();cu5Slide=0;document.getElementById("custom5Page").style.display="block";cu5Selector();cu5Rotation();cu5BuildMain();cu5Show()}
+function openControleSobFadiga1(event){
+  if(event){event.preventDefault();event.stopPropagation();}
+  stopAllTimers();
+  hideAllPages();
+  cu5Slide=0;
+  const page=document.getElementById("custom5Page");
+  if(!page){alert("Não foi possível localizar Controle Sob Fadiga #1 TS.");return;}
+  page.style.display="block";
+  cu5Selector();cu5Rotation();cu5BuildMain();cu5Show();
+  window.scrollTo(0,0);
+}
+function openCustom5(){openControleSobFadiga1();}
 function cu5Exit(){stopAllTimers();hideAllPages();document.getElementById("customPage").style.display="block"}
 function cu5Show(){stopAllTimers();document.querySelectorAll("#custom5Page .cu5Slide").forEach((x,i)=>x.classList.toggle("active",i===cu5Slide));document.getElementById("cu5Counter").textContent=(cu5Slide+1)+" / 6";document.getElementById("cu5Start").textContent=["▶ INICIAR AULA","▶ IR PARA AQUECIMENTO","▶ INICIAR AQUECIMENTO","▶ INICIAR TREINO","▶ INICIAR DESAFIO","▶ INICIAR RECUPERAÇÃO"][cu5Slide];if(cu5Slide===3){cu5BuildMain();cu5RenderM()}}
 function cu5Next(){if(cu5Slide<5){cu5Slide++;cu5Show()}}
