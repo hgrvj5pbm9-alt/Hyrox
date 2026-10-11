@@ -1178,6 +1178,38 @@ h1{
     min-height:0;max-height:100%;overflow:hidden;
   }
 }
+
+/* FIX ESTRUTURAL: algumas paginas de treino foram renderizadas fora de #app.
+   Mantem o catalogo rolavel e posiciona apenas o treino aberto na viewport. */
+@media (min-width:701px){
+  html:has(.foundationPage[style*="display: block"]),
+  body:has(.foundationPage[style*="display: block"]){overflow:hidden !important;height:100dvh !important;}
+  .foundationPage[style*="display: block"]{
+    position:fixed !important;
+    top:82px !important;
+    bottom:0 !important;
+    left:3vw !important;
+    width:94vw !important;
+    height:calc(100dvh - 82px) !important;
+    max-height:calc(100dvh - 82px) !important;
+    padding:6px 0 !important;
+    margin:0 !important;
+    overflow:hidden !important;
+    z-index:20;
+    background:#0d0d0d;
+  }
+  .foundationPage[style*="display: block"] > .foundationShell{
+    height:100% !important;max-height:100% !important;min-height:0 !important;
+    display:flex;flex-direction:column;overflow:hidden;
+  }
+  .foundationPage[style*="display: block"] .workoutSlides{
+    flex:1 1 0;min-height:0;overflow:hidden;
+  }
+  .foundationPage[style*="display: block"] .workoutSlides > .active{
+    height:100%;min-height:0;overflow:hidden;
+  }
+  .foundationPage[style*="display: block"] .workoutControls{flex:0 0 auto;}
+}
 </style>
 </head>
 
