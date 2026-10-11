@@ -1049,11 +1049,6 @@ h1{
 }
 
 
-/* PERSONALIZADO #5 — ORIENTAÇÕES LEGÍVEIS NA TV */
-#custom5Page .orientationGrid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:12px;min-height:0}
-
-@media(max-width:700px){#custom5Page .orientationGrid{grid-template-columns:1fr;grid-template-rows:repeat(4,minmax(0,1fr))}#custom5Page .orientationCard{padding:10px}#custom5Page .orientationCard h3{margin-bottom:4px}}
-
 /* AJUSTE DE ENQUADRAMENTO: UMA TELA, SEM ROLAGEM NO DASHBOARD */
 @media (min-width:701px){
   .content{margin:0 auto;flex:1;min-height:0;padding:8px 0 8px;}
@@ -1086,6 +1081,26 @@ h1{
   .foundationShell .orientationGrid,
   .foundationShell .rotationGrid,
   .foundationShell .coolGrid{min-height:0;}
+}
+
+/* TEXTO DO EXERCÍCIO CONJUGADO / TEMPO RESTANTE: CONTRASTE PARA TV */
+#custom5Page #cu5MainGrid .exerciseDose {
+  color:#f3f5fa !important;
+  font-size:clamp(14px,1.35vw,19px) !important;
+  font-weight:900 !important;
+  line-height:1.25;
+  text-shadow:0 1px 2px rgba(0,0,0,.65);
+  margin-top:12px;
+}
+#custom5Page #cu5MainGrid .exerciseName {
+  color:#ffffff;
+  font-size:clamp(15px,1.45vw,20px) !important;
+  line-height:1.18;
+}
+#custom5Page #cu5MainGrid .exerciseCard {min-width:0;padding:12px 8px;}
+#custom5Page #cu5MainGrid .levels {gap:5px;}
+@media (max-width:700px) {
+  #custom5Page .orientationGrid {grid-template-columns:1fr !important;grid-template-rows:none !important;}
 }
 </style>
 </head>
