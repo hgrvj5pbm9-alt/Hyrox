@@ -1,42 +1,29 @@
 <!DOCTYPE html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0d0d0f"><title>HYROX Terror | Studio 5 | 29.10.2026</title><script src="https://cdn.tailwindcss.com"></script>
 <style>
-:root{--o:#ff7a1a;--p:#a855f7;--bg:#0d0d0f;--c:#17151e;--b:#39303d;--m:#b9b0c2;--yellow:#ff7a1a}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#f8f6fb;font-family:Arial,Helvetica,sans-serif;font-weight:600}button,select{font:inherit}button{cursor:pointer}.shell{min-height:100dvh;display:flex;flex-direction:column;padding:clamp(10px,1.5vw,22px);gap:12px;max-width:2000px;margin:auto}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid var(--b);padding-bottom:12px}.brand{font-weight:900;color:var(--o);letter-spacing:.07em;font-size:clamp(14px,1.4vw,20px)}.badges{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}.badge{background:#211927;border:1px solid #493052;color:#e9d5ff;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:900}.headline{font-size:clamp(28px,3.8vw,58px);font-weight:1000;line-height:1.02;margin:6px 0}.orange{color:var(--o)}.purple{color:#c084fc}.muted{color:#bcbcbc}.tiny{font-size:clamp(12px,1.05vw,15px)}.card{background:var(--c);border:1px solid #333;border-radius:15px;padding:20px}.view{display:none;flex:1;min-height:0}.view.active{display:flex;flex-direction:column;gap:12px}.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.cols4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.cols5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.metric{background:#211a27;border:1px solid #493052;padding:14px;border-radius:12px;text-align:center}.metric b{display:block;font-size:clamp(24px,2.4vw,36px);color:var(--o)}.tag{color:#c084fc;font-size:13px;font-weight:900;letter-spacing:.12em}.station{border-left:5px solid var(--o);min-height:210px}.station h3{font-size:clamp(18px,1.5vw,24px);font-weight:900;margin:0 0 8px}.levels{display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:8px}.levels div{font-size:14px;background:#0f0e12;padding:10px;border-radius:8px;line-height:1.4}.green{color:#32e780}.yellow{color:#ffdf00}.red{color:#ff6570}.note{border:1px solid #543b60;background:#201726;padding:12px 14px;border-radius:10px;color:#e9d5ff;font-size:15px}.team,.ex{background:#171717;border:1px solid #343434;border-radius:13px;padding:18px}.team h3{color:var(--o);font-size:24px;font-weight:1000;margin:0 0 8px}.team p{font-size:16px;color:#fff}.ex .num{color:var(--o);font-size:14px;font-weight:900}.ex .name{font-size:20px;font-weight:1000;color:#fff;margin:6px 0}.ex .desc{color:#bcbcbc;font-size:14px}.clockpanel{background:#090909;border:1px solid #343434;border-radius:14px;padding:16px;text-align:center}.phase{color:#32e780;font-weight:900;letter-spacing:.08em;font-size:15px;text-align:left}.timer{font-variant-numeric:tabular-nums;font-size:clamp(65px,10vw,110px);font-weight:1000;line-height:1.1;color:#32e780}.progress{height:8px;background:#282828;border-radius:99px;overflow:hidden;margin-top:8px}.fill{height:100%;width:0;background:#32e780;transition:width .15s linear}.controls{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;background:#141119;border:1px solid var(--b);border-radius:14px;padding:10px}.btn{border:1px solid #353535;background:#151515;color:#fff;border-radius:10px;padding:10px 14px;font-weight:900;font-size:12px}.btn.primary{background:var(--o);border-color:var(--o);color:#1b0d03}.btn:disabled{opacity:.35;cursor:default}.scorecard{background:#171717;border:1px solid #444;border-radius:12px;padding:14px;text-align:center}.scorecard h3{color:var(--o);margin:0;font-size:18px}.scorecard b{font-size:36px;color:#fff;display:block;margin:6px 0}
+:root{--o:#ff7a1a;--p:#a855f7;--bg:#0d0d0f;--c:#17151e;--b:#39303d;--m:#b9b0c2;--yellow:#ff7a1a}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#f8f6fb;font-family:Arial,Helvetica,sans-serif;font-weight:600}button,select{font:inherit}button{cursor:pointer}.shell{min-height:100dvh;display:flex;flex-direction:column;padding:clamp(10px,1.5vw,22px);gap:12px;max-width:2000px;margin:auto}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid var(--b);padding-bottom:12px}.brand{font-weight:900;color:var(--o);letter-spacing:.07em;font-size:clamp(14px,1.4vw,20px)}.badges{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}.badge{background:#211927;border:1px solid #493052;color:#e9d5ff;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:900}.headline{font-size:clamp(28px,3.8vw,58px);font-weight:1000;line-height:1.02;margin:6px 0}.orange{color:var(--o)}.purple{color:#c084fc}.muted{color:#bcbcbc}.tiny{font-size:clamp(12px,1.05vw,15px)}.card{background:var(--c);border:1px solid #333;border-radius:15px;padding:20px}.view{display:none;flex:1;min-height:0}.view.active{display:flex;flex-direction:column;gap:12px}.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.cols4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.cols5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.metric{background:#211a27;border:1px solid #493052;padding:14px;border-radius:12px;text-align:center}.metric b{display:block;font-size:clamp(24px,2.4vw,36px);color:var(--o)}.tag{color:#c084fc;font-size:13px;font-weight:900;letter-spacing:.12em}.station{border-left:5px solid var(--o);min-height:210px}.station h3{font-size:clamp(18px,1.5vw,24px);font-weight:900;margin:0 0 8px}.levels{display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:8px}.levels div{font-size:14px;background:#0f0e12;padding:10px;border-radius:8px;line-height:1.4}.green{color:#32e780}.yellow{color:#ffdf00}.red{color:#ff6570}.note{border:1px solid #543b60;background:#201726;padding:12px 14px;border-radius:10px;color:#e9d5ff;font-size:15px}.team,.ex{background:#171717;border:1px solid #343434;border-radius:13px;padding:18px}.team h3{color:var(--o);font-size:24px;font-weight:1000;margin:0 0 8px}.team p{font-size:16px;color:#fff}.ex .num{color:var(--o);font-size:14px;font-weight:900}.ex .name{font-size:20px;font-weight:1000;color:#fff;margin:6px 0}.ex .desc{color:#bcbcbc;font-size:14px}.timerbox{margin-top:8px;border:1px solid #343434;border-radius:14px;padding:16px;text-align:center;background:#090909}.timerbox .phase{color:#32e780;font-weight:900;letter-spacing:.08em;font-size:16px;text-align:left}.timerbox.rest .phase,.timerbox.rest .digits{color:#ff505c}.digits{font-size:clamp(65px,10vw,110px);font-weight:1000;line-height:1.1;color:#32e780;font-variant-numeric:tabular-nums}.bar{height:8px;background:#282828;border-radius:99px;overflow:hidden;margin-top:8px}.barfill{height:100%;width:100%;background:#32e780;transition:width .15s linear}.timerbox.rest .barfill{background:#ff505c}.sub{color:#bbb;font-size:14px;margin-top:6px}.controls{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;background:#141119;border:1px solid var(--b);border-radius:14px;padding:10px}.btn{border:1px solid #353535;background:#151515;color:#fff;border-radius:10px;padding:10px 14px;font-weight:900;font-size:12px}.btn.primary{background:var(--o);border-color:var(--o);color:#1b0d03}.btn:disabled{opacity:.35;cursor:default}.scorecard{background:#171717;border:1px solid #444;border-radius:12px;padding:14px;text-align:center}.scorecard h3{color:var(--o);margin:0;font-size:18px}.scorecard b{font-size:36px;color:#fff;display:block;margin:6px 0}
 
-/* Estilo Tela Cheia / TV 65" com Fontes Grandes e Nítidas */
-@media (min-width:1051px){
+@media(min-width:1051px){
   .view.active{height:calc(100dvh - 24px - 60px - 20px);justify-content:space-between}
   .cols5{grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;flex:1;align-items:stretch}
-  .team, .ex, .station{display:flex;flex-direction:column;justify-content:center;min-height:0;padding:20px}
+  .team,.ex,.zonecard{display:flex;flex-direction:column;justify-content:center;min-height:0;padding:20px}
   .team h3{font-size:26px}
   .team p{font-size:17px}
   .ex .name{font-size:22px}
   .ex .desc{font-size:15px}
   .station h3{font-size:24px}
-  .timer{font-size:clamp(70px,11vh,120px)!important}
+  .digits{font-size:clamp(70px,11vh,120px)!important}
 }
 </style></head><body><div class="shell">
 <header class="top"><div><div class="brand">HYROX CLUB | CIA ATHLETICA STUDIO 5</div><div class="badges"><span class="badge">🎃 HYROX TERROR</span><span class="badge">29 OUT 2026</span><span class="badge">50 MIN</span><span class="badge">ATÉ 32 ATLETAS</span></div></div><div style="text-align:right;font-weight:900;color:#c084fc;font-size:15px">TERROR<br><span style="color:var(--o)">MODE ON</span></div></header>
 <main id="views" style="flex:1;display:flex;flex-direction:column">
-<section class="view active"><div class="card" style="text-align:center;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px"><div style="font-size:clamp(48px,6.5vw,96px)">🎃 👻 💀</div><div><div class="tag">AULÃO ESPECIAL • QUINTA-FEIRA • 29/10/2026</div><h1 class="headline">HYROX <span class="orange">TERROR</span></h1><p class="muted" style="font-size:18px">CORAGEM, CONTROLE E SOBREVIVÊNCIA SOB FADIGA</p></div><div class="cols4" style="width:min(1000px,100%)"><div class="metric"><b>04'10</b>AQUECIMENTO</div><div class="metric"><b>32'30</b>CIRCUITO</div><div class="metric"><b>06'</b>DESAFIO FINAL</div><div class="metric"><b>05'</b>RECUPERAÇÃO</div></div><p class="note">Aquecimento: 00:40 Trab / 00:10 Desc (5 Rodadas) • Circuito: 00:50 Trab / 00:15 Rest (30 Rounds)</p><p class="muted tiny">Fantasia é opcional. Prioridade: movimento seguro, técnica válida e diversão.</p></div></section>
+<section class="view active"><div class="card" style="text-align:center;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px"><div style="font-size:clamp(48px,6.5vw,96px)">🎃 👻 💀</div><div><div class="tag">AULÃO ESPECIAL • QUINTA-FEIRA • 29/10/2026</div><h1 class="headline">HYROX <span class="orange">TERROR</span></h1><p class="muted" style="font-size:18px">CORAGEM, CONTROLE E SOBREVIVÊNCIA SOB FADIGA</p></div><div class="cols4" style="width:min(1000px,100%)"><div class="metric"><b>03'20</b>AQUECIMENTO</div><div class="metric"><b>32'30</b>CIRCUITO</div><div class="metric"><b>06'</b>DESAFIO FINAL</div><div class="metric"><b>05'</b>RECUPERAÇÃO</div></div><p class="note">Aquecimento: 00:40 Trab / 00:10 Desc (5 Rodadas) • Circuito: 00:50 Trab / 00:15 Rest (30 Rounds)</p><p class="muted tiny">Fantasia é opcional. Prioridade: movimento seguro, técnica válida e diversão.</p></div></section>
 <section class="view"><h1 class="headline">BRIEFING <span class="orange">DO COACH</span></h1><div class="cols"><div class="card"><h2 class="purple font-black" style="font-size:20px">FORMATO</h2><p style="font-size:16px">Distribua a turma nas 5 zonas de treino. O circuito principal segue o esquema de 50s de trabalho e 15s de descanso por bloco, totalizando 30 rounds dinâmicos.</p></div><div class="card"><h2 class="purple font-black" style="font-size:20px">PACING & PONTUAÇÃO</h2><p style="font-size:16px">🟢 Iniciante: Ritmo controlado, foco em aprender a executar.<br>🟡 Open: Ritmo sustentável e contínuo.<br>🔴 Pro: Intensidade alta com exigência técnica rigorosa.</p></div><div class="card"><h2 class="purple font-black" style="font-size:20px">FLUXO SEGURO</h2><p style="font-size:16px">Transições rápidas e seguras pelas laterais da sala. Nunca cruzar pistas de sled ativas ou áreas de lançamento de wall balls sem atenção.</p></div><div class="card"><h2 class="purple font-black" style="font-size:20px">REGRA DO TERROR</h2><p style="font-size:16px">Foco na postura e integridade física. O desafio final testará o revezamento em 4 grandes grupos com Sled e Burpee Broad Jump.</p></div></div><div class="note">Verifique a montagem dos pesos, kettlebells e ergômetros no Studio 5 antes de iniciar a aula.</div></section>
-<section class="view">
-<div class="roundinfo" style="display:flex;justify-content:space-between;align-items:center">
-  <div><div class="tag">TURMA / RODÍZIO</div><div class="sectiontitle" style="font-size:28px;font-weight:1000">DISTRIBUIÇÃO DOS ATLETAS</div></div>
-  <div style="display:flex;align-items:center;gap:10px"><label for="athletes" style="font-size:16px;font-weight:bold">ATLETAS:</label><select id="athletes" class="btn" style="padding:10px;font-size:16px"></select></div>
-</div>
-<div class="status" id="teamstatus" style="font-size:16px;color:#32e780"></div>
-<div class="cols5" id="teamcards"></div>
-</section>
-<section class="view"><h1 class="headline">01 • <span class="orange">WARM-UP</span></h1><p class="muted" style="font-size:16px">Esquema: 00:40 Trabalho / 00:10 Descanso • 5 Rodadas (Total: 4m10s)</p><div class="cols5" id="warmupList"><div class="ex"><span class="num">01</span><div class="name">Bootstrapper</div><span class="desc">00:40 • Foco em mobilidade</span></div><div class="ex"><span class="num">02</span><div class="name">Low Squat T Spine</div><span class="desc">00:40 • @ RPE 6</span></div><div class="ex"><span class="num">03</span><div class="name">Seal Jacks</div><span class="desc">00:40 • Ativação articular</span></div><div class="ex"><span class="num">04</span><div class="name">Situp to Glute</div><span class="desc">00:40 • Core e quadril</span></div><div class="ex"><span class="num">05</span><div class="name">Cat-Cow</div><span class="desc">00:40 • Coluna vertebral</span></div></div><div class="clockpanel"><div class="phase" id="phase">● TRABALHO</div><div class="timer" id="clock">00:40</div><div class="progress"><div class="fill" id="fill"></div></div></div></section>
-<section class="view">
-<h1 class="headline">02 • CIRCUITO <span class="orange">HYROX TERROR</span></h1>
-<p class="muted" style="font-size:16px">Esquema: 50s Work / 15s Rest • 30 Rounds (32m30s)</p>
-<div id="stations" class="cols5"></div>
-<div class="clockpanel"><div class="phase" id="mainPhase">● TRABALHO</div><div class="timer" id="mainClock">00:50</div><div class="progress"><div class="fill" id="mainFill"></div></div><p class="muted tiny" id="roundHint" style="font-size:15px;margin-top:6px">Controle dos blocos de 50s de esforço e 15s de transição nas estações.</p></div>
-</section>
-<section class="view"><h1 class="headline">03 • <span class="purple">DESAFIO • 4 GRUPOS</span></h1><p class="muted" style="font-size:16px">Competição em 4 equipes • 6 minutos • Revezamento dinâmico (Sled + Burpee Broad Jump)</p><div class="cols"><div class="card"><h2 class="orange font-black" style="font-size:20px">FORMATO — TERROR SLED & JUMP</h2><p style="font-size:16px">Divididos em **4 Grupos**, a equipe entra em revezamento direto por 6 minutos:</p><ul style="list-style:disc;padding-left:22px;line-height:1.8;font-size:16px"><li><strong>Sled</strong> (Arrasto / Empurrada)</li><li><strong>Burpee Broad Jump</strong> (Salto da Caveira)</li></ul><p class="muted tiny">O atleta executa e bate na mão do próximo colega. Quem fizer mais voltas/pontos ganha!</p></div><div class="card"><h2 class="purple font-black" style="font-size:20px">PLACAR DE PONTOS</h2><div class="cols4" style="margin-top:10px"><div class="scorecard"><h3>GRUPO A</h3><b id="scoreA">0</b><div><button class="btn" onclick="modScore('A',-1)">-</button> <button class="btn primary" onclick="modScore('A',1)">+</button></div></div><div class="scorecard"><h3>GRUPO B</h3><b id="scoreB">0</b><div><button class="btn" onclick="modScore('B',-1)">-</button> <button class="btn primary" onclick="modScore('B',1)">+</button></div></div><div class="scorecard"><h3>GRUPO C</h3><b id="scoreC">0</b><div><button class="btn" onclick="modScore('C',-1)">-</button> <button class="btn primary" onclick="modScore('C',1)">+</button></div></div><div class="scorecard"><h3>GRUPO D</h3><b id="scoreD">0</b><div><button class="btn" onclick="modScore('D',-1)">-</button> <button class="btn primary" onclick="modScore('D',1)">+</button></div></div></div></div></div><div class="clockpanel"><div class="phase" id="challengePhase">● TRABALHO</div><div class="timer" id="challengeClock">06:00</div><div class="progress"><div class="fill" id="challengeFill"></div></div></div></section>
-<section class="view"><h1 class="headline">04 • VOLTA À <span class="purple">CALMA</span></h1><div class="cols"><div class="ex"><span class="num">01</span><div class="name">Caminhada leve</div><span class="desc">1:30 • reduzir frequência respiratória</span></div><div class="ex"><span class="num">02</span><div class="name">Respiração controlada</div><span class="desc">1:00 • inspirar pelo nariz lentamente</span></div><div class="ex"><span class="num">03</span><div class="name">Mobilidade de quadril</div><span class="desc">1:30 • posições confortáveis</span></div><div class="ex"><span class="num">04</span><div class="name">Fechamento do aulão</div><span class="desc">1:00 • hidratação e foto oficial</span></div></div><div class="clockpanel"><div class="phase" id="coolPhase">● RECUPERAÇÃO</div><div class="timer" id="coolClock">05:00</div><div class="progress"><div class="fill" id="coolFill"></div></div></div></section>
+<section class="view"><div class="roundinfo" style="display:flex;justify-content:space-between;align-items:center"><div><div class="tag">TURMA / RODÍZIO</div><div class="sectiontitle" style="font-size:28px;font-weight:1000">DISTRIBUIÇÃO DOS ATLETAS</div></div><div style="display:flex;align-items:center;gap:10px"><label for="athletes" style="font-size:16px;font-weight:bold">ATLETAS:</label><select id="athletes" class="btn" style="padding:10px;font-size:16px"></select></div></div><div class="status" id="teamstatus" style="font-size:16px;color:#32e780"></div><div class="cols5" id="teamcards"></div></section>
+<section class="view"><div class="roundinfo" style="display:flex;justify-content:space-between;align-items:center"><div><div class="tag">AQUECIMENTO</div><div class="sectiontitle" style="font-size:26px;font-weight:1000">00:40 WORK / 00:10 REST • 5 ROUNDS</div></div><div class="tag" id="warmround" style="font-size:18px">ROUND 1/5</div></div><div class="cols5" id="warmcards"></div><div class="timerbox" id="timerwarm"><div class="phase" id="warmphase">● TRABALHO</div><div class="sub" id="warmlabel">ROUND 1/5 • Bootstrapper</div><div class="digits" id="warmdigits">00:40</div><div class="bar"><div class="barfill" id="warmbar"></div></div></div></section>
+<section class="view"><div class="roundinfo" style="display:flex;justify-content:space-between;align-items:center"><div><div class="tag">TREINO PRINCIPAL</div><div class="sectiontitle" style="font-size:26px;font-weight:1000">00:50 WORK / 00:15 REST • 30 ROUNDS</div></div><div class="tag" id="mainround" style="font-size:18px">ROUND 1/30</div></div><div class="cols5" id="zonecards"></div><div class="timerbox" id="timermain"><div class="phase" id="mainphase">● TRABALHO</div><div class="sub" id="mainlabel">ROUND 1/30 • BLOCO 1/5 • ZONAS A/B</div><div class="digits" id="maindigits">00:50</div><div class="bar"><div class="barfill" id="mainbar"></div></div><div class="sub" id="mainremain">32:30 RESTANTES • BLOCO 1/5</div></div></section>
+<section class="view"><h1 class="headline">03 • <span class="purple">DESAFIO • 4 GRUPOS</span></h1><p class="muted" style="font-size:16px">Competição em 4 equipes • 6 minutos • Revezamento dinâmico (Sled + Burpee Broad Jump)</p><div class="cols"><div class="card"><h2 class="orange font-black" style="font-size:20px">FORMATO — TERROR SLED & JUMP</h2><p style="font-size:16px">Divididos em **4 Grupos**, a equipe entra em revezamento direto por 6 minutos:</p><ul style="list-style:disc;padding-left:22px;line-height:1.8;font-size:16px"><li><strong>Sled</strong> (Arrasto / Empurrada)</li><li><strong>Burpee Broad Jump</strong> (Salto da Caveira)</li></ul><p class="muted tiny">O atleta executa e bate na mão do próximo colega. Quem fizer mais voltas/pontos ganha!</p></div><div class="card"><h2 class="purple font-black" style="font-size:20px">PLACAR DE PONTOS</h2><div class="cols4" style="margin-top:10px"><div class="scorecard"><h3>GRUPO A</h3><b id="scoreA">0</b><div><button class="btn" onclick="modScore('A',-1)">-</button> <button class="btn primary" onclick="modScore('A',1)">+</button></div></div><div class="scorecard"><h3>GRUPO B</h3><b id="scoreB">0</b><div><button class="btn" onclick="modScore('B',-1)">-</button> <button class="btn primary" onclick="modScore('B',1)">+</button></div></div><div class="scorecard"><h3>GRUPO C</h3><b id="scoreC">0</b><div><button class="btn" onclick="modScore('C',-1)">-</button> <button class="btn primary" onclick="modScore('C',1)">+</button></div></div><div class="scorecard"><h3>GRUPO D</h3><b id="scoreD">0</b><div><button class="btn" onclick="modScore('D',-1)">-</button> <button class="btn primary" onclick="modScore('D',1)">+</button></div></div></div></div></div><div class="timerbox" id="timerchallenge"><div class="phase" id="challengephase">● TRABALHO</div><div class="sub" id="challengelabel">DESAFIO FINAL • 6 MINUTOS</div><div class="digits" id="challengedigits">06:00</div><div class="bar"><div class="barfill" id="challengebar"></div></div></div></section>
+<section class="view"><div class="roundinfo" style="display:flex;justify-content:space-between;align-items:center"><div><div class="tag">DESAQUECIMENTO</div><div class="sectiontitle" style="font-size:26px;font-weight:1000">01:00 CONTÍNUO • 5 ROUNDS</div></div><div class="tag" id="coolround" style="font-size:18px">ROUND 1/5</div></div><div class="cols5" id="coolcards"></div><div class="timerbox" id="timercool"><div class="phase" id="coolphase">● RECUPERAÇÃO</div><div class="sub" id="coollabel">ROUND 1/5 • Caminhada leve</div><div class="digits" id="cooldigits">01:00</div><div class="bar"><div class="barfill" id="coolbar"></div></div></div></section>
 </main>
 <footer class="controls"><button class="btn" id="prev">◀ ANTERIOR</button><span id="pagecount" class="muted" style="align-self:center;font-weight:900">1 / 7</span><button class="btn" id="next">PRÓXIMA ▶</button><button class="btn primary" id="start">▶ INICIAR</button><button class="btn" id="pause">⏸ PAUSAR</button><button class="btn" id="reset">↺ RESET</button><button class="btn" id="sound">🔊 SOM ON</button><button class="btn" id="fullscreen">⛶ TELA CHEIA</button></footer></div>
 <script>
@@ -44,79 +31,144 @@ let scores={A:0,B:0,C:0,D:0};
 window.modScore=(g,val)=>{scores[g]=Math.max(0,scores[g]+val);document.getElementById('score'+g).textContent=scores[g];};
 
 (()=>{'use strict';
-const views=[...document.querySelectorAll('.view')];
-let page=0,timer=null,last=0,remaining=0,soundOn=true,audioCtx=null;
-const durations={3:250, 4:1950, 5:360, 6:300};
-
-const S=[
-['Zone 1','Z1A: Run','Z1B: Dual KB Rev Lunge','Esteira e avanço com Kettlebell.'],
-['Zone 2','Z2A: Wallballs','Z2B: RowErg','Alvos e remada no ergômetro.'],
-['Zone 3','Z3A: DB Bent Rows','Z3B: Sled Push @ RPE 9','Remada e trenó pesado.'],
-['Zone 4','Z4A: Shoulder Tap Pushup','Z4B: Hollow Flutter Kicks','Flexão e core abdominal.'],
-['Zone 5','Z5A: KB Farmer’s March','Z5B: Low Squat Hold','Marcha do fazendeiro e agachamento.']
+const $=id=>document.getElementById(id);let page=0,sound=true,clock=null,last=0,audioCtx=null;
+const warm=['Bootstrapper','Low Squat T Spine','Seal Jacks','Situp to Glute','Cat-Cow'];
+const cool=['Caminhada leve','Respiração controlada','Mobilidade de quadril','Fechamento do aulão','Alongamento final'];
+const zones=[
+  {name:'Zone 1',a:'Z1A: Run',b:'Z1B: Dual KB Rev Lunge',desc:'Esteira e avanço com Kettlebell.'},
+  {name:'Zone 2',a:'Z2A: Wallballs',b:'Z2B: RowErg',desc:'Alvos e remada no ergômetro.'},
+  {name:'Zone 3',a:'Z3A: DB Bent Rows',b:'Z3B: Sled Push @ RPE 9',desc:'Remada e trenó pesado.'},
+  {name:'Zone 4',a:'Z4A: Shoulder Tap Pushup',b:'Z4B: Hollow Flutter Kicks',desc:'Flexão e core abdominal.'},
+  {name:'Zone 5',a:'Z5A: KB Farmer’s March',b:'Z5B: Low Squat Hold',desc:'Marcha do fazendeiro e agachamento.'}
 ];
 
-function beep(freq=740,dur=.08){if(!soundOn)return;try{audioCtx=audioCtx||new(window.AudioContext||window.webkitAudioContext)();let o=audioCtx.createOscillator(),g=audioCtx.createGain();o.frequency.value=freq;o.type='sine';g.gain.value=.05;o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+dur)}catch(e){}}
-function fmt(s){s=Math.max(0,Math.floor(s));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}
-function stop(){if(timer){clearInterval(timer);timer=null}}
+const defs={
+  warm:{durations:[40,10],count:5,round:0,phase:0,remaining:40,running:false},
+  main:{durations:[50,15],count:30,round:0,phase:0,remaining:50,running:false},
+  challenge:{durations:[360],count:1,round:0,phase:0,remaining:360,running:false},
+  cool:{durations:[60],count:5,round:0,phase:0,remaining:60,running:false}
+};
+const pageKeys={3:'warm',4:'main',5:'challenge',6:'cool'};
 
-function paint(){
-let map={3:['clock','fill','phase'],4:['mainClock','mainFill','mainPhase'],5:['challengeClock','challengeFill','challengePhase'],6:['coolClock','coolFill','coolPhase']};
-if(map[page]){
-  let [c,f,p]=map[page];
-  document.getElementById(c).textContent=fmt(remaining);
-  document.getElementById(f).style.width=((1-remaining/durations[page])*100)+'%';
-  if(page===3){
-    document.getElementById(p).textContent=`● AQUECIMENTO • 00:40 TRAB / 00:10 DESC`;
-  }
-  if(page===4){
-    let elapsed=1950-remaining, round=Math.min(30,Math.floor(elapsed/65)+1);
-    document.getElementById(p).textContent=`● ROUND ${String(round).padStart(2,'0')}/30 • 50s WORK / 15s REST`;
-    document.getElementById('roundHint').textContent=`Bloco principal em andamento • Round ${round} de 30`;
-  }
-}
-document.getElementById('pagecount').textContent=(page+1)+' / '+views.length;
-document.getElementById('prev').disabled=page===0;
-document.getElementById('next').disabled=page===views.length-1;
-document.getElementById('start').disabled=!(page in durations)||timer!==null||remaining===0;
-document.getElementById('pause').disabled=timer===null;
-document.getElementById('reset').disabled=!(page in durations)
+function fmt(s){s=Math.max(0,Math.ceil(s));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}
+function current(){return pageKeys[page]}
+function beep(freq=740,dur=.08){if(!sound)return;try{audioCtx=audioCtx||new(window.AudioContext||window.webkitAudioContext)();let o=audioCtx.createOscillator(),g=audioCtx.createGain();o.frequency.value=freq;o.type='sine';g.gain.value=.05;o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+dur)}catch(e){}}
+function stop(){if(clock){clearInterval(clock);clock=null}Object.values(defs).forEach(x=>x.running=false)}
+
+function render(){
+  document.querySelectorAll('.view').forEach((el,i)=>el.classList.toggle('active',i===page));
+  $('pagecount').textContent=(page+1)+' / 7';
+  $('prev').disabled=page===0;
+  $('next').disabled=page===6;
+  let k=current();
+  $('start').disabled=!k||!!defs[k]?.running;
+  $('pause').disabled=!k||!defs[k]?.running;
+  $('reset').disabled=!k;
+  if(k) draw(k);
 }
 
-function go(n){if(n<0||n>=views.length)return;stop();page=n;views.forEach((v,i)=>v.classList.toggle('active',i===page));remaining=durations[page]||0;paint()}
+function go(p){if(p<0||p>6)return;stop();page=p;render()}
+
+function nextPhase(k){
+  let t=defs[k];
+  if(t.phase<t.durations.length-1){t.phase++;t.remaining=t.durations[t.phase];beep(900);return;}
+  t.phase=0;t.round++;
+  if(t.round>=t.count){t.round=t.count-1;t.remaining=0;stop();beep(1100,.2);return;}
+  t.remaining=t.durations[0];
+  beep(740);
+}
 
 function tick(){
-let now=Date.now(),delta=Math.floor((now-last)/1000);
-if(delta<1)return;
-last+=delta*1000;
-let old=remaining;
-remaining=Math.max(0,remaining-delta);
-if(remaining>0&&remaining<=3&&remaining!==old)beep(1000);
-if(remaining===0){stop();beep(1100,.2)}
-paint()
-}
-
-document.getElementById('prev').onclick=()=>go(page-1);
-document.getElementById('next').onclick=()=>go(page+1);
-document.getElementById('start').onclick=()=>{if(!(page in durations)||timer||remaining===0)return;last=Date.now();beep();timer=setInterval(tick,150);paint()};
-document.getElementById('pause').onclick=()=>{if(timer)tick();stop();paint()};
-document.getElementById('reset').onclick=()=>{stop();remaining=durations[page]||0;paint()};
-document.getElementById('sound').onclick=e=>{soundOn=!soundOn;e.target.textContent=soundOn?'🔊 SOM ON':'🔇 SOM OFF';if(soundOn)beep()};
-document.getElementById('fullscreen').onclick=()=>document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen?.();
-
-let selEl=document.getElementById('athletes');
-if(selEl){
-  selEl.innerHTML='';
-  for(let i=1;i<=32;i++){let o=document.createElement('option');o.value=i;o.textContent=i+' atletas';if(i===32)o.selected=true;selEl.appendChild(o)}
-  function teams(){
-    let n=+selEl.value,g=Array.from({length:5},(_,i)=>Math.floor(n/5)+(i<n%5?1:0));
-    document.getElementById('teamcards').innerHTML=g.map((x,i)=>`<div class="team"><h3>EQUIPE ${'ABCDE'[i]}</h3><p style="font-size:18px;font-weight:bold">${x} ATLETA${x===1?'':'S'}</p><p style="color:#bcbcbc;margin-top:6px;font-size:15px">Início: Z${i+1} • Revezamento</p></div>`).join('')
+  let k=current();
+  if(!k||!defs[k].running)return;
+  let now=performance.now(),dt=(now-last)/1000;
+  last=now;
+  let t=defs[k];
+  t.remaining-=dt;
+  if(t.remaining<=0&&t.running){
+    let overflow=-t.remaining;
+    nextPhase(k);
+    if(t.running) t.remaining-=overflow;
   }
-  selEl.onchange=teams;teams();
+  draw(k);
 }
 
-document.getElementById('stations').innerHTML=S.map(s=>`<article class="card station"><h3>${s[0]}</h3><div class="levels"><div><strong class="orange" style="font-size:15px">${s[1]}</strong></div><div><strong class="purple" style="font-size:15px">${s[2]}</strong></div></div><p class="muted tiny" style="margin-top:10px;font-size:14px">${s[3]}</p></article>`).join('');
+function start(){
+  let k=current();
+  if(!k)return;
+  stop();
+  let t=defs[k];
+  if(t.remaining<=0){t.round=0;t.phase=0;t.remaining=t.durations[0];}
+  t.running=true;
+  last=performance.now();
+  clock=setInterval(tick,100);
+  render();
+}
 
-go(0);
+function pause(){stop();render();}
+function reset(){let k=current();if(!k)return;stop();let t=defs[k];t.round=0;t.phase=0;t.remaining=t.durations[0];render();}
+
+function draw(k){
+  let t=defs[k], rest=t.phase===1, root=$('timer'+k);
+  if(!root)return;
+  root.classList.toggle('rest',rest);
+  $(k+'digits').textContent=fmt(t.remaining);
+  $(k+'bar').style.width=Math.max(0,Math.min(100,t.remaining/t.durations[t.phase]*100))+'%';
+  $(k+'phase').textContent=rest?'● DESCANSO / TRANSIÇÃO':k==='cool'?'● RECUPERAÇÃO':'● TRABALHO';
+
+  if(k==='warm'){
+    $(k+'label').textContent='ROUND '+(t.round+1)+'/'+t.count+' • '+warm[t.round];
+    $('warmround').textContent='ROUND '+(t.round+1)+'/5';
+    document.querySelectorAll('#warmcards .ex').forEach((el,i)=>{el.style.border=i===t.round?'2px solid var(--yellow)':'1px solid #343434';el.style.background=i===t.round?'#24210f':'#171717';});
+  }
+  if(k==='cool'){
+    $(k+'label').textContent='ROUND '+(t.round+1)+'/'+t.count+' • '+cool[t.round];
+    $('coolround').textContent='ROUND '+(t.round+1)+'/5';
+    document.querySelectorAll('#coolcards .ex').forEach((el,i)=>{el.style.border=i===t.round?'2px solid var(--yellow)':'1px solid #343434';el.style.background=i===t.round?'#24210f':'#171717';});
+  }
+  if(k==='main'){
+    $('mainround').textContent='ROUND '+(t.round+1)+'/30';
+    let block=Math.floor(t.round/6)+1;
+    let slot=t.round%6;
+    let label=slot%2===0?'A (Subestação A)':'B (Subestação B)';
+    $('mainlabel').textContent='ROUND '+(t.round+1)+'/30 • BLOCO '+block+'/5 • '+label;
+    
+    // Calcula o tempo restante estimado do circuito principal
+    let remRounds=30-t.round-1;
+    let remSecs=(remRounds*65)+(rest?0:15)+t.remaining;
+    $('mainremain').textContent=fmt(remSecs)+' RESTANTES • ZONA '+block;
+
+    document.querySelectorAll('#zonecards .zonecard').forEach((el,i)=>el.style.border=i===block-1?'2px solid var(--yellow)':'1px solid #343434');
+  }
+}
+
+function initCards(){
+  warm.forEach((s,i)=>$('warmcards').insertAdjacentHTML('beforeend',`<div class="ex"><span class="num">${String(i+1).padStart(2,'0')}</span><div class="name">${s}</div><span class="desc">00:40 WORK / 00:10 REST</span></div>`));
+  cool.forEach((s,i)=>$('coolcards').insertAdjacentHTML('beforeend',`<div class="ex"><span class="num">${String(i+1).padStart(2,'0')}</span><div class="name">${s}</div><span class="desc">01:00 CONTÍNUO</span></div>`));
+  zones.forEach((z,i)=>$('zonecards').insertAdjacentHTML('beforeend',`<div class="card zonecard" style="padding:16px"><div style="color:var(--o);font-weight:900;font-size:18px">${z.name}</div><div style="font-size:16px;font-weight:bold;margin-top:8px;color:#fff">${z.a}</div><div style="font-size:16px;font-weight:bold;margin-top:6px;color:#c084fc">${z.b}</div><div class="muted tiny" style="margin-top:8px">${z.desc}</div></div>`));
+}
+
+function teams(){
+  let n=Number($('athletes').value),count=5,names='ABCDE',sizes=Array.from({length:count},(_,i)=>Math.floor(n/count)+(i<n%count?1:0));
+  $('teamstatus').textContent=(n>32?'⚠ TURMA ACIMA DO RECOMENDADO (32) • ':'✓ ')+n+' ATLETAS • 5 EQUIPES • DISTRIBUIÇÃO OTIMIZADA';
+  $('teamcards').innerHTML='';
+  sizes.forEach((size,i)=>$('teamcards').insertAdjacentHTML('beforeend',`<div class="team"><h3>EQUIPE ${names[i]}</h3><p style="font-size:18px;font-weight:bold">${size} ATLETA${size>1?'S':''}</p><p style="color:#bcbcbc;margin-top:6px;font-size:15px">Início: Z${i+1} • Revezamento</p></div>`));
+}
+
+for(let n=1;n<=40;n++)$('athletes').add(new Option(n,n));
+$('athletes').value='32';
+$('athletes').onchange=teams;
+
+$('prev').onclick=()=>go(page-1);
+$('next').onclick=()=>go(page+1);
+$('start').onclick=start;
+$('pause').onclick=pause;
+$('reset').onclick=reset;
+$('sound').onclick=()=>{sound=!sound;$('sound').textContent=sound?'🔊 SOM ON':'🔇 SOM OFF';if(sound)beep();};
+$('fullscreen').onclick=()=>{if(document.fullscreenElement)document.exitFullscreen();else document.documentElement.requestFullscreen?.();};
+
+initCards();
+teams();
+render();
 })();
 </script></body></html>
